@@ -381,7 +381,7 @@
 
   <script>
     const REGISTRY_URL = '/u/registry.json';
-    
+
     // 加载并渲染主播列表
     fetch(REGISTRY_URL)
       .then(r => {
@@ -389,9 +389,10 @@
         return r.json();
       })
       .then(data => {
-        // 更新统计
-        document.getElementById('total-count').textContent = data.total || data.vtubers?.length || 0;
-        document.getElementById('active-count').textContent = (data.vtubers || []).filter(v => v.status === 'active').length;
+        // ✅ 新代码：完全动态计算，不依赖 total 字段
+        const vtubers = data.vtubers || [];
+        document.getElementById('total-count').textContent = vtubers.length;
+        document.getElementById('active-count').textContent = vtubers.filter(v => v.status === 'active').length;
         document.getElementById('updated-date').textContent = data.updated_at ? data.updated_at.slice(5) : '-';
 
         // 渲染列表
