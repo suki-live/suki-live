@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>站长还没来得及写</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background-color: #F77F96;
+            color: white;
+            font-family: "SimHei", "Microsoft YaHei", "黑体", sans-serif;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .message-container {
+            padding: 40px;
+            max-width: 90%;
+            animation: pulse 2s infinite;
+        }
+        
+        .main-text {
+            font-size: clamp(48px, 8.5vw, 100px);
+            font-weight: bold;
+            color: white;
+            text-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+            line-height: 1.3;
+            letter-spacing: 4px;
+            position: relative;
+        }
+        
+        .main-text::after {
+            content: "";
+            position: absolute;
+            bottom: 8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            height: 12px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 6px;
+        }
+        
+        .subtle-text {
+            margin-top: 25px;
+            font-size: clamp(16px, 2.5vw, 24px);
+            opacity: 0.85;
+            font-weight: normal;
+            letter-spacing: 1px;
+            color: white;
+        }
+        
+        .decoration {
+            position: absolute;
+            opacity: 0.15;
+            z-index: 0;
+        }
+        
+        .dot-1 {
+            top: 15%;
+            left: 10%;
+            font-size: 80px;
+            transform: rotate(15deg);
+        }
+        
+        .dot-2 {
+            bottom: 20%;
+            right: 15%;
+            font-size: 60px;
+            transform: rotate(-25deg);
+        }
+        
+        .dot-3 {
+            top: 40%;
+            right: 5%;
+            font-size: 40px;
+            transform: rotate(45deg);
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.03); }
+            100% { transform: scale(1); }
+        }
+        
+        @media (max-width: 480px) {
+            .message-container {
+                padding: 25px 15px;
+            }
+            
+            .main-text {
+                letter-spacing: 2px;
+                font-size: clamp(40px, 9vw, 70px);
+            }
+            
+            .subtle-text {
+                font-size: 18px;
+                margin-top: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="decoration dot-1">✦</div>
+    <div class="decoration dot-2">✧</div>
+    <div class="decoration dot-3">✩</div>
+    
+    <div class="message-container">
+        <div class="main-text">别看了，站长还没来得及写</div>
+        <div class="subtle-text">—— 稍后再来，会有惊喜哦 ——</div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>小希直播间弹幕</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden; /* 防止页面出现滚动条，确保全屏 */
+            font-family: 'Microsoft YaHei', sans-serif;
+            position: relative; /* 为弹幕容器提供定位上下文 */
+        }
+        #background-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw; /* 使用视口单位确保覆盖全宽 */
+            height: 100vh; /* 使用视口单位确保覆盖全高 */
+            z-index: -1; /* 确保视频在最底层 */
+            /* 使用 cover 使视频覆盖整个容器，保持比例，可能裁切边缘 */
+            object-fit: cover;
+        }
+        #barrage-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none; /* 使弹幕不影响鼠标点击 */
+            z-index: 1; /* 确保弹幕在视频之上 */
+        }
+        .barrage-item {
+            position: absolute;
+            white-space: nowrap;
+            user-select: none;
+            animation-timing-function: linear;
+            animation-fill-mode: forwards;
+            text-shadow: -1px -1px 1px #000, 1px -1px 1px #000, -1px 1px 1px #000, 1px 1px 1px #000; /* 更强的文字描边 */
+        }
+        /* 新增：观看直播按钮样式 */
+        #watch-live-button {
+            position: fixed;
+            bottom: 30px; /* 距离底部的距离 */
+            right: 30px; /* 距离右边的距离 */
+            z-index: 10; /* 确保按钮在弹幕之上 */
+            background-color: rgba(255, 102, 102, 0.9); /* 半透明白色背景，红色调 */
+            color: white;
+            border: none;
+            border-radius: 20px; /* 圆角按钮 */
+            padding: 12px 24px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* 添加阴影提升质感 */
+            transition: background-color 0.3s ease; /* 悬停效果过渡 */
+            text-decoration: none; /* 去除链接默认下划线 */
+            display: inline-block; /* 使其表现像按钮 */
+        }
+        #watch-live-button:hover {
+            background-color: rgba(255, 80, 80, 0.95); /* 悬停时颜色加深 */
+        }
+    </style>
+</head>
+<body>
+
+<!-- 背景视频 -->
+<video id="background-video" autoplay muted loop>
+    <source src="./小希下播啦.mp4" type="video/mp4">
+    <!-- 可以添加备用格式或提示信息 -->
+    您的浏览器不支持视频标签。
+</video>
+
+<div id="barrage-container"></div>
+
+<!-- 观看直播按钮 -->
+<a href="https://www.bilibili.com/video/BV1RGcPz9Eka" target="_blank" id="watch-live-button">
+    观看小希毕业直播
+</a>
+
+<script>
+    const container = document.getElementById('barrage-container');
+    const txtFileUrl = 'recording.txt'; // TXT 文件路径
+    let danmakuList = []; // 存储弹幕内容的数组
+
+    async function loadDanmakuList() {
+        try {
+            const response = await fetch(txtFileUrl);
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            const text = await response.text();
+            // 按行分割，过滤空行，并去除可能的空白字符
+            danmakuList = text.split(/\r?\n/)
+                              .map(line => line.trim())
+                              .filter(line => line.length > 0);
+            console.log(`加载了 ${danmakuList.length} 条弹幕。`);
+        } catch (error) {
+            console.error("加载弹幕文件时出错:", error);
+            document.body.innerHTML = `<p style="color:white; text-align:center;">加载弹幕失败: ${error.message}</p>`;
+        }
+    }
+
+    function createAndLaunchBarrage() {
+        if (danmakuList.length === 0) return; // 如果列表为空则不发射
+
+        const randomContent = danmakuList[Math.floor(Math.random() * danmakuList.length)];
+        
+        const item = document.createElement('div');
+        item.className = 'barrage-item';
+        item.textContent = randomContent;
+
+        // --- 随机效果 ---
+        // 随机颜色 (HSL更均匀)
+        const hue = Math.floor(Math.random() * 360);
+        const saturation = 60 + Math.floor(Math.random() * 40); // 60-100%
+        const lightness = 40 + Math.floor(Math.random() * 40);  // 40-80%
+        item.style.color = `hsl(${hue}, ${saturation}%, ${lightness}%)`;
+        
+        // 随机字体大小
+        const fontSize = 14 + Math.floor(Math.random() * 18); // 14px to 32px
+        item.style.fontSize = `${fontSize}px`;
+        
+        // 随机垂直位置 (留出上下边距)
+        const verticalMargin = 30; // 像素
+        const topPosition = verticalMargin + Math.random() * (window.innerHeight - 2 * verticalMargin);
+        item.style.top = `${topPosition}px`;
+
+        // 随机动画持续时间和速度 (8-20秒，更快更密)
+        const duration = 8 + Math.random() * 12; // 8-20秒
+
+        // --- 关键改动：从左到右的动画 ---
+        const startLeft = -item.offsetWidth; // 从屏幕左侧外开始
+        const endLeft = window.innerWidth + item.offsetWidth; // 移动到屏幕右侧外结束
+
+        // 设置初始位置在屏幕左侧外
+        item.style.left = `${startLeft}px`;
+        // 应用从左到右的动画
+        item.style.animation = `moveFromLeftToRight ${duration}s linear`;
+
+        // 添加CSS动画规则 (如果尚未添加)
+        const styleSheet = document.styleSheets[0];
+        if (!document.querySelector('#barrage-animation-style')) {
+            const animationRule = `@keyframes moveFromLeftToRight { from { left: ${startLeft}px; } to { left: ${endLeft}px; } }`;
+            styleSheet.insertRule(animationRule, styleSheet.cssRules.length);
+            // 添加一个隐藏的<style>标签作为标记
+            const markerStyle = document.createElement('style');
+            markerStyle.id = 'barrage-animation-style';
+            markerStyle.textContent = '/* Animation rules for barrage */';
+            document.head.appendChild(markerStyle);
+        }
+
+        container.appendChild(item);
+
+        // 动画结束后移除元素以优化性能
+        setTimeout(() => {
+            if (item.parentNode) {
+                item.parentNode.removeChild(item);
+            }
+        }, duration * 1000);
+    }
+
+    // 页面加载后先获取弹幕列表
+    window.addEventListener('load', async () => {
+        await loadDanmakuList();
+        if (danmakuList.length > 0) {
+            // 加载完后开始发射弹幕
+            // 初始发射一些弹幕
+            for (let i = 0; i < 10; i++) { 
+                 setTimeout(createAndLaunchBarrage, i * 200); // 快速发射初始弹幕
+            }
+            
+            // 之后以更高频率持续发射弹幕
+            const launchInterval = setInterval(() => {
+                // 每次间隔发射多条弹幕以增加密度
+                const numToLaunch = Math.floor(Math.random() * 3) + 1; // 每次1-3条
+                for (let j = 0; j < numToLaunch; j++) {
+                     // 添加一个微小的延迟，让同时间的弹幕也有细微差别
+                     setTimeout(createAndLaunchBarrage, j * 50);
+                }
+            }, 400); // 每400毫秒尝试发射一批
+        } else {
+             console.warn("弹幕列表为空，无法发射。");
+        }
+    });
+</script>
+
+</body>
+</html>

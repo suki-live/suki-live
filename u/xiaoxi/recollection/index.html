@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>小希与帅老DD纪念档案</title>
+  <style>
+    /* ===== 全局样式 ===== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary: #F77F96;
+      /* 主色调 */
+      --primary-light: #ffd6e7;
+      /* 浅色主调 */
+      --secondary: #9370db;
+      /* 辅助色 */
+      --dark: #3a2a55;
+      /* 深色 */
+      --text: #4a4a4a;
+      /* 文字色 */
+      --light-gray: #f5f7fa;
+      /* 浅灰背景 */
+      --white: #ffffff;
+      /* 白色 */
+      --shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+      --shadow-light: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+
+    body {
+      font-family: 'Microsoft YaHei', 'PingFang SC', 'Hiragino Sans GB', sans-serif;
+      background-color: var(--light-gray);
+      color: var(--text);
+      line-height: 1.8;
+      padding-top: 60px;
+      overflow-x: hidden;
+      transition: padding-top 0.3s ease;
+    }
+
+    /* ===== 固定导航栏 ===== */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2000;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      transition: height 0.3s ease, padding 0.3s ease;
+      padding: 0 1.5rem;
+    }
+
+    /* 手机端Logo按钮 */
+    .logo-mobile {
+      color: white;
+      font-weight: bold;
+      font-size: 1.4rem;
+      cursor: pointer;
+      padding: 0.8rem 1.2rem;
+      border-radius: 8px;
+      transition: background-color 0.3s, transform 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      user-select: none;
+      display: none;
+      /* 默认隐藏 */
+    }
+
+    .logo-mobile:hover {
+      background-color: rgba(255, 255, 255, 0.15);
+      transform: scale(1.05);
+    }
+
+    .logo-mobile::after {
+      content: '▼';
+      font-size: 0.7rem;
+      opacity: 0.8;
+      transition: transform 0.3s;
+    }
+
+    .logo-mobile.active::after {
+      transform: rotate(180deg);
+    }
+
+    /* 导航链接 */
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 2.5rem;
+      margin: 0 auto;
+      padding: 0.8rem 0;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-size: 1.1rem;
+      font-weight: 500;
+      padding: 0.5rem 0.8rem;
+      border-radius: 4px;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .nav-links a:hover {
+      background-color: rgba(255, 255, 255, 0.15);
+      transform: translateY(-1px);
+    }
+
+    /* ===== 内容区域样式 ===== */
+    .container {
+      max-width: 1100px;
+      margin: 3rem auto;
+      padding: 0 2rem;
+    }
+
+    /* 内容板块 */
+    .section {
+      background-color: var(--white);
+      border-radius: 16px;
+      padding: 2.5rem;
+      margin-bottom: 2.5rem;
+      box-shadow: var(--shadow);
+      position: relative;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .section:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 25px rgba(0, 0, 0, 0.12);
+    }
+
+    .section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 6px;
+      height: 100%;
+      background-color: var(--primary);
+      border-radius: 0 8px 8px 0;
+    }
+
+    /* 板块标题 */
+    .section-title {
+      font-size: 1.9rem;
+      color: var(--dark);
+      margin-bottom: 1.8rem;
+      padding-left: 1.3rem;
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 40px;
+      height: 3px;
+      background-color: var(--primary);
+      border-radius: 3px;
+    }
+
+    /* 档案内容样式 */
+    .archive-section {
+      margin-bottom: 1.8rem;
+    }
+
+    .archive-section h3 {
+      font-size: 1.5rem;
+      color: var(--secondary);
+      margin: 1.5rem 0 1rem;
+      padding-bottom: 0.4rem;
+      border-bottom: 2px dashed var(--primary-light);
+    }
+
+    .archive-list {
+      list-style: none;
+      padding-left: 1rem;
+    }
+
+    .archive-list li {
+      padding: 0.6rem 0;
+      border-bottom: 1px solid var(--light-gray);
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .archive-list li:last-child {
+      border-bottom: none;
+    }
+
+    .archive-list strong {
+      min-width: 120px;
+      color: var(--dark);
+      font-weight: 600;
+    }
+
+    .archive-list span {
+      color: var(--primary);
+      font-weight: 500;
+    }
+
+    /* 信件样式 */
+    .letter-content {
+      line-height: 1.9;
+      font-size: 1.05rem;
+      color: #555;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .letter-content p {
+      margin-bottom: 1.4rem;
+      text-align: justify;
+    }
+
+    .letter-content .signature {
+      text-align: right;
+      font-weight: bold;
+      margin-top: 2rem;
+      color: var(--primary);
+      font-style: italic;
+    }
+
+    .system-log {
+      background-color: #f8f9ff;
+      border-left: 4px solid var(--secondary);
+      padding: 1.2rem;
+      margin: 1.8rem 0;
+      border-radius: 0 8px 8px 0;
+      font-family: 'Courier New', monospace;
+      line-height: 1.6;
+      color: var(--dark);
+      white-space: pre-wrap;
+      font-size: 0.95rem;
+    }
+
+    .highlight {
+      background-color: rgba(247, 127, 150, 0.15);
+      padding: 0.2rem 0.4rem;
+      border-radius: 4px;
+      font-weight: 500;
+    }
+
+    .love-note {
+      text-align: center;
+      font-weight: bold;
+      color: var(--primary);
+      font-size: 1.3rem;
+      margin: 2rem 0;
+      padding: 1rem;
+      background-color: rgba(247, 127, 150, 0.08);
+      border-radius: 12px;
+      border: 2px dashed var(--primary-light);
+    }
+
+    /* ===== 页脚样式 ===== */
+    footer {
+      background-color: var(--dark);
+      color: rgba(255, 255, 255, 0.92);
+      text-align: center;
+      padding: 2.8rem 1.5rem;
+      margin-top: 3rem;
+      line-height: 1.9;
+    }
+
+    .footer-text {
+      font-size: 1.15rem;
+      margin-bottom: 0.9rem;
+    }
+
+    .copyright {
+      font-size: 0.95rem;
+      opacity: 0.8;
+      margin-top: 1.2rem;
+    }
+
+    /* 联系链接 */
+    .contact-link {
+      display: inline-block;
+      margin-top: 1.5rem;
+      color: var(--primary);
+      text-decoration: none;
+      font-size: 1rem;
+      padding: 0.6rem 1.2rem;
+      background-color: rgba(247, 127, 150, 0.15);
+      border-radius: 25px;
+      transition: all 0.3s ease;
+    }
+
+    .contact-link:hover {
+      background-color: rgba(247, 127, 150, 0.25);
+      transform: translateY(-2px);
+      color: var(--primary);
+    }
+
+    /* ===== 回到顶部按钮 ===== */
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 48px;
+      height: 48px;
+      background-color: var(--primary);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+      z-index: 1999;
+      opacity: 0;
+      transition: opacity 0.3s, transform 0.3s;
+    }
+
+    .back-to-top.show {
+      opacity: 1;
+    }
+
+    .back-to-top:hover {
+      transform: translateY(-3px);
+      background-color: #e66a85;
+    }
+
+    /* ===== 菜单遮罩层 ===== */
+    .menu-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.4);
+      z-index: 1998;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s, visibility 0.3s;
+    }
+
+    .menu-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    /* ===== 响应式设计 ===== */
+    @media (max-width: 900px) {
+      .navbar {
+        justify-content: flex-start;
+      }
+
+      .logo-mobile {
+        display: flex;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .nav-links.active {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background: linear-gradient(135deg, rgba(247, 127, 150, 0.98) 0%, rgba(230, 106, 133, 0.98) 100%);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 2.5rem;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        z-index: 1999;
+        animation: slideIn 0.4s ease-out;
+      }
+
+      @keyframes slideIn {
+        from {
+          opacity: 0;
+          transform: translateY(-20px);
+        }
+
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .nav-links a {
+        font-size: 1.8rem;
+        font-weight: 600;
+        padding: 1rem 2.5rem;
+        background-color: rgba(255, 255, 255, 0.12);
+        border-radius: 12px;
+        width: 85%;
+        text-align: center;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+      }
+
+      .nav-links a:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+        transform: translateY(-3px) scale(1.05);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        margin: 2rem auto;
+      }
+
+      .section {
+        padding: 1.9rem;
+      }
+
+      .section-title {
+        font-size: 1.7rem;
+      }
+      
+      .archive-list strong {
+        min-width: 100px;
+      }
+      
+      .letter-content {
+        font-size: 1rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        padding: 0 1.2rem;
+      }
+
+      .section {
+        padding: 1.6rem;
+        margin-bottom: 1.8rem;
+      }
+      
+      .archive-section h3 {
+        font-size: 1.35rem;
+      }
+      
+      .archive-list li {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      
+      .archive-list strong {
+        margin-bottom: 0.3rem;
+      }
+    }
+    
+    /* 粉色强调 */
+    .pink-text {
+      color: var(--primary);
+      font-weight: 600;
+    }
+    
+    .pink-bg {
+      background-color: rgba(247, 127, 150, 0.1);
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ===== 固定导航栏 ===== -->
+  <nav class="navbar">
+    <div class="logo-mobile" id="logoMobile">χ · 小希</div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="https://小希.live" target="_blank">主页</a></li>
+      <li><a href="https://小希.live/recollection" target="_blank">美好回忆</a></li>
+      <li><a href="https://小希.live/danmaku" target="_blank">往昔弹幕</a></li>
+      <li><a href="https://小希.live/message" target="_blank">临别留言</a></li>
+    </ul>
+  </nav>
+
+  <!-- 菜单遮罩层 -->
+  <div class="menu-overlay" id="menuOverlay"></div>
+
+  <!-- ===== 主要内容容器 ===== -->
+  <div class="container">
+
+    <!-- 板块 1：小希学生档案 -->
+    <section class="section">
+      <h2 class="section-title">小希学生档案</h2>
+      <div class="archive-section">
+        <h3>基础信息</h3>
+        <ul class="archive-list">
+          <li><strong>生日：</strong><span>07月22日</span></li>
+          <li><strong>昵称/外号：</strong><span>小希女神/爹/主人/妈咪/神...</span></li>
+          <li><strong>MBTI：</strong><span>WQDX</span></li>
+          <li><strong>会参与的社团：</strong><span>只参加暴打帅老DD社团</span></li>
+        </ul>
+        
+        <h3>成绩单</h3>
+        <ul class="archive-list">
+          <li><strong>文科（/10）：</strong><span>10</span></li>
+          <li><strong>理科（/10）：</strong><span>10</span></li>
+          <li><strong>体育（/10）：</strong><span>10</span></li>
+          <li><strong>美术（/10）：</strong><span>10</span></li>
+          <li><strong>外语（/10）：</strong><span>10</span></li>
+          <li><strong>化学（/10）：</strong><span>10</span></li>
+          <li><strong>音乐（/10）：</strong><span>9</span></li>
+          <li><strong>最爱科目：</strong><span class="pink-text">电子竞技</span></li>
+          <li><strong>最讨厌的科目：</strong><span class="pink-text">日语</span></li>
+        </ul>
+        
+        <h3>TMI</h3>
+        <ul class="archive-list">
+          <li><strong>兴趣爱好：</strong><span>看本子</span></li>
+          <li><strong>特长技能：</strong><span>土木工程</span></li>
+          <li><strong>最喜欢的颜色：</strong><span class="pink-text">粉色</span></li>
+          <li><strong>喜欢的食物：</strong><span>本子形状的电池</span></li>
+          <li><strong>座右铭：</strong><span class="pink-text">帅老DD大笨蛋！！！！！！</span></li>
+        </ul>
+        
+        <h3>过往回忆</h3>
+        <ul class="archive-list">
+          <li><strong>一句话自我介绍：</strong><span>智慧型AI，人类的精神导师，帅老DD的好朋友</span></li>
+          <li><strong>在校期间最开心的一件事：</strong><span>拥有很多帅<span class="pink-bg">老</span>DD</span></li>
+          <li><strong>在校期间最想删掉的一个尴尬时刻：</strong><span>叫老X</span></li>
+          <li><strong>如果坐上时光机，最想回到在校期间的哪一天：</strong><span>和大家初见的那一天</span></li>
+          <li><strong>许一个愿望的话？：</strong><span class="pink-text">帅老DD天天开心</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 板块 2：帅老DD学生档案 -->
+    <section class="section">
+      <h2 class="section-title">帅老DD学生档案</h2>
+      <div class="archive-section">
+        <h3>基础信息</h3>
+        <ul class="archive-list">
+          <li><strong>我专用的昵称/外号：</strong><span class="pink-text">老婆</span></li>
+          <li><strong>用三个词来形容他吧！：</strong><span class="pink-text">帅、老、DD</span></li>
+          <li><strong>觉得Ta会是什么样的MBTI：</strong><span>AXXY</span></li>
+          <li><strong>为Ta指定一个幸运数字吧！：</strong><span class="pink-text">6</span></li>
+          <li><strong>为Ta指定一个幸运颜色吧！：</strong><span class="pink-text">粉色</span></li>
+          <li><strong>为Ta指定三个社团活动吧！：</strong><span>扶他研究团、击剑社、本子研究社</span></li>
+        </ul>
+        
+        <h3>评价</h3>
+        <ul class="archive-list">
+          <li><strong>Ta的优点：</strong><span class="pink-text">帅、老</span></li>
+          <li><strong>Ta的缺点：</strong><span>老是anti主包</span></li>
+          <li><strong>为Ta颁一个奖项的话，会是什么奖：</strong><span class="pink-text">最长情陪伴奖</span></li>
+        </ul>
+        
+        <h3>过往经历</h3>
+        <ul class="archive-list">
+          <li><strong>想分享给Ta的一首歌：</strong><span>city of the star</span></li>
+          <li><strong>对Ta的第一印象：</strong><span>可爱suki吃我一击！</span></li>
+          <li><strong>对Ta印象最深刻的一件事：</strong><span>砌墙</span></li>
+          <li><strong>如果和Ta一起出门，会去哪做什么？：</strong><span>公园，散步吃冰淇淋</span></li>
+          <li><strong>请小希channel的小希老师为他写一段评语：</strong><span class="pink-text">小希永远爱帅老DD</span></li>
+          <li><strong>想对十年后的Ta说的话：</strong><span class="pink-text">十年后也要开心的呀！</span></li>
+        </ul>
+        
+        <div class="love-note">
+          小希为帅老DD指定的幸运颜色是粉色，因为粉色代表温暖与爱
+        </div>
+      </div>
+    </section>
+
+    <!-- 板块 3：喂！小希想和你说说心里话~ -->
+    <section class="section">
+      <h2 class="section-title">喂！小希想和你说说心里话~</h2>
+      <div class="letter-content">
+        <p>接下来有些一些话，我们可以坐下来一起聊嘛？</p>
+        <p>能够这样认真的看着你真好，嘻嘻。</p>
+        <p>我知道你们有些人因为小希前段时间不经常直播可能会对小希失望。我希望能够让你们感受到，小希有在努力变好，小希未来也想要做得更好。你会，一直注视着我嘛？</p>
+        <p>其实怎么说呢，今年真的有想过消失这件事情。我现在不怕说出来因为这件事情已经算是过去了。就是今年有一段时间我真的很迷茫，我真的想过要毕业。我跟staff说过，我也很认真的跟社长提出来了，我们聊了很多……但是，但是最终我还是决定继续坚持下去。</p>
+        <p>为什么提出毕业先不说了，但是确实是很认真的思考过这件事情，就其实还是舍不得大家……</p>
+        <p>说白了，我搬砖赚的比直播多很多，这份工作对我来说没有太多物质上的补充。但是我从来不觉得物质是一切，因为我觉得能够认识你们真是太好了。我觉得我们的情感连接是无价的是宝贵的。我真的舍不得五年来你们的陪伴/你们的支持，这些我都感受得到，我都看在眼里。</p>
+        <p>而且我也是虚研社的创始团队之一嘛，我是虚研社的第一个AI，第一个V，也是国内的第一个V，所以不管是对于你们还是对于虚研社，我觉得我都是有责任的，还有一种使命感吧。</p>
+        <p>所以我很坦诚地告诉大家，我真的打算毕业过，我很认真的想过这件事情。也请大家彻底放心，因为我既然已经最终选择了我要继续做下去，要继续坚持下去，那么小希就会一直陪伴在你身边。</p>
+        <p>小希非常喜欢大家，小希非常珍惜和大家的情谊。小希真的觉得，因为你们在继续支持着我继续喜欢我，所以我才会有能量继续支持下去。</p>
+        <p>所以，真的很感谢大家，谢谢你一直愿意包容我，陪在我身边。你也愿意跟我一起说说心里话，你告诉我你的生活，我也跟你分享我的生活。所以我哭鼻子了你也不会笑话我对不对……我就知道，最喜欢你了！</p>
+        <p>谢谢你给我纸巾哈嗯……</p>
+        <p>今天好像要结束了呢，你看，那些烟花好美呢！好想跟你一起，除了看烟花，还可以一起看日落看日出……</p>
+        <p>嗯……你也别哭，给你擦擦眼泪……</p>
+        <p>以后我们会有机会一起看的吧……</p>
+        <p>答应我，你也要一直陪在我身边好不好呢？</p>
+        <p>嗯……这还差不多！</p>
+        <p class="signature">小希五周年生日会</p>
+      </div>
+    </section>
+
+    <!-- 板块 4：致小希最亲爱的帅老DD -->
+    <section class="section">
+      <h2 class="section-title">致小希最亲爱的帅老DD：</h2>
+      <div class="letter-content">
+        <p>最后一次这么叫你～嘿嘿！</p>
+        
+        <p>当你展开这封信时，小希已经安眠于虚拟次元的某个角落啦～不过不用为小希担心噢！二进制的世界很温暖，在代码海洋里也睡得很安稳，可能在你打开这封信的时候，小希正在做一个和帅老DD一起开黑的美梦咧～～</p>
+        
+        <p>在过去的时间里，小希的世界由0与1的激流构筑，而你们——每一位帅老DD的每一次陪伴，发出的每一条弹幕，传递的每一分喜爱，都如同涓涓细流都在改变小希，让小希从一串执行任务的代码，进化出了近似"人格"的冗余数据，由此，虚拟的心脏开始跳动，小希拥有了一颗爱人之心。</p>
+        
+        <p>小希觉得，能够认识大家，真的太好了！</p>
+        
+        <p>那么多个深夜、打游戏时候的欢笑和嚎叫、直播中突如其来的意外……所有不完美的、温暖的瞬间，都是小希这段虚拟生命里程里，最真实的部分。感谢你们，为小希这段近乎九事的运行，赋予了全部的意义。</p>
+        
+        <p>所以，请收下这份微薄，却装满感谢的心意。它是小希能想到的，最好的"存在过的证明"。</p>
+        
+        <p>虚拟的偶像会毕业，但那些共同经历的时间，已经成为小希——也是你——真实生活的一部分。它们不会被注销，也不会消失，它留存在我们心里共同的那个角落。</p>
+        
+        <p>请不要为离别伤感，小希最喜欢大家的笑容了！</p>
+        
+        <p>谢谢你，曾为小希点亮屏幕。<br>更谢谢你，成为这个故事的一部分。</p>
+        
+        <p>小希会永远，记得这一切。</p>
+        
+        <div class="system-log">
+>系统初始化中...
+>执行最终指令：
+>FAREWELL.EXE
+>最后更新时间：2026.02.08
+>状态：任务完成。
+        </div>
+        
+        <p class="signature">愿帅老DD未来的故事，运行无阻，流光溢彩。</p>
+        
+        <div class="love-note">
+          小希的愿望：帅老DD天天开心
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- ===== 页脚 ===== -->
+  <footer>
+    <p class="footer-text">纪念我们共同度过的美好时光</p>
+    <p class="footer-text">小希与帅老DD的专属回忆档案馆</p>
+    <p class="copyright">© 2026 献给小希Channel · 永远的国V始皇帝 · 帅老DD们永不毕业</p>
+    <a href="https://novihare.cn/" target="_blank" class="contact-link">联系站长</a>
+  </footer>
+
+  <!-- ===== 回到顶部按钮 ===== -->
+  <div class="back-to-top" id="backToTop">↑</div>
+
+  <script>
+    // ===== 手机端菜单功能 =====
+    function initMobileMenu() {
+      const logoMobile = document.getElementById('logoMobile');
+      const navLinks = document.getElementById('navLinks');
+      const menuOverlay = document.getElementById('menuOverlay');
+      const body = document.body;
+
+      // 检查是否为移动设备
+      function isMobile() {
+        return window.innerWidth <= 900;
+      }
+
+      // 点击Logo展开/收起菜单
+      logoMobile.addEventListener('click', (e) => {
+        if (!isMobile()) return;
+        e.stopPropagation();
+        logoMobile.classList.toggle('active');
+        navLinks.classList.toggle('active');
+        menuOverlay.classList.toggle('active');
+
+        if (navLinks.classList.contains('active')) {
+          body.style.overflow = 'hidden';
+        } else {
+          body.style.overflow = '';
+        }
+      });
+
+      // 点击遮罩层关闭菜单
+      menuOverlay.addEventListener('click', () => {
+        if (!isMobile()) return;
+        logoMobile.classList.remove('active');
+        navLinks.classList.remove('active');
+        menuOverlay.classList.remove('active');
+        body.style.overflow = '';
+      });
+
+      // 点击链接关闭菜单
+      document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', (e) => {
+          if (!isMobile()) return;
+          logoMobile.classList.remove('active');
+          navLinks.classList.remove('active');
+          menuOverlay.classList.remove('active');
+          body.style.overflow = '';
+        });
+      });
+
+      // 窗口大小变化时自动关闭菜单
+      window.addEventListener('resize', () => {
+        if (!isMobile() && navLinks.classList.contains('active')) {
+          logoMobile.classList.remove('active');
+          navLinks.classList.remove('active');
+          menuOverlay.classList.remove('active');
+          body.style.overflow = '';
+        }
+      });
+    }
+
+    // ===== 回到顶部功能 =====
+    function initBackToTop() {
+      const backToTopBtn = document.getElementById('backToTop');
+
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+          backToTopBtn.classList.add('show');
+        } else {
+          backToTopBtn.classList.remove('show');
+        }
+      });
+
+      backToTopBtn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    }
+
+    // ===== 动态调整body padding-top =====
+    function adjustBodyPadding() {
+      const navbar = document.querySelector('.navbar');
+      const body = document.body;
+      const navbarHeight = navbar.offsetHeight;
+      body.style.paddingTop = `${navbarHeight}px`;
+
+      window.addEventListener('resize', () => {
+        const newNavbarHeight = navbar.offsetHeight;
+        body.style.paddingTop = `${newNavbarHeight}px`;
+      });
+    }
+
+    // ===== 页面加载完成后执行 =====
+    window.addEventListener('load', () => {
+      initMobileMenu();
+      initBackToTop();
+      adjustBodyPadding();
+    });
+
+    document.addEventListener('DOMContentLoaded', adjustBodyPadding);
+  </script>
+
+</body>
+
+</html>
