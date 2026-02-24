@@ -553,29 +553,13 @@
 
             fetch(customUrl)
               .then(r => {
-                if (!r.ok) throw new Error('Custom page not found');
+                if (!r.ok) throw new Error('custom.html not found');
                 return r.text();
               })
               .then(html => {
-                // ✅ 解析 HTML 字符串，提取 body 内容，避免嵌套 body 标签
-                const parser = new DOMParser();
-                const doc = parser.parseFromString(html, 'text/html');
-                const bodyContent = doc.body.innerHTML;
+                // ✅ 替换整个页面内容
+                document.body.innerHTML = html;
 
-                // ✅ 替换当前页面 body 内容
-                document.body.innerHTML = bodyContent;
-
-                // ✅ 执行脚本（需要重新创建 script 标签）
-                const scripts = doc.body.querySelectorAll('script');
-                scripts.forEach(oldScript => {
-                  const newScript = document.createElement('script');
-                  if (oldScript.src) {
-                    newScript.src = oldScript.src;
-                  } else {
-                    newScript.textContent = oldScript.textContent;
-                  }
-                  document.body.appendChild(newScript);
-                });
               })
               .catch(err => {
                 // ❌ custom.html 不存在：显示友好提示（不 fallback 到默认模板）
