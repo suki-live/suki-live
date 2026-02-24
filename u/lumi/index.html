@@ -534,6 +534,82 @@
       display: flex;
       gap: 0.4rem;
     }
+
+    /* === 随机选歌弹窗 === */
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+    }
+
+    .modal-content {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem 2rem;
+      max-width: 320px;
+      width: 90%;
+      text-align: center;
+      box-shadow: var(--shadow);
+    }
+
+    .modal-content h3 {
+      font-size: 1.1rem;
+      color: var(--text);
+      margin-bottom: 0.8rem;
+    }
+
+    .modal-song-title {
+      font-size: 1rem;
+      color: var(--text-light);
+      margin-bottom: 1.2rem;
+      padding: 0.8rem;
+      background: var(--accent-soft);
+      border-radius: 8px;
+    }
+
+    .modal-buttons {
+      display: flex;
+      gap: 0.8rem;
+      justify-content: center;
+    }
+
+    .modal-btn {
+      padding: 0.5rem 1.2rem;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .modal-btn-cancel {
+      background: var(--card);
+      color: var(--text-light);
+    }
+
+    .modal-btn-cancel:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .modal-btn-play {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #1a202c;
+      font-weight: 500;
+    }
+
+    .modal-btn-play:hover {
+      background: #8ab4d9;
+    }
   </style>
 </head>
 
@@ -861,7 +937,7 @@
     }
 
     // ========================================
-    // ✅ 随机选歌函数（带确认弹窗）
+    // ✅ 随机选歌函数（显示自定义弹窗）
     // ========================================
     function playRandom() {
       if (!playlistData?.items?.length) {
@@ -870,31 +946,51 @@
       }
 
       const randomIndex = Math.floor(Math.random() * playlistData.items.length);
-      const song = playlistData.items[randomIndex];
+      currentRandomSong = playlistData.items[randomIndex];
 
-      if (!song?.url) {
-        alert(`"${song.title}" 暂无播放链接～`);
+      // 显示弹窗
+      document.getElementById('modal-song-title').textContent = currentRandomSong.title;
+      document.getElementById('random-modal').style.display = 'flex';
+    }
+
+    // ========================================
+    // ✅ 关闭弹窗
+    // ========================================
+    function closeModal() {
+      document.getElementById('random-modal').style.display = 'none';
+      currentRandomSong = null;
+    }
+
+    // ========================================
+    // ✅ 播放选中的歌曲
+    // ========================================
+    function playSelected() {
+      if (!currentRandomSong) {
+        closeModal();
         return;
       }
 
-      // 确认弹窗
-      const confirmPlay = confirm(`🎲 随机选歌\n\n🎵 ${song.title}\n🎤 ${song.artist || '未知'}\n\n是否播放这首歌？`);
-
-      if (confirmPlay) {
-        window.open(song.url, '_blank', 'noopener,noreferrer');
-
-        // 按钮反馈
-        const btn = document.querySelector('.random-btn');
-        const originalText = btn.textContent;
-        btn.textContent = `✅ 已选择`;
-        btn.style.background = '#c6f6d5';
-        btn.style.color = '#22543d';
-        setTimeout(() => {
-          btn.textContent = originalText;
-          btn.style.background = '';
-          btn.style.color = '';
-        }, 2000);
+      if (!currentRandomSong?.url) {
+        alert(`"${currentRandomSong.title}" 暂无播放链接～`);
+        closeModal();
+        return;
       }
+
+      // 打开播放链接
+      window.open(currentRandomSong.url, '_blank', 'noopener,noreferrer');
+      closeModal();
+
+      // 按钮反馈
+      const btn = document.querySelector('.random-btn');
+      const originalText = btn.textContent;
+      btn.textContent = `✅ 已播放`;
+      btn.style.background = '#c6f6d5';
+      btn.style.color = '#22543d';
+      setTimeout(() => {
+        btn.textContent = originalText;
+        btn.style.background = '';
+        btn.style.color = '';
+      }, 2000);
     }
 
     // ========================================
