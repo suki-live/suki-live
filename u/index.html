@@ -553,28 +553,49 @@
 
             fetch(customUrl)
               .then(r => {
-                if (!r.ok) throw new Error('custom.html not found');
+                if (!r.ok) throw new Error('Custom page not found');
                 return r.text();
               })
               .then(html => {
-                // ✅ 替换整个页面内容
-                document.body.innerHTML = html;
+                // ✅ 解析 HTML 字符串
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(html, 'text/html');
 
+                // ✅ 1. 提取并注入 <head> 中的 <style> 和 <link rel="stylesheet">
+                const headStyles = doc.head.querySelectorAll('style, link[rel="stylesheet"]');
+                headStyles.forEach(style => {
+                  document.head.appendChild(style.cloneNode(true));
+                });
+
+                // ✅ 2. 提取 body 内容并替换
+                const bodyContent = doc.body.innerHTML;
+                document.body.innerHTML = bodyContent;
+
+                // ✅ 3. 执行脚本（重新创建 script 标签）
+                const scripts = doc.body.querySelectorAll('script');
+                scripts.forEach(oldScript => {
+                  const newScript = document.createElement('script');
+                  if (oldScript.src) {
+                    newScript.src = oldScript.src;
+                  } else {
+                    newScript.textContent = oldScript.textContent;
+                  }
+                  document.body.appendChild(newScript);
+                });
               })
               .catch(err => {
-                // ❌ custom.html 不存在：显示友好提示（不 fallback 到默认模板）
                 console.warn(`⚠️ 自定义页面未找到: custom.html`, err);
                 document.body.innerHTML = `
-                  <div style="font-family:sans-serif;max-width:600px;margin:4rem auto;padding:2rem;text-align:center">
-                    <h2>🌸 主页定制中</h2>
-                    <p style="color:#718096">
-                      主播 <code>${id}</code> 正在定制专属页面，请稍后再访～
-                    </p>
-                    <p style="margin-top:1.5rem">
-                      <a href="https://suki.live" style="color:#a7c7e7">返回首页</a> · 
-                      <a href="https://suki.live/registry.html" style="color:#a7c7e7">查看名录</a>
-                    </p>
-                  </div>`;
+        <div style="font-family:sans-serif;max-width:600px;margin:4rem auto;padding:2rem;text-align:center">
+          <h2>🌸 主页定制中</h2>
+          <p style="color:#718096">
+            主播 <code>${id}</code> 正在定制专属页面，请稍后再访～
+          </p>
+          <p style="margin-top:1.5rem">
+            <a href="https://suki.live" style="color:#a7c7e7">返回首页</a> · 
+            <a href="https://suki.live/registry.html" style="color:#a7c7e7">查看名录</a>
+          </p>
+        </div>`;
               });
 
             return; // ✅ 自定义模式结束，不执行默认逻辑
