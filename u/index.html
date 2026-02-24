@@ -550,7 +550,7 @@
           // ========================================
           if (info.use_custom_page === true) {
             const customUrl = `${base}/custom.html?t=${Date.now()}`;
-            
+
             fetch(customUrl)
               .then(r => {
                 if (!r.ok) throw new Error('custom.html not found');
@@ -559,7 +559,7 @@
               .then(html => {
                 // ✅ 替换整个页面内容
                 document.body.innerHTML = html;
-                
+
               })
               .catch(err => {
                 // ❌ custom.html 不存在：显示友好提示（不 fallback 到默认模板）
@@ -576,10 +576,10 @@
                     </p>
                   </div>`;
               });
-            
+
             return; // ✅ 自定义模式结束，不执行默认逻辑
           }
-          
+
           // ❌ 非自定义模式：加载 playlist.json + 执行默认模板
           return fetch(`${base}/playlist.json?t=${Date.now()}`)
             .then(r => r.ok ? r.json() : Promise.reject('playlist'))
@@ -610,6 +610,9 @@
     // ✅ 默认模板渲染函数（提取出来，避免重复）
     // ========================================
     function renderDefaultTemplate(info, playlist) {
+
+      playlistData = playlist;
+
       // 渲染基本信息
       document.title = `${info.name} · suki.live`;
       document.getElementById('page-title').textContent = `${info.name} · suki.live`;
