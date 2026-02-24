@@ -634,81 +634,94 @@
     <a href="https://dreamail.cn/" target="_blank" rel="noopener">✉️ 匿名信</a>
   </p>
 
-  <script>
-    // HTML 转义（防 XSS）
-    function escapeHtml(str) {
-      if (!str) return '';
-      return String(str)
-        .replace(/&/g, '&amp;')
-        .replace(/</g, '&lt;')
-        .replace(/>/g, '&gt;')
-        .replace(/"/g, '&quot;')
-        .replace(/'/g, '&#039;');
-    }
+  <!-- ✅ 随机选歌弹窗（必须放在 body 内） -->
+  <div id="random-modal" class="modal" style="display:none;">
+    <div class="modal-content">
+      <h3>🎲 随机选歌</h3>
+      <p class="modal-song-title" id="modal-song-title">歌曲名称</p>
+      <div class="modal-buttons">
+        <button class="modal-btn modal-btn-cancel" onclick="closeModal()">确定</button>
+        <button class="modal-btn modal-btn-play" onclick="playSelected()">播放</button>
+      </div>
+    </div>
+  </div>
+</body>
 
-    // 获取主播 ID（子域名）
-    const getVtuberId = () => {
-      const host = window.location.hostname;
-      if (host === 'suki.live' || host === 'www.suki.live') return 'example';
-      return host.split('.')[0];
-    };
+<script>
+  // HTML 转义（防 XSS）
+  function escapeHtml(str) {
+    if (!str) return '';
+    return String(str)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#039;');
+  }
 
-    const id = getVtuberId();
-    const base = '.';
+  // 获取主播 ID（子域名）
+  const getVtuberId = () => {
+    const host = window.location.hostname;
+    if (host === 'suki.live' || host === 'www.suki.live') return 'example';
+    return host.split('.')[0];
+  };
 
-    // 全局存储歌单数据（用于随机选歌）
-    let playlistData = null;
+  const id = getVtuberId();
+  const base = '.';
 
-    // 加载 info.json + playlist.json
-    Promise.all([
-      fetch(`${base}/info.json`).then(r => r.ok ? r.json() : Promise.reject('info')),
-      fetch(`${base}/playlist.json`).then(r => r.ok ? r.json() : Promise.reject('playlist'))
-    ])
-      .then(([info, playlist]) => {
-        playlistData = playlist;
+  // 全局存储歌单数据（用于随机选歌）
+  let playlistData = null;
 
-        // === 渲染基本信息 ===
-        document.title = `${info.name} · suki.live`;
-        document.getElementById('page-title').textContent = `${info.name} · suki.live`;
-        document.getElementById('name').textContent = info.name;
-        document.getElementById('tagline').textContent = info.tagline || '';
+  // 加载 info.json + playlist.json
+  Promise.all([
+    fetch(`${base}/info.json`).then(r => r.ok ? r.json() : Promise.reject('info')),
+    fetch(`${base}/playlist.json`).then(r => r.ok ? r.json() : Promise.reject('playlist'))
+  ])
+    .then(([info, playlist]) => {
+      playlistData = playlist;
 
-        // 社交链接 + 匿名信按钮
-        const socialEl = document.getElementById('social');
+      // === 渲染基本信息 ===
+      document.title = `${info.name} · suki.live`;
+      document.getElementById('page-title').textContent = `${info.name} · suki.live`;
+      document.getElementById('name').textContent = info.name;
+      document.getElementById('tagline').textContent = info.tagline || '';
 
-        if (Array.isArray(info.social) && info.social.length) {
-          info.social.forEach(item => {
-            if (item.label && item.url) {
-              socialEl.innerHTML += `
+      // 社交链接 + 匿名信按钮
+      const socialEl = document.getElementById('social');
+
+      if (Array.isArray(info.social) && info.social.length) {
+        info.social.forEach(item => {
+          if (item.label && item.url) {
+            socialEl.innerHTML += `
               <a href="${escapeHtml(item.url)}" target="_blank" rel="noopener">
                 ${escapeHtml(item.label)}
               </a>`;
-            }
-          });
-        }
+          }
+        });
+      }
 
-        if (info.anonymail) {
-          socialEl.innerHTML += `
+      if (info.anonymail) {
+        socialEl.innerHTML += `
           <a href="${escapeHtml(info.anonymail)}" target="_blank" rel="noopener" class="anonymail">
             ✉️ 匿名信
           </a>`;
-        }
+      }
 
-        // === 组装页面内容 ===
-        let html = '';
+      // === 组装页面内容 ===
+      let html = '';
 
-        // 自我介绍
-        if (info.bio) {
-          html += `
+      // 自我介绍
+      if (info.bio) {
+        html += `
           <div class="card">
             <h2>📝 关于我</h2>
             <div class="bio" id="bio-content">加载中…</div>
           </div>`;
-        }
+      }
 
-        // 🎵 歌单（仅当 show_playlist !== false 且有数据时显示）
-        if (info.show_playlist !== false && playlist.items?.length) {
-          html += `
+      // 🎵 歌单（仅当 show_playlist !== false 且有数据时显示）
+      if (info.show_playlist !== false && playlist.items?.length) {
+        html += `
     <div class="card">
       <!-- ✅ 标题单独一行，保持默认 block 布局 -->
       <h2>🎵 ${playlist.title || '推荐歌单'}</h2>
@@ -727,36 +740,37 @@
         ${renderPlaylist(playlist.items, 'list')}
       </ul>
     </div>`;
-        }
+      }
 
-        document.getElementById('content').innerHTML = html;
+      document.getElementById('content').innerHTML = html;
 
-        // 加载 bio.md
-        if (info.bio) {
-          fetch(`${base}/bio.md`)
-            .then(r => r.text())
-            .then(md => {
-              const html = md
-                .replace(/^### (.*$)/gim, '<h3>$1</h3>')
-                .replace(/^## (.*$)/gim, '<h2>$1</h2>')
-                .replace(/^# (.*$)/gim, '<h1>$1</h1>')
-                .replace(/\*\*(.*?)\*\*/gim, '<strong>$1</strong>')
-                .replace(/\*(.*?)\*/gim, '<em>$1</em>')
-                .replace(/\[(.*?)\]\((.*?)\)/gim, '<a href="$2" target="_blank" rel="noopener">$1</a>')
-                .replace(/\n{2,}/g, '</p><p>')
-                .replace(/\n/g, '<br/>');
-              document.getElementById('bio-content').innerHTML = `<p>${html}</p>`;
-            })
-            .catch(() => {
-              const bioCard = document.querySelector('.card h2:nth-child(1)')?.closest('.card');
-              if (bioCard) bioCard.remove();
-            });
-        }
-      })
-      .catch(err => {
-        console.error('Load error:', err);
-        const missing = err === 'info' ? 'info.json' : 'playlist.json';
-        document.getElementById('content').innerHTML = `
+      // 加载 bio.md
+      if (info.bio) {
+        fetch(`${base}/bio.md`)
+          .then(r => r.text())
+          .then(md => {
+            const html = md
+              .replace(/^### (.*$)/gim, '<h3>$1</h3>')
+              .replace(/^## (.*$)/gim, '<h2>$1</h2>')
+              .replace(/^# (.*$)/gim, '<h1>$1</h1>')
+              .replace(/^---$/gm, '<hr/>')
+              .replace(/\*\*(.*?)\*\*/gim, '<strong>$1</strong>')
+              .replace(/\*(.*?)\*/gim, '<em>$1</em>')
+              .replace(/\[(.*?)\]\((.*?)\)/gim, '<a href="$2" target="_blank" rel="noopener">$1</a>')
+              .replace(/\n{2,}/g, '</p><p>')
+              .replace(/\n/g, '<br/>');
+            document.getElementById('bio-content').innerHTML = `<p>${html}</p>`;
+          })
+          .catch(() => {
+            const bioCard = document.querySelector('.card h2:nth-child(1)')?.closest('.card');
+            if (bioCard) bioCard.remove();
+          });
+      }
+    })
+    .catch(err => {
+      console.error('Load error:', err);
+      const missing = err === 'info' ? 'info.json' : 'playlist.json';
+      document.getElementById('content').innerHTML = `
         <div class="card">
           <h2>⚠️ 加载失败</h2>
           <p style="color:var(--text-light)">
@@ -769,14 +783,14 @@
           </p>
         </div>
       `;
-      });
+    });
 
-    // ========================================
-    // ✅ 歌单渲染函数
-    // ========================================
-    function renderPlaylist(items, viewMode) {
-      if (viewMode === 'grid') {
-        return items.map(song => `
+  // ========================================
+  // ✅ 歌单渲染函数
+  // ========================================
+  function renderPlaylist(items, viewMode) {
+    if (viewMode === 'grid') {
+      return items.map(song => `
           <li>
             ${song.cover ? `<img class="song-cover" src="${song.cover}" alt="${escapeHtml(song.title)}" onerror="this.style.display='none'"/>` : ''}
             <div class="song-info">
@@ -790,8 +804,8 @@
             </div>
           </li>
         `).join('');
-      } else {
-        return items.map(song => `
+    } else {
+      return items.map(song => `
           <li>
             ${song.cover ? `<img class="song-cover" src="${song.cover}" alt="${escapeHtml(song.title)}" onerror="this.style.display='none'"/>` : ''}
             <div class="song-info">
@@ -804,181 +818,52 @@
             ${song.url ? `<a class="song-link" href="${escapeHtml(song.url)}" target="_blank" rel="noopener">播放</a>` : ''}
           </li>
         `).join('');
-      }
     }
+  }
 
-    // ========================================
-    // ✅ 视图切换函数
-    // ========================================
-    function switchView(viewMode) {
-      const container = document.getElementById('playlist-container');
-      const buttons = document.querySelectorAll('.view-btn');
+  // ========================================
+  // ✅ 视图切换函数
+  // ========================================
+  function switchView(viewMode) {
+    const container = document.getElementById('playlist-container');
+    const buttons = document.querySelectorAll('.view-btn');
 
-      buttons.forEach(btn => {
-        btn.classList.toggle('active', btn.dataset.view === viewMode);
-      });
-
-      container.classList.remove('list-view', 'grid-view');
-      container.classList.add(viewMode === 'grid' ? 'grid-view' : 'list-view');
-
-      if (playlistData?.items) {
-        container.innerHTML = renderPlaylist(playlistData.items, viewMode);
-      }
-
-      localStorage.setItem('suki_playlist_view', viewMode);
-    }
-
-    // ========================================
-    // ✅ 随机选歌函数（带确认弹窗）
-    // ========================================
-    function playRandom() {
-      if (!playlistData?.items?.length) {
-        alert('暂无可播放的歌曲～');
-        return;
-      }
-
-      const randomIndex = Math.floor(Math.random() * playlistData.items.length);
-      const song = playlistData.items[randomIndex];
-
-      if (!song?.url) {
-        alert(`"${song.title}" 暂无播放链接～`);
-        return;
-      }
-
-      // ✅ 自定义确认弹窗（比原生 confirm 更美观）
-      const confirmPlay = confirm(`🎲 随机选歌\n\n🎵 ${song.title}\n🎤 ${song.artist || '未知'}\n\n是否播放这首歌？`);
-
-      if (confirmPlay) {
-        window.open(song.url, '_blank', 'noopener,noreferrer');
-
-        // 按钮反馈
-        const btn = document.querySelector('.random-btn');
-        const originalText = btn.textContent;
-        btn.textContent = `✅ 已播放`;
-        btn.style.background = '#c6f6d5';
-        btn.style.color = '#22543d';
-        setTimeout(() => {
-          btn.textContent = originalText;
-          btn.style.background = '';
-          btn.style.color = '';
-        }, 2000);
-      }
-    }
-
-    // ========================================
-    // ✅ 页面加载时恢复用户视图偏好
-    // ========================================
-    document.addEventListener('DOMContentLoaded', () => {
-      const savedView = localStorage.getItem('suki_playlist_view');
-      if (savedView && savedView !== 'list') {
-        setTimeout(() => switchView(savedView), 100);
-      }
+    buttons.forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.view === viewMode);
     });
 
-    // ========================================
-    // ✅ 歌单渲染函数（支持列表/卡片）
-    // ========================================
-    function renderPlaylist(items, viewMode) {
-      if (viewMode === 'grid') {
-        // 卡片视图
-        return items.map(song => `
-          <li>
-            ${song.cover ? `<img class="song-cover" src="${song.cover}" alt="${escapeHtml(song.title)}" onerror="this.style.display='none'"/>` : ''}
-            <div class="song-info">
-              <div class="song-title">${escapeHtml(song.title)}</div>
-              <div class="song-meta">
-                ${escapeHtml(song.artist || '')}${song.artist && song.source ? ' · ' : ''}${escapeHtml(song.source || '')}
-              </div>
-            </div>
-            ${song.url ? `<a class="song-link" href="${escapeHtml(song.url)}" target="_blank" rel="noopener">▶️ 播放</a>` : ''}
-          </li>
-        `).join('');
-      } else {
-        // 列表视图（默认）
-        return items.map(song => `
-          <li>
-            ${song.cover ? `<img class="song-cover" src="${song.cover}" alt="${escapeHtml(song.title)}" onerror="this.style.display='none'"/>` : ''}
-            <div class="song-info">
-              <div class="song-title">${escapeHtml(song.title)}</div>
-              <div class="song-meta">
-                ${escapeHtml(song.artist || '')}${song.artist && song.source ? ' · ' : ''}${escapeHtml(song.source || '')}
-                ${song.added_at ? ` · 添加于 ${song.added_at}` : ''}
-              </div>
-            </div>
-            ${song.url ? `<a class="song-link" href="${escapeHtml(song.url)}" target="_blank" rel="noopener">播放</a>` : ''}
-          </li>
-        `).join('');
-      }
+    container.classList.remove('list-view', 'grid-view');
+    container.classList.add(viewMode === 'grid' ? 'grid-view' : 'list-view');
+
+    if (playlistData?.items) {
+      container.innerHTML = renderPlaylist(playlistData.items, viewMode);
     }
 
-    // ========================================
-    // ✅ 视图切换函数
-    // ========================================
-    function switchView(viewMode) {
-      const container = document.getElementById('playlist-container');
-      const buttons = document.querySelectorAll('.view-btn');
+    localStorage.setItem('suki_playlist_view', viewMode);
+  }
 
-      // 更新按钮状态
-      buttons.forEach(btn => {
-        btn.classList.toggle('active', btn.dataset.view === viewMode);
-      });
-
-      // 切换容器 class
-      container.classList.remove('list-view', 'grid-view');
-      container.classList.add(viewMode === 'grid' ? 'grid-view' : 'list-view');
-
-      // 重新渲染内容
-      if (playlistData?.items) {
-        container.innerHTML = renderPlaylist(playlistData.items, viewMode);
-      }
-
-      // 保存偏好
-      localStorage.setItem('suki_playlist_view', viewMode);
+  // ========================================
+  // ✅ 随机选歌函数（带确认弹窗）
+  // ========================================
+  function playRandom() {
+    if (!playlistData?.items?.length) {
+      alert('暂无可播放的歌曲～');
+      return;
     }
 
-    // ========================================
-    // ✅ 随机选歌函数（显示自定义弹窗）
-    // ========================================
-    function playRandom() {
-      if (!playlistData?.items?.length) {
-        alert('暂无可播放的歌曲～');
-        return;
-      }
+    const randomIndex = Math.floor(Math.random() * playlistData.items.length);
+    const song = playlistData.items[randomIndex];
 
-      const randomIndex = Math.floor(Math.random() * playlistData.items.length);
-      currentRandomSong = playlistData.items[randomIndex];
-
-      // 显示弹窗
-      document.getElementById('modal-song-title').textContent = currentRandomSong.title;
-      document.getElementById('random-modal').style.display = 'flex';
+    if (!song?.url) {
+      alert(`"${song.title}" 暂无播放链接～`);
+      return;
     }
 
-    // ========================================
-    // ✅ 关闭弹窗
-    // ========================================
-    function closeModal() {
-      document.getElementById('random-modal').style.display = 'none';
-      currentRandomSong = null;
-    }
+    // ✅ 自定义确认弹窗（比原生 confirm 更美观）
+    const confirmPlay = confirm(`🎲 随机选歌\n\n🎵 ${song.title}\n🎤 ${song.artist || '未知'}\n\n是否播放这首歌？`);
 
-    // ========================================
-    // ✅ 播放选中的歌曲
-    // ========================================
-    function playSelected() {
-      if (!currentRandomSong) {
-        closeModal();
-        return;
-      }
-
-      if (!currentRandomSong?.url) {
-        alert(`"${currentRandomSong.title}" 暂无播放链接～`);
-        closeModal();
-        return;
-      }
-
-      // 打开播放链接
-      window.open(currentRandomSong.url, '_blank', 'noopener,noreferrer');
-      closeModal();
+    if (confirmPlay) {
+      window.open(song.url, '_blank', 'noopener,noreferrer');
 
       // 按钮反馈
       const btn = document.querySelector('.random-btn');
@@ -992,18 +877,147 @@
         btn.style.color = '';
       }, 2000);
     }
+  }
 
-    // ========================================
-    // ✅ 页面加载时恢复用户视图偏好
-    // ========================================
-    document.addEventListener('DOMContentLoaded', () => {
-      const savedView = localStorage.getItem('suki_playlist_view');
-      if (savedView && savedView !== 'list') {
-        setTimeout(() => switchView(savedView), 100);
-      }
+  // ========================================
+  // ✅ 页面加载时恢复用户视图偏好
+  // ========================================
+  document.addEventListener('DOMContentLoaded', () => {
+    const savedView = localStorage.getItem('suki_playlist_view');
+    if (savedView && savedView !== 'list') {
+      setTimeout(() => switchView(savedView), 100);
+    }
+  });
+
+  // ========================================
+  // ✅ 歌单渲染函数（支持列表/卡片）
+  // ========================================
+  function renderPlaylist(items, viewMode) {
+    if (viewMode === 'grid') {
+      // 卡片视图
+      return items.map(song => `
+          <li>
+            ${song.cover ? `<img class="song-cover" src="${song.cover}" alt="${escapeHtml(song.title)}" onerror="this.style.display='none'"/>` : ''}
+            <div class="song-info">
+              <div class="song-title">${escapeHtml(song.title)}</div>
+              <div class="song-meta">
+                ${escapeHtml(song.artist || '')}${song.artist && song.source ? ' · ' : ''}${escapeHtml(song.source || '')}
+              </div>
+            </div>
+            ${song.url ? `<a class="song-link" href="${escapeHtml(song.url)}" target="_blank" rel="noopener">▶️ 播放</a>` : ''}
+          </li>
+        `).join('');
+    } else {
+      // 列表视图（默认）
+      return items.map(song => `
+          <li>
+            ${song.cover ? `<img class="song-cover" src="${song.cover}" alt="${escapeHtml(song.title)}" onerror="this.style.display='none'"/>` : ''}
+            <div class="song-info">
+              <div class="song-title">${escapeHtml(song.title)}</div>
+              <div class="song-meta">
+                ${escapeHtml(song.artist || '')}${song.artist && song.source ? ' · ' : ''}${escapeHtml(song.source || '')}
+                ${song.added_at ? ` · 添加于 ${song.added_at}` : ''}
+              </div>
+            </div>
+            ${song.url ? `<a class="song-link" href="${escapeHtml(song.url)}" target="_blank" rel="noopener">播放</a>` : ''}
+          </li>
+        `).join('');
+    }
+  }
+
+  // ========================================
+  // ✅ 视图切换函数
+  // ========================================
+  function switchView(viewMode) {
+    const container = document.getElementById('playlist-container');
+    const buttons = document.querySelectorAll('.view-btn');
+
+    // 更新按钮状态
+    buttons.forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.view === viewMode);
     });
 
-  </script>
+    // 切换容器 class
+    container.classList.remove('list-view', 'grid-view');
+    container.classList.add(viewMode === 'grid' ? 'grid-view' : 'list-view');
+
+    // 重新渲染内容
+    if (playlistData?.items) {
+      container.innerHTML = renderPlaylist(playlistData.items, viewMode);
+    }
+
+    // 保存偏好
+    localStorage.setItem('suki_playlist_view', viewMode);
+  }
+
+  // ========================================
+  // ✅ 随机选歌函数（显示自定义弹窗）
+  // ========================================
+  function playRandom() {
+    if (!playlistData?.items?.length) {
+      alert('暂无可播放的歌曲～');
+      return;
+    }
+
+    const randomIndex = Math.floor(Math.random() * playlistData.items.length);
+    currentRandomSong = playlistData.items[randomIndex];
+
+    // 显示弹窗
+    document.getElementById('modal-song-title').textContent = currentRandomSong.title;
+    document.getElementById('random-modal').style.display = 'flex';
+  }
+
+  // ========================================
+  // ✅ 关闭弹窗
+  // ========================================
+  function closeModal() {
+    document.getElementById('random-modal').style.display = 'none';
+    currentRandomSong = null;
+  }
+
+  // ========================================
+  // ✅ 播放选中的歌曲
+  // ========================================
+  function playSelected() {
+    if (!currentRandomSong) {
+      closeModal();
+      return;
+    }
+
+    if (!currentRandomSong?.url) {
+      alert(`"${currentRandomSong.title}" 暂无播放链接～`);
+      closeModal();
+      return;
+    }
+
+    // 打开播放链接
+    window.open(currentRandomSong.url, '_blank', 'noopener,noreferrer');
+    closeModal();
+
+    // 按钮反馈
+    const btn = document.querySelector('.random-btn');
+    const originalText = btn.textContent;
+    btn.textContent = `✅ 已播放`;
+    btn.style.background = '#c6f6d5';
+    btn.style.color = '#22543d';
+    setTimeout(() => {
+      btn.textContent = originalText;
+      btn.style.background = '';
+      btn.style.color = '';
+    }, 2000);
+  }
+
+  // ========================================
+  // ✅ 页面加载时恢复用户视图偏好
+  // ========================================
+  document.addEventListener('DOMContentLoaded', () => {
+    const savedView = localStorage.getItem('suki_playlist_view');
+    if (savedView && savedView !== 'list') {
+      setTimeout(() => switchView(savedView), 100);
+    }
+  });
+
+</script>
 </body>
 
 </html>
