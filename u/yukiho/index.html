@@ -1358,6 +1358,76 @@
             margin: 0 4px;
             color: #3182c0;
         }
+
+        /* --- 背景音乐控制按钮样式优化 --- */
+        .ms-music-control {
+            text-align: center;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        .ms-music-btn {
+            background: linear-gradient(135deg, #ffffff 0%, #f0f8ff 100%);
+            border: 2px solid #b3d6ff;
+            padding: 10px 24px;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 700;
+            color: #015c9b;
+            /* 立体阴影效果 */
+            box-shadow: 0 4px 0 #aac6e5, 0 5px 10px rgba(1, 92, 155, 0.15);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            outline: none;
+            user-select: none;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* 悬停效果 */
+        .ms-music-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 0 #aac6e5, 0 8px 15px rgba(1, 92, 155, 0.25);
+            background: #ffffff;
+            color: #004080;
+        }
+
+        /* 点击按下效果 */
+        .ms-music-btn:active {
+            transform: translateY(2px);
+            box-shadow: 0 2px 0 #aac6e5;
+        }
+
+        /* 播放状态样式 (关键) */
+        .ms-music-btn.playing {
+            background: linear-gradient(135deg, #e0f0ff 0%, #ffffff 100%);
+            border-color: #4794d1;
+            color: #003366;
+            box-shadow: 0 4px 0 #8ab6e0, 0 0 15px rgba(71, 148, 209, 0.4);
+        }
+
+        /* 播放时图标动画 */
+        .ms-music-btn.playing i {
+            animation: musicPulse 1.2s infinite ease-in-out;
+            color: #4794d1;
+            text-shadow: 0 0 5px rgba(71, 148, 209, 0.5);
+        }
+
+        /* 图标跳动关键帧 */
+        @keyframes musicPulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.25);
+            }
+        }
     </style>
     <!-- 隐藏式背景音乐模块 (独立于扫雷，音量20%) -->
     <audio id="bgMusic" loop="" preload="auto" style="display: none;">
@@ -1532,7 +1602,7 @@
             <i class="fas fa-bomb"></i> 数字代表周围一圈内的雷含量(即如果是1则周围8格内有一颗雷)
         </div>
         <div class="ms-music-control">
-            <button id="msMusicToggleBtn" class="ms-music-btn" style="opacity: 0.8;">
+            <button id="msMusicToggleBtn" class="ms-music-btn">
                 <i class="fas fa-music"></i> <span id="msMusicBtnText">开启背景音乐</span>
             </button>
         </div>
@@ -1867,13 +1937,16 @@
             const musicBtnText = document.getElementById('msMusicBtnText');
             const bgAudio = document.getElementById('bgMusic');
 
+            // 找到原来的 updateMusicButton 函数并替换
             function updateMusicButton() {
                 if (bgAudio.paused) {
                     musicBtnText.innerText = '开启背景音乐';
-                    musicBtn.style.opacity = '0.8';
+                    // 移除播放状态类
+                    musicBtn.classList.remove('playing');
                 } else {
                     musicBtnText.innerText = '关闭背景音乐';
-                    musicBtn.style.opacity = '1';
+                    // 添加播放状态类，触发 CSS 动画和变色
+                    musicBtn.classList.add('playing');
                 }
             }
 
