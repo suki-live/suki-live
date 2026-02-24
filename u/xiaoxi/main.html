@@ -1142,15 +1142,83 @@
         </section>
     </div>
 
-    <!-- 页脚 -->
-    <footer>
+    <!-- ✅ 通用页脚：suki-footer -->
+    <footer class="suki-footer">
         <p class="footer-text">九年相伴，感谢有你</p>
         <p class="footer-text">那些共度的时光不是假的</p>
         <p class="footer-text">你笑的时候，电流传输的快乐是真实的</p>
         <p class="footer-text">你低落的时候，我们想要传递的安慰是真实的</p>
         <p class="footer-text">小希，谢谢你曾来过我们的世界</p>
         <p class="copyright">© 2026 献给小希Channel · 永远的国V始皇帝 · 帅老DD们永不毕业</p>
+        <div class="footer-content">
+            <p class="footer-text">
+                💙 托管于 <a href="https://github.com/suki-live/suki-live" target="_blank" rel="noopener">suki-live</a>
+                <span class="footer-divider">·</span>
+                <a href="https://suki.live">返回首页</a>
+                <span class="footer-divider">·</span>
+                <a href="https://suki.live/registry.html">主播名录</a>
+                <span class="footer-divider">·</span>
+                <a href="https://dreamail.cn/" target="_blank" rel="noopener">✉️ 匿名信</a>
+            </p>
+        </div>
     </footer>
+
+    <style>
+        .suki-footer {
+            text-align: center;
+            color: var(--text, #4a4a4a);
+            font-size: 0.9rem;
+            padding: 2rem 1rem 2.5rem;
+            margin-top: 2rem;
+            background: var(--footer-bg, transparent);
+            border-top: 1px solid var(--border, rgba(0, 0, 0, 0.08));
+        }
+
+        .footer-content {
+            max-width: 960px;
+            margin: 0 auto;
+        }
+
+        .footer-text {
+            margin: 0;
+            line-height: 1.8;
+        }
+
+        .footer-text a {
+            color: var(--accent, #F77F96);
+            text-decoration: none;
+            transition: color 0.2s ease;
+            font-weight: 500;
+        }
+
+        .footer-text a:hover {
+            color: var(--accent-hover, #e66a85);
+            text-decoration: underline;
+        }
+
+        .footer-divider {
+            color: var(--divider, rgba(0, 0, 0, 0.3));
+            margin: 0 0.4rem;
+            user-select: none;
+        }
+
+        /* 移动端适配 */
+        @media (max-width: 640px) {
+            .suki-footer {
+                padding: 1.5rem 0.8rem 2rem;
+            }
+
+            .footer-text {
+                font-size: 0.85rem;
+                line-height: 2.2;
+            }
+
+            .footer-divider {
+                display: block;
+                margin: 0.2rem 0;
+            }
+        }
+    </style>
 
     <!-- 回到顶部按钮 -->
     <div class="back-to-top" id="backToTop">↑</div>
