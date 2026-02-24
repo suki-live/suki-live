@@ -82,10 +82,21 @@
       margin-bottom: 1rem;
       font-style: italic;
     }
+    
+    /* ✅ 修复：bio 内容左对齐 */
     .bio {
       color: var(--text-light);
       font-size: 0.95rem;
       white-space: pre-wrap;
+      text-align: left;
+    }
+    .bio h1, .bio h2, .bio h3 {
+      text-align: left;
+      margin: 1rem 0 0.5rem;
+    }
+    .bio p {
+      text-align: left;
+      margin-bottom: 0.8rem;
     }
     
     /* === 歌单控制栏 === */
@@ -309,7 +320,7 @@
     const id = getVtuberId();
     const base = '.';
 
-    // 全局存储歌单数据（用于随机播放）
+    // 全局存储歌单数据（用于随机选歌）
     let playlistData = null;
 
     // 加载 info.json + playlist.json
@@ -318,7 +329,7 @@
       fetch(`${base}/playlist.json`).then(r => r.ok ? r.json() : Promise.reject('playlist'))
     ])
     .then(([info, playlist]) => {
-      playlistData = playlist; // 存储歌单数据
+      playlistData = playlist;
       
       // === 渲染基本信息 ===
       document.title = `${info.name} · suki.live`;
@@ -359,7 +370,7 @@
           </div>`;
       }
 
-      // 🎵 歌单（仅当 show_playlist !== false 且有数据时显示）
+      // 🎵 歌单
       if (info.show_playlist !== false && playlist.items?.length) {
         html += `
           <div class="card">
@@ -370,7 +381,7 @@
                   <button class="view-btn active" data-view="list" onclick="switchView('list')">📋 列表</button>
                   <button class="view-btn" data-view="grid" onclick="switchView('grid')">🔲 卡片</button>
                 </div>
-                <button class="random-btn" onclick="playRandom()">🎲 随机播放</button>
+                <button class="random-btn" onclick="playRandom()">🎲 随机选歌</button>
               </div>
             </h2>
             ${playlist.description ? `<p class="playlist-desc">${playlist.description}</p>` : ''}
@@ -427,7 +438,6 @@
     // ========================================
     function renderPlaylist(items, viewMode) {
       if (viewMode === 'grid') {
-        // 卡片视图
         return items.map(song => `
           <li>
             ${song.cover ? `<img class="song-cover" src="${song.cover}" alt="${escapeHtml(song.title)}" onerror="this.style.display='none'"/>` : ''}
@@ -443,7 +453,6 @@
           </li>
         `).join('');
       } else {
-        // 列表视图（默认）
         return items.map(song => `
           <li>
             ${song.cover ? `<img class="song-cover" src="${song.cover}" alt="${escapeHtml(song.title)}" onerror="this.style.display='none'"/>` : ''}
@@ -467,26 +476,22 @@
       const container = document.getElementById('playlist-container');
       const buttons = document.querySelectorAll('.view-btn');
       
-      // 更新按钮状态
       buttons.forEach(btn => {
         btn.classList.toggle('active', btn.dataset.view === viewMode);
       });
       
-      // 切换容器 class
       container.classList.remove('list-view', 'grid-view');
       container.classList.add(viewMode === 'grid' ? 'grid-view' : 'list-view');
       
-      // 重新渲染内容
       if (playlistData?.items) {
         container.innerHTML = renderPlaylist(playlistData.items, viewMode);
       }
       
-      // 保存用户偏好到 localStorage
       localStorage.setItem('suki_playlist_view', viewMode);
     }
 
     // ========================================
-    // ✅ 随机播放函数
+    // ✅ 随机选歌函数（带确认弹窗）
     // ========================================
     function playRandom() {
       if (!playlistData?.items?.length) {
@@ -497,14 +502,21 @@
       const randomIndex = Math.floor(Math.random() * playlistData.items.length);
       const song = playlistData.items[randomIndex];
       
-      if (song?.url) {
-        // 新窗口打开歌曲链接
+      if (!song?.url) {
+        alert(`"${song.title}" 暂无播放链接～`);
+        return;
+      }
+      
+      // ✅ 自定义确认弹窗（比原生 confirm 更美观）
+      const confirmPlay = confirm(`🎲 随机选歌\n\n🎵 ${song.title}\n🎤 ${song.artist || '未知'}\n\n是否播放这首歌？`);
+      
+      if (confirmPlay) {
         window.open(song.url, '_blank', 'noopener,noreferrer');
         
-        // 可选：显示提示
+        // 按钮反馈
         const btn = document.querySelector('.random-btn');
         const originalText = btn.textContent;
-        btn.textContent = `✅ 已选择：${song.title}`;
+        btn.textContent = `✅ 已播放`;
         btn.style.background = '#c6f6d5';
         btn.style.color = '#22543d';
         setTimeout(() => {
@@ -512,8 +524,6 @@
           btn.style.background = '';
           btn.style.color = '';
         }, 2000);
-      } else {
-        alert(`"${song.title}" 暂无播放链接～`);
       }
     }
 
@@ -523,7 +533,6 @@
     document.addEventListener('DOMContentLoaded', () => {
       const savedView = localStorage.getItem('suki_playlist_view');
       if (savedView && savedView !== 'list') {
-        // 延迟执行，等待歌单渲染完成
         setTimeout(() => switchView(savedView), 100);
       }
     });
