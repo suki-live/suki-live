@@ -130,7 +130,7 @@
       margin: 1.2rem 0;
     }
 
-        /* === Markdown 表格样式 === */
+    /* === Markdown 表格样式 === */
     .bio table.md-table {
       width: 100%;
       border-collapse: collapse;
@@ -141,6 +141,7 @@
       overflow: hidden;
       box-shadow: var(--shadow-light);
     }
+
     .bio table.md-table th {
       background: var(--accent-soft);
       color: var(--text);
@@ -149,18 +150,21 @@
       text-align: left;
       border-bottom: 2px solid var(--border);
     }
+
     .bio table.md-table td {
       padding: 0.7rem 1rem;
       border-bottom: 1px solid var(--border);
       color: var(--text);
     }
+
     .bio table.md-table tr:last-child td {
       border-bottom: none;
     }
+
     .bio table.md-table tr:hover {
       background: var(--accent-soft);
     }
-    
+
     /* 移动端适配 */
     @media (max-width: 640px) {
       .bio table.md-table {
@@ -169,6 +173,7 @@
         overflow-x: auto;
         -webkit-overflow-scrolling: touch;
       }
+
       .bio table.md-table th,
       .bio table.md-table td {
         padding: 0.6rem 0.8rem;
@@ -556,7 +561,7 @@
         .replace(/'/g, '&#039;');
     }
 
-        // ========================================
+    // ========================================
     // ✅ Markdown 表格解析函数
     // ========================================
     function parseMarkdownTable(md) {
@@ -569,32 +574,32 @@
           .split('\n')
           .map(r => r.trim())
           .filter(r => r.startsWith('|') && r.endsWith('|'));
-        
+
         if (rows.length < 3) return table; // 至少需要：表头 + 分隔线 + 1 行数据
-        
+
         // 解析表头（第一行）
         const headers = rows[0]
           .split('|')
           .slice(1, -1) // 去掉首尾空元素
           .map(h => h.trim());
-        
+
         // 解析数据行（跳过第 2 行分隔线）
         const dataRows = rows.slice(2)
           .map(row => row.split('|').slice(1, -1).map(cell => cell.trim()))
           .filter(row => row.some(c => c)); // 过滤空行
-        
+
         // 生成 HTML 表格
         let html = '<table class="md-table">\n<thead>\n<tr>';
         headers.forEach(h => html += `<th>${escapeHtml(h)}</th>`);
         html += '</tr>\n</thead>\n<tbody>\n';
-        
+
         dataRows.forEach(row => {
           html += '<tr>';
           row.forEach(cell => html += `<td>${escapeHtml(cell)}</td>`);
           html += '</tr>\n';
         });
         html += '</tbody>\n</table>';
-        
+
         return html;
       });
     }
@@ -786,18 +791,26 @@
         fetch(`${base}/bio.md`)
           .then(r => r.text())
           .then(md => {
-            const html = md
-              .replace(/^### (.*$)/gim, '<h3>$1</h3>')
-              .replace(/^## (.*$)/gim, '<h2>$1</h2>')
-              .replace(/^# (.*$)/gim, '<h1>$1</h1>')
-              .replace(/^---$/gm, '<hr/>')
-              .replace(/\*\*(.*?)\*\*/gim, '<strong>$1</strong>')
-              .replace(/\*(.*?)\*/gim, '<em>$1</em>')
-              .replace(/\[(.*?)\]\((.*?)\)/gim, '<a href="$2" target="_blank" rel="noopener">$1</a>')
-              .then(md => parseMarkdownTable(md))
-              .replace(/\n{2,}/g, '</p><p>')
-              .replace(/\n/g, '<br/>');
-            document.getElementById('bio-content').innerHTML = `<p>${html}</p>`;
+            // ✅ 1. 先解析块级元素（标题、表格、分割线）
+            md = md.replace(/^### (.*$)/gim, '<h3>$1</h3>');
+            md = md.replace(/^## (.*$)/gim, '<h2>$1</h2>');
+            md = md.replace(/^# (.*$)/gim, '<h1>$1</h1>');
+            md = md.replace(/^---$/gm, '<hr/>');
+            md = parseMarkdownTable(md);  // ✅ 表格解析放这里（直接调用，不是 .then()）
+
+            // ✅ 2. 再解析行内元素（加粗、斜体、链接）
+            md = md.replace(/\*\*(.*?)\*\*/gim, '<strong>$1</strong>');
+            md = md.replace(/\*(.*?)\*/gim, '<em>$1</em>');
+            md = md.replace(/\[(.*?)\]\((.*?)\)/gim, '<a href="$2" target="_blank" rel="noopener">$1</a>');
+
+            // ✅ 3. 最后处理段落换行
+            md = md.replace(/\n{2,}/g, '</p><p>');
+            md = md.replace(/\n/g, '<br/>');
+
+            return `<p>${md}</p>`;
+          })
+          .then(html => {
+            document.getElementById('bio-content').innerHTML = html;
           })
           .catch(() => {
             const bioCard = document.querySelector('.card h2:nth-child(1)')?.closest('.card');
