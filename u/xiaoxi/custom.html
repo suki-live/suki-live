@@ -1181,11 +1181,11 @@
         // 滚动动画
         function initScrollAnimations() {
             const fadeElements = document.querySelectorAll('.fade-in');
-
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('appear');
+                        observer.unobserve(entry.target);  // ✅ 添加后停止观察，提升性能
                     }
                 });
             }, {
