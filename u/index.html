@@ -130,6 +130,52 @@
       margin: 1.2rem 0;
     }
 
+        /* === Markdown 表格样式 === */
+    .bio table.md-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.2rem 0;
+      font-size: 0.95rem;
+      background: var(--card);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: var(--shadow-light);
+    }
+    .bio table.md-table th {
+      background: var(--accent-soft);
+      color: var(--text);
+      font-weight: 600;
+      padding: 0.8rem 1rem;
+      text-align: left;
+      border-bottom: 2px solid var(--border);
+    }
+    .bio table.md-table td {
+      padding: 0.7rem 1rem;
+      border-bottom: 1px solid var(--border);
+      color: var(--text);
+    }
+    .bio table.md-table tr:last-child td {
+      border-bottom: none;
+    }
+    .bio table.md-table tr:hover {
+      background: var(--accent-soft);
+    }
+    
+    /* 移动端适配 */
+    @media (max-width: 640px) {
+      .bio table.md-table {
+        font-size: 0.9rem;
+        display: block;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+      .bio table.md-table th,
+      .bio table.md-table td {
+        padding: 0.6rem 0.8rem;
+        white-space: nowrap;
+      }
+    }
+
     /* === 歌单控制栏 === */
     .playlist-header {
       display: flex;
@@ -510,6 +556,49 @@
         .replace(/'/g, '&#039;');
     }
 
+        // ========================================
+    // ✅ Markdown 表格解析函数
+    // ========================================
+    function parseMarkdownTable(md) {
+      // 匹配完整的 Markdown 表格块
+      // 格式：| 表头 | 表头 |
+      //      | --- | --- |
+      //      | 内容 | 内容 |
+      return md.replace(/^\|.+?\|\n^\|[\s|\-:]+?\|\n(?:^\|.+?\|\n?)+/gm, (table) => {
+        const rows = table.trim()
+          .split('\n')
+          .map(r => r.trim())
+          .filter(r => r.startsWith('|') && r.endsWith('|'));
+        
+        if (rows.length < 3) return table; // 至少需要：表头 + 分隔线 + 1 行数据
+        
+        // 解析表头（第一行）
+        const headers = rows[0]
+          .split('|')
+          .slice(1, -1) // 去掉首尾空元素
+          .map(h => h.trim());
+        
+        // 解析数据行（跳过第 2 行分隔线）
+        const dataRows = rows.slice(2)
+          .map(row => row.split('|').slice(1, -1).map(cell => cell.trim()))
+          .filter(row => row.some(c => c)); // 过滤空行
+        
+        // 生成 HTML 表格
+        let html = '<table class="md-table">\n<thead>\n<tr>';
+        headers.forEach(h => html += `<th>${escapeHtml(h)}</th>`);
+        html += '</tr>\n</thead>\n<tbody>\n';
+        
+        dataRows.forEach(row => {
+          html += '<tr>';
+          row.forEach(cell => html += `<td>${escapeHtml(cell)}</td>`);
+          html += '</tr>\n';
+        });
+        html += '</tbody>\n</table>';
+        
+        return html;
+      });
+    }
+
     // 获取主播 ID（子域名）
     const getVtuberId = () => {
       const host = window.location.hostname;
@@ -705,6 +794,7 @@
               .replace(/\*\*(.*?)\*\*/gim, '<strong>$1</strong>')
               .replace(/\*(.*?)\*/gim, '<em>$1</em>')
               .replace(/\[(.*?)\]\((.*?)\)/gim, '<a href="$2" target="_blank" rel="noopener">$1</a>')
+              .then(md => parseMarkdownTable(md))
               .replace(/\n{2,}/g, '</p><p>')
               .replace(/\n/g, '<br/>');
             document.getElementById('bio-content').innerHTML = `<p>${html}</p>`;
