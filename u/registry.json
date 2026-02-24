@@ -10,6 +10,13 @@
       "status": "inactive"
     },
     {
+      "id": "taoli",
+      "name": "桃栗",
+      "tagline": "为人间歌声挣脱封印的天使✨",
+      "registered_at": "2026-02-24",
+      "status": "active"
+    },
+    {
       "id": "example",
       "name": "Example",
       "tagline": "用歌声传递温柔的虚拟歌姬 🌸",
