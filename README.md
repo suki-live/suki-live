@@ -16,6 +16,7 @@
 - ✉️ **匿名信支持**：集成 dreamail.cn，保护双方隐私
 - 📋 **统一名录页**：一键浏览所有驻留主播
 - 🌐 **子域名访问**：`your-id.suki.live` 专属主页
+- 🎨 **混合模式**：99% 主播用统一模板，1% 主播可完全自定义
 - 🚀 **零成本托管**：GitHub Pages + Cloudflare 免费额度
 
 > 💡 适合：虚拟主播、独立音乐人、内容创作者、想拥有个人主页的你
@@ -26,13 +27,13 @@
 
 | 特性 | 说明 |
 |------|------|
-| 🔗 子域名路由 | `example.suki.live` → `/u/example/`，自动重写 |
+| 🔗 子域名路由 | `example.suki.live` → 统一模板 `/u/index.html`，自动重写 |
 | 🖼️ 头像自动加载 | 固定使用 `/u/{id}/avatar.png`，无需 JSON 配置 |
 | 📦 配置解耦 | `info.json`（个人信息）+ `playlist.json`（歌单）独立维护 |
-| 🎛️ 灵活控制 | `show_playlist: false` 可隐藏歌单，专注个人介绍 |
+| 🎛️ 灵活控制 | `show_playlist: false` 可隐藏歌单；`use_custom_page: true` 启用完全自定义 |
 | 🔗 社交链接数组 | `social: [{label, url}]` 格式，自由添加任意平台 |
 | ✉️ 匿名信集成 | 可选 `anonymail` 字段，一键跳转 dreamail.cn |
-| 📱 响应式设计 | 移动端自动适配，卡片式布局 |
+| 📱 响应式设计 | 移动端自动适配，卡片/列表视图切换 |
 | 🎨 清新淡色风格 | CSS 变量统一管理，视觉轻盈温柔 |
 | 🔒 安全加载 | 相对路径 + XSS 转义，避免路径冲突与注入风险 |
 | 🤝 PR 注册制 | Fork → 修改 → 提交 PR → 审核合并，流程透明 |
@@ -43,51 +44,56 @@
 
 ```
 suki-live/
-├── index.html              # 首页（注册引导 + 功能介绍）
-├── registry.html           # 主播名录页（搜索 + 统计 + 卡片展示）
+├── index.html              # 🏠 根域名首页（注册引导 + 功能介绍）
+├── registry.html           # 📋 主播名录页（搜索 + 统计 + 卡片展示）
 ├── CNAME                   # GitHub Pages 自定义域名：suki.live
 ├── README.md               # 本文档
 │
-└── u/                      # 子域名内容根目录
-    ├── default-avatar.svg  # 新增：默认头像（所有主播共用）
-    ├── registry.json       # 所有主播注册信息汇总
-    └── example/            # 示例主播（注册时请复制此目录）
-        ├── index.html      # 主播个人页模板（无需修改）
-        ├── info.json       # 个人信息配置
-        ├── playlist.json   # 歌单数据配置
-        ├── bio.md          # 自我介绍（Markdown，可选）
-        ├── favicon.ico     # 网站图标（固定命名，自动加载）
-        └── avatar.png      # 头像（固定命名，自动加载）
+└── u/                      # 👈 子域名内容根目录（所有主播共用）
+    ├── index.html          # ✅ 统一主播页模板（所有子域名自动加载）
+    ├── registry.json       # 📦 所有主播注册信息汇总（用于名录页）
+    │
+    ├── example/            # 🎤 示例主播目录（注册时参考）
+    │   ├── info.json       # 个人信息配置
+    │   ├── playlist.json   # 歌单数据配置
+    │   ├── bio.md          # 自我介绍（Markdown，可选）
+    │   ├── favicon.ico     # 网站图标（可选，16x16px+）
+    │   ├── avatar.png      # 头像（可选，200x200px+，用于名录页）
+    │   └── custom.html     # 🔵 完全自定义页面（启用开关时使用，可选）
+    │
+    ├── taoli/              # 其他主播目录...
+    └── xiaoxi/
 ```
 
-> 🔹 新主播注册时，只需复制 `/u/example/` → `/u/你的ID/`，修改配置即可
+> 🔹 **核心设计**：所有主播共用 `/u/index.html` 模板，新主播只需创建数据文件，无需复制 HTML！
 
 ---
 
 ## 🚀 快速注册指南
 
-### 第 1 步：Fork 仓库
+### 模式 A：使用统一模板（推荐，99% 主播）
+
+#### 第 1 步：Fork 仓库
 [🍴 点击 Fork suki-live/suki-live](https://github.com/suki-live/suki-live/fork)
 
-### 第 2 步：创建你的目录
-在你的 Fork 仓库中：
+#### 第 2 步：创建你的目录
+在你的 Fork 仓库中创建：
 ```
 /u/
 └── your-id/          # 👈 你的子域名标识（如 miku / starchild）
-    ├── index.html    # 直接复制 example/index.html，无需修改
-    ├── info.json     # 填写你的个人信息（见下方模板）
-    ├── playlist.json # 填写歌单（可为空数组）
-    ├── bio.md        # 自我介绍（可选，Markdown 格式）
-    ├── favicon.ico   # 网站图标（16x16px 以上，方形/圆形裁剪）
-    └── avatar.png    # 👈 头像（200x200px 以上，圆形裁剪更佳）
+    ├── info.json     # ✅ 必填：个人信息配置
+    ├── playlist.json # ✅ 必填：歌单数据（items 可为空数组）
+    ├── bio.md        # ❌ 可选：Markdown 自我介绍
+    ├── favicon.ico   # ❌ 可选：网站图标
+    └── avatar.png    # ❌ 可选：头像（用于名录页展示）
 ```
 
 > ⚠️ **重要规范**：
 > - `your-id` 将作为你的子域名：`https://your-id.suki.live`
-> - 头像**必须**命名为 `avatar.png`，放在同目录下
 > - 所有资源路径使用**相对路径**（如 `./info.json`），勿用绝对路径
+> - **无需**复制 `index.html`，系统自动加载统一模板
 
-### 第 3 步：配置 info.json
+#### 第 3 步：配置 info.json
 
 ```json
 {
@@ -97,7 +103,7 @@ suki-live/
   "show_playlist": true,
   "anonymail": "https://dreamail.cn/send?dm=xxx",
   "social": [
-    { "label": "B站", "url": "https://space.bilibili.com/xxx" },
+    { "label": "B 站", "url": "https://space.bilibili.com/xxx" },
     { "label": "Twitter", "url": "https://twitter.com/xxx" },
     { "label": "个人博客", "url": "https://example.com" }
   ],
@@ -119,7 +125,7 @@ suki-live/
 | `created_at` | string | ❌ | - | 注册日期（ISO 8601），用于名录排序 |
 | `updated_at` | string | ❌ | - | 最后更新日期，便于追踪变更 |
 
-### 第 4 步：配置 playlist.json
+#### 第 4 步：配置 playlist.json
 
 ```json
 {
@@ -138,14 +144,6 @@ suki-live/
 }
 ```
 
-#### 🔹 字段说明
-
-| 字段 | 类型 | 必填 | 说明 |
-|------|------|------|------|
-| `title` | string | ❌ | 歌单标题，默认「推荐歌单」 |
-| `description` | string | ❌ | 歌单简介，显示在标题下方 |
-| `items` | array | ✅ | 歌曲列表，可为空数组 `[]` |
-
 ##### 🔸 歌曲项字段
 
 | 字段 | 类型 | 必填 | 说明 |
@@ -157,7 +155,7 @@ suki-live/
 | `cover` | string | ❌ | 歌曲封面图 URL，支持外链 |
 | `added_at` | string | ❌ | 添加日期，用于排序或展示「新歌」标识 |
 
-### 第 5 步：（可选）编写 bio.md
+#### 第 5 步：（可选）编写 bio.md
 
 如果 `info.json` 中 `"bio": true`，系统将自动加载同目录 `bio.md` 作为自我介绍。
 
@@ -176,9 +174,9 @@ suki-live/
 🔗 [B 站主页](https://bilibili.com) · [网易云电台](https://music.163.com)
 ```
 
-> ✅ 支持：标题（`#` / `##` / `###`）、**加粗**、*斜体*、[链接](url)、段落换行
+> ✅ 支持：标题（`#` / `##` / `###`）、**加粗**、*斜体*、[链接](url)、段落换行、`---` 分割线
 
-### 第 6 步：更新 registry.json
+#### 第 6 步：更新 registry.json
 
 编辑 `/u/registry.json`，在 `vtubers` 数组中添加你的信息：
 
@@ -197,7 +195,7 @@ suki-live/
 }
 ```
 
-#### 🔹 字段说明
+##### 🔹 registry.json 字段说明
 
 | 字段 | 类型 | 必填 | 说明 |
 |------|------|------|------|
@@ -205,11 +203,11 @@ suki-live/
 | `name` | string | ✅ | 主播昵称，用于名录卡片展示 |
 | `tagline` | string | ❌ | 个性签名，显示在名录卡片 |
 | `registered_at` | string | ❌ | 注册日期，用于排序 |
-| `status` | string | ✅ | 状态：`active`（正常）/ `inactive`（暂停）/ `banned`（封禁） |
+| `status` | string | ✅ | 状态：`active`（正常）/ `inactive`（暂停）/ `banned`（封禁）/ `memorial`（纪念） |
 
 > ⚠️ **注意**：`registry.json` 中**无需**配置 `avatar`，系统会自动加载 `/u/{id}/avatar.png`
 
-### 第 7 步：提交 Pull Request
+#### 第 7 步：提交 Pull Request
 
 1. Commit 你的修改，标题格式：`[Register] your-id`
 2. Push 到你的 Fork 仓库
@@ -219,18 +217,95 @@ suki-live/
 
 ---
 
+### 模式 B：完全自定义页面（高级，1% 主播）
+
+如果你希望**完全自由设计页面**，可以启用自定义模式：
+
+#### 第 1 步：创建目录 + 基础配置
+```
+/u/your-id/
+├── info.json          # ✅ 必填，含 "use_custom_page": true
+├── custom.html        # ✅ 必填：完全自定义的页面
+├── custom.js (可选)   # ✅ 自定义交互脚本
+└── avatar.png (可选)  # ⚠️ 仍建议保留（用于 registry.html 名录页）
+```
+
+#### 第 2 步：配置 info.json（启用开关）
+```json
+{
+  "name": "YourName",
+  "tagline": "我的定制主页 ✨",
+  "use_custom_page": true,
+  "social": [
+    { "label": "B 站", "url": "https://space.bilibili.com/xxx" }
+  ]
+}
+```
+
+> 🔹 `use_custom_page: true` → 启用完全自定义模式  
+> 🔹 启用后，系统**只加载 `custom.html`**，跳过所有默认模板逻辑
+
+#### 第 3 步：编写 custom.html（完全接管页面）
+
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>我的定制页 · suki.live</title>
+  <style>
+    /* 完全自定义样式，不受默认模板影响 */
+    body {
+      font-family: 'Comic Sans MS', cursive;
+      background: linear-gradient(135deg, #ffecd2, #fcb69f);
+      color: #333;
+      padding: 2rem;
+      text-align: center;
+    }
+    .btn {
+      display: inline-block;
+      padding: 0.8rem 2rem;
+      background: #ff6b6b;
+      color: white;
+      border-radius: 30px;
+      text-decoration: none;
+      margin: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+  <h1>🎀 这是我的定制主页！</h1>
+  <p>完全自由发挥～</p>
+  <a href="https://space.bilibili.com/xxx" class="btn">📺 去 B 站</a>
+  <a href="https://suki.live/registry.html" class="btn">📋 返回名录</a>
+  
+  <!-- 可选：加载自定义 JS -->
+  <script src="./custom.js"></script>
+</body>
+</html>
+```
+
+#### 第 4 步：提交 PR（同模式 A）
+
+> ⚠️ **注意**：如果 `custom.html` 不存在，页面会显示「主页定制中」友好提示，**不会 fallback 到默认模板**
+
+---
+
 ## 🧪 验证你的主页
 
 合并后，按顺序测试：
 
 | 测试项 | 访问地址 | 预期结果 |
 |--------|----------|----------|
-| ✅ 子域名主页 | `https://your-id.suki.live/` | 显示你的个人页，头像/签名/社交链接正常 |
-| ✅ 歌单展示 | （如配置了歌单） | 显示歌单卡片，歌曲可点击跳转 |
+| ✅ 子域名主页 | `https://your-id.suki.live/` | 显示你的个人页（统一模板或自定义） |
+| ✅ 歌单展示 | （如配置了歌单） | 显示歌单卡片，支持列表/卡片视图切换 |
+| ✅ 随机选歌 | 点击「🎲 随机选歌」 | 弹窗显示歌名 + 确认/播放按钮 |
 | ✅ 匿名信按钮 | （如配置了 anonymail） | 显示「✉️ 匿名信」按钮，点击跳转 dreamail |
 | ✅ 返回首页 | 点击页脚「返回首页」 | 跳转至 `https://suki.live` |
 | ✅ 名录页展示 | `https://suki.live/registry.html` | 你的卡片出现在名录中，头像正常加载 |
 | ✅ 移动端适配 | 手机浏览器访问 | 布局自动适配，无横向滚动 |
+| ✅ 自定义模式 | `use_custom_page: true` + `custom.html` | 页面完全替换为自定义内容 |
 
 ---
 
@@ -239,16 +314,16 @@ suki-live/
 ### Q：为什么访问 `your-id.suki.live` 显示 404？
 A：请检查：
 1. PR 是否已被合并（未合并则未部署）
-2. `/u/your-id/index.html` 是否存在
-3. `info.json` / `playlist.json` 是否为有效 JSON
-4. 清除浏览器缓存或尝试无痕模式
+2. `/u/your-id/info.json` 是否存在且为有效 JSON
+3. 清除浏览器缓存或尝试无痕模式
+4. 检查 Cloudflare Worker 是否正常部署
 
 ### Q：头像不显示 / 显示默认灰色图？
 A：请确认：
 1. 头像文件命名为 `avatar.png`（大小写敏感）
-2. 文件位于 `/u/your-id/avatar.png`（与 index.html 同目录）
-3. 图片格式为 PNG，尺寸建议 ≥200x200px
-4. 提交时图片是否成功上传（Git LFS 用户注意）
+2. 文件位于 `/u/your-id/avatar.png`（与 info.json 同目录）
+3. 图片格式为 PNG/JPG/WebP，尺寸建议 ≥200x200px
+4. 如果文件不存在，会自动隐藏头像区域（无报错）
 
 ### Q：如何隐藏歌单？
 A：在 `info.json` 中添加：
@@ -275,15 +350,21 @@ A：当前支持：
 - 标题：`#` / `##` / `###`
 - 强调：`**加粗**` / `*斜体*`
 - 链接：`[文字](URL)`
+- 分割线：`---`
 - 段落：空行分隔 / 单换行转 `<br/>`
 
 > 🚧 未来可能扩展：列表、代码块、图片（需评估安全风险）
 
 ### Q：可以自定义页面样式吗？
-A：当前模板为统一风格，确保平台视觉一致性。  
-如需深度定制，建议：
-1. Fork 后修改 `/u/your-id/index.html` 的 `<style>`
-2. 或联系管理员讨论主题扩展方案
+A：有两种方式：
+1. **轻度定制**：Fork 后修改 `/u/index.html` 的 CSS 变量（影响所有主播）
+2. **完全定制**：启用 `use_custom_page: true` + 编写 `custom.html`（仅影响自己）
+
+### Q：启用自定义模式后，playlist.json 报 404？
+A：这是**预期行为**！启用 `use_custom_page: true` 后：
+- 系统**只加载 `custom.html`**，跳过 `playlist.json` 等默认文件
+- Console 中的 404 日志可忽略，不影响页面功能
+- 如需避免日志，可不创建 `playlist.json`
 
 ### Q：内容违规会被处理吗？
 A：是的。注册即表示同意：
@@ -323,10 +404,10 @@ A：是的。注册即表示同意：
 # 示例
 [Register] add user: starchild
 [Fix] resolve avatar path in registry.html
-[Docs] update README with show_playlist example
+[Docs] update README with custom_page example
 
 # Type 可选值
-Register | Fix | Feature | Docs | Style | Refactor
+Register | Fix | Feature | Docs | Style | Refactor | Custom
 ```
 
 ---
