@@ -1,0 +1,13 @@
+{
+  "name": "Example",
+  "tagline": "用歌声传递温柔的虚拟歌姬 🌸",
+  "avatar": "avatar.png",
+  "bio": true,
+  "social": {
+    "bilibili": "https://space.bilibili.com/xxxxxx",
+    "twitter": "https://twitter.com/example",
+    "youtube": "https://youtube.com/@example"
+  },
+  "created_at": "2026-01-01",
+  "updated_at": "2026-02-24"
+}

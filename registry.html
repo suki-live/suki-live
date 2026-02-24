@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>主播名录 · suki.live</title>
+  <style>
+    :root {
+      --bg: #fafbfc;
+      --card: #ffffff;
+      --text: #4a5568;
+      --text-light: #718096;
+      --accent: #a7c7e7;
+      --accent-soft: #fce4ec;
+      --border: #e2e8f0;
+      --shadow: 0 2px 8px rgba(0,0,0,0.04);
+      --nav-bg: #ffffff;
+      --nav-border: #e2e8f0;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      padding-top: 60px;
+    }
+    
+    /* === 导航栏 === */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 60px;
+      background: var(--nav-bg);
+      border-bottom: 1px solid var(--nav-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+    }
+    .nav-content {
+      width: 100%;
+      max-width: 960px;
+      padding: 0 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #2d3748;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .nav-logo:hover { color: var(--accent); }
+    .nav-links {
+      display: flex;
+      gap: 0.5rem;
+    }
+    .nav-link {
+      padding: 0.5rem 1rem;
+      color: var(--text);
+      text-decoration: none;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: all 0.2s;
+    }
+    .nav-link:hover {
+      background: var(--accent-soft);
+      color: #c2185b;
+    }
+    .nav-link.active {
+      background: var(--accent);
+      color: #1a202c;
+    }
+    
+    /* === 页面内容 === */
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 2rem 1rem;
+    }
+    header {
+      text-align: center;
+      padding: 1rem 0 2rem;
+    }
+    h1 {
+      font-size: 1.6rem;
+      font-weight: 600;
+      color: #2d3748;
+      margin-bottom: 0.5rem;
+    }
+    .subtitle {
+      color: var(--text-light);
+      font-size: 0.95rem;
+    }
+    .stats {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin: 1.5rem 0;
+      flex-wrap: wrap;
+    }
+    .stat-item {
+      text-align: center;
+    }
+    .stat-num {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .stat-label {
+      font-size: 0.85rem;
+      color: var(--text-light);
+    }
+    
+    /* === 主播卡片网格 === */
+    .vtuber-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.2rem;
+      margin-top: 2rem;
+    }
+    .vtuber-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.2rem;
+      text-decoration: none;
+      color: inherit;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .vtuber-card:hover {
+      border-color: var(--accent);
+      box-shadow: 0 4px 12px rgba(167, 199, 231, 0.3);
+      transform: translateY(-2px);
+    }
+    .vtuber-avatar {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      object-fit: cover;
+      background: #edf2f7;
+      flex-shrink: 0;
+    }
+    .vtuber-info {
+      flex: 1;
+      min-width: 0;
+    }
+    .vtuber-name {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #2d3748;
+      margin-bottom: 0.2rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .vtuber-tagline {
+      font-size: 0.85rem;
+      color: var(--text-light);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .vtuber-meta {
+      font-size: 0.8rem;
+      color: var(--text-light);
+      margin-top: 0.3rem;
+    }
+    .status-badge {
+      display: inline-block;
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: 500;
+    }
+    .status-active {
+      background: #c6f6d5;
+      color: #22543d;
+    }
+    .status-inactive {
+      background: #fed7d7;
+      color: #822727;
+    }
+    
+    /* === 加载状态 === */
+    .loading {
+      text-align: center;
+      padding: 3rem;
+      color: var(--text-light);
+    }
+    .loading-spinner {
+      width: 40px;
+      height: 40px;
+      border: 3px solid var(--border);
+      border-top-color: var(--accent);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin: 0 auto 1rem;
+    }
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    
+    /* === 空状态 === */
+    .empty-state {
+      text-align: center;
+      padding: 3rem;
+      color: var(--text-light);
+    }
+    .empty-state h3 {
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+    
+    /* === 搜索框 === */
+    .search-box {
+      max-width: 480px;
+      margin: 1.5rem auto;
+      position: relative;
+    }
+    .search-input {
+      width: 100%;
+      padding: 0.7rem 1rem 0.7rem 2.5rem;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      font-size: 0.95rem;
+      background: var(--card);
+      color: var(--text);
+      transition: border-color 0.2s;
+    }
+    .search-input:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+    .search-icon {
+      position: absolute;
+      left: 0.8rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-light);
+    }
+    
+    /* === 页脚 === */
+    footer {
+      text-align: center;
+      color: var(--text-light);
+      font-size: 0.9rem;
+      padding-top: 3rem;
+      margin-top: 2rem;
+      border-top: 1px solid var(--border);
+    }
+    
+    /* === 移动端适配 === */
+    @media (max-width: 640px) {
+      h1 { font-size: 1.4rem; }
+      .vtuber-grid { grid-template-columns: 1fr; }
+      .stats { gap: 1rem; }
+      .nav-link { padding: 0.5rem 0.7rem; font-size: 0.9rem; }
+    }
+  </style>
+</head>
+<body>
+  <!-- 导航栏 -->
+  <nav class="navbar">
+    <div class="nav-content">
+      <a href="/" class="nav-logo">🎤 suki.live</a>
+      <div class="nav-links">
+        <a href="/" class="nav-link">首页</a>
+        <a href="/registry.html" class="nav-link active">主播名录</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- 页面内容 -->
+  <div class="container">
+    <header>
+      <h1>📋 主播名录</h1>
+      <p class="subtitle">在 suki.live 驻留的每一位虚拟主播</p>
+      
+      <div class="stats">
+        <div class="stat-item">
+          <div class="stat-num" id="total-count">-</div>
+          <div class="stat-label">注册主播</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num" id="active-count">-</div>
+          <div class="stat-label">活跃中</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num" id="updated-date">-</div>
+          <div class="stat-label">最后更新</div>
+        </div>
+      </div>
+      
+      <div class="search-box">
+        <span class="search-icon">🔍</span>
+        <input type="text" class="search-input" id="search-input" placeholder="搜索主播名称或签名..."/>
+      </div>
+    </header>
+
+    <div id="vtuber-list" class="vtuber-grid">
+      <div class="loading">
+        <div class="loading-spinner"></div>
+        <p>正在加载主播名录…</p>
+      </div>
+    </div>
+
+    <footer>
+      <p>💡 想加入名录？<a href="/" style="color:var(--accent)">查看注册指南</a></p>
+      <p>© 2026 suki.live · 用记忆与歌声，连接每一个你</p>
+    </footer>
+  </div>
+
+  <script>
+    const REGISTRY_URL = '/u/registry.json';
+
+    // 加载并渲染主播列表
+    fetch(REGISTRY_URL)
+      .then(r => {
+        if (!r.ok) throw new Error('Not found');
+        return r.json();
+      })
+      .then(data => {
+        // 更新统计
+        document.getElementById('total-count').textContent = data.total || data.vtubers?.length || 0;
+        document.getElementById('active-count').textContent = (data.vtubers || []).filter(v => v.status === 'active').length;
+        document.getElementById('updated-date').textContent = data.updated_at ? data.updated_at.slice(5) : '-';
+
+        // 渲染列表
+        renderVtubers(data.vtubers || []);
+
+        // 搜索功能
+        document.getElementById('search-input').addEventListener('input', (e) => {
+          const keyword = e.target.value.toLowerCase().trim();
+          const filtered = (data.vtubers || []).filter(v => 
+            v.name.toLowerCase().includes(keyword) || 
+            (v.tagline && v.tagline.toLowerCase().includes(keyword))
+          );
+          renderVtubers(filtered);
+        });
+      })
+      .catch(err => {
+        console.error(err);
+        document.getElementById('vtuber-list').innerHTML = `
+          <div class="empty-state" style="grid-column: 1/-1;">
+            <h3>🌸 名录加载中</h3>
+            <p>暂时无法加载主播列表，请稍后重试</p>
+            <p style="margin-top:1rem"><a href="/" style="color:var(--accent)">返回首页</a></p>
+          </div>
+        `;
+      });
+
+    // 渲染主播卡片
+    function renderVtubers(vtubers) {
+      const container = document.getElementById('vtuber-list');
+      
+      if (!vtubers.length) {
+        container.innerHTML = `
+          <div class="empty-state" style="grid-column: 1/-1;">
+            <h3>🔍 没有找到匹配的主播</h3>
+            <p>试试其他关键词，或<a href="/" style="color:var(--accent)">申请注册</a></p>
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = vtubers.map(v => {
+        const avatarUrl = v.avatar ? `/u/${v.id}/${v.avatar}` : '';
+        const statusLabel = v.status === 'active' ? '活跃' : v.status === 'inactive' ? '暂停' : '封禁';
+        const statusClass = `status-${v.status}`;
+        
+        return `
+          <a href="https://${v.id}.suki.live" class="vtuber-card" target="_blank">
+            <img class="vtuber-avatar" src="${avatarUrl}" alt="${v.name}" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2264%22 height=%2264%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%23cbd5e1%22 stroke-width=%221%22%3E%3Ccircle cx=%2212%22 cy=%2212%22 r=%2210%22/%3E%3Cpath d=%22M12 16v-4M12 8h.01%22/%3E%3C/svg%3E'"/>
+            <div class="vtuber-info">
+              <div class="vtuber-name">${escapeHtml(v.name)}</div>
+              <div class="vtuber-tagline">${escapeHtml(v.tagline || '暂无签名')}</div>
+              <div class="vtuber-meta">
+                <span class="status-badge ${statusClass}">${statusLabel}</span>
+                ${v.registered_at ? `· 注册于 ${v.registered_at}` : ''}
+              </div>
+            </div>
+          </a>
+        `;
+      }).join('');
+    }
+
+    // HTML 转义（防 XSS）
+    function escapeHtml(str) {
+      if (!str) return '';
+      return str
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
+    }
+  </script>
+</body>
+</html>

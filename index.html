@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>suki.live — 虚拟主播歌单主页</title>
+  <style>
+    :root {
+      --bg: #fafbfc;
+      --card: #ffffff;
+      --text: #4a5568;
+      --text-light: #718096;
+      --accent: #a7c7e7;
+      --accent-soft: #fce4ec;
+      --border: #e2e8f0;
+      --shadow: 0 2px 8px rgba(0,0,0,0.04);
+      --nav-bg: #ffffff;
+      --nav-border: #e2e8f0;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      padding-top: 60px;
+    }
+    
+    /* === 导航栏 === */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 60px;
+      background: var(--nav-bg);
+      border-bottom: 1px solid var(--nav-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+    }
+    .nav-content {
+      width: 100%;
+      max-width: 960px;
+      padding: 0 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #2d3748;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .nav-logo:hover { color: var(--accent); }
+    .nav-links {
+      display: flex;
+      gap: 0.5rem;
+    }
+    .nav-link {
+      padding: 0.5rem 1rem;
+      color: var(--text);
+      text-decoration: none;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: all 0.2s;
+    }
+    .nav-link:hover {
+      background: var(--accent-soft);
+      color: #c2185b;
+    }
+    .nav-link.active {
+      background: var(--accent);
+      color: #1a202c;
+    }
+    
+    /* === 页面内容 === */
+    .container {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 2rem 1rem;
+    }
+    header {
+      text-align: center;
+      padding: 2rem 0 3rem;
+    }
+    h1 {
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: #2d3748;
+      margin-bottom: 0.5rem;
+    }
+    .subtitle {
+      color: var(--text-light);
+      font-size: 1rem;
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      box-shadow: var(--shadow);
+    }
+    .card h2 {
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+      color: #2d3748;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .card h2::before {
+      content: "";
+      display: inline-block;
+      width: 4px;
+      height: 16px;
+      background: var(--accent);
+      border-radius: 2px;
+    }
+    .steps {
+      list-style: none;
+      counter-reset: step;
+    }
+    .steps li {
+      position: relative;
+      padding-left: 2rem;
+      margin-bottom: 0.8rem;
+      color: var(--text-light);
+    }
+    .steps li::before {
+      counter-increment: step;
+      content: counter(step);
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 24px;
+      height: 24px;
+      background: var(--accent-soft);
+      color: #c2185b;
+      border-radius: 50%;
+      font-size: 0.8rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .btn {
+      display: inline-block;
+      background: var(--accent);
+      color: #1a202c;
+      padding: 0.6rem 1.2rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: background 0.2s;
+    }
+    .btn:hover { background: #8ab4d9; }
+    .btn-secondary {
+      background: var(--accent-soft);
+      color: #c2185b;
+    }
+    .btn-secondary:hover { background: #f8bbd0; }
+    .btn-group {
+      display: flex;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+    }
+    .example-link {
+      display: block;
+      text-align: center;
+      margin-top: 1rem;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .example-link:hover { text-decoration: underline; }
+    footer {
+      text-align: center;
+      color: var(--text-light);
+      font-size: 0.9rem;
+      padding-top: 2rem;
+    }
+    
+    /* === 移动端适配 === */
+    @media (max-width: 640px) {
+      h1 { font-size: 1.5rem; }
+      .card { padding: 1.2rem; }
+      .nav-link { padding: 0.5rem 0.8rem; font-size: 0.9rem; }
+      .btn-group { flex-direction: column; }
+      .btn { width: 100%; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+  <!-- 导航栏 -->
+  <nav class="navbar">
+    <div class="nav-content">
+      <a href="/" class="nav-logo">🎤 suki.live</a>
+      <div class="nav-links">
+        <a href="/" class="nav-link active">首页</a>
+        <a href="/registry.html" class="nav-link">主播名录</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- 页面内容 -->
+  <div class="container">
+    <header>
+      <h1>🎤 suki.live</h1>
+      <p class="subtitle">为虚拟主播打造的轻量歌单主页 · 自由注册 · 永久托管</p>
+    </header>
+
+    <div class="card">
+      <h2>如何拥有你的主页？</h2>
+      <ol class="steps">
+        <li>Fork 本仓库 → <code>suki-live/suki-live</code></li>
+        <li>在 <code>/u/</code> 下新建你的目录，如 <code>/u/miku/</code></li>
+        <li>复制 <code>/u/example/</code> 中的文件，修改 <code>info.json</code> 和 <code>playlist.json</code></li>
+        <li>在 <code>/u/registry.json</code> 中添加你的信息</li>
+        <li>提交 Pull Request，等待管理员合并</li>
+        <li>合并后访问 <code>https://miku.suki.live</code> ✨</li>
+      </ol>
+      <div class="btn-group" style="margin-top: 1.2rem;">
+        <a href="https://github.com/suki-live/suki-live/fork" class="btn" target="_blank">🍴 Fork 仓库</a>
+        <a href="/registry.html" class="btn btn-secondary">📋 查看主播名录</a>
+      </div>
+      <a href="https://example.suki.live" class="example-link">👉 先看看示例：example.suki.live</a>
+    </div>
+
+    <div class="card">
+      <h2>页面支持</h2>
+      <ul style="padding-left: 1.2rem; color: var(--text-light);">
+        <li>🎵 歌单展示（支持网易云 / B 站 / YouTube 链接）</li>
+        <li>📝 Markdown 自我介绍</li>
+        <li>🖼️ 自定义头像与背景</li>
+        <li>📋 统一名录页展示所有主播</li>
+        <li>🌙 自动适配浅色/深色模式（未来扩展）</li>
+      </ul>
+    </div>
+
+    <footer>
+      <p>💡 提示：注册即表示同意内容规范，禁止违规/商业推广内容</p>
+      <p>© 2026 suki.live · 用记忆与歌声，连接每一个你</p>
+    </footer>
+  </div>
+</body>
+</html>

@@ -1,0 +1,30 @@
+{
+  "title": "Example 的精选歌单",
+  "description": "深夜治愈 · 温柔入梦 · 不定期更新",
+  "items": [
+    {
+      "title": "夜に駆ける",
+      "artist": "YOASOBI",
+      "source": "网易云",
+      "url": "https://music.163.com/#/song?id=123456789",
+      "cover": "https://p2.music.126.net/example.jpg",
+      "added_at": "2026-02-01"
+    },
+    {
+      "title": "Glory Days",
+      "artist": "星街彗星",
+      "source": "B 站",
+      "url": "https://www.bilibili.com/video/BV1xx411c7mD",
+      "cover": "https://i0.hdslb.com/bfs/example.jpg",
+      "added_at": "2026-02-10"
+    },
+    {
+      "title": "Stardust",
+      "artist": "Original",
+      "source": "YouTube",
+      "url": "https://youtu.be/example",
+      "cover": null,
+      "added_at": "2026-02-20"
+    }
+  ]
+}

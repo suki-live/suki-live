@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title id="page-title">加载中… · suki.live</title>
+  <style>
+    :root {
+      --bg: #fafbfc;
+      --card: #ffffff;
+      --text: #2d3748;
+      --text-light: #718096;
+      --accent: #a7c7e7;
+      --accent-soft: #f0f7ff;
+      --border: #e2e8f0;
+      --shadow: 0 4px 12px rgba(0,0,0,0.06);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      padding-bottom: 3rem;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--accent-soft), #f8f9fa);
+      padding: 2.5rem 1rem 2rem;
+      text-align: center;
+      border-bottom: 1px solid var(--border);
+    }
+    .avatar {
+      width: 96px;
+      height: 96px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #fff;
+      box-shadow: var(--shadow);
+      margin-bottom: 1rem;
+      background: #e2e8f0;
+    }
+    .name { font-size: 1.4rem; font-weight: 600; margin-bottom: 0.3rem; }
+    .tagline { color: var(--text-light); font-size: 0.95rem; }
+    .container {
+      max-width: 720px;
+      margin: 1.5rem auto;
+      padding: 0 1rem;
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.2rem 1.5rem;
+      margin-bottom: 1.2rem;
+      box-shadow: var(--shadow);
+    }
+    .card h2 {
+      font-size: 1.1rem;
+      margin-bottom: 0.8rem;
+      color: #2d3748;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .card h2::before {
+      content: "";
+      width: 4px;
+      height: 14px;
+      background: var(--accent);
+      border-radius: 2px;
+      display: inline-block;
+    }
+    .playlist-desc {
+      color: var(--text-light);
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+      font-style: italic;
+    }
+    .bio {
+      color: var(--text-light);
+      font-size: 0.95rem;
+      white-space: pre-wrap;
+    }
+    .playlist { list-style: none; }
+    .playlist li {
+      padding: 0.7rem 0;
+      border-bottom: 1px dashed var(--border);
+      display: flex;
+      align-items: flex-start;
+      gap: 0.8rem;
+    }
+    .playlist li:last-child { border-bottom: none; }
+    .song-cover {
+      width: 48px;
+      height: 48px;
+      border-radius: 6px;
+      object-fit: cover;
+      background: #edf2f7;
+      flex-shrink: 0;
+    }
+    .song-info { flex: 1; min-width: 0; }
+    .song-title { font-weight: 500; color: var(--text); margin-bottom: 0.2rem; }
+    .song-meta { color: var(--text-light); font-size: 0.85rem; }
+    .song-link {
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 0.9rem;
+      padding: 0.3rem 0.6rem;
+      border: 1px solid var(--accent);
+      border-radius: 6px;
+      transition: all 0.2s;
+    }
+    .song-link:hover {
+      background: var(--accent);
+      color: #1a202c;
+    }
+    .social-links {
+      display: flex;
+      gap: 0.8rem;
+      justify-content: center;
+      margin-top: 0.5rem;
+    }
+    .social-links a {
+      color: var(--text-light);
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: color 0.2s;
+    }
+    .social-links a:hover { color: var(--accent); }
+    .footer-note {
+      text-align: center;
+      color: var(--text-light);
+      font-size: 0.85rem;
+      margin-top: 2rem;
+    }
+    .loading { text-align: center; color: var(--text-light); padding: 2rem; }
+    @media (max-width: 640px) {
+      .header { padding: 2rem 1rem 1.5rem; }
+      .name { font-size: 1.2rem; }
+      .playlist li { flex-direction: column; gap: 0.5rem; }
+      .song-cover { width: 100%; height: 120px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <img id="avatar" class="avatar" src="" alt="avatar" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2296%22 height=%2296%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%23cbd5e1%22 stroke-width=%221%22%3E%3Ccircle cx=%2212%22 cy=%2212%22 r=%2210%22/%3E%3Cpath d=%22M12 16v-4M12 8h.01%22/%3E%3C/svg%3E'"/>
+    <div id="name" class="name">加载中…</div>
+    <div id="tagline" class="tagline"></div>
+    <div id="social" class="social-links"></div>
+  </div>
+
+  <div class="container">
+    <div id="content">
+      <div class="loading">✨ 正在加载主播信息…</div>
+    </div>
+  </div>
+
+  <p class="footer-note">💙 托管于 <a href="https://github.com/suki-live/suki-live" style="color:var(--accent);text-decoration:none">suki-live</a> · <a href="/" style="color:var(--accent)">返回首页</a></p>
+
+  <script>
+    const getVtuberId = () => {
+      const host = window.location.hostname;
+      if (host === 'suki.live' || host === 'www.suki.live') return 'example';
+      return host.split('.')[0];
+    };
+
+    const id = getVtuberId();
+    const base = `/u/${id}`;
+
+    // 加载 info.json + playlist.json
+    Promise.all([
+      fetch(`${base}/info.json`).then(r => r.ok ? r.json() : Promise.reject('info')),
+      fetch(`${base}/playlist.json`).then(r => r.ok ? r.json() : Promise.reject('playlist'))
+    ])
+    .then(([info, playlist]) => {
+      // === 渲染基本信息 ===
+      document.title = `${info.name} · suki.live`;
+      document.getElementById('page-title').textContent = `${info.name} · suki.live`;
+      document.getElementById('name').textContent = info.name;
+      document.getElementById('tagline').textContent = info.tagline || '';
+      
+      if (info.avatar) {
+        document.getElementById('avatar').src = `${base}/assets/${info.avatar}`;
+      }
+
+      // 社交链接
+      if (info.social) {
+        const socialEl = document.getElementById('social');
+        Object.entries(info.social).forEach(([platform, url]) => {
+          const label = { bilibili: 'B 站', twitter: 'Twitter', youtube: 'YouTube' }[platform] || platform;
+          socialEl.innerHTML += `<a href="${url}" target="_blank" rel="noopener">${label}</a>`;
+        });
+      }
+
+      // === 组装页面内容 ===
+      let html = '';
+
+      // 自我介绍
+      if (info.bio) {
+        html += `
+          <div class="card">
+            <h2>📝 关于我</h2>
+            <div class="bio" id="bio-content">加载中…</div>
+          </div>`;
+      }
+
+      // 歌单
+      if (playlist.items?.length) {
+        html += `
+          <div class="card">
+            <h2>🎵 ${playlist.title || '推荐歌单'}</h2>
+            ${playlist.description ? `<p class="playlist-desc">${playlist.description}</p>` : ''}
+            <ul class="playlist">
+              ${playlist.items.map(song => `
+                <li>
+                  ${song.cover ? `<img class="song-cover" src="${song.cover}" alt="${song.title}" onerror="this.style.display='none'"/>` : ''}
+                  <div class="song-info">
+                    <div class="song-title">${song.title}</div>
+                    <div class="song-meta">
+                      ${song.artist || ''}${song.artist && song.source ? ' · ' : ''}${song.source || ''}
+                      ${song.added_at ? ` · 添加于 ${song.added_at}` : ''}
+                    </div>
+                  </div>
+                  ${song.url ? `<a class="song-link" href="${song.url}" target="_blank" rel="noopener">播放</a>` : ''}
+                </li>
+              `).join('')}
+            </ul>
+          </div>`;
+      }
+
+      document.getElementById('content').innerHTML = html;
+
+      // 加载 bio.md（简易 Markdown）
+      if (info.bio) {
+        fetch(`${base}/bio.md`)
+          .then(r => r.text())
+          .then(md => {
+            const html = md
+              .replace(/^### (.*$)/gim, '<h3>$1</h3>')
+              .replace(/^## (.*$)/gim, '<h2>$1</h2>')
+              .replace(/^# (.*$)/gim, '<h1>$1</h1>')
+              .replace(/\*\*(.*?)\*\*/gim, '<strong>$1</strong>')
+              .replace(/\*(.*?)\*/gim, '<em>$1</em>')
+              .replace(/\[(.*?)\]\((.*?)\)/gim, '<a href="$2" target="_blank" rel="noopener">$1</a>')
+              .replace(/\n{2,}/g, '</p><p>')
+              .replace(/\n/g, '<br/>');
+            document.getElementById('bio-content').innerHTML = `<p>${html}</p>`;
+          })
+          .catch(() => {
+            document.getElementById('bio-content').textContent = '（介绍加载中…）';
+          });
+      }
+    })
+    .catch(err => {
+      console.error('Load error:', err);
+      const missing = err === 'info' ? 'info.json' : 'playlist.json';
+      document.getElementById('content').innerHTML = `
+        <div class="card">
+          <h2>⚠️ 加载失败</h2>
+          <p style="color:var(--text-light)">
+            文件 <code>${missing}</code> 未找到。<br/>
+            主播 <code>${id}</code> 的配置可能尚未完成。
+          </p>
+          <p style="margin-top:1rem">
+            <a href="/" style="color:var(--accent)">返回首页</a> · 
+            <a href="https://github.com/suki-live/suki-live" target="_blank" style="color:var(--accent)">查看注册指南</a>
+          </p>
+        </div>
+      `;
+    });
+  </script>
+</body>
+</html>
