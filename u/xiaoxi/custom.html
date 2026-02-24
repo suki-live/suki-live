@@ -1179,29 +1179,56 @@
         }
 
         // 滚动动画
+        // 滚动动画（终极修复版：Observer + 滚动监听双保险）
         function initScrollAnimations() {
             const fadeElements = document.querySelectorAll('.fade-in');
+
+            // 1️⃣ IntersectionObserver 监听（优先使用）
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('appear');
-                        observer.unobserve(entry.target);  // ✅ 添加后停止观察，提升性能
+                        observer.unobserve(entry.target); // 出现后停止观察，提升性能
                     }
                 });
             }, {
-                threshold: 0.1
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px' // ✅ 提前 50px 触发，更灵敏
             });
 
             fadeElements.forEach(element => {
                 observer.observe(element);
 
-                // ✅ 关键修复：手动检查元素是否已在视口中
+                // 2️⃣ 手动检查初始状态（解决首屏元素不显示）
                 const rect = element.getBoundingClientRect();
                 if (rect.top < window.innerHeight && rect.bottom > 0) {
                     element.classList.add('appear');
                     observer.unobserve(element);
                 }
             });
+
+            // 3️⃣ ✅ 关键修复：添加滚动监听 fallback（解决 Observer 失效）
+            let ticking = false;
+            window.addEventListener('scroll', () => {
+                if (!ticking) {
+                    window.requestAnimationFrame(() => {
+                        fadeElements.forEach(element => {
+                            // 只检查还没出现的元素
+                            if (!element.classList.contains('appear')) {
+                                const rect = element.getBoundingClientRect();
+                                if (rect.top < window.innerHeight && rect.bottom > 0) {
+                                    element.classList.add('appear');
+                                }
+                            }
+                        });
+                        ticking = false;
+                    });
+                    ticking = true;
+                }
+            }, { passive: true });
+
+            // 4️⃣ 触发一次滚动检查（确保加载完立即检查）
+            window.dispatchEvent(new Event('scroll'));
         }
 
         // Logo点击展开菜单功能（仅手机版）
