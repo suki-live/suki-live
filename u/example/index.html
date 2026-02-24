@@ -133,6 +133,11 @@
       font-size: 0.85rem;
       margin-top: 2rem;
     }
+    .footer-note a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+    .footer-note a:hover { text-decoration: underline; }
     .loading { text-align: center; color: var(--text-light); padding: 2rem; }
     @media (max-width: 640px) {
       .header { padding: 2rem 1rem 1.5rem; }
@@ -156,9 +161,13 @@
     </div>
   </div>
 
-  <p class="footer-note">💙 托管于 <a href="https://github.com/suki-live/suki-live" style="color:var(--accent);text-decoration:none">suki-live</a> · <a href="/" style="color:var(--accent)">返回首页</a></p>
+  <p class="footer-note">
+    💙 托管于 <a href="https://github.com/suki-live/suki-live" target="_blank" rel="noopener">suki-live</a> · 
+    <a href="https://suki.live">返回首页</a>
+  </p>
 
   <script>
+    // 获取主播 ID（子域名）
     const getVtuberId = () => {
       const host = window.location.hostname;
       if (host === 'suki.live' || host === 'www.suki.live') return 'example';
@@ -166,7 +175,10 @@
     };
 
     const id = getVtuberId();
-    const base = `/u/${id}`;
+    
+    // ✅ 关键：使用相对路径加载资源，避免子域名下路径重复
+    // Worker 会自动将 example.suki.live/info.json 重写为 /suki-live/u/example/info.json
+    const base = '.';
 
     // 加载 info.json + playlist.json
     Promise.all([
@@ -181,6 +193,7 @@
       document.getElementById('tagline').textContent = info.tagline || '';
       
       if (info.avatar) {
+        // ✅ 相对路径加载头像
         document.getElementById('avatar').src = `${base}/assets/${info.avatar}`;
       }
 
@@ -263,7 +276,7 @@
             主播 <code>${id}</code> 的配置可能尚未完成。
           </p>
           <p style="margin-top:1rem">
-            <a href="/" style="color:var(--accent)">返回首页</a> · 
+            <a href="https://suki.live" style="color:var(--accent)">返回首页</a> · 
             <a href="https://github.com/suki-live/suki-live" target="_blank" style="color:var(--accent)">查看注册指南</a>
           </p>
         </div>
