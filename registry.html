@@ -433,7 +433,7 @@
       }
 
       container.innerHTML = vtubers.map(v => {
-        const avatarUrl = `/u/${v.id}/avatar.png`;
+        const avatarUrl = `https://${v.id}.suki.live/avatar.png`;
         const statusLabel = v.status === 'active' ? '活跃' : v.status === 'inactive' ? '暂停' : '封禁';
         const statusClass = `status-${v.status}`;
 
