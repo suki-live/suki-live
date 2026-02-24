@@ -79,15 +79,13 @@
       box-shadow: var(--shadow);
     }
 
+    /* ✅ 修复后：h2 保持默认布局，不影响 bio 内标题 */
     .card h2 {
       font-size: 1.1rem;
-      margin-bottom: 0.8rem;
+      margin-bottom: 0.5rem;
+      /* 微调间距 */
       color: #2d3748;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 0.5rem;
+      /* 不加 display:flex，保持默认 block */
     }
 
     .card h2::before {
@@ -97,6 +95,9 @@
       background: var(--accent);
       border-radius: 2px;
       display: inline-block;
+      vertical-align: middle;
+      /* ✅ 让图标和文字垂直对齐 */
+      margin-right: 0.5rem;
     }
 
     .playlist-desc {
@@ -517,6 +518,22 @@
         height: 140px;
       }
     }
+
+    /* === 歌单控制栏（独立 flex 容器）=== */
+    .playlist-header {
+      display: flex;
+      /* ✅ 这里用 flex，不影响 h2 */
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.8rem;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+    }
+
+    .view-toggle {
+      display: flex;
+      gap: 0.4rem;
+    }
   </style>
 </head>
 
@@ -617,16 +634,18 @@
         if (info.show_playlist !== false && playlist.items?.length) {
           html += `
     <div class="card">
-      <h2>
-        <span>🎵 ${playlist.title || '推荐歌单'}</span>
-        <div class="playlist-header">
-          <div class="view-toggle">
-            <button class="view-btn active" data-view="list" onclick="switchView('list')">📋 列表</button>
-            <button class="view-btn" data-view="grid" onclick="switchView('grid')">🔲 卡片</button>
-          </div>
-          <button class="random-btn" onclick="playRandom()">🎲 随机选歌</button>
+      <!-- ✅ 标题单独一行，保持默认 block 布局 -->
+      <h2>🎵 ${playlist.title || '推荐歌单'}</h2>
+      
+      <!-- ✅ 控制栏独立容器，用 flex 横向排列 -->
+      <div class="playlist-header">
+        <div class="view-toggle">
+          <button class="view-btn active" data-view="list" onclick="switchView('list')">📋 列表</button>
+          <button class="view-btn" data-view="grid" onclick="switchView('grid')">🔲 卡片</button>
         </div>
-      </h2>
+        <button class="random-btn" onclick="playRandom()">🎲 随机选歌</button>
+      </div>
+      
       ${playlist.description ? `<p class="playlist-desc">${playlist.description}</p>` : ''}
       <ul class="playlist list-view" id="playlist-container">
         ${renderPlaylist(playlist.items, 'list')}
