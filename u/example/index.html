@@ -5,8 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title id="page-title">加载中… · suki.live</title>
   
-  <!-- favicon：初始为空，JS 预检成功后再设置 -->
-  <link id="favicon" rel="icon" type="image/x-icon" href=""/>
+  <!-- ✅ favicon：相对路径 + 404 时移除 -->
+  <link id="favicon" rel="icon" type="image/x-icon" href="./icon.ico" 
+        onerror="this.remove()"/>
   
   <style>
     :root {
@@ -42,8 +43,6 @@
       box-shadow: var(--shadow);
       margin-bottom: 1rem;
       background: #e2e8f0;
-      /* ✅ 初始隐藏，预检成功后再显示 */
-      display: none;
     }
     .name { font-size: 1.4rem; font-weight: 600; margin-bottom: 0.3rem; }
     .tagline { color: var(--text-light); font-size: 0.95rem; }
@@ -172,8 +171,9 @@
 </head>
 <body>
   <div class="header">
-    <!-- ✅ 头像初始隐藏，预检成功后 JS 控制显示 -->
-    <img id="avatar" class="avatar" src="" alt="avatar"/>
+    <!-- ✅ 头像：相对路径 + 404 时隐藏 -->
+    <img id="avatar" class="avatar" src="./avatar.png" alt="avatar" 
+         onerror="this.style.display='none'"/>
     <div id="name" class="name">加载中…</div>
     <div id="tagline" class="tagline"></div>
     <div id="social" class="social-links"></div>
@@ -213,45 +213,7 @@
     const id = getVtuberId();
     const base = '.';
 
-    // ========================================
-    // ✅ 资源预检模块：文件不存在则静默隐藏
-    // ========================================
-    
-    // 预检并加载头像
-    const avatarEl = document.getElementById('avatar');
-    const avatarPath = `${base}/avatar.png?t=${Date.now()}`; // 加时间戳避免缓存
-    const avatarTest = new Image();
-    
-    avatarTest.onload = function() {
-      // ✅ 文件存在：设置 src 并显示
-      avatarEl.src = avatarPath.replace(/\?t=.*/, ''); // 移除时间戳
-      avatarEl.style.display = '';
-    };
-    avatarTest.onerror = function() {
-      // ❌ 文件不存在：移除元素，不显示任何 fallback
-      avatarEl.remove();
-    };
-    avatarTest.src = avatarPath; // 触发预检
-
-    // 预检并加载 favicon
-    const faviconEl = document.getElementById('favicon');
-    const iconPath = `${base}/icon.ico?t=${Date.now()}`;
-    const iconTest = new Image();
-    
-    iconTest.onload = function() {
-      // ✅ 文件存在：设置 href
-      faviconEl.href = iconPath.replace(/\?t=.*/, '');
-    };
-    iconTest.onerror = function() {
-      // ❌ 文件不存在：移除 link 标签，浏览器用默认 favicon
-      faviconEl.remove();
-    };
-    iconTest.src = iconPath; // 触发预检
-
-    // ========================================
-    // ✅ 主数据加载模块
-    // ========================================
-    
+    // ✅ 加载 info.json + playlist.json（相对路径，Worker 自动重写）
     Promise.all([
       fetch(`${base}/info.json`).then(r => r.ok ? r.json() : Promise.reject('info')),
       fetch(`${base}/playlist.json`).then(r => r.ok ? r.json() : Promise.reject('playlist'))
@@ -339,7 +301,7 @@
             document.getElementById('bio-content').innerHTML = `<p>${html}</p>`;
           })
           .catch(() => {
-            // bio.md 不存在：隐藏整个「关于我」卡片
+            // bio.md 不存在：隐藏「关于我」卡片
             const bioCard = document.querySelector('.card h2:nth-child(1)')?.closest('.card');
             if (bioCard) bioCard.remove();
           });
