@@ -23,6 +23,13 @@
       "status": "active"
     },
     {
+      "id": "pp",
+      "name": "PP",
+      "tagline": "温柔正能量努力的唱见~~~",
+      "registered_at": "2026-02-24",
+      "status": "active"
+    },
+    {
       "id": "example",
       "name": "Example",
       "tagline": "用歌声传递温柔的虚拟歌姬 🌸",
