@@ -226,8 +226,26 @@ suki-live/
 /u/your-id/
 ├── info.json          # ✅ 必填，含 "use_custom_page": true
 ├── custom.html        # ✅ 必填：完全自定义的页面
-├── custom.js (可选)   # ✅ 自定义交互脚本
+├── custom.js (可选)   # ❌ 自定义交互脚本
+├── favicon.ico (可选) # ⚠️ 仍建议保留（用于自定义网站图标）
 └── avatar.png (可选)  # ⚠️ 仍建议保留（用于 registry.html 名录页）
+```
+
+
+#### 在 custom.html 中加载 custom.js（可选）
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <!-- ... head 内容 ... -->
+</head>
+<body>
+  <!-- 你的自定义内容 -->
+  
+  <!-- ✅ 如需自定义 JS，在底部手动添加 -->
+  <script src="./custom.js"></script>
+</body>
+</html>
 ```
 
 #### 第 2 步：配置 info.json（启用开关）

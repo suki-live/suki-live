@@ -560,17 +560,6 @@
                 // ✅ 替换整个页面内容
                 document.body.innerHTML = html;
                 
-                // ✅ 可选：加载自定义 JS（如果存在）
-                const customJs = `${base}/custom.js?t=${Date.now()}`;
-                fetch(customJs, { method: 'HEAD', cache: 'no-store' })
-                  .then(res => {
-                    if (res.ok) {
-                      const script = document.createElement('script');
-                      script.src = customJs.replace(/\?t=.*/, '');
-                      document.body.appendChild(script);
-                    }
-                  })
-                  .catch(() => {}); // 静默失败
               })
               .catch(err => {
                 // ❌ custom.html 不存在：显示友好提示（不 fallback 到默认模板）
