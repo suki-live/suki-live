@@ -1,13 +1,27 @@
 {
   "name": "Example",
   "tagline": "用歌声传递温柔的虚拟歌姬 🌸",
-  "avatar": "avatar.png",
   "bio": true,
-  "social": {
-    "bilibili": "https://space.bilibili.com/xxxxxx",
-    "twitter": "https://twitter.com/example",
-    "youtube": "https://youtube.com/@example"
-  },
+  "show_playlist": true,
+  "anonymail": "https://dreamail.cn/send?dm=xxxxxx",
+  "social": [
+    {
+      "label": "B站",
+      "url": "https://space.bilibili.com/xxxxxx"
+    },
+    {
+      "label": "Twitter",
+      "url": "https://twitter.com/example"
+    },
+    {
+      "label": "YouTube",
+      "url": "https://youtube.com/@example"
+    },
+    {
+      "label": "个人博客",
+      "url": "https://example.com"
+    }
+  ],
   "created_at": "2026-01-01",
   "updated_at": "2026-02-24"
 }

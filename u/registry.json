@@ -1,29 +1,19 @@
 {
   "updated_at": "2026-02-24",
-  "total": 3,
+  "total": 2,
   "vtubers": [
     {
-      "id": "example",
-      "name": "Example",
-      "tagline": "用歌声传递温柔的虚拟歌姬 🌸",
-      "avatar": "assets/avatar.png",
-      "registered_at": "2026-01-01",
-      "status": "active"
-    },
-    {
-      "id": "miku",
-      "name": "Miku",
-      "tagline": "世界第一的虚拟歌姬 🎤",
-      "avatar": "assets/avatar.png",
+      "id": "yukiho",
+      "name": "雪穗yukiho",
+      "tagline": "表面上是三语V但是实际上是零语言掌握者的异世界打工人雪穗ユキホ～",
       "registered_at": "2026-01-15",
       "status": "active"
     },
     {
-      "id": "starchild",
-      "name": "StarChild",
-      "tagline": "在星海中歌唱的旅人 ✨",
-      "avatar": "assets/avatar.png",
-      "registered_at": "2026-02-10",
+      "id": "example",
+      "name": "Example",
+      "tagline": "用歌声传递温柔的虚拟歌姬 🌸",
+      "registered_at": "2026-01-01",
       "status": "active"
     }
   ]
