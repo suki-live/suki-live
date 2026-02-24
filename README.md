@@ -221,34 +221,92 @@ suki-live/
 
 如果你希望**完全自由设计页面**，可以启用自定义模式：
 
-#### 第 1 步：创建目录 + 基础配置
+#### ⚠️ 重要提示：Cloudflare Workers V8 沙盒限制
+
+> 🚨 **注意**：suki.live 使用 Cloudflare Workers 进行路由重写，Workers 运行在 **V8 隔离沙盒** 中，**不是完整浏览器环境**：
+> - ❌ 不支持 `window.onload` / `DOMContentLoaded` 等浏览器事件
+> - ❌ 通过 `innerHTML` 注入的 `<script>` 标签**不会自动执行**
+> - ❌ 依赖 `load` 事件初始化的 JS（如星空背景、滚动动画）**可能无法正常工作**
+
+**解决方案**：如果 `custom.html` 需要执行 JS 脚本，建议使用「**跳转模式**」规避注入限制。
+
+---
+
+#### 方案 A：跳转模式（推荐 ✅，JS 100% 可靠）
+
+##### 第 1 步：创建目录结构
 ```
 /u/your-id/
-├── info.json          # ✅ 必填，含 "use_custom_page": true
-├── custom.html        # ✅ 必填：完全自定义的页面
-├── custom.js (可选)   # ❌ 自定义交互脚本
-├── favicon.ico (可选) # ⚠️ 仍建议保留（用于自定义网站图标）
-└── avatar.png (可选)  # ⚠️ 仍建议保留（用于 registry.html 名录页）
+├── info.json              # ✅ 必填，含 "use_custom_page": true
+├── index.html             # ✅ 跳转页（30 行代码，见下方模板）
+├── main/                  # ✅ 自定义主页目录
+│   ├── index.html         # ✅ 完整的静态页面（含 <html><head><body>）
+│   ├── style.css          # ✅ 页面样式（可选）
+│   └── assets/            # ✅ 页面资源
+├── recollection/          # ✅ 其他子页面（可选）
+│   └── index.html
+└── avatar.png             # ⚠️ 仍建议保留（用于 registry.html 名录页）
 ```
 
+##### 第 2 步：创建跳转页 `/u/your-id/index.html`
 
-#### 在 custom.html 中加载 custom.js（可选）
 ```html
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <!-- ... head 内容 ... -->
+  <meta charset="UTF-8" />
+  <!-- ✅ 0 秒后跳转到 /main -->
+  <meta http-equiv="refresh" content="0;url=./main">
+  <title>跳转中… · suki.live</title>
+  <style>
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      margin: 0;
+      font-family: sans-serif;
+      background: #fafbfc;
+      color: #718096;
+    }
+  </style>
 </head>
 <body>
-  <!-- 你的自定义内容 -->
-  
-  <!-- ✅ 如需自定义 JS，在底部手动添加 -->
-  <script src="./custom.js"></script>
+  <p>🌸 正在跳转到专属页面… <a href="./main">立即跳转</a></p>
+  <script>
+    // ✅ 立即跳转（比 meta 更快）
+    window.location.replace('./main');
+  </script>
 </body>
 </html>
 ```
 
-#### 第 2 步：配置 info.json（启用开关）
+> 💡 原理：Worker 返回这个轻量跳转页 → 浏览器执行 `window.location.replace('./main')` → 直接加载 `/main/index.html`（完整静态页，JS 正常执行）
+
+##### 第 3 步：编写 `/u/your-id/main/index.html`
+
+这就是你的**完整自定义主页**，和普通静态网站一样：
+
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>χ · 小希 Channel | 九年相伴纪念站</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <!-- 你的完整页面内容 -->
+  <h1>✨ 欢迎来到我的星空</h1>
+  
+  <!-- ✅ JS 脚本放在 body 末尾，浏览器会正常执行 -->
+  <script src="./script.js"></script>
+</body>
+</html>
+```
+
+##### 第 4 步：配置 info.json
 ```json
 {
   "name": "YourName",
@@ -260,53 +318,62 @@ suki-live/
 }
 ```
 
-> 🔹 `use_custom_page: true` → 启用完全自定义模式  
-> 🔹 启用后，系统**只加载 `custom.html`**，跳过所有默认模板逻辑
+---
 
-#### 第 3 步：编写 custom.html（完全接管页面）
+#### 方案 B：直接注入模式（简单但有局限）
+
+如果 `custom.html` **不需要执行 JS**，或只需简单 CSS 动画，可以直接使用注入模式：
+
+##### 第 1 步：创建 `/u/your-id/custom.html`
 
 ```html
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>我的定制页 · suki.live</title>
   <style>
-    /* 完全自定义样式，不受默认模板影响 */
+    /* ✅ 样式写在 <head> 里，注入后会自动生效 */
     body {
-      font-family: 'Comic Sans MS', cursive;
       background: linear-gradient(135deg, #ffecd2, #fcb69f);
       color: #333;
-      padding: 2rem;
       text-align: center;
-    }
-    .btn {
-      display: inline-block;
-      padding: 0.8rem 2rem;
-      background: #ff6b6b;
-      color: white;
-      border-radius: 30px;
-      text-decoration: none;
-      margin: 0.5rem;
+      padding: 2rem;
     }
   </style>
 </head>
 <body>
   <h1>🎀 这是我的定制主页！</h1>
-  <p>完全自由发挥～</p>
-  <a href="https://space.bilibili.com/xxx" class="btn">📺 去 B 站</a>
-  <a href="https://suki.live/registry.html" class="btn">📋 返回名录</a>
+  <p>纯静态内容，无需 JS～</p>
   
-  <!-- 可选：加载自定义 JS -->
-  <script src="./custom.js"></script>
+  <!-- ❌ 避免：inline script 可能不执行 -->
+  <!-- <script>console.log('这可能不会输出')</script> -->
+  
+  <!-- ✅ 如需 JS，用外部文件 + 手动加载（高级用法） -->
+  <!-- <script src="./custom.js"></script> -->
 </body>
 </html>
 ```
 
-#### 第 4 步：提交 PR（同模式 A）
+> ⚠️ 局限：`<script>` 标签通过 `innerHTML` 注入后**不会自动执行**，如需 JS 交互请改用「跳转模式」。
 
-> ⚠️ **注意**：如果 `custom.html` 不存在，页面会显示「主页定制中」友好提示，**不会 fallback 到默认模板**
+---
+
+#### 方案对比
+
+| 特性 | 跳转模式（方案 A） | 注入模式（方案 B） |
+|------|------------------|------------------|
+| ✅ JS 执行 | 100% 可靠（浏览器原生加载） | ❌ 可能不执行（V8 沙盒限制） |
+| ✅ CSS 样式 | ✅ 正常 | ✅ 正常 |
+| ✅ 页面结构 | 完整 `<html><head><body>` | 需适配注入逻辑 |
+| ✅ 实现难度 | 中等（多一个跳转页） | 简单（单文件） |
+| 🎯 推荐场景 | 需要 JS 交互 / 复杂动画 | 纯静态展示 / 简单 CSS 动画 |
+
+---
+
+#### 第 5 步：提交 PR（同模式 A）
+
+> ⚠️ **注意**：如果 `custom.html` 或 `index.html`（跳转页）不存在，页面会显示「主页定制中」友好提示，**不会 fallback 到默认模板**。
 
 ---
 
@@ -323,7 +390,8 @@ suki-live/
 | ✅ 返回首页 | 点击页脚「返回首页」 | 跳转至 `https://suki.live` |
 | ✅ 名录页展示 | `https://suki.live/registry.html` | 你的卡片出现在名录中，头像正常加载 |
 | ✅ 移动端适配 | 手机浏览器访问 | 布局自动适配，无横向滚动 |
-| ✅ 自定义模式 | `use_custom_page: true` + `custom.html` | 页面完全替换为自定义内容 |
+| ✅ 自定义模式 | `use_custom_page: true` + 自定义页面 | 页面完全替换为自定义内容 |
+| ✅ JS 执行（跳转模式） | 访问 `/main/` | 控制台输出自定义 JS 日志 |
 
 ---
 
@@ -376,13 +444,17 @@ A：当前支持：
 ### Q：可以自定义页面样式吗？
 A：有两种方式：
 1. **轻度定制**：Fork 后修改 `/u/index.html` 的 CSS 变量（影响所有主播）
-2. **完全定制**：启用 `use_custom_page: true` + 编写 `custom.html`（仅影响自己）
+2. **完全定制**：启用 `use_custom_page: true` + 编写自定义页面（仅影响自己）
 
 ### Q：启用自定义模式后，playlist.json 报 404？
 A：这是**预期行为**！启用 `use_custom_page: true` 后：
-- 系统**只加载 `custom.html`**，跳过 `playlist.json` 等默认文件
+- 系统**只加载自定义页面**，跳过 `playlist.json` 等默认文件
 - Console 中的 404 日志可忽略，不影响页面功能
 - 如需避免日志，可不创建 `playlist.json`
+
+### Q：为什么自定义页面的 JS 不执行？
+A：因为 Cloudflare Workers 运行在 **V8 沙盒** 中，通过 `innerHTML` 注入的 `<script>` 标签**不会自动执行**。  
+✅ 解决方案：使用「跳转模式」，让浏览器直接加载完整静态页，JS 即可正常执行。
 
 ### Q：内容违规会被处理吗？
 A：是的。注册即表示同意：
