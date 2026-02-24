@@ -43,19 +43,20 @@
 
 ```
 suki-live/
-├── index.html              # 🏠 首页（注册引导 + 功能介绍）
-├── registry.html           # 📋 主播名录页（搜索 + 统计 + 卡片展示）
+├── index.html              # 首页（注册引导 + 功能介绍）
+├── registry.html           # 主播名录页（搜索 + 统计 + 卡片展示）
 ├── CNAME                   # GitHub Pages 自定义域名：suki.live
 ├── README.md               # 本文档
 │
-└── u/                      # 👈 子域名内容根目录
-    ├── registry.json       # 📦 所有主播注册信息汇总
-    └── example/            # 🎤 示例主播（注册时请复制此目录）
+└── u/                      # 子域名内容根目录
+    ├── default-avatar.svg  # 新增：默认头像（所有主播共用）
+    ├── registry.json       # 所有主播注册信息汇总
+    └── example/            # 示例主播（注册时请复制此目录）
         ├── index.html      # 主播个人页模板（无需修改）
         ├── info.json       # 个人信息配置
         ├── playlist.json   # 歌单数据配置
         ├── bio.md          # 自我介绍（Markdown，可选）
-        └── avatar.png      # 👈 头像（固定命名，自动加载）
+        └── avatar.png      # 头像（固定命名，自动加载）
 ```
 
 > 🔹 新主播注册时，只需复制 `/u/example/` → `/u/你的ID/`，修改配置即可

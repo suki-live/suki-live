@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title id="page-title">加载中… · suki.live</title>
+  <link id="favicon" rel="icon" type="image/x-icon" href="./icon.ico"
+    onerror="this.href='/u/default-avatar.svg';this.onerror=null" />
   <style>
     :root {
       --bg: #fafbfc;
@@ -13,9 +16,15 @@
       --accent: #a7c7e7;
       --accent-soft: #f0f7ff;
       --border: #e2e8f0;
-      --shadow: 0 4px 12px rgba(0,0,0,0.06);
+      --shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
     }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       background: var(--bg);
@@ -23,12 +32,14 @@
       line-height: 1.6;
       padding-bottom: 3rem;
     }
+
     .header {
       background: linear-gradient(135deg, var(--accent-soft), #f8f9fa);
       padding: 2.5rem 1rem 2rem;
       text-align: center;
       border-bottom: 1px solid var(--border);
     }
+
     .avatar {
       width: 96px;
       height: 96px;
@@ -39,13 +50,24 @@
       margin-bottom: 1rem;
       background: #e2e8f0;
     }
-    .name { font-size: 1.4rem; font-weight: 600; margin-bottom: 0.3rem; }
-    .tagline { color: var(--text-light); font-size: 0.95rem; }
+
+    .name {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 0.3rem;
+    }
+
+    .tagline {
+      color: var(--text-light);
+      font-size: 0.95rem;
+    }
+
     .container {
       max-width: 720px;
       margin: 1.5rem auto;
       padding: 0 1rem;
     }
+
     .card {
       background: var(--card);
       border: 1px solid var(--border);
@@ -54,6 +76,7 @@
       margin-bottom: 1.2rem;
       box-shadow: var(--shadow);
     }
+
     .card h2 {
       font-size: 1.1rem;
       margin-bottom: 0.8rem;
@@ -62,6 +85,7 @@
       align-items: center;
       gap: 0.5rem;
     }
+
     .card h2::before {
       content: "";
       width: 4px;
@@ -70,18 +94,24 @@
       border-radius: 2px;
       display: inline-block;
     }
+
     .playlist-desc {
       color: var(--text-light);
       font-size: 0.9rem;
       margin-bottom: 1rem;
       font-style: italic;
     }
+
     .bio {
       color: var(--text-light);
       font-size: 0.95rem;
       white-space: pre-wrap;
     }
-    .playlist { list-style: none; }
+
+    .playlist {
+      list-style: none;
+    }
+
     .playlist li {
       padding: 0.7rem 0;
       border-bottom: 1px dashed var(--border);
@@ -89,7 +119,11 @@
       align-items: flex-start;
       gap: 0.8rem;
     }
-    .playlist li:last-child { border-bottom: none; }
+
+    .playlist li:last-child {
+      border-bottom: none;
+    }
+
     .song-cover {
       width: 48px;
       height: 48px;
@@ -98,9 +132,23 @@
       background: #edf2f7;
       flex-shrink: 0;
     }
-    .song-info { flex: 1; min-width: 0; }
-    .song-title { font-weight: 500; color: var(--text); margin-bottom: 0.2rem; }
-    .song-meta { color: var(--text-light); font-size: 0.85rem; }
+
+    .song-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .song-title {
+      font-weight: 500;
+      color: var(--text);
+      margin-bottom: 0.2rem;
+    }
+
+    .song-meta {
+      color: var(--text-light);
+      font-size: 0.85rem;
+    }
+
     .song-link {
       color: var(--accent);
       text-decoration: none;
@@ -110,10 +158,12 @@
       border-radius: 6px;
       transition: all 0.2s;
     }
+
     .song-link:hover {
       background: var(--accent);
       color: #1a202c;
     }
+
     .social-links {
       display: flex;
       gap: 0.6rem;
@@ -121,6 +171,7 @@
       margin-top: 0.5rem;
       flex-wrap: wrap;
     }
+
     .social-links a {
       color: var(--text-light);
       text-decoration: none;
@@ -131,43 +182,76 @@
       transition: all 0.2s;
       white-space: nowrap;
     }
+
     .social-links a:hover {
       border-color: var(--accent);
       color: var(--accent);
       background: var(--accent-soft);
     }
+
     .social-links a.anonymail {
       background: var(--accent-soft);
       color: #c2185b;
       border-color: var(--accent);
       font-weight: 500;
     }
+
     .footer-note {
       text-align: center;
       color: var(--text-light);
       font-size: 0.85rem;
       margin-top: 2rem;
     }
+
     .footer-note a {
       color: var(--accent);
       text-decoration: none;
     }
-    .footer-note a:hover { text-decoration: underline; }
-    .loading { text-align: center; color: var(--text-light); padding: 2rem; }
+
+    .footer-note a:hover {
+      text-decoration: underline;
+    }
+
+    .loading {
+      text-align: center;
+      color: var(--text-light);
+      padding: 2rem;
+    }
+
     @media (max-width: 640px) {
-      .header { padding: 2rem 1rem 1.5rem; }
-      .name { font-size: 1.2rem; }
-      .playlist li { flex-direction: column; gap: 0.5rem; }
-      .song-cover { width: 100%; height: 120px; }
-      .social-links { gap: 0.4rem; }
-      .social-links a { font-size: 0.8rem; padding: 0.25rem 0.5rem; }
+      .header {
+        padding: 2rem 1rem 1.5rem;
+      }
+
+      .name {
+        font-size: 1.2rem;
+      }
+
+      .playlist li {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+
+      .song-cover {
+        width: 100%;
+        height: 120px;
+      }
+
+      .social-links {
+        gap: 0.4rem;
+      }
+
+      .social-links a {
+        font-size: 0.8rem;
+        padding: 0.25rem 0.5rem;
+      }
     }
   </style>
 </head>
+
 <body>
   <div class="header">
-    <img id="avatar" class="avatar" src="" alt="avatar" 
-         onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2296%22 height=%2296%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%23cbd5e1%22 stroke-width=%221%22%3E%3Ccircle cx=%2212%22 cy=%2212%22 r=%2210%22/%3E%3Cpath d=%22M12 16v-4M12 8h.01%22/%3E%3C/svg%3E';this.onerror=null"/>
+    <img id="avatar" class="avatar" src="" alt="avatar" onerror="this.src='/u/default-avatar.svg';this.onerror=null" />
     <div id="name" class="name">加载中…</div>
     <div id="tagline" class="tagline"></div>
     <div id="social" class="social-links"></div>
@@ -180,8 +264,8 @@
   </div>
 
   <p class="footer-note">
-    💙 托管于 <a href="https://github.com/suki-live/suki-live" target="_blank" rel="noopener">suki-live</a> · 
-    <a href="https://suki.live">返回首页</a> · 
+    💙 托管于 <a href="https://github.com/suki-live/suki-live" target="_blank" rel="noopener">suki-live</a> ·
+    <a href="https://suki.live">返回首页</a> ·
     <a href="https://dreamail.cn/" target="_blank" rel="noopener">✉️ 匿名信指引</a>
   </p>
 
@@ -212,52 +296,52 @@
       fetch(`${base}/info.json`).then(r => r.ok ? r.json() : Promise.reject('info')),
       fetch(`${base}/playlist.json`).then(r => r.ok ? r.json() : Promise.reject('playlist'))
     ])
-    .then(([info, playlist]) => {
-      // === 渲染基本信息 ===
-      document.title = `${info.name} · suki.live`;
-      document.getElementById('page-title').textContent = `${info.name} · suki.live`;
-      document.getElementById('name').textContent = info.name;
-      document.getElementById('tagline').textContent = info.tagline || '';
-      
-      // 头像自动加载同目录 avatar.png
-      document.getElementById('avatar').src = `${base}/avatar.png`;
+      .then(([info, playlist]) => {
+        // === 渲染基本信息 ===
+        document.title = `${info.name} · suki.live`;
+        document.getElementById('page-title').textContent = `${info.name} · suki.live`;
+        document.getElementById('name').textContent = info.name;
+        document.getElementById('tagline').textContent = info.tagline || '';
 
-      // 社交链接 + 匿名信按钮
-      const socialEl = document.getElementById('social');
-      
-      if (Array.isArray(info.social) && info.social.length) {
-        info.social.forEach(item => {
-          if (item.label && item.url) {
-            socialEl.innerHTML += `
+        // 头像自动加载同目录 avatar.png
+        document.getElementById('avatar').src = `${base}/avatar.png`;
+
+        // 社交链接 + 匿名信按钮
+        const socialEl = document.getElementById('social');
+
+        if (Array.isArray(info.social) && info.social.length) {
+          info.social.forEach(item => {
+            if (item.label && item.url) {
+              socialEl.innerHTML += `
               <a href="${escapeHtml(item.url)}" target="_blank" rel="noopener">
                 ${escapeHtml(item.label)}
               </a>`;
-          }
-        });
-      }
-      
-      if (info.anonymail) {
-        socialEl.innerHTML += `
+            }
+          });
+        }
+
+        if (info.anonymail) {
+          socialEl.innerHTML += `
           <a href="${escapeHtml(info.anonymail)}" target="_blank" rel="noopener" class="anonymail">
             ✉️ 匿名信
           </a>`;
-      }
+        }
 
-      // === 组装页面内容 ===
-      let html = '';
+        // === 组装页面内容 ===
+        let html = '';
 
-      // 自我介绍
-      if (info.bio) {
-        html += `
+        // 自我介绍
+        if (info.bio) {
+          html += `
           <div class="card">
             <h2>📝 关于我</h2>
             <div class="bio" id="bio-content">加载中…</div>
           </div>`;
-      }
+        }
 
-      // 🎵 歌单（仅当 show_playlist !== false 且有数据时显示）
-      if (info.show_playlist !== false && playlist.items?.length) {
-        html += `
+        // 🎵 歌单（仅当 show_playlist !== false 且有数据时显示）
+        if (info.show_playlist !== false && playlist.items?.length) {
+          html += `
           <div class="card">
             <h2>🎵 ${playlist.title || '推荐歌单'}</h2>
             ${playlist.description ? `<p class="playlist-desc">${playlist.description}</p>` : ''}
@@ -277,35 +361,35 @@
               `).join('')}
             </ul>
           </div>`;
-      }
+        }
 
-      document.getElementById('content').innerHTML = html;
+        document.getElementById('content').innerHTML = html;
 
-      // 加载 bio.md
-      if (info.bio) {
-        fetch(`${base}/bio.md`)
-          .then(r => r.text())
-          .then(md => {
-            const html = md
-              .replace(/^### (.*$)/gim, '<h3>$1</h3>')
-              .replace(/^## (.*$)/gim, '<h2>$1</h2>')
-              .replace(/^# (.*$)/gim, '<h1>$1</h1>')
-              .replace(/\*\*(.*?)\*\*/gim, '<strong>$1</strong>')
-              .replace(/\*(.*?)\*/gim, '<em>$1</em>')
-              .replace(/\[(.*?)\]\((.*?)\)/gim, '<a href="$2" target="_blank" rel="noopener">$1</a>')
-              .replace(/\n{2,}/g, '</p><p>')
-              .replace(/\n/g, '<br/>');
-            document.getElementById('bio-content').innerHTML = `<p>${html}</p>`;
-          })
-          .catch(() => {
-            document.getElementById('bio-content').textContent = '（介绍加载中…）';
-          });
-      }
-    })
-    .catch(err => {
-      console.error('Load error:', err);
-      const missing = err === 'info' ? 'info.json' : 'playlist.json';
-      document.getElementById('content').innerHTML = `
+        // 加载 bio.md
+        if (info.bio) {
+          fetch(`${base}/bio.md`)
+            .then(r => r.text())
+            .then(md => {
+              const html = md
+                .replace(/^### (.*$)/gim, '<h3>$1</h3>')
+                .replace(/^## (.*$)/gim, '<h2>$1</h2>')
+                .replace(/^# (.*$)/gim, '<h1>$1</h1>')
+                .replace(/\*\*(.*?)\*\*/gim, '<strong>$1</strong>')
+                .replace(/\*(.*?)\*/gim, '<em>$1</em>')
+                .replace(/\[(.*?)\]\((.*?)\)/gim, '<a href="$2" target="_blank" rel="noopener">$1</a>')
+                .replace(/\n{2,}/g, '</p><p>')
+                .replace(/\n/g, '<br/>');
+              document.getElementById('bio-content').innerHTML = `<p>${html}</p>`;
+            })
+            .catch(() => {
+              document.getElementById('bio-content').textContent = '（介绍加载中…）';
+            });
+        }
+      })
+      .catch(err => {
+        console.error('Load error:', err);
+        const missing = err === 'info' ? 'info.json' : 'playlist.json';
+        document.getElementById('content').innerHTML = `
         <div class="card">
           <h2>⚠️ 加载失败</h2>
           <p style="color:var(--text-light)">
@@ -318,7 +402,8 @@
           </p>
         </div>
       `;
-    });
+      });
   </script>
 </body>
+
 </html>
