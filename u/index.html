@@ -9,6 +9,9 @@
   <!-- favicon：相对路径 + 404 时静默隐藏 -->
   <link rel="icon" type="image/x-icon" href="./favicon.ico" onerror="this.remove()" />
 
+  <!-- ✅ 添加 marked.js（Markdown 解析器） -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js" defer></script>
+
   <style>
     :root {
       --bg: #fafbfc;
@@ -103,35 +106,78 @@
       font-style: italic;
     }
 
-    /* ✅ bio 内容左对齐 + 分割线样式 */
-    .bio {
+    /* ✅ bio 内容左对齐 + marked 输出样式 */
+    .bio,
+    .bio-content {
       color: var(--text-light);
       font-size: 0.95rem;
-      white-space: pre-wrap;
+      line-height: 1.8;
       text-align: left;
     }
 
     .bio h1,
     .bio h2,
-    .bio h3 {
+    .bio h3,
+    .bio-content h1,
+    .bio-content h2,
+    .bio-content h3 {
       text-align: left;
       margin: 1rem 0 0.5rem;
       display: block;
+      color: var(--text);
+      font-weight: 600;
     }
 
-    .bio p {
+    .bio p,
+    .bio-content p {
       text-align: left;
       margin-bottom: 0.8rem;
     }
 
-    .bio hr {
+    .bio hr,
+    .bio-content hr {
       border: none;
       border-top: 1px dashed var(--border);
       margin: 1.2rem 0;
     }
 
-    /* === Markdown 表格样式 === */
-    .bio table.md-table {
+    .bio-content a {
+      color: var(--accent);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .bio-content a:hover {
+      color: var(--accent-hover, #8ab4d9);
+      text-decoration: underline;
+    }
+
+    .bio-content code {
+      background: var(--accent-soft);
+      padding: 0.2rem 0.4rem;
+      border-radius: 4px;
+      font-size: 0.9em;
+      color: var(--text);
+    }
+
+    .bio-content pre {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1rem;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .bio-content blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      color: var(--text-light);
+      font-style: italic;
+    }
+
+    .bio-content table {
       width: 100%;
       border-collapse: collapse;
       margin: 1.2rem 0;
@@ -139,43 +185,40 @@
       background: var(--card);
       border-radius: 8px;
       overflow: hidden;
-      box-shadow: var(--shadow-light);
     }
 
-    .bio table.md-table th {
+    .bio-content th {
       background: var(--accent-soft);
-      color: var(--text);
-      font-weight: 600;
       padding: 0.8rem 1rem;
       text-align: left;
+      font-weight: 600;
       border-bottom: 2px solid var(--border);
+      color: var(--text);
     }
 
-    .bio table.md-table td {
+    .bio-content td {
       padding: 0.7rem 1rem;
       border-bottom: 1px solid var(--border);
       color: var(--text);
     }
 
-    .bio table.md-table tr:last-child td {
+    .bio-content tr:last-child td {
       border-bottom: none;
     }
 
-    .bio table.md-table tr:hover {
+    .bio-content tr:hover {
       background: var(--accent-soft);
     }
 
-    /* 移动端适配 */
     @media (max-width: 640px) {
-      .bio table.md-table {
-        font-size: 0.9rem;
+      .bio-content table {
         display: block;
         overflow-x: auto;
         -webkit-overflow-scrolling: touch;
       }
 
-      .bio table.md-table th,
-      .bio table.md-table td {
+      .bio-content th,
+      .bio-content td {
         padding: 0.6rem 0.8rem;
         white-space: nowrap;
       }
@@ -561,49 +604,6 @@
         .replace(/'/g, '&#039;');
     }
 
-    // ========================================
-    // ✅ Markdown 表格解析函数
-    // ========================================
-    function parseMarkdownTable(md) {
-      // 匹配完整的 Markdown 表格块
-      // 格式：| 表头 | 表头 |
-      //      | --- | --- |
-      //      | 内容 | 内容 |
-      return md.replace(/^\|.+?\|\n^\|[\s|\-:]+?\|\n(?:^\|.+?\|\n?)+/gm, (table) => {
-        const rows = table.trim()
-          .split('\n')
-          .map(r => r.trim())
-          .filter(r => r.startsWith('|') && r.endsWith('|'));
-
-        if (rows.length < 3) return table; // 至少需要：表头 + 分隔线 + 1 行数据
-
-        // 解析表头（第一行）
-        const headers = rows[0]
-          .split('|')
-          .slice(1, -1) // 去掉首尾空元素
-          .map(h => h.trim());
-
-        // 解析数据行（跳过第 2 行分隔线）
-        const dataRows = rows.slice(2)
-          .map(row => row.split('|').slice(1, -1).map(cell => cell.trim()))
-          .filter(row => row.some(c => c)); // 过滤空行
-
-        // 生成 HTML 表格
-        let html = '<table class="md-table">\n<thead>\n<tr>';
-        headers.forEach(h => html += `<th>${escapeHtml(h)}</th>`);
-        html += '</tr>\n</thead>\n<tbody>\n';
-
-        dataRows.forEach(row => {
-          html += '<tr>';
-          row.forEach(cell => html += `<td>${escapeHtml(cell)}</td>`);
-          html += '</tr>\n';
-        });
-        html += '</tbody>\n</table>';
-
-        return html;
-      });
-    }
-
     // 获取主播 ID（子域名）
     const getVtuberId = () => {
       const host = window.location.hostname;
@@ -680,16 +680,16 @@
               .catch(err => {
                 console.warn(`⚠️ 自定义页面未找到: custom.html`, err);
                 document.body.innerHTML = `
-        <div style="font-family:sans-serif;max-width:600px;margin:4rem auto;padding:2rem;text-align:center">
-          <h2>🌸 主页定制中</h2>
-          <p style="color:#718096">
-            主播 <code>${id}</code> 正在定制专属页面，请稍后再访～
-          </p>
-          <p style="margin-top:1.5rem">
-            <a href="https://suki.live" style="color:#a7c7e7">返回首页</a> · 
-            <a href="https://suki.live/registry.html" style="color:#a7c7e7">查看名录</a>
-          </p>
-        </div>`;
+                  <div style="font-family:sans-serif;max-width:600px;margin:4rem auto;padding:2rem;text-align:center">
+                    <h2>🌸 主页定制中</h2>
+                    <p style="color:#718096">
+                      主播 <code>${id}</code> 正在定制专属页面，请稍后再访～
+                    </p>
+                    <p style="margin-top:1.5rem">
+                      <a href="https://suki.live" style="color:#a7c7e7">返回首页</a> · 
+                      <a href="https://suki.live/registry.html" style="color:#a7c7e7">查看名录</a>
+                    </p>
+                  </div>`;
               });
 
             return; // ✅ 自定义模式结束，不执行默认逻辑
@@ -703,7 +703,6 @@
             });
         })
         .catch(err => {
-          // info.json 或 playlist.json 加载失败
           console.error('Load error:', err);
           const missing = err === 'info' ? 'info.json' : 'playlist.json';
           document.getElementById('content').innerHTML = `
@@ -722,10 +721,10 @@
     }
 
     // ========================================
-    // ✅ 默认模板渲染函数（提取出来，避免重复）
+    // ✅ 默认模板渲染函数
     // ========================================
     function renderDefaultTemplate(info, playlist) {
-
+      // ✅ 关键：赋值给全局变量，供 playRandom 使用
       playlistData = playlist;
 
       // 渲染基本信息
@@ -786,31 +785,32 @@
 
       document.getElementById('content').innerHTML = html;
 
-      // 加载 bio.md
+      // 加载 bio.md（使用 marked.js 解析）
       if (info.bio) {
-        fetch(`${base}/bio.md`)
+        fetch(`${base}/bio.md?t=${Date.now()}`)
           .then(r => r.text())
           .then(md => {
-            // ✅ 1. 先解析块级元素（标题、表格、分割线）
-            md = md.replace(/^### (.*$)/gim, '<h3>$1</h3>');
-            md = md.replace(/^## (.*$)/gim, '<h2>$1</h2>');
-            md = md.replace(/^# (.*$)/gim, '<h1>$1</h1>');
-            md = md.replace(/^---$/gm, '<hr/>');
-            md = parseMarkdownTable(md);  // ✅ 表格解析放这里（直接调用，不是 .then()）
-
-            // ✅ 2. 再解析行内元素（加粗、斜体、链接）
-            md = md.replace(/\*\*(.*?)\*\*/gim, '<strong>$1</strong>');
-            md = md.replace(/\*(.*?)\*/gim, '<em>$1</em>');
-            md = md.replace(/\[(.*?)\]\((.*?)\)/gim, '<a href="$2" target="_blank" rel="noopener">$1</a>');
-
-            // ✅ 3. 最后处理段落换行
-            md = md.replace(/\n{2,}/g, '</p><p>');
-            md = md.replace(/\n/g, '<br/>');
-
-            return `<p>${md}</p>`;
+            // ✅ 等待 marked 加载完成
+            if (typeof marked === 'undefined') {
+              return new Promise(resolve => {
+                const check = () => {
+                  if (typeof marked !== 'undefined') resolve(marked.parse(md));
+                  else setTimeout(check, 50);
+                };
+                check();
+              });
+            }
+            return marked.parse(md);
           })
           .then(html => {
-            document.getElementById('bio-content').innerHTML = html;
+            // ✅ 安全处理链接（只允许 http/https/# 开头）
+            const safeHtml = html.replace(/href="([^"]+)"/g, (match, url) => {
+              if (!/^https?:\/\//.test(url) && !url.startsWith('#')) {
+                return 'href="#" onclick="return false"';
+              }
+              return match;
+            });
+            document.getElementById('bio-content').innerHTML = `<div class="bio-content">${safeHtml}</div>`;
           })
           .catch(() => {
             const bioCard = document.querySelector('.card h2:nth-child(1)')?.closest('.card');
@@ -858,7 +858,7 @@
     // ========================================
     function switchView(viewMode) {
       const container = document.getElementById('playlist-container');
-      if (!container) return;  // ✅ 空值检查，避免报错
+      if (!container) return;  // ✅ 空值检查
 
       const buttons = document.querySelectorAll('.view-btn');
       buttons.forEach(btn => {
@@ -935,7 +935,6 @@
     document.addEventListener('DOMContentLoaded', () => {
       const savedView = localStorage.getItem('suki_playlist_view');
       const container = document.getElementById('playlist-container');
-      // ✅ 确保容器存在 + 歌单已渲染后再恢复偏好
       if (savedView && savedView !== 'list' && container && playlistData?.items) {
         setTimeout(() => switchView(savedView), 100);
       }
