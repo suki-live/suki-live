@@ -56,6 +56,7 @@ suki-live/
         ├── info.json       # 个人信息配置
         ├── playlist.json   # 歌单数据配置
         ├── bio.md          # 自我介绍（Markdown，可选）
+        ├── favicon.ico     # 网站图标（固定命名，自动加载）
         └── avatar.png      # 头像（固定命名，自动加载）
 ```
 
@@ -77,6 +78,7 @@ suki-live/
     ├── info.json     # 填写你的个人信息（见下方模板）
     ├── playlist.json # 填写歌单（可为空数组）
     ├── bio.md        # 自我介绍（可选，Markdown 格式）
+    ├── favicon.ico   # 网站图标（16x16px 以上，方形/圆形裁剪）
     └── avatar.png    # 👈 头像（200x200px 以上，圆形裁剪更佳）
 ```
 
