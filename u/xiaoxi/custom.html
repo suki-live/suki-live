@@ -29,7 +29,7 @@
             background-color: var(--light-gray);
             color: var(--text);
             line-height: 1.8;
-            padding-top: 60px; 
+            padding-top: 60px;
             overflow-x: hidden;
             transition: padding-top 0.3s ease;
         }
@@ -63,7 +63,8 @@
             align-items: center;
             gap: 6px;
             user-select: none;
-            display: none; /* 默认隐藏 */
+            display: none;
+            /* 默认隐藏 */
         }
 
         .logo-mobile:hover {
@@ -125,9 +126,12 @@
         }
 
         @keyframes twinkle {
-            0%, 100% {
+
+            0%,
+            100% {
                 opacity: 0.2;
             }
+
             50% {
                 opacity: 1;
             }
@@ -548,9 +552,12 @@
         }
 
         @keyframes pulse {
-            0%, 100% {
+
+            0%,
+            100% {
                 transform: scale(1);
             }
+
             50% {
                 transform: scale(1.25);
             }
@@ -559,19 +566,20 @@
         /* 响应式设计 - 手机版 */
         @media (max-width: 900px) {
             .navbar {
-                justify-content: flex-start; /* Logo靠左对齐 */
+                justify-content: flex-start;
+                /* Logo靠左对齐 */
             }
-            
+
             /* 显示可点击的Logo */
             .logo-mobile {
                 display: flex;
             }
-            
+
             /* 隐藏桌面导航 */
             .nav-links {
                 display: none;
             }
-            
+
             /* 展开状态的导航菜单 */
             .nav-links.active {
                 position: fixed;
@@ -590,18 +598,19 @@
                 z-index: 1999;
                 animation: slideIn 0.4s ease-out;
             }
-            
+
             @keyframes slideIn {
                 from {
                     opacity: 0;
                     transform: translateY(-20px);
                 }
+
                 to {
                     opacity: 1;
                     transform: translateY(0);
                 }
             }
-            
+
             .nav-links a {
                 font-size: 1.8rem;
                 font-weight: 600;
@@ -613,13 +622,13 @@
                 transition: all 0.3s ease;
                 box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
             }
-            
+
             .nav-links a:hover {
                 background-color: rgba(255, 255, 255, 0.2);
                 transform: translateY(-3px) scale(1.05);
                 box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
             }
-            
+
             .logo-container .logo {
                 font-size: 2.6rem;
             }
@@ -707,12 +716,12 @@
             .stat-number {
                 font-size: 1.8rem;
             }
-            
+
             .logo-mobile {
                 font-size: 1.4rem;
                 padding: 0.8rem 1.2rem;
             }
-            
+
             .nav-links a {
                 font-size: 1.6rem;
                 padding: 0.9rem 2rem;
@@ -722,7 +731,7 @@
 
         /* 滚动动画 */
         .fade-in {
-            opacity: 1;
+            opacity: 0;
             transform: translateY(25px);
             transition: opacity 0.7s ease, transform 0.7s ease;
         }
@@ -731,7 +740,7 @@
             opacity: 1;
             transform: translateY(0);
         }
-        
+
         /* 回到顶部按钮 */
         .back-to-top {
             position: fixed;
@@ -746,21 +755,21 @@
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
             z-index: 1999;
             opacity: 0;
             transition: opacity 0.3s, transform 0.3s;
         }
-        
+
         .back-to-top.show {
             opacity: 1;
         }
-        
+
         .back-to-top:hover {
             transform: translateY(-3px);
             background-color: #e66a85;
         }
-        
+
         /* 遮罩层 - 点击关闭菜单 */
         .menu-overlay {
             position: fixed;
@@ -774,7 +783,7 @@
             visibility: hidden;
             transition: opacity 0.3s, visibility 0.3s;
         }
-        
+
         .menu-overlay.active {
             opacity: 1;
             visibility: visible;
@@ -793,7 +802,7 @@
             <li><a href="./message" target="_blank">临别留言</a></li>
         </ul>
     </nav>
-    
+
     <!-- 菜单遮罩层 -->
     <div class="menu-overlay" id="menuOverlay"></div>
 
@@ -1185,7 +1194,13 @@
 
             fadeElements.forEach(element => {
                 observer.observe(element);
-            });
+
+                // ✅ 关键修复：手动检查元素是否已在视口中
+                const rect = element.getBoundingClientRect();
+                if (rect.top < window.innerHeight && rect.bottom > 0) {
+                    element.classList.add('appear');
+                    observer.unobserve(element);
+                });
         }
 
         // Logo点击展开菜单功能（仅手机版）
@@ -1194,21 +1209,21 @@
             const navLinks = document.getElementById('navLinks');
             const menuOverlay = document.getElementById('menuOverlay');
             const body = document.body;
-            
+
             // 检查是否为移动设备（屏幕宽度 ≤ 900px）
             function isMobile() {
                 return window.innerWidth <= 900;
             }
-            
+
             // 点击Logo展开/收起菜单（仅手机版）
             logoMobile.addEventListener('click', (e) => {
                 if (!isMobile()) return; // 电脑版不响应
-                
+
                 e.stopPropagation();
                 logoMobile.classList.toggle('active');
                 navLinks.classList.toggle('active');
                 menuOverlay.classList.toggle('active');
-                
+
                 // 防止页面滚动当菜单打开时
                 if (navLinks.classList.contains('active')) {
                     body.style.overflow = 'hidden';
@@ -1216,22 +1231,22 @@
                     body.style.overflow = '';
                 }
             });
-            
+
             // 点击遮罩层关闭菜单
             menuOverlay.addEventListener('click', () => {
                 if (!isMobile()) return;
-                
+
                 logoMobile.classList.remove('active');
                 navLinks.classList.remove('active');
                 menuOverlay.classList.remove('active');
                 body.style.overflow = '';
             });
-            
+
             // 点击链接关闭菜单
             document.querySelectorAll('.nav-links a').forEach(link => {
                 link.addEventListener('click', (e) => {
                     if (!isMobile()) return;
-                    
+
                     e.stopPropagation();
                     logoMobile.classList.remove('active');
                     navLinks.classList.remove('active');
@@ -1239,13 +1254,13 @@
                     body.style.overflow = '';
                 });
             });
-            
+
             // 点击Logo外部区域关闭菜单
             document.addEventListener('click', (e) => {
                 if (!isMobile()) return;
-                
-                if (!navLinks.contains(e.target) && 
-                    !logoMobile.contains(e.target) && 
+
+                if (!navLinks.contains(e.target) &&
+                    !logoMobile.contains(e.target) &&
                     !menuOverlay.contains(e.target) &&
                     navLinks.classList.contains('active')) {
                     logoMobile.classList.remove('active');
@@ -1254,7 +1269,7 @@
                     body.style.overflow = '';
                 }
             });
-            
+
             // 窗口大小变化时，如果从手机版切换到电脑版且菜单打开，自动关闭菜单
             window.addEventListener('resize', () => {
                 if (!isMobile() && navLinks.classList.contains('active')) {
@@ -1270,10 +1285,10 @@
         function adjustBodyPadding() {
             const navbar = document.querySelector('.navbar');
             const body = document.body;
-            
+
             const navbarHeight = navbar.offsetHeight;
             body.style.paddingTop = `${navbarHeight}px`;
-            
+
             window.addEventListener('resize', () => {
                 const newNavbarHeight = navbar.offsetHeight;
                 body.style.paddingTop = `${newNavbarHeight}px`;
@@ -1283,7 +1298,7 @@
         // 回到顶部功能
         function initBackToTop() {
             const backToTopBtn = document.getElementById('backToTop');
-            
+
             window.addEventListener('scroll', () => {
                 if (window.scrollY > 300) {
                     backToTopBtn.classList.add('show');
@@ -1291,7 +1306,7 @@
                     backToTopBtn.classList.remove('show');
                 }
             });
-            
+
             backToTopBtn.addEventListener('click', () => {
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             });
@@ -1305,7 +1320,7 @@
             adjustBodyPadding();
             initBackToTop();
         });
-        
+
         document.addEventListener('DOMContentLoaded', adjustBodyPadding);
     </script>
 </body>
