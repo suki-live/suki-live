@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title id="page-title">加载中… · suki.live</title>
+  
+  <!-- favicon：相对路径 + 404 时静默隐藏 -->
+  <link rel="icon" type="image/x-icon" href="./favicon.ico" onerror="this.remove()"/>
+  
+  <style>
+    :root {
+      --bg: #fafbfc;
+      --card: #ffffff;
+      --text: #2d3748;
+      --text-light: #718096;
+      --accent: #a7c7e7;
+      --accent-soft: #f0f7ff;
+      --border: #e2e8f0;
+      --shadow: 0 4px 12px rgba(0,0,0,0.06);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      padding-bottom: 3rem;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--accent-soft), #f8f9fa);
+      padding: 2.5rem 1rem 2rem;
+      text-align: center;
+      border-bottom: 1px solid var(--border);
+    }
+    .avatar {
+      width: 96px;
+      height: 96px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #fff;
+      box-shadow: var(--shadow);
+      margin-bottom: 1rem;
+      background: #e2e8f0;
+    }
+    .name { font-size: 1.4rem; font-weight: 600; margin-bottom: 0.3rem; }
+    .tagline { color: var(--text-light); font-size: 0.95rem; }
+    .container {
+      max-width: 960px;
+      margin: 1.5rem auto;
+      padding: 0 1rem;
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.2rem 1.5rem;
+      margin-bottom: 1.2rem;
+      box-shadow: var(--shadow);
+    }
+    .card h2 {
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+      color: #2d3748;
+    }
+    .card h2::before {
+      content: "";
+      width: 4px;
+      height: 14px;
+      background: var(--accent);
+      border-radius: 2px;
+      display: inline-block;
+      vertical-align: middle;
+      margin-right: 0.5rem;
+    }
+    .playlist-desc {
+      color: var(--text-light);
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+      font-style: italic;
+    }
+    
+    /* ✅ bio 内容左对齐 + 分割线样式 */
+    .bio {
+      color: var(--text-light);
+      font-size: 0.95rem;
+      white-space: pre-wrap;
+      text-align: left;
+    }
+    .bio h1, .bio h2, .bio h3 {
+      text-align: left;
+      margin: 1rem 0 0.5rem;
+      display: block;
+    }
+    .bio p {
+      text-align: left;
+      margin-bottom: 0.8rem;
+    }
+    .bio hr {
+      border: none;
+      border-top: 1px dashed var(--border);
+      margin: 1.2rem 0;
+    }
+    
+    /* === 歌单控制栏 === */
+    .playlist-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.8rem;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+    }
+    .view-toggle {
+      display: flex;
+      gap: 0.4rem;
+    }
+    .view-btn {
+      padding: 0.35rem 0.7rem;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      background: var(--card);
+      color: var(--text-light);
+      font-size: 0.8rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .view-btn:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+    .view-btn.active {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #1a202c;
+    }
+    .random-btn {
+      padding: 0.35rem 0.9rem;
+      border: 1px solid var(--accent);
+      border-radius: 6px;
+      background: var(--accent-soft);
+      color: #c2185b;
+      font-size: 0.8rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-weight: 500;
+    }
+    .random-btn:hover {
+      background: var(--accent);
+      color: #1a202c;
+    }
+    
+    /* === 歌单列表视图（默认）=== */
+    .playlist { list-style: none; }
+    .playlist.list-view li {
+      padding: 0.7rem 0;
+      border-bottom: 1px dashed var(--border);
+      display: flex;
+      align-items: flex-start;
+      gap: 0.8rem;
+    }
+    .playlist.list-view li:last-child { border-bottom: none; }
+    .list-view .song-cover {
+      width: 48px;
+      height: 48px;
+      border-radius: 6px;
+      object-fit: cover;
+      background: #edf2f7;
+      flex-shrink: 0;
+    }
+    
+    /* === 歌单卡片视图 === */
+    .playlist.grid-view {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 0.9rem;
+    }
+    .playlist.grid-view li {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 0.9rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      transition: all 0.2s;
+    }
+    .playlist.grid-view li:hover {
+      border-color: var(--accent);
+      box-shadow: var(--shadow);
+      transform: translateY(-2px);
+    }
+    .grid-view .song-cover {
+      width: 100%;
+      height: 120px;
+      border-radius: 8px;
+      object-fit: cover;
+      background: #edf2f7;
+    }
+    .grid-view .song-info { flex: 1; min-width: 0; }
+    .grid-view .song-title { font-size: 0.95rem; margin-bottom: 0.15rem; }
+    .grid-view .song-meta { font-size: 0.8rem; }
+    .grid-view .song-link {
+      margin-top: 0.3rem;
+      align-self: flex-start;
+    }
+    
+    .song-info { flex: 1; min-width: 0; }
+    .song-title { font-weight: 500; color: var(--text); margin-bottom: 0.2rem; }
+    .song-meta { color: var(--text-light); font-size: 0.85rem; }
+    .song-link {
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 0.9rem;
+      padding: 0.3rem 0.6rem;
+      border: 1px solid var(--accent);
+      border-radius: 6px;
+      transition: all 0.2s;
+      display: inline-block;
+    }
+    .song-link:hover {
+      background: var(--accent);
+      color: #1a202c;
+    }
+    
+    /* === 社交链接 === */
+    .social-links {
+      display: flex;
+      gap: 0.6rem;
+      justify-content: center;
+      margin-top: 0.5rem;
+      flex-wrap: wrap;
+    }
+    .social-links a {
+      color: var(--text-light);
+      text-decoration: none;
+      font-size: 0.85rem;
+      padding: 0.3rem 0.6rem;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+    .social-links a:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: var(--accent-soft);
+    }
+    .social-links a.anonymail {
+      background: var(--accent-soft);
+      color: #c2185b;
+      border-color: var(--accent);
+      font-weight: 500;
+    }
+    
+    /* === 页脚 === */
+    .footer-note {
+      text-align: center;
+      color: var(--text-light);
+      font-size: 0.85rem;
+      margin-top: 2rem;
+    }
+    .footer-note a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+    .footer-note a:hover { text-decoration: underline; }
+    
+    /* === 加载状态 === */
+    .loading { text-align: center; color: var(--text-light); padding: 2rem; }
+    
+    /* === 随机选歌弹窗 === */
+    .modal {
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.5);
+      display: flex; align-items: center; justify-content: center;
+      z-index: 9999;
+    }
+    .modal-content {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem 2rem;
+      max-width: 320px;
+      width: 90%;
+      text-align: center;
+      box-shadow: var(--shadow);
+    }
+    .modal-content h3 {
+      font-size: 1.1rem;
+      color: var(--text);
+      margin-bottom: 0.8rem;
+    }
+    .modal-song-title {
+      font-size: 1rem;
+      color: var(--text-light);
+      margin-bottom: 1.2rem;
+      padding: 0.8rem;
+      background: var(--accent-soft);
+      border-radius: 8px;
+    }
+    .modal-buttons {
+      display: flex;
+      gap: 0.8rem;
+      justify-content: center;
+    }
+    .modal-btn {
+      padding: 0.5rem 1.2rem;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .modal-btn-cancel {
+      background: var(--card);
+      color: var(--text-light);
+    }
+    .modal-btn-cancel:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+    .modal-btn-play {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #1a202c;
+      font-weight: 500;
+    }
+    .modal-btn-play:hover {
+      background: #8ab4d9;
+    }
+    
+    /* === 响应式 === */
+    @media (max-width: 640px) {
+      .header { padding: 2rem 1rem 1.5rem; }
+      .name { font-size: 1.2rem; }
+      .playlist-header { flex-direction: column; align-items: stretch; }
+      .view-toggle { justify-content: center; }
+      .playlist.grid-view { grid-template-columns: 1fr; }
+      .grid-view .song-cover { height: 140px; }
+      .social-links { gap: 0.4rem; }
+      .social-links a { font-size: 0.8rem; padding: 0.25rem 0.5rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <img id="avatar" class="avatar" src="./avatar.png" alt="avatar" onerror="this.style.display='none'"/>
+    <div id="name" class="name">加载中…</div>
+    <div id="tagline" class="tagline"></div>
+    <div id="social" class="social-links"></div>
+  </div>
+
+  <div class="container">
+    <div id="content">
+      <div class="loading">✨ 正在加载主播信息…</div>
+    </div>
+  </div>
+
+  <p class="footer-note">
+    💙 托管于 <a href="https://github.com/suki-live/suki-live" target="_blank" rel="noopener">suki-live</a> · 
+    <a href="https://suki.live">返回首页</a> · 
+    <a href="/registry.html">主播名录</a> · 
+    <a href="https://dreamail.cn/" target="_blank" rel="noopener">✉️ 匿名信</a>
+  </p>
+
+  <!-- ✅ 随机选歌弹窗 -->
+  <div id="random-modal" class="modal" style="display:none;">
+    <div class="modal-content">
+      <h3>🎲 随机选歌</h3>
+      <p class="modal-song-title" id="modal-song-title">歌曲名称</p>
+      <div class="modal-buttons">
+        <button class="modal-btn modal-btn-cancel" onclick="closeModal()">确定</button>
+        <button class="modal-btn modal-btn-play" onclick="playSelected()">播放</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // HTML 转义（防 XSS）
+    function escapeHtml(str) {
+      if (!str) return '';
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+    }
+
+    // 获取主播 ID（子域名）
+    const getVtuberId = () => {
+      const host = window.location.hostname;
+      if (host === 'suki.live' || host === 'www.suki.live') return null;
+      return host.split('.')[0];
+    };
+
+    const id = getVtuberId();
+    const base = id ? '.' : null;
+    
+    // 全局变量
+    let playlistData = null;
+    let currentRandomSong = null;
+
+    // 如果没有有效子域名，显示 404
+    if (!id) {
+      document.getElementById('content').innerHTML = `
+        <div class="card">
+          <h2>🌸 这片星空暂时无人驻留</h2>
+          <p style="color:var(--text-light)">
+            你访问的主播主页尚未创建，或链接有误。
+          </p>
+          <p style="margin-top:1rem">
+            <a href="https://suki.live" style="color:var(--accent)">返回首页</a> · 
+            <a href="https://github.com/suki-live/suki-live" target="_blank" style="color:var(--accent)">申请创建主页</a>
+          </p>
+        </div>`;
+    } else {
+      // 加载 info.json + playlist.json
+      Promise.all([
+        fetch(`${base}/info.json`).then(r => r.ok ? r.json() : Promise.reject('info')),
+        fetch(`${base}/playlist.json`).then(r => r.ok ? r.json() : Promise.reject('playlist'))
+      ])
+      .then(([info, playlist]) => {
+        playlistData = playlist;
+        
+        // ========================================
+        // ✅ 自定义页面开关检查（配置模式）
+        // ========================================
+        if (info.use_custom_page) {
+          const customUrl = `${base}/custom.html?t=${Date.now()}`;
+          
+          fetch(customUrl)
+            .then(r => {
+              if (!r.ok) throw new Error('Custom page not found');
+              return r.text();
+            })
+            .then(html => {
+              // ✅ 替换整个页面内容
+              document.body.innerHTML = html;
+              
+              // ✅ 可选：加载自定义 JS（如果存在）
+              const customJs = `${base}/custom.js?t=${Date.now()}`;
+              fetch(customJs, { method: 'HEAD', cache: 'no-store' })
+                .then(res => {
+                  if (res.ok) {
+                    const script = document.createElement('script');
+                    script.src = customJs.replace(/\?t=.*/, '');
+                    document.body.appendChild(script);
+                  }
+                })
+                .catch(() => {}); // 静默失败
+            })
+            .catch(err => {
+              console.warn(`⚠️ 自定义页面加载失败: custom.html`, err);
+              // ❌ fallback：继续执行默认模板逻辑（不 return）
+              renderDefaultTemplate(info, playlist);
+            });
+          return; // 等待自定义页面加载，不执行默认逻辑
+        }
+        
+        // ❌ 没有启用自定义：执行默认模板
+        renderDefaultTemplate(info, playlist);
+      })
+      .catch(err => {
+        console.error('Load error:', err);
+        const missing = err === 'info' ? 'info.json' : 'playlist.json';
+        document.getElementById('content').innerHTML = `
+          <div class="card">
+            <h2>⚠️ 加载失败</h2>
+            <p style="color:var(--text-light)">
+              文件 <code>${missing}</code> 未找到。<br/>
+              主播 <code>${id}</code> 的配置可能尚未完成。
+            </p>
+            <p style="margin-top:1rem">
+              <a href="https://suki.live" style="color:var(--accent)">返回首页</a> · 
+              <a href="https://github.com/suki-live/suki-live" target="_blank" style="color:var(--accent)">查看注册指南</a>
+            </p>
+          </div>`;
+      });
+    }
+
+    // ========================================
+    // ✅ 默认模板渲染函数（提取出来，避免重复）
+    // ========================================
+    function renderDefaultTemplate(info, playlist) {
+      // 渲染基本信息
+      document.title = `${info.name} · suki.live`;
+      document.getElementById('page-title').textContent = `${info.name} · suki.live`;
+      document.getElementById('name').textContent = info.name;
+      document.getElementById('tagline').textContent = info.tagline || '';
+      
+      // 社交链接 + 匿名信按钮
+      const socialEl = document.getElementById('social');
+      if (Array.isArray(info.social) && info.social.length) {
+        info.social.forEach(item => {
+          if (item.label && item.url) {
+            socialEl.innerHTML += `
+              <a href="${escapeHtml(item.url)}" target="_blank" rel="noopener">
+                ${escapeHtml(item.label)}
+              </a>`;
+          }
+        });
+      }
+      if (info.anonymail) {
+        socialEl.innerHTML += `
+          <a href="${escapeHtml(info.anonymail)}" target="_blank" rel="noopener" class="anonymail">
+            ✉️ 匿名信
+          </a>`;
+      }
+
+      // 组装页面内容
+      let html = '';
+
+      // 自我介绍
+      if (info.bio) {
+        html += `
+          <div class="card">
+            <h2>📝 关于我</h2>
+            <div class="bio" id="bio-content">加载中…</div>
+          </div>`;
+      }
+
+      // 🎵 歌单
+      if (info.show_playlist !== false && playlist.items?.length) {
+        html += `
+          <div class="card">
+            <h2>🎵 ${playlist.title || '推荐歌单'}</h2>
+            <div class="playlist-header">
+              <div class="view-toggle">
+                <button class="view-btn active" data-view="list" onclick="switchView('list')">📋 列表</button>
+                <button class="view-btn" data-view="grid" onclick="switchView('grid')">🔲 卡片</button>
+              </div>
+              <button class="random-btn" onclick="playRandom()">🎲 随机选歌</button>
+            </div>
+            ${playlist.description ? `<p class="playlist-desc">${playlist.description}</p>` : ''}
+            <ul class="playlist list-view" id="playlist-container">
+              ${renderPlaylist(playlist.items, 'list')}
+            </ul>
+          </div>`;
+      }
+
+      document.getElementById('content').innerHTML = html;
+
+      // 加载 bio.md
+      if (info.bio) {
+        fetch(`${base}/bio.md`)
+          .then(r => r.text())
+          .then(md => {
+            const html = md
+              .replace(/^### (.*$)/gim, '<h3>$1</h3>')
+              .replace(/^## (.*$)/gim, '<h2>$1</h2>')
+              .replace(/^# (.*$)/gim, '<h1>$1</h1>')
+              .replace(/^---$/gm, '<hr/>')
+              .replace(/\*\*(.*?)\*\*/gim, '<strong>$1</strong>')
+              .replace(/\*(.*?)\*/gim, '<em>$1</em>')
+              .replace(/\[(.*?)\]\((.*?)\)/gim, '<a href="$2" target="_blank" rel="noopener">$1</a>')
+              .replace(/\n{2,}/g, '</p><p>')
+              .replace(/\n/g, '<br/>');
+            document.getElementById('bio-content').innerHTML = `<p>${html}</p>`;
+          })
+          .catch(() => {
+            const bioCard = document.querySelector('.card h2:nth-child(1)')?.closest('.card');
+            if (bioCard) bioCard.remove();
+          });
+      }
+    }
+
+    // ========================================
+    // ✅ 歌单渲染函数
+    // ========================================
+    function renderPlaylist(items, viewMode) {
+      if (viewMode === 'grid') {
+        return items.map(song => `
+          <li>
+            ${song.cover ? `<img class="song-cover" src="${song.cover}" alt="${escapeHtml(song.title)}" onerror="this.style.display='none'"/>` : ''}
+            <div class="song-info">
+              <div class="song-title">${escapeHtml(song.title)}</div>
+              <div class="song-meta">
+                ${escapeHtml(song.artist || '')}${song.artist && song.source ? ' · ' : ''}${escapeHtml(song.source || '')}
+              </div>
+            </div>
+            ${song.url ? `<a class="song-link" href="${escapeHtml(song.url)}" target="_blank" rel="noopener">▶️ 播放</a>` : ''}
+          </li>
+        `).join('');
+      } else {
+        return items.map(song => `
+          <li>
+            ${song.cover ? `<img class="song-cover" src="${song.cover}" alt="${escapeHtml(song.title)}" onerror="this.style.display='none'"/>` : ''}
+            <div class="song-info">
+              <div class="song-title">${escapeHtml(song.title)}</div>
+              <div class="song-meta">
+                ${escapeHtml(song.artist || '')}${song.artist && song.source ? ' · ' : ''}${escapeHtml(song.source || '')}
+                ${song.added_at ? ` · 添加于 ${song.added_at}` : ''}
+              </div>
+            </div>
+            ${song.url ? `<a class="song-link" href="${escapeHtml(song.url)}" target="_blank" rel="noopener">播放</a>` : ''}
+          </li>
+        `).join('');
+      }
+    }
+
+    // ========================================
+    // ✅ 视图切换函数
+    // ========================================
+    function switchView(viewMode) {
+      const container = document.getElementById('playlist-container');
+      const buttons = document.querySelectorAll('.view-btn');
+      
+      buttons.forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.view === viewMode);
+      });
+      
+      container.classList.remove('list-view', 'grid-view');
+      container.classList.add(viewMode === 'grid' ? 'grid-view' : 'list-view');
+      
+      if (playlistData?.items) {
+        container.innerHTML = renderPlaylist(playlistData.items, viewMode);
+      }
+      
+      localStorage.setItem('suki_playlist_view', viewMode);
+    }
+
+    // ========================================
+    // ✅ 随机选歌：显示弹窗
+    // ========================================
+    function playRandom() {
+      if (!playlistData?.items?.length) {
+        alert('暂无可播放的歌曲～');
+        return;
+      }
+      
+      const randomIndex = Math.floor(Math.random() * playlistData.items.length);
+      currentRandomSong = playlistData.items[randomIndex];
+      
+      document.getElementById('modal-song-title').textContent = currentRandomSong.title;
+      document.getElementById('random-modal').style.display = 'flex';
+    }
+
+    // ========================================
+    // ✅ 关闭弹窗
+    // ========================================
+    function closeModal() {
+      document.getElementById('random-modal').style.display = 'none';
+      currentRandomSong = null;
+    }
+
+    // ========================================
+    // ✅ 播放选中的歌曲
+    // ========================================
+    function playSelected() {
+      if (!currentRandomSong) {
+        closeModal();
+        return;
+      }
+      
+      if (!currentRandomSong?.url) {
+        alert(`"${currentRandomSong.title}" 暂无播放链接～`);
+        closeModal();
+        return;
+      }
+      
+      window.open(currentRandomSong.url, '_blank', 'noopener,noreferrer');
+      closeModal();
+      
+      const btn = document.querySelector('.random-btn');
+      const originalText = btn.textContent;
+      btn.textContent = `✅ 已播放`;
+      btn.style.background = '#c6f6d5';
+      btn.style.color = '#22543d';
+      setTimeout(() => {
+        btn.textContent = originalText;
+        btn.style.background = '';
+        btn.style.color = '';
+      }, 2000);
+    }
+
+    // ========================================
+    // ✅ 恢复用户视图偏好
+    // ========================================
+    document.addEventListener('DOMContentLoaded', () => {
+      const savedView = localStorage.getItem('suki_playlist_view');
+      if (savedView && savedView !== 'list') {
+        setTimeout(() => switchView(savedView), 100);
+      }
+    });
+  </script>
+</body>
+</html>
