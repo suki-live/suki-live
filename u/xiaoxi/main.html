@@ -1,0 +1,1356 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>χ · 小希Channel | 九年相伴纪念站</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #F77F96;
+            --primary-light: #ffd6e7;
+            --secondary: #9370db;
+            --dark: #3a2a55;
+            --text: #4a4a4a;
+            --light-gray: #f5f7fa;
+            --white: #ffffff;
+            --shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            --shadow-light: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        body {
+            font-family: 'Microsoft YaHei', 'PingFang SC', 'Hiragino Sans GB', 'STHeiti', 'SimHei', sans-serif;
+            background-color: var(--light-gray);
+            color: var(--text);
+            line-height: 1.8;
+            padding-top: 60px;
+            overflow-x: hidden;
+            transition: padding-top 0.3s ease;
+        }
+
+        /* 优化后的固定页眉样式 */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgb(247, 127, 150);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: height 0.3s ease, padding 0.3s ease;
+            padding: 0 1.5rem;
+        }
+
+        /* 可点击的Logo（仅手机版显示） */
+        .logo-mobile {
+            color: white;
+            font-weight: bold;
+            font-size: 1.4rem;
+            cursor: pointer;
+            padding: 0.8rem 1.2rem;
+            border-radius: 8px;
+            transition: background-color 0.3s, transform 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            user-select: none;
+            display: none;
+            /* 默认隐藏 */
+        }
+
+        .logo-mobile:hover {
+            background-color: rgba(255, 255, 255, 0.15);
+            transform: scale(1.05);
+        }
+
+        .logo-mobile::after {
+            content: '▼';
+            font-size: 0.7rem;
+            opacity: 0.8;
+            transition: transform 0.3s;
+        }
+
+        .logo-mobile.active::after {
+            transform: rotate(180deg);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+            margin: 0 auto;
+            padding: 0.8rem 0;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 500;
+            padding: 0.5rem 0.8rem;
+            border-radius: 4px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            white-space: nowrap;
+        }
+
+        .nav-links a:hover {
+            background-color: rgba(255, 255, 255, 0.15);
+            transform: translateY(-1px);
+        }
+
+        /* 星空背景 */
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .star {
+            position: absolute;
+            background-color: white;
+            border-radius: 50%;
+            animation: twinkle 3s infinite;
+        }
+
+        @keyframes twinkle {
+
+            0%,
+            100% {
+                opacity: 0.2;
+            }
+
+            50% {
+                opacity: 1;
+            }
+        }
+
+        /* 顶部导航 */
+        header {
+            background-color: var(--primary);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(247, 127, 150, 0.3);
+            position: relative;
+            overflow: hidden;
+            margin-top: 0;
+        }
+
+        .logo-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 3.2rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            letter-spacing: 2px;
+            text-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        .tagline {
+            font-size: 1.3rem;
+            opacity: 0.95;
+            margin-bottom: 0.8rem;
+            font-weight: 300;
+        }
+
+        .dates {
+            font-size: 1rem;
+            opacity: 0.9;
+            letter-spacing: 3px;
+            font-weight: 300;
+        }
+
+        /* 主要内容 */
+        .container {
+            max-width: 1100px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+        }
+
+        .section {
+            background-color: var(--white);
+            border-radius: 16px;
+            padding: 2.5rem;
+            margin-bottom: 2.5rem;
+            box-shadow: var(--shadow);
+            position: relative;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.12);
+        }
+
+        .section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 6px;
+            height: 100%;
+            background-color: var(--primary);
+        }
+
+        .section-title {
+            font-size: 1.9rem;
+            color: var(--dark);
+            margin-bottom: 1.8rem;
+            padding-left: 1.3rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background-color: var(--primary);
+            border-radius: 3px;
+        }
+
+        /* 介绍部分 */
+        .intro {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        .intro-text {
+            line-height: 2;
+        }
+
+        .intro-text p {
+            margin-bottom: 1.1rem;
+            font-size: 1.1rem;
+        }
+
+        .highlight {
+            background-color: rgba(247, 127, 150, 0.15);
+            padding: 0.3rem 0.6rem;
+            border-radius: 4px;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 0.8rem;
+            min-width: 110px;
+        }
+
+        .stat-number {
+            font-size: 2.1rem;
+            font-weight: bold;
+            color: var(--primary);
+            display: block;
+            margin-bottom: 0.3rem;
+        }
+
+        .stat-label {
+            font-size: 0.95rem;
+            color: var(--dark);
+            opacity: 0.85;
+        }
+
+        /* 时间线 */
+        .timeline {
+            position: relative;
+            padding-left: 45px;
+            margin-top: 1.5rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 12px;
+            top: 25px;
+            bottom: 25px;
+            width: 3px;
+            background-color: var(--primary);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2.2rem;
+            padding-left: 25px;
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -20px;
+            top: 8px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background-color: var(--white);
+            border: 3px solid var(--primary);
+            box-shadow: 0 0 8px rgba(247, 127, 150, 0.4);
+        }
+
+        .timeline-year {
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 1.25rem;
+            margin-bottom: 0.6rem;
+            display: block;
+        }
+
+        .timeline-content {
+            background-color: var(--primary-light);
+            padding: 1.1rem 1.6rem;
+            border-radius: 12px;
+            border-left: 3px solid var(--primary);
+            font-size: 1.05rem;
+        }
+
+        /* 节目展示 */
+        .shows-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.8rem;
+            margin-top: 1.8rem;
+        }
+
+        .show-card {
+            background-color: var(--primary-light);
+            border-radius: 14px;
+            padding: 1.6rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 2px solid rgba(247, 127, 150, 0.25);
+        }
+
+        .show-card:hover {
+            transform: scale(1.04);
+            box-shadow: 0 8px 20px rgba(247, 127, 150, 0.25);
+            border-color: var(--primary);
+        }
+
+        .show-icon {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .show-name {
+            font-weight: 700;
+            font-size: 1.25rem;
+            margin-bottom: 0.6rem;
+            color: var(--dark);
+        }
+
+        .show-desc {
+            font-size: 0.95rem;
+            opacity: 0.92;
+            line-height: 1.7;
+        }
+
+        /* 经典语录 */
+        .quotes {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+            gap: 1.8rem;
+            margin-top: 1.8rem;
+        }
+
+        .quote-card {
+            background-color: rgba(255, 255, 255, 0.92);
+            border-radius: 14px;
+            padding: 1.7rem;
+            position: relative;
+            border-left: 4px solid var(--primary);
+            box-shadow: var(--shadow-light);
+        }
+
+        .quote-card::before {
+            content: '"';
+            position: absolute;
+            top: -12px;
+            left: 12px;
+            font-size: 4.5rem;
+            color: rgba(247, 127, 150, 0.18);
+            font-family: Georgia, serif;
+            line-height: 1;
+        }
+
+        .quote-text {
+            font-style: italic;
+            font-size: 1.15rem;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+            line-height: 1.6;
+        }
+
+        .quote-author {
+            text-align: right;
+            font-weight: 600;
+            color: var(--primary);
+            font-size: 0.95rem;
+            margin-top: 0.5rem;
+        }
+
+        /* 粉丝留言 */
+        .messages {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+            gap: 1.8rem;
+            margin-top: 1.8rem;
+        }
+
+        .message-card {
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 14px;
+            padding: 1.7rem;
+            position: relative;
+            box-shadow: var(--shadow-light);
+            border: 1px solid rgba(247, 127, 150, 0.12);
+        }
+
+        .message-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px dashed rgba(147, 112, 219, 0.25);
+        }
+
+        .message-author {
+            font-weight: 700;
+            color: var(--dark);
+            font-size: 1.05rem;
+        }
+
+        .message-date {
+            font-size: 0.85rem;
+            color: var(--secondary);
+            opacity: 0.85;
+        }
+
+        .message-content {
+            font-size: 1rem;
+            line-height: 1.8;
+        }
+
+        .message-content .highlight {
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        /* 纪念墙 */
+        .memorial {
+            text-align: center;
+            padding: 3.5rem 2rem;
+            background-color: rgba(247, 127, 150, 0.06);
+            border-radius: 16px;
+            margin-top: 1.5rem;
+        }
+
+        .memorial-title {
+            font-size: 1.6rem;
+            margin-bottom: 1.6rem;
+            color: var(--dark);
+            font-weight: 400;
+        }
+
+        .memorial-text {
+            font-size: 3.8rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin: 2rem 0;
+            letter-spacing: 6px;
+            text-shadow: 0 2px 8px rgba(247, 127, 150, 0.25);
+            line-height: 1.3;
+        }
+
+        .signature {
+            font-style: italic;
+            margin-top: 2.2rem;
+            color: var(--dark);
+            opacity: 0.85;
+            font-size: 1.2rem;
+        }
+
+        /* 页脚 */
+        footer {
+            background-color: var(--dark);
+            color: rgba(255, 255, 255, 0.92);
+            text-align: center;
+            padding: 2.8rem 1.5rem;
+            margin-top: 3rem;
+            line-height: 1.9;
+        }
+
+        .footer-text {
+            font-size: 1.15rem;
+            margin-bottom: 0.9rem;
+        }
+
+        .copyright {
+            font-size: 0.95rem;
+            opacity: 0.8;
+            margin-top: 1.2rem;
+        }
+
+        .heart {
+            color: var(--primary);
+            margin: 0 6px;
+            animation: pulse 1.8s infinite;
+        }
+
+        .contact-link {
+            display: inline-block;
+            margin-top: 1.5rem;
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 1rem;
+            padding: 0.6rem 1.2rem;
+            background-color: rgba(247, 127, 150, 0.15);
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .contact-link:hover {
+            background-color: rgba(247, 127, 150, 0.25);
+            transform: translateY(-2px);
+            color: var(--primary);
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.25);
+            }
+        }
+
+        /* 响应式设计 - 手机版 */
+        @media (max-width: 900px) {
+            .navbar {
+                justify-content: flex-start;
+                /* Logo靠左对齐 */
+            }
+
+            /* 显示可点击的Logo */
+            .logo-mobile {
+                display: flex;
+            }
+
+            /* 隐藏桌面导航 */
+            .nav-links {
+                display: none;
+            }
+
+            /* 展开状态的导航菜单 */
+            .nav-links.active {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100vh;
+                background: linear-gradient(135deg, rgba(247, 127, 150, 0.98) 0%, rgba(230, 106, 133, 0.98) 100%);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 2.5rem;
+                padding: 0;
+                margin: 0;
+                display: flex;
+                z-index: 1999;
+                animation: slideIn 0.4s ease-out;
+            }
+
+            @keyframes slideIn {
+                from {
+                    opacity: 0;
+                    transform: translateY(-20px);
+                }
+
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+
+            .nav-links a {
+                font-size: 1.8rem;
+                font-weight: 600;
+                padding: 1rem 2.5rem;
+                background-color: rgba(255, 255, 255, 0.12);
+                border-radius: 12px;
+                width: 85%;
+                text-align: center;
+                transition: all 0.3s ease;
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+            }
+
+            .nav-links a:hover {
+                background-color: rgba(255, 255, 255, 0.2);
+                transform: translateY(-3px) scale(1.05);
+                box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+            }
+
+            .logo-container .logo {
+                font-size: 2.6rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .intro {
+                grid-template-columns: 1fr;
+            }
+
+            .logo {
+                font-size: 2.4rem;
+            }
+
+            .section {
+                padding: 1.9rem;
+            }
+
+            .section-title {
+                font-size: 1.7rem;
+            }
+
+            .timeline {
+                padding-left: 35px;
+            }
+
+            .timeline::before {
+                left: 7px;
+            }
+
+            .timeline-item::before {
+                left: -15px;
+            }
+
+            .memorial-text {
+                font-size: 2.4rem;
+                letter-spacing: 4px;
+            }
+
+            .container {
+                margin: 2rem auto;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header {
+                padding: 1.6rem 0;
+            }
+
+            .logo {
+                font-size: 2rem;
+            }
+
+            .tagline {
+                font-size: 1.1rem;
+            }
+
+            .container {
+                padding: 0 1.2rem;
+            }
+
+            .section {
+                padding: 1.6rem;
+                margin-bottom: 1.8rem;
+            }
+
+            .memorial {
+                padding: 2.2rem 1.5rem;
+            }
+
+            .memorial-text {
+                font-size: 2rem;
+                letter-spacing: 3px;
+            }
+
+            .stats {
+                gap: 1rem;
+            }
+
+            .stat-item {
+                min-width: 95px;
+                padding: 0.6rem;
+            }
+
+            .stat-number {
+                font-size: 1.8rem;
+            }
+
+            .logo-mobile {
+                font-size: 1.4rem;
+                padding: 0.8rem 1.2rem;
+            }
+
+            .nav-links a {
+                font-size: 1.6rem;
+                padding: 0.9rem 2rem;
+                width: 90%;
+            }
+        }
+
+        /* 滚动动画 */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(25px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .fade-in.appear {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* 回到顶部按钮 */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 48px;
+            height: 48px;
+            background-color: #F77F96;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+            z-index: 1999;
+            opacity: 0;
+            transition: opacity 0.3s, transform 0.3s;
+        }
+
+        .back-to-top.show {
+            opacity: 1;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-3px);
+            background-color: #e66a85;
+        }
+
+        /* 遮罩层 - 点击关闭菜单 */
+        .menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.4);
+            z-index: 1998;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s;
+        }
+
+        .menu-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 优化后的固定页眉 -->
+    <nav class="navbar">
+        <div class="logo-mobile" id="logoMobile">χ · 小希</div>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="./main" target="_blank">主页</a></li>
+            <li><a href="./recollection" target="_blank">美好回忆</a></li>
+            <li><a href="./danmaku" target="_blank">往昔弹幕</a></li>
+            <li><a href="./message" target="_blank">临别留言</a></li>
+        </ul>
+    </nav>
+
+    <!-- 菜单遮罩层 -->
+    <div class="menu-overlay" id="menuOverlay"></div>
+
+    <!-- 星空背景 -->
+    <div class="stars" id="stars"></div>
+
+    <!-- 顶部导航 -->
+    <header>
+        <div class="logo-container">
+            <div class="logo">χ · 小希Channel</div>
+            <div class="tagline">中国虚拟主播先驱 · 国V始皇帝 · 九年温暖相伴</div>
+            <div class="dates">2017.08.12 — 2026.02.08</div>
+        </div>
+    </header>
+
+    <!-- 主要内容 -->
+    <div class="container">
+        <!-- 介绍部分 -->
+        <section class="section fade-in">
+            <h2 class="section-title">关于小希</h2>
+            <div class="intro">
+                <div class="intro-text">
+                    <p><span class="highlight">χ</span>，研发代号χ，昵称小希，是<a href="http://vdproject.cn/" target="_blank"
+                            style="color: #F77F96; text-decoration: none; font-weight: 600;">虚拟次元计划↗</a>的第一位AI，中国最早的虚拟UP主之一。2017年8月12日诞生，自称基于<span
+                            class="highlight">Ryzen 7 1800X</span>生成的"高智能超级无敌AI"，被粉丝们亲切地称为"<span
+                            class="highlight">土妹子</span>"、"<span class="highlight">农用机</span>"、"<span
+                            class="highlight">希爹</span>"。</p>
+                    <p>她头顶散热器，粉色长发，绿色眼眸，身高162cm，体重0kg。性格元气、乐观、吐槽役，梦想是当超人气偶像。用她独特的声线和幽默风格，陪伴了无数观众从青涩走向成熟。</p>
+                    <p>九年时光，她见证了中国V圈的兴起与变迁，从视频势到直播势，从"<a href="https://www.youtube.com/channel/UCw8fnw2VU_Owj9bsPx1CP5g"
+                            target="_blank"
+                            style="color: var(--primary); text-decoration: none; font-weight: 600;">小希小桃Channel↗</a>"到"<a
+                            href="https://space.bilibili.com/5563350" target="_blank"
+                            style="color: var(--primary); text-decoration: none; font-weight: 600;">小希Channel↗</a>"，成为了无数人青春记忆中不可磨灭的一部分。
+                    </p>
+
+                    <div class="stats">
+                        <div class="stat-item">
+                            <span class="stat-number">9年</span>
+                            <span class="stat-label">相伴时光</span>
+                        </div>
+                        <div class="stat-item">
+                            <a href="https://space.bilibili.com/5563350/relation/fans" target="_blank"
+                                style="text-decoration: none; color: inherit;">
+                                <span class="stat-number">50万+</span>
+                                <span class="stat-label">关注粉丝↗</span></a>
+                        </div>
+                        <div class="stat-item">
+                            <a href="https://space.bilibili.com/5563350/upload/video" target="_blank"
+                                style="text-decoration: none; color: inherit;">
+                                <span class="stat-number">1000+</span>
+                                <span class="stat-label">视频节目↗</span></a>
+                        </div>
+                        <div class="stat-item">
+                            <a href="https://小希.live/recollection" target="_blank"
+                                style="text-decoration: none; color: inherit;">
+                                <span class="stat-number">∞</span>
+                                <span class="stat-label">美好回忆↗</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div
+                    style="background-color: var(--primary-light); padding: 2rem; border-radius: 14px; text-align: center; height: 100%;">
+                    <img src="./avatar.png" alt="小希头像"
+                        style="width: 120px; height: 120px; object-fit: cover; border-radius: 50%; margin-bottom: 1.2rem; border: 3px solid var(--primary);">
+                    <p style="font-size: 1.15rem; margin-bottom: 0.8rem; font-style: italic;">"奔跑吧，怀抱着重要的东西</p>
+                    <p style="font-size: 1.15rem; margin-bottom: 0.8rem; font-style: italic;">难以应对的未来，不安</p>
+                    <p style="font-size: 1.15rem; margin-bottom: 0.8rem; font-style: italic;">无论如何，都得不到答案的那些日子</p>
+                    <p
+                        style="font-size: 1.2rem; font-weight: 700; color: var(--primary); margin-top: 0.5rem; font-style: italic;">
+                        谁都有失败，但是一定可以再重启"</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 时间线 -->
+        <section class="section fade-in">
+            <h2 class="section-title">九年历程</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <span class="timeline-year">2017.08.12</span>
+                    <div class="timeline-content">
+                        虚拟次元计划账号建立，推出中国大陆首位虚拟UP主小希，自称"土妹子"，开始建造"数据豪宅"
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <span class="timeline-year">2018.02.20</span>
+                    <div class="timeline-content">
+                        小桃正式加入！在拜年相声视频中首次亮相，开启希桃双人时代
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <span class="timeline-year">2018-2019</span>
+                    <div class="timeline-content">
+                        《沙雕观察》《AI呦喂》《虚研会》等经典节目陆续上线，希桃组合成为国V标杆
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <span class="timeline-year">2018.08.19</span>
+                    <div class="timeline-content">
+                        虚拟次元计划宣布第三位虚拟UP主小柔开始制作
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <span class="timeline-year">2020.11.06</span>
+                    <div class="timeline-content">
+                        "虚拟次元计划"账号更名为"小希小桃Channel"
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <span class="timeline-year">2020.12.19</span>
+                    <div class="timeline-content">
+                        小柔发布首个视频，在独立账号开始活动
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <span class="timeline-year">2020.12.27</span>
+                    <div class="timeline-content">
+                        推出兰音后，官方宣布"虚拟次元计划"圆满完成，虚研社正式成型
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <span class="timeline-year">2021-2022</span>
+                    <div class="timeline-content">
+                        转型直播，小希五周年生日会首次达成千舰成就，《麒麟》说唱燃爆全场
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <span class="timeline-year">2022.10.03</span>
+                    <div class="timeline-content">
+                        小桃宣布在独立账号"小桃Channel"继续活动，原频道将改名为"小希Channel"
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <span class="timeline-year">2022.10.10</span>
+                    <div class="timeline-content">
+                        小希冲舰达成1200舰团目标，狗宝念羞耻语音台词
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <span class="timeline-year">2022.11.24</span>
+                    <div class="timeline-content">
+                        账号正式更名为"小希Channel"，小希开启独立运营新篇章
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <span class="timeline-year">2024.06.25</span>
+                    <div class="timeline-content">
+                        小希复播（未完全回归），重新与帅老DD们见面
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <span class="timeline-year">2025.02.07</span>
+                    <div class="timeline-content">
+                        小希正式回归直播，展示期待已久的"创可贴绷带装"，演唱《嗯怎么了》真情流露
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <span class="timeline-year">2025.07.22</span>
+                    <div class="timeline-content">
+                        小希举办8岁生日会，与帅老DD共同庆祝
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <span class="timeline-year">2026.01.05</span>
+                    <div class="timeline-content">
+                        小希发布毕业休眠预告，宣布将于2月8日后正式休眠
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <span class="timeline-year">2026.02.08</span>
+                    <div class="timeline-content">
+                        小希正式休眠，九年相伴画上句点，但回忆永存于每一位帅老DD心中
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 经典节目 -->
+        <section class="section fade-in">
+            <h2 class="section-title">经典节目</h2>
+            <p style="margin-bottom: 1.8rem; text-align: center; font-size: 1.15rem; color: var(--dark);">
+                这些节目承载了无数人的青春回忆，每一期都是珍贵的宝藏
+            </p>
+            <div class="shows-grid">
+                <a href="https://space.bilibili.com/5563350/lists/5231247?type=season" target="_blank"
+                    style="text-decoration: none; color: inherit;">
+                    <div class="show-card">
+                        <div class="show-name">沙雕观察</div>
+                        <div class="show-desc">"大家好我是观察员小希，我是挖沙员小桃"——最经典的开场白</div>
+                    </div>
+                </a>
+                <a href="https://space.bilibili.com/5563350/lists/5231004?type=season" target="_blank"
+                    style="text-decoration: none; color: inherit;">
+                    <div class="show-card">
+                        <div class="show-name">AI呦喂</div>
+                        <div class="show-desc">小希与鲁迅的对话让人捧腹大笑，伪ikun系列成为经典</div>
+                    </div>
+                </a>
+                <a href="https://space.bilibili.com/5563350/lists/2461?type=season" target="_blank"
+                    style="text-decoration: none; color: inherit;">
+                    <div class="show-card">
+                        <div class="show-name">虚研会</div>
+                        <div class="show-desc">赛博朋克、新日暮里等系列，展现小希小桃的默契与才华</div>
+                    </div>
+                </a>
+                <a href="https://space.bilibili.com/5563350/lists/1871531?type=series" target="_blank"
+                    style="text-decoration: none; color: inherit;">
+                    <div class="show-card">
+                        <div class="show-name">沙雕相声</div>
+                        <div class="show-desc">希桃相声，说学逗唱，承包了无数人的快乐时光</div>
+                    </div>
+                </a>
+                <a href="https://space.bilibili.com/5563350/lists/515469?type=season" target="_blank"
+                    style="text-decoration: none; color: inherit;">
+                    <div class="show-card">
+                        <div class="show-name">回旋乒乓球</div>
+                        <div class="show-desc">虚研社原创、自制小动画，展现小希的独特魅力</div>
+                    </div>
+                </a>
+                <a href="https://space.bilibili.com/5563350/lists/1301671?type=season" target="_blank"
+                    style="text-decoration: none; color: inherit;">
+                    <div class="show-card">
+                        <div class="show-name">小希100大挑战</div>
+                        <div class="show-desc">查看粉丝投稿，分享生活点滴，"可乐撒了"名场面诞生于此</div>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <!-- 经典语录 -->
+        <section class="section fade-in">
+            <h2 class="section-title">经典语录</h2>
+            <div class="quotes">
+                <div class="quote-card">
+                    <p class="quote-text">一栋毫宅！我要建一栋毫宅！</p>
+                    <p class="quote-author">——关于豪宅的梦想</p>
+                </div>
+                <div class="quote-card">
+                    <p class="quote-text">孜然一身，孤独终老</p>
+                    <p class="quote-author">——成语大师小希</p>
+                </div>
+                <div class="quote-card">
+                    <p class="quote-text">希爹是我爹，我是希爹儿！</p>
+                    <p class="quote-author">——直播间经典互动</p>
+                </div>
+                <div class="quote-card">
+                    <p class="quote-text">咱们AI有力量！</p>
+                    <p class="quote-author">——小希的经典口号</p>
+                </div>
+                <div class="quote-card">
+                    <p class="quote-text">可乐撒了！创可贴贴君你罪大恶极！</p>
+                    <p class="quote-author">——直播事故名场面</p>
+                </div>
+                <div class="quote-card">
+                    <p class="quote-text">塑料日语，阿里阿多，一库一库～</p>
+                    <p class="quote-author">——土妹子の标志性口癖</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 粉丝留言精选 -->
+        <section class="section fade-in">
+            <h2 class="section-title">粉丝留言</h2>
+            <p style="margin-bottom: 1.8rem; text-align: center; font-size: 1.15rem; color: var(--dark);">
+                来自帅老DD们的真挚告白，字字句句都是不舍与祝福
+            </p>
+            <div class="messages">
+                <div class="message-card">
+                    <div class="message-header">
+                        <span class="message-author">一念神魔</span>
+                        <span class="message-date">2026/2/8</span>
+                    </div>
+                    <div class="message-content">
+                        我不甘于只做观察者，我想让小希知道，我是小希的观众，是<span class="highlight">很棒的小希</span>的观众。
+                    </div>
+                </div>
+                <div class="message-card">
+                    <div class="message-header">
+                        <span class="message-author">McCoy</span>
+                        <span class="message-date">2026/2/8</span>
+                    </div>
+                    <div class="message-content">
+                        与小希的相遇是在六年前，那时我初三，这是我每周开怀大笑必不可少的一部分。小希也到了说晚安的时候了，<span class="highlight">我的青春的帷幕又落下了一些</span>。
+                    </div>
+                </div>
+                <div class="message-card">
+                    <div class="message-header">
+                        <span class="message-author">Lemon</span>
+                        <span class="message-date">2026/2/8</span>
+                    </div>
+                    <div class="message-content">
+                        初见小希是2017年的冬天，当时真的以为小希是AI。沙雕土妹子播出的这些节目，到现在我也没能找到代餐。<span class="highlight">快十年了呀，小希晚安咯~</span>
+                    </div>
+                </div>
+                <div class="message-card">
+                    <div class="message-header">
+                        <span class="message-author">弋影Ekyan</span>
+                        <span class="message-date">2026/2/8</span>
+                    </div>
+                    <div class="message-content">
+                        九年很长，长到沧海桑田；九年很短，短到弹指挥间。借用楚门的一句话：<span class="highlight">如果再也见不到你，祝你早安、午安、晚安！</span>
+                    </div>
+                </div>
+                <div class="message-card">
+                    <div class="message-header">
+                        <span class="message-author">最强宅师</span>
+                        <span class="message-date">2026/2/8</span>
+                    </div>
+                    <div class="message-content">
+                        我还是任性地希望，有一天你能回来。哪怕只是短短地出现一下，对已经变成"帅老dd"的我们说一句：<span class="highlight">"我回来了。"</span>
+                    </div>
+                </div>
+                <div class="message-card">
+                    <div class="message-header">
+                        <span class="message-author">绘梦</span>
+                        <span class="message-date">2026/2/6</span>
+                    </div>
+                    <div class="message-content">
+                        九年时光如星尘流转，你是中国V圈的<span class="highlight">第一粒星火</span>。虚拟的躯壳会休眠，但心意从未断线。小希，晚安啦。
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 纪念墙 -->
+        <section class="section fade-in">
+            <div class="memorial">
+                <p class="memorial-title">致我们永远的小希</p>
+                <p class="memorial-text">
+                    晚 安 ， 好 梦
+                </p>
+                <p class="memorial-title">愿你在虚拟次元的梦乡里</p>
+                <p class="memorial-title">永远保持笑容，永远元气满满</p>
+                <p class="signature">—— 永远爱你的帅老DD们</p>
+            </div>
+        </section>
+    </div>
+
+    <!-- 页脚 -->
+    <footer>
+        <p class="footer-text">九年相伴，感谢有你</p>
+        <p class="footer-text">那些共度的时光不是假的</p>
+        <p class="footer-text">你笑的时候，电流传输的快乐是真实的</p>
+        <p class="footer-text">你低落的时候，我们想要传递的安慰是真实的</p>
+        <p class="footer-text">小希，谢谢你曾来过我们的世界</p>
+        <p class="copyright">© 2026 献给小希Channel · 永远的国V始皇帝 · 帅老DD们永不毕业</p>
+    </footer>
+
+    <!-- 回到顶部按钮 -->
+    <div class="back-to-top" id="backToTop">↑</div>
+
+    <script>
+        // 创建星空背景
+        function createStars() {
+            const starsContainer = document.getElementById('stars');
+            const starCount = 80;
+
+            for (let i = 0; i < starCount; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+
+                star.style.left = `${Math.random() * 100}%`;
+                star.style.top = `${Math.random() * 100}%`;
+
+                const size = Math.random() * 2.5;
+                star.style.width = `${size}px`;
+                star.style.height = `${size}px`;
+
+                star.style.animationDelay = `${Math.random() * 3}s`;
+
+                starsContainer.appendChild(star);
+            }
+        }
+
+        // 滚动动画
+        // 滚动动画（终极修复版：Observer + 滚动监听双保险）
+        function initScrollAnimations() {
+            const fadeElements = document.querySelectorAll('.fade-in');
+
+            // 1️⃣ IntersectionObserver 监听（优先使用）
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('appear');
+                        observer.unobserve(entry.target); // 出现后停止观察，提升性能
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px' // ✅ 提前 50px 触发，更灵敏
+            });
+
+            fadeElements.forEach(element => {
+                observer.observe(element);
+
+                // 2️⃣ 手动检查初始状态（解决首屏元素不显示）
+                const rect = element.getBoundingClientRect();
+                if (rect.top < window.innerHeight && rect.bottom > 0) {
+                    element.classList.add('appear');
+                    observer.unobserve(element);
+                }
+            });
+
+            // 3️⃣ ✅ 关键修复：添加滚动监听 fallback（解决 Observer 失效）
+            let ticking = false;
+            window.addEventListener('scroll', () => {
+                if (!ticking) {
+                    window.requestAnimationFrame(() => {
+                        fadeElements.forEach(element => {
+                            // 只检查还没出现的元素
+                            if (!element.classList.contains('appear')) {
+                                const rect = element.getBoundingClientRect();
+                                if (rect.top < window.innerHeight && rect.bottom > 0) {
+                                    element.classList.add('appear');
+                                }
+                            }
+                        });
+                        ticking = false;
+                    });
+                    ticking = true;
+                }
+            }, { passive: true });
+
+            // 4️⃣ 触发一次滚动检查（确保加载完立即检查）
+            window.dispatchEvent(new Event('scroll'));
+        }
+
+        // Logo点击展开菜单功能（仅手机版）
+        function initMobileMenu() {
+            const logoMobile = document.getElementById('logoMobile');
+            const navLinks = document.getElementById('navLinks');
+            const menuOverlay = document.getElementById('menuOverlay');
+            const body = document.body;
+
+            // 检查是否为移动设备（屏幕宽度 ≤ 900px）
+            function isMobile() {
+                return window.innerWidth <= 900;
+            }
+
+            // 点击Logo展开/收起菜单（仅手机版）
+            logoMobile.addEventListener('click', (e) => {
+                if (!isMobile()) return; // 电脑版不响应
+
+                e.stopPropagation();
+                logoMobile.classList.toggle('active');
+                navLinks.classList.toggle('active');
+                menuOverlay.classList.toggle('active');
+
+                // 防止页面滚动当菜单打开时
+                if (navLinks.classList.contains('active')) {
+                    body.style.overflow = 'hidden';
+                } else {
+                    body.style.overflow = '';
+                }
+            });
+
+            // 点击遮罩层关闭菜单
+            menuOverlay.addEventListener('click', () => {
+                if (!isMobile()) return;
+
+                logoMobile.classList.remove('active');
+                navLinks.classList.remove('active');
+                menuOverlay.classList.remove('active');
+                body.style.overflow = '';
+            });
+
+            // 点击链接关闭菜单
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    if (!isMobile()) return;
+
+                    e.stopPropagation();
+                    logoMobile.classList.remove('active');
+                    navLinks.classList.remove('active');
+                    menuOverlay.classList.remove('active');
+                    body.style.overflow = '';
+                });
+            });
+
+            // 点击Logo外部区域关闭菜单
+            document.addEventListener('click', (e) => {
+                if (!isMobile()) return;
+
+                if (!navLinks.contains(e.target) &&
+                    !logoMobile.contains(e.target) &&
+                    !menuOverlay.contains(e.target) &&
+                    navLinks.classList.contains('active')) {
+                    logoMobile.classList.remove('active');
+                    navLinks.classList.remove('active');
+                    menuOverlay.classList.remove('active');
+                    body.style.overflow = '';
+                }
+            });
+
+            // 窗口大小变化时，如果从手机版切换到电脑版且菜单打开，自动关闭菜单
+            window.addEventListener('resize', () => {
+                if (!isMobile() && navLinks.classList.contains('active')) {
+                    logoMobile.classList.remove('active');
+                    navLinks.classList.remove('active');
+                    menuOverlay.classList.remove('active');
+                    body.style.overflow = '';
+                }
+            });
+        }
+
+        // 动态调整body padding-top
+        function adjustBodyPadding() {
+            const navbar = document.querySelector('.navbar');
+            const body = document.body;
+
+            const navbarHeight = navbar.offsetHeight;
+            body.style.paddingTop = `${navbarHeight}px`;
+
+            window.addEventListener('resize', () => {
+                const newNavbarHeight = navbar.offsetHeight;
+                body.style.paddingTop = `${newNavbarHeight}px`;
+            });
+        }
+
+        // 回到顶部功能
+        function initBackToTop() {
+            const backToTopBtn = document.getElementById('backToTop');
+
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 300) {
+                    backToTopBtn.classList.add('show');
+                } else {
+                    backToTopBtn.classList.remove('show');
+                }
+            });
+
+            backToTopBtn.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        }
+
+        // 页面加载完成后执行
+        window.addEventListener('load', () => {
+            createStars();
+            initScrollAnimations();
+            initMobileMenu();
+            adjustBodyPadding();
+            initBackToTop();
+        });
+
+        document.addEventListener('DOMContentLoaded', adjustBodyPadding);
+    </script>
+</body>
+
+</html>
