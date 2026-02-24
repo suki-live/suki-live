@@ -1,2372 +1,2614 @@
-<html lang="zh"><head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-  <title>雪穗 の 小窝</title>
-  <!-- 圆润字体 & 可爱图标库 -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+<html lang="zh">
 
-    body {
-      font-family: 'Nunito', 'Segoe UI', 'Helvetica Neue', sans-serif;
-      background: linear-gradient(145deg, #cdeaff 0%, #e0f0ff 40%, #f0f8ff 100%);
-      min-height: 100vh;
-      padding: 20px 16px;
-      position: relative;
-      color: #02457a;
-      line-height: 1.5;
-    }
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>雪穗 の 小窝</title>
+    <!-- 圆润字体 & 可爱图标库 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    /* 蓝色系漂浮小星星 */
-    body::before {
-      content: "✦ ✦ ✦ ✦ ✦ ✦ ✦";
-      position: absolute;
-      top: 10px;
-      left: 0;
-      width: 100%;
-      font-size: 30px;
-      color: rgba(180, 220, 255, 0.4);
-      white-space: nowrap;
-      letter-spacing: 30px;
-      pointer-events: none;
-      z-index: 0;
-      transform: rotate(-2deg) scale(1.2);
-    }
+        body {
+            font-family: 'Nunito', 'Segoe UI', 'Helvetica Neue', sans-serif;
+            background: linear-gradient(145deg, #cdeaff 0%, #e0f0ff 40%, #f0f8ff 100%);
+            min-height: 100vh;
+            padding: 20px 16px;
+            position: relative;
+            color: #02457a;
+            line-height: 1.5;
+        }
 
-    body::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at 20% 40%, rgba(200, 230, 255, 0.5) 0%, transparent 25%),
-                  radial-gradient(circle at 90% 70%, rgba(150, 200, 250, 0.5) 0%, transparent 30%);
-      pointer-events: none;
-      z-index: 0;
-    }
+        /* 蓝色系漂浮小星星 */
+        body::before {
+            content: "✦ ✦ ✦ ✦ ✦ ✦ ✦";
+            position: absolute;
+            top: 10px;
+            left: 0;
+            width: 100%;
+            font-size: 30px;
+            color: rgba(180, 220, 255, 0.4);
+            white-space: nowrap;
+            letter-spacing: 30px;
+            pointer-events: none;
+            z-index: 0;
+            transform: rotate(-2deg) scale(1.2);
+        }
 
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      position: relative;
-      z-index: 2;
-    }
+        body::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 20% 40%, rgba(200, 230, 255, 0.5) 0%, transparent 25%),
+                radial-gradient(circle at 90% 70%, rgba(150, 200, 250, 0.5) 0%, transparent 30%);
+            pointer-events: none;
+            z-index: 0;
+        }
 
-    /* ----- 头部 雪穗小窝 (蓝白款) 图片头像 ----- */
-    .header {
-      background: rgba(255, 255, 255, 0.7);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      border-radius: 60px 60px 40px 40px;
-      padding: 24px 30px;
-      margin-bottom: 40px;
-      box-shadow: 0 15px 25px rgba(80, 160, 255, 0.2),
-                  0 5px 0 0 #ffffff inset,
-                  0 -2px 10px rgba(255, 255, 255, 0.8);
-      border: 1px solid rgba(255, 255, 255, 0.9);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 15px;
-    }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
 
-    .avatar-badge {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-    }
-
-    .avatar-icon {
-      width: 75px;
-      height: 75px;
-      background: #cbe5fe;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 48px;
-      color: #ffffff;
-      /* 移除字体投影效果 */
-      /* text-shadow: 2px 2px 0 #6ca3d4; */
-      box-shadow: 0 10px 0 #8ab3da, 0 0 0 5px #ffffff;
-      transition: transform 0.2s ease;
-      overflow: hidden; /* 确保图片圆角 */
-    }
-
-    .avatar-icon img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 50%;
-    }
-
-    .avatar-icon:hover {
-      transform: scale(1.02) rotate(2deg);
-    }
-
-    .title h1 {
-      font-size: 2.3rem;
-      font-weight: 800;
-      color: #015c9b;
-      letter-spacing: 2px;
-      line-height: 1.1;
-      /* 移除字体投影 */
-      /* text-shadow: 3px 3px 0 #d1ebff; */
-    }
-
-    .title p {
-      font-size: 1rem;
-      background: #d9f0ff;
-      padding: 5px 18px;
-      border-radius: 50px;
-      display: inline-block;
-      font-weight: 600;
-      color: #015293;
-      box-shadow: 0 2px 0 #aac9ec;
-      margin-top: 6px;
-    }
-
-    .header-stats {
-      display: flex;
-      gap: 20px;
-      background: rgba(255, 255, 255, 0.6);
-      padding: 12px 24px;
-      border-radius: 50px;
-      backdrop-filter: blur(4px);
-      font-weight: 700;
-    }
-
-    .header-stats span {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      color: #015293;
-    }
-
-    .header-stats i {
-      color: #4794d1;
-      font-size: 1.3rem;
-    }
-
-    /* 通用卡片节标题 (蓝调) */
-    .section-title {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 18px;
-      margin-top: 20px;
-    }
-
-    .section-title h2 {
-      font-size: 2rem;
-      font-weight: 700;
-      background: linear-gradient(135deg, #1e6eb5, #2b8cce);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      letter-spacing: 1px;
-      /* 移除字体投影 */
-      /* text-shadow: 3px 3px 0 rgba(255, 255, 255, 0.7); */
-    }
-
-    .section-title i {
-      background: #c2e2ff;
-      padding: 12px;
-      border-radius: 50%;
-      color: #0365b3;
-      font-size: 1.5rem;
-      box-shadow: 0 4px 0 #8ab6e0;
-    }
-
-    /* 卡片基本样式 (毛玻璃白) */
-    .card {
-      background: rgba(255, 255, 255, 0.8);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      border-radius: 40px;
-      padding: 28px 26px;
-      box-shadow: 0 20px 30px -5px rgba(70, 140, 210, 0.3),
-                  0 8px 0 0 #ffffff inset,
-                  0 -2px 15px rgba(255, 255, 255, 0.8);
-      border: 1px solid rgba(255, 255, 255, 0.9);
-      transition: all 0.25s ease;
-    }
-
-    .card:hover {
-      box-shadow: 0 25px 35px -8px #88bae8, 0 8px 0 0 #f0f8ff inset;
-      transform: translateY(-5px);
-    }
-
-    /* 歌单网格 (多列呈现所有歌曲) */
-    .playlist-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: 12px 16px;
-      max-height: 420px;
-      overflow-y: auto;
-      padding-right: 8px;
-      margin-top: 8px;
-    }
-
-    .playlist-grid .song-item {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      padding: 8px 10px;
-      background: rgba(255, 255, 255, 0.5);
-      border-radius: 40px;
-      border: 1px solid #e5f2ff;
-      transition: 0.1s ease;
-      font-size: 0.95rem;
-    }
-
-    .playlist-grid .song-item:hover {
-      background: #deefff;
-      border-color: #80b5e0;
-    }
-
-    .playlist-grid .song-item i {
-      color: #3182c0;
-      font-size: 1rem;
-      min-width: 20px;
-      text-align: center;
-    }
-
-    .playlist-grid .song-item span {
-      font-weight: 600;
-      color: #014682;
-      word-break: break-word;
-    }
-
-    /* 自定义滚动条 */
-    .playlist-grid::-webkit-scrollbar {
-      width: 8px;
-    }
-
-    .playlist-grid::-webkit-scrollbar-track {
-      background: #e9f2fa;
-      border-radius: 10px;
-    }
-
-    .playlist-grid::-webkit-scrollbar-thumb {
-      background: #94c2e9;
-      border-radius: 10px;
-    }
-
-    /* 舰长礼包模板三个卡片 */
-    .rank-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 20px;
-      margin: 20px 0 10px;
-    }
-    .rank-card {
-      background: rgba(255, 255, 255, 0.6);
-      backdrop-filter: blur(4px);
-      border-radius: 40px;
-      padding: 24px 16px 20px;
-      text-align: center;
-      border: 2px solid white;
-      box-shadow: 0 8px 0 #aac6e5;
-      transition: transform 0.15s;
-    }
-    .rank-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 12px 0 #8fb4dc;
-    }
-    .rank-card h3 {
-      font-size: 1.8rem;
-      font-weight: 800;
-      color: #014a7c;
-      margin-bottom: 15px;
-    }
-    .rank-card ul {
-      list-style: none;
-      padding: 0;
-      text-align: left;
-      color: #024d7a;
-      font-weight: 600;
-      font-size: 0.95rem;
-      margin: 15px 0;
-    }
-    .rank-card li {
-      margin: 8px 0;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .rank-card i {
-      color: #3182c0;
-      width: 20px;
-      text-align: center;
-    }
-    .rank-badge {
-      background: #b3d6ff;
-      border-radius: 50px;
-      padding: 5px 16px;
-      display: inline-block;
-      font-size: 0.9rem;
-      font-weight: 700;
-      color: #00315a;
-      box-shadow: 0 3px 0 #7aa2cc;
-    }
-
-    /* 占位提示样式 (用于活动和周边框架) */
-    .placeholder-frame {
-      text-align: center;
-      padding: 40px 20px;
-      background: rgba(255, 255, 255, 0.4);
-      border-radius: 60px;
-      color: #2370b3;
-      font-size: 1.3rem;
-      font-weight: 600;
-      border: 2px dashed #93bde0;
-      backdrop-filter: blur(4px);
-    }
-
-    .placeholder-frame i {
-      font-size: 2rem;
-      display: block;
-      margin-bottom: 10px;
-      color: #4794d1;
-    }
-
-    /* 周边网格占位 */
-    .merch-grid-placeholder {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
-      gap: 22px;
-      margin-top: 10px;
-    }
-
-    .merch-item-placeholder {
-      background: rgba(255, 255, 255, 0.5);
-      border-radius: 35px;
-      padding: 30px 16px;
-      text-align: center;
-      backdrop-filter: blur(4px);
-      border: 2px dashed #aec9ec;
-      color: #2b6fa5;
-      font-weight: 600;
-      font-size: 1.1rem;
-      box-shadow: none;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .merch-item-placeholder i {
-      font-size: 2.5rem;
-      color: #7bb0da;
-    }
-
-    /* 底部小尾巴 */
-    .footer-note {
-      margin-top: 50px;
-      text-align: center;
-      color: #015293;
-      background: rgba(255, 255, 255, 0.7);
-      padding: 18px 10px;
-      border-radius: 200px;
-      font-weight: 600;
-      backdrop-filter: blur(5px);
-      font-size: 0.95rem;
-      border: 1px solid white;
-    }
-
-    .footer-note i {
-      color: #4794d1;
-      margin: 0 4px;
-    }
-
-    /* 响应式微调 */
-    @media (max-width: 650px) {
-      .header {
-        flex-direction: column;
-        text-align: center;
-        padding: 24px 16px;
-      }
-      .avatar-badge {
-        flex-direction: column;
-      }
-      .section-title h2 {
-        font-size: 1.8rem;
-      }
-      .rank-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <!-- 毛茸茸头部 蓝白版 · 猫头鹰 (图片替换) -->
-    <div class="header">
-      <div class="avatar-badge">
-        <div class="avatar-icon">
-          <!-- 用户准备好的图片 1.jpg -->
-          <img src="1.jpg" alt="雪穗头像">
-        </div>
-        <div class="title">
-          <h1>雪穗yukiho～ <span style="font-size: 1.8rem;">❄️</span></h1>
-          <p><i class="fas fa-feather"></i> 表面上是三语V但是实际上是零语言掌握者的异世界打工人雪穗ユキホ～</p>
-        </div>
-      </div>
-      <div class="header-stats">
-        <span><i class="fas fa-heart" style="color: #4794d1;"></i> 1.1w 推し</span>
-        <span><i class="fas fa-star" style="color: #4794d1;"></i>  直播</span>
-      </div>
-    </div>
-
-    <!-- 歌单部分 (排序后动态渲染) -->
-    <div class="section-title">
-      <i class="fas fa-music"></i>
-      <h2>雪穗的歌单</h2>
-    </div>
-    <div class="card">
-      <!-- 中文歌单区域 -->
-      <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
-        <i class="fas fa-language" style="color: #3182c0;"></i>
-        <h3 style="color: #015a9e;">🇨🇳 中文歌曲 · 拼音排序 A→Z</h3>
-      </div>
-      <div id="chinese-songs" class="playlist-grid"><div class="song-item"><i class="fas fa-headphones-alt"></i><span>阿拉斯加海湾</span></div><div class="song-item"><i class="fas fa-headphones-alt"></i><span>别让我担心</span></div><div class="song-item"><i class="fas fa-headphones-alt"></i><span>不眠之夜</span></div><div class="song-item"><i class="fas fa-headphones-alt"></i><span>不完美小孩</span></div><div class="song-item"><i class="fas fa-headphones-alt"></i><span>凑热闹</span></div><div class="song-item"><i class="fas fa-headphones-alt"></i><span>发如雪</span></div><div class="song-item"><i class="fas fa-headphones-alt"></i><span>还是你的笑容最可爱</span></div><div class="song-item"><i class="fas fa-headphones-alt"></i><span>恋爱频率</span></div><div class="song-item"><i class="fas fa-headphones-alt"></i><span>淋雨一直走</span></div><div class="song-item"><i class="fas fa-headphones-alt"></i><span>门的另一端</span></div><div class="song-item"><i class="fas fa-headphones-alt"></i><span>你说太阳会有心事吗</span></div><div class="song-item"><i class="fas fa-headphones-alt"></i><span>你在 不在</span></div><div class="song-item"><i class="fas fa-headphones-alt"></i><span>谁家</span></div><div class="song-item"><i class="fas fa-headphones-alt"></i><span>生命之名</span></div><div class="song-item"><i class="fas fa-headphones-alt"></i><span>说好的爱呢</span></div><div class="song-item"><i class="fas fa-headphones-alt"></i><span>童话</span></div><div class="song-item"><i class="fas fa-headphones-alt"></i><span>兔子先生</span></div><div class="song-item"><i class="fas fa-headphones-alt"></i><span>外婆桥</span></div><div class="song-item"><i class="fas fa-headphones-alt"></i><span>危险派对</span></div><div class="song-item"><i class="fas fa-headphones-alt"></i><span>我的悲伤是水做的</span></div><div class="song-item"><i class="fas fa-headphones-alt"></i><span>喜欢你</span></div><div class="song-item"><i class="fas fa-headphones-alt"></i><span>阳光下的星星</span></div><div class="song-item"><i class="fas fa-headphones-alt"></i><span>隐形的翅膀</span></div><div class="song-item"><i class="fas fa-headphones-alt"></i><span>雨爱</span></div><div class="song-item"><i class="fas fa-headphones-alt"></i><span>在一月的禾木看雪</span></div><div class="song-item"><i class="fas fa-headphones-alt"></i><span>这世界那么多人</span></div><div class="song-item"><i class="fas fa-headphones-alt"></i><span>letting go</span></div></div>
-
-      <!-- 日文歌单区域 -->
-      <div style="display: flex; align-items: center; gap: 10px; margin: 20px 0 10px;">
-        <i class="fas fa-leaf" style="color: #3182c0;"></i>
-        <h3 style="color: #015a9e;">🇯🇵 日文歌曲 · 五十音順</h3>
-      </div>
-      <div id="japanese-songs" class="playlist-grid"><div class="song-item"><i class="fas fa-headphones-alt"></i><span>66号線</span></div><div class="song-item"><i class="fas fa-headphones-alt"></i><span>Buddy</span></div><div class="song-item"><i class="fas fa-headphones-alt"></i><span>Say So</span></div><div class="song-item"><i class="fas fa-headphones-alt"></i><span>World of the happiness!</span></div><div class="song-item"><i class="fas fa-headphones-alt"></i><span>オノマトペ</span></div><div class="song-item"><i class="fas fa-headphones-alt"></i><span>おぼえたて</span></div><div class="song-item"><i class="fas fa-headphones-alt"></i><span>お茶でも飲んで</span></div><div class="song-item"><i class="fas fa-headphones-alt"></i><span>カタオモイ</span></div><div class="song-item"><i class="fas fa-headphones-alt"></i><span>さよーならまたいつか！</span></div><div class="song-item"><i class="fas fa-headphones-alt"></i><span>ダンスホール</span></div><div class="song-item"><i class="fas fa-headphones-alt"></i><span>パプリカ</span></div><div class="song-item"><i class="fas fa-headphones-alt"></i><span>ハロ/ハワユ</span></div><div class="song-item"><i class="fas fa-headphones-alt"></i><span>またねがあれば</span></div><div class="song-item"><i class="fas fa-headphones-alt"></i><span>嘘つき</span></div><div class="song-item"><i class="fas fa-headphones-alt"></i><span>可愛くてごめん</span></div><div class="song-item"><i class="fas fa-headphones-alt"></i><span>花占い</span></div><div class="song-item"><i class="fas fa-headphones-alt"></i><span>花曇り</span></div><div class="song-item"><i class="fas fa-headphones-alt"></i><span>灰かぶり</span></div><div class="song-item"><i class="fas fa-headphones-alt"></i><span>光と闇-弾き語りver-</span></div><div class="song-item"><i class="fas fa-headphones-alt"></i><span>好きにしなよ</span></div><div class="song-item"><i class="fas fa-headphones-alt"></i><span>香水</span></div><div class="song-item"><i class="fas fa-headphones-alt"></i><span>私じゃなかったんだね</span></div><div class="song-item"><i class="fas fa-headphones-alt"></i><span>私のSymphony</span></div><div class="song-item"><i class="fas fa-headphones-alt"></i><span>私の思春期へ/致我的思春期日文版</span></div><div class="song-item"><i class="fas fa-headphones-alt"></i><span>春よ、来い</span></div><div class="song-item"><i class="fas fa-headphones-alt"></i><span>春愁</span></div><div class="song-item"><i class="fas fa-headphones-alt"></i><span>春日影</span></div><div class="song-item"><i class="fas fa-headphones-alt"></i><span>小さな恋のうた</span></div><div class="song-item"><i class="fas fa-headphones-alt"></i><span>星座になれたら</span></div><div class="song-item"><i class="fas fa-headphones-alt"></i><span>千本桜</span></div><div class="song-item"><i class="fas fa-headphones-alt"></i><span>地獄恋文</span></div><div class="song-item"><i class="fas fa-headphones-alt"></i><span>蝶々結び</span></div><div class="song-item"><i class="fas fa-headphones-alt"></i><span>逃避行</span></div><div class="song-item"><i class="fas fa-headphones-alt"></i><span>八月の蛍</span></div><div class="song-item"><i class="fas fa-headphones-alt"></i><span>風になる</span></div><div class="song-item"><i class="fas fa-headphones-alt"></i><span>忘れてください</span></div><div class="song-item"><i class="fas fa-headphones-alt"></i><span>未来は風のように</span></div><div class="song-item"><i class="fas fa-headphones-alt"></i><span>優しい恋人</span></div><div class="song-item"><i class="fas fa-headphones-alt"></i><span>恋</span></div><div class="song-item"><i class="fas fa-headphones-alt"></i><span>恋愛裁判</span></div><div class="song-item"><i class="fas fa-headphones-alt"></i><span>忏悔录</span></div></div>
-
-      <div style="text-align: right; margin-top: 18px">
-        <span style="background:#d2e9ff; border-radius:40px; padding:8px 20px; font-size:0.9rem;"><i class="fas fa-heart"></i> 共69首 · 持续更新中～(大概?)</span>
-      </div>
-    </div>
-
-    <!-- 舰长礼包模板 三个卡片 (歌单之下) -->
-    <div class="section-title" style="margin-top: 40px;">
-      <i class="fas fa-crown"></i>
-      <h2>航海特供 · 舰长礼包</h2>
-    </div>
-    <div class="card">
-      <div class="rank-grid">
-        <!-- 舰长 -->
-        <div class="rank-card">
-          <h3>🚢 舰长</h3>
-          <ul>
-            <li><i class="fas fa-check-circle"></i> 吧唧/色卡/亚克力(三选一)</li>
-            <li><i class="fas fa-check-circle"></i> 舰长亲笔感谢信</li>
-            <li><i class="fas fa-check-circle"></i> 音声</li>
-          </ul>
-          <div class="rank-badge"><i class="fas fa-star"></i> 欢迎上舰喵</div>
-        </div>
-        <!-- 提督 -->
-        <div class="rank-card">
-          <h3>⚓ 提督</h3>
-          <ul>
-            <li><i class="fas fa-check-circle"></i> 舰长全部权益</li>
-            <li><i class="fas fa-check-circle"></i> 广西特产一箱</li>
-            <li><i class="fas fa-check-circle"></i> 指定歌曲翻唱两曲</li>
-            <li><i class="fas fa-check-circle"></i> 指定直播内容（游戏，动漫，影视，歌曲学习）</li>
-          </ul>
-          <div class="rank-badge"><i class="fas fa-star"></i> 是提督大人!好耶!!!</div>
-        </div>
-        <!-- 总督 -->
-        <div class="rank-card">
-          <h3>🏴‍☠️ 总督</h3>
-          <ul>
-            <li><i class="fas fa-check-circle"></i> 提督、舰长全部权益</li>
-            <li><i class="fas fa-check-circle"></i> 新衣装（新衣回）参与制作</li>
-            <li><i class="fas fa-check-circle"></i> 定制抱枕1个</li>
-            <li><i class="fas fa-check-circle"></i> 定制fufu一只</li>
-            <li><i class="fas fa-check-circle"></i> 限定总督色卡</li>
-            <li><i class="fas fa-check-circle"></i> 吧唧、亚克力、感谢信</li>
-          </ul>
-          <div class="rank-badge"><i class="fas fa-star"></i> bigbig梦!(要是成真就好了)</div>
-        </div>
-      </div>
-      <p style="text-align: center; color: #2b6fa5; margin-top: 10px;"><i class="fas fa-heart"></i> 加入舰队，和雪穗一起航行吧！</p>
-    </div>
-
-    <!-- 活动部分 -->
-      <div class="schedule-wrapper">
-  <h2 class="schedule-title">
-    <i class="fas fa-calendar-alt"></i> 雪穗の日程表
-  </h2>
-
-  <!-- 2月15日卡片 -->
-  <div class="schedule-card">
-    <div class="date-header">
-      <span class="date-day">2月15日</span>
-      <span class="date-week">星期天</span>
-    </div>
-    <ul class="event-list">
-      <li class="event-item">
-        <span class="event-time"><i class="fas fa-clock"></i> 16:00～18:00</span>
-        <span class="event-desc">【生化危机7】</span>
-      </li>
-      <li class="event-item">
-        <span class="event-time"><i class="fas fa-clock"></i> 23:00</span>
-        <span class="event-desc">加班回</span>
-      </li>
-    </ul>
-  </div>
-
-  <!-- 2月16日卡片 -->
-  <div class="schedule-card">
-    <div class="date-header">
-      <span class="date-day">2月16日</span>
-      <span class="date-week">星期一</span>
-    </div>
-    <ul class="event-list">
-      <li class="event-item">
-        <span class="event-time"><i class="fas fa-clock"></i> 全天</span>
-        <span class="event-desc">随机掉落！</span>
-      </li>
-      <li class="event-item">
-        <span class="event-time"><i class="fas fa-clock"></i> 00:00</span>
-        <span class="event-desc"><i class="fas fa-glass-cheers"></i> 凌晨准时【跨年回】</span>
-      </li>
-    </ul>
-    <div class="happy-note">
-      <i class="fas fa-star"></i> 大家新年快乐喵！ <i class="fas fa-star"></i>
-    </div>
-  </div>
-</div>
-
-<!-- 圆润字体 & 可爱图标库 (与主页保持一致) -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&amp;display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-
-<style>
-  .schedule-wrapper {
-    max-width: 650px;
-    margin: 20px auto;
-    font-family: 'Nunito', 'Segoe UI', sans-serif;
-  }
-
-  .schedule-title {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    font-size: 2rem;
-    font-weight: 800;
-    color: #015c9b;
-    margin-bottom: 20px;
-    background: rgba(255, 255, 255, 0.6);
-    backdrop-filter: blur(4px);
-    padding: 12px 24px;
-    border-radius: 60px;
-    border: 1px solid white;
-    box-shadow: 0 6px 0 #b2d2f5;
-  }
-
-  .schedule-title i {
-    color: #3182c0;
-    font-size: 2rem;
-  }
-
-  .schedule-card {
-    background: rgba(255, 255, 255, 0.8);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border-radius: 50px;
-    padding: 24px 28px;
-    margin-bottom: 25px;
-    box-shadow: 0 15px 25px rgba(80, 160, 255, 0.2),
+        /* ----- 头部 雪穗小窝 (蓝白款) 图片头像 ----- */
+        .header {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 60px 60px 40px 40px;
+            padding: 24px 30px;
+            margin-bottom: 40px;
+            box-shadow: 0 15px 25px rgba(80, 160, 255, 0.2),
                 0 5px 0 0 #ffffff inset,
                 0 -2px 10px rgba(255, 255, 255, 0.8);
-    border: 1px solid rgba(255, 255, 255, 0.9);
-    transition: all 0.2s ease;
-  }
+            border: 1px solid rgba(255, 255, 255, 0.9);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
 
-  .schedule-card:hover {
-    box-shadow: 0 20px 30px -5px #88bae8, 0 8px 0 0 #f0f8ff inset;
-    transform: translateY(-3px);
-  }
+        .avatar-badge {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
 
-  .date-header {
-    display: flex;
-    align-items: baseline;
-    gap: 15px;
-    margin-bottom: 18px;
-    border-bottom: 2px dashed #9bc3e5;
-    padding-bottom: 10px;
-  }
+        .avatar-icon {
+            width: 75px;
+            height: 75px;
+            background: #cbe5fe;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            color: #ffffff;
+            /* 移除字体投影效果 */
+            /* text-shadow: 2px 2px 0 #6ca3d4; */
+            box-shadow: 0 10px 0 #8ab3da, 0 0 0 5px #ffffff;
+            transition: transform 0.2s ease;
+            overflow: hidden;
+            /* 确保图片圆角 */
+        }
 
-  .date-day {
-    font-size: 2.2rem;
-    font-weight: 800;
-    color: #014a7c;
-    line-height: 1.2;
-  }
+        .avatar-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
 
-  .date-week {
-    font-size: 1.3rem;
-    font-weight: 600;
-    color: #2b6fa5;
-    background: #e1f0ff;
-    padding: 4px 14px;
-    border-radius: 40px;
-    border: 1px solid white;
-  }
+        .avatar-icon:hover {
+            transform: scale(1.02) rotate(2deg);
+        }
 
-  .event-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
+        .title h1 {
+            font-size: 2.3rem;
+            font-weight: 800;
+            color: #015c9b;
+            letter-spacing: 2px;
+            line-height: 1.1;
+            /* 移除字体投影 */
+            /* text-shadow: 3px 3px 0 #d1ebff; */
+        }
 
-  .event-item {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    background: rgba(255, 255, 255, 0.6);
-    border-radius: 50px;
-    padding: 12px 18px;
-    margin-bottom: 10px;
-    border: 1px solid #e5f2ff;
-    transition: background 0.1s;
-  }
+        .title p {
+            font-size: 1rem;
+            background: #d9f0ff;
+            padding: 5px 18px;
+            border-radius: 50px;
+            display: inline-block;
+            font-weight: 600;
+            color: #015293;
+            box-shadow: 0 2px 0 #aac9ec;
+            margin-top: 6px;
+        }
 
-  .event-item:hover {
-    background: #deefff;
-    border-color: #80b5e0;
-  }
+        .header-stats {
+            display: flex;
+            gap: 20px;
+            background: rgba(255, 255, 255, 0.6);
+            padding: 12px 24px;
+            border-radius: 50px;
+            backdrop-filter: blur(4px);
+            font-weight: 700;
+        }
 
-  .event-time {
-    font-weight: 700;
-    color: #015293;
-    min-width: 120px;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    font-size: 1rem;
-  }
+        .header-stats span {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #015293;
+        }
 
-  .event-time i {
-    color: #3182c0;
-    width: 20px;
-    font-size: 1.1rem;
-  }
+        .header-stats i {
+            color: #4794d1;
+            font-size: 1.3rem;
+        }
 
-  .event-desc {
-    font-weight: 600;
-    color: #02457a;
-    font-size: 1.05rem;
-  }
+        /* 通用卡片节标题 (蓝调) */
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 18px;
+            margin-top: 20px;
+        }
 
-  .event-desc i {
-    color: #4794d1;
-    margin-right: 5px;
-  }
+        .section-title h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #1e6eb5, #2b8cce);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: 1px;
+            /* 移除字体投影 */
+            /* text-shadow: 3px 3px 0 rgba(255, 255, 255, 0.7); */
+        }
 
-  .happy-note {
-    text-align: center;
-    margin-top: 20px;
-    font-size: 1.2rem;
-    font-weight: 700;
-    color: #b34180;        /* 可爱的粉紫色 */
-    background: rgba(255, 240, 245, 0.8);
-    padding: 12px;
-    border-radius: 50px;
-    border: 2px solid #ffc0cb;
-    box-shadow: 0 5px 0 #f7b0c0;
-    backdrop-filter: blur(2px);
-  }
+        .section-title i {
+            background: #c2e2ff;
+            padding: 12px;
+            border-radius: 50%;
+            color: #0365b3;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 0 #8ab6e0;
+        }
 
-  .happy-note i {
-    color: #f06292;
-    margin: 0 5px;
-  }
+        /* 卡片基本样式 (毛玻璃白) */
+        .card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border-radius: 40px;
+            padding: 28px 26px;
+            box-shadow: 0 20px 30px -5px rgba(70, 140, 210, 0.3),
+                0 8px 0 0 #ffffff inset,
+                0 -2px 15px rgba(255, 255, 255, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.9);
+            transition: all 0.25s ease;
+        }
 
-  /* 小屏幕适配 */
-  @media (max-width: 480px) {
-    .schedule-card {
-      padding: 18px 16px;
-    }
-    .date-day {
-      font-size: 1.8rem;
-    }
-    .event-item {
-      flex-wrap: wrap;
-      gap: 6px;
-    }
-    .event-time {
-      min-width: 100%;
-    }
-  }
-</style>
+        .card:hover {
+            box-shadow: 0 25px 35px -8px #88bae8, 0 8px 0 0 #f0f8ff inset;
+            transform: translateY(-5px);
+        }
+
+        /* 歌单网格 (多列呈现所有歌曲) */
+        .playlist-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 12px 16px;
+            max-height: 420px;
+            overflow-y: auto;
+            padding-right: 8px;
+            margin-top: 8px;
+        }
+
+        .playlist-grid .song-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 10px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 40px;
+            border: 1px solid #e5f2ff;
+            transition: 0.1s ease;
+            font-size: 0.95rem;
+        }
+
+        .playlist-grid .song-item:hover {
+            background: #deefff;
+            border-color: #80b5e0;
+        }
+
+        .playlist-grid .song-item i {
+            color: #3182c0;
+            font-size: 1rem;
+            min-width: 20px;
+            text-align: center;
+        }
+
+        .playlist-grid .song-item span {
+            font-weight: 600;
+            color: #014682;
+            word-break: break-word;
+        }
+
+        /* 自定义滚动条 */
+        .playlist-grid::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .playlist-grid::-webkit-scrollbar-track {
+            background: #e9f2fa;
+            border-radius: 10px;
+        }
+
+        .playlist-grid::-webkit-scrollbar-thumb {
+            background: #94c2e9;
+            border-radius: 10px;
+        }
+
+        /* 舰长礼包模板三个卡片 */
+        .rank-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
+            margin: 20px 0 10px;
+        }
+
+        .rank-card {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(4px);
+            border-radius: 40px;
+            padding: 24px 16px 20px;
+            text-align: center;
+            border: 2px solid white;
+            box-shadow: 0 8px 0 #aac6e5;
+            transition: transform 0.15s;
+        }
+
+        .rank-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 0 #8fb4dc;
+        }
+
+        .rank-card h3 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #014a7c;
+            margin-bottom: 15px;
+        }
+
+        .rank-card ul {
+            list-style: none;
+            padding: 0;
+            text-align: left;
+            color: #024d7a;
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin: 15px 0;
+        }
+
+        .rank-card li {
+            margin: 8px 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .rank-card i {
+            color: #3182c0;
+            width: 20px;
+            text-align: center;
+        }
+
+        .rank-badge {
+            background: #b3d6ff;
+            border-radius: 50px;
+            padding: 5px 16px;
+            display: inline-block;
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: #00315a;
+            box-shadow: 0 3px 0 #7aa2cc;
+        }
+
+        /* 占位提示样式 (用于活动和周边框架) */
+        .placeholder-frame {
+            text-align: center;
+            padding: 40px 20px;
+            background: rgba(255, 255, 255, 0.4);
+            border-radius: 60px;
+            color: #2370b3;
+            font-size: 1.3rem;
+            font-weight: 600;
+            border: 2px dashed #93bde0;
+            backdrop-filter: blur(4px);
+        }
+
+        .placeholder-frame i {
+            font-size: 2rem;
+            display: block;
+            margin-bottom: 10px;
+            color: #4794d1;
+        }
+
+        /* 周边网格占位 */
+        .merch-grid-placeholder {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+            gap: 22px;
+            margin-top: 10px;
+        }
+
+        .merch-item-placeholder {
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 35px;
+            padding: 30px 16px;
+            text-align: center;
+            backdrop-filter: blur(4px);
+            border: 2px dashed #aec9ec;
+            color: #2b6fa5;
+            font-weight: 600;
+            font-size: 1.1rem;
+            box-shadow: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .merch-item-placeholder i {
+            font-size: 2.5rem;
+            color: #7bb0da;
+        }
+
+        /* 底部小尾巴 */
+        .footer-note {
+            margin-top: 50px;
+            text-align: center;
+            color: #015293;
+            background: rgba(255, 255, 255, 0.7);
+            padding: 18px 10px;
+            border-radius: 200px;
+            font-weight: 600;
+            backdrop-filter: blur(5px);
+            font-size: 0.95rem;
+            border: 1px solid white;
+        }
+
+        .footer-note i {
+            color: #4794d1;
+            margin: 0 4px;
+        }
+
+        /* 响应式微调 */
+        @media (max-width: 650px) {
+            .header {
+                flex-direction: column;
+                text-align: center;
+                padding: 24px 16px;
+            }
+
+            .avatar-badge {
+                flex-direction: column;
+            }
+
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+
+            .rank-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- 毛茸茸头部 蓝白版 · 猫头鹰 (图片替换) -->
+        <div class="header">
+            <div class="avatar-badge">
+                <div class="avatar-icon">
+                    <!-- 用户准备好的图片 1.jpg -->
+                    <img src="1.jpg" alt="雪穗头像">
+                </div>
+                <div class="title">
+                    <h1>雪穗yukiho～ <span style="font-size: 1.8rem;">❄️</span></h1>
+                    <p><i class="fas fa-feather"></i> 表面上是三语V但是实际上是零语言掌握者的异世界打工人雪穗ユキホ～</p>
+                </div>
+            </div>
+            <div class="header-stats">
+                <span><i class="fas fa-heart" style="color: #4794d1;"></i> 1.1w 推し</span>
+                <span><i class="fas fa-star" style="color: #4794d1;"></i> 直播</span>
+            </div>
+        </div>
+
+        <!-- 歌单部分 (排序后动态渲染) -->
+        <div class="section-title">
+            <i class="fas fa-music"></i>
+            <h2>雪穗的歌单</h2>
+        </div>
+        <div class="card">
+            <!-- 中文歌单区域 -->
+            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+                <i class="fas fa-language" style="color: #3182c0;"></i>
+                <h3 style="color: #015a9e;">🇨🇳 中文歌曲 · 拼音排序 A→Z</h3>
+            </div>
+            <div id="chinese-songs" class="playlist-grid">
+                <div class="song-item"><i class="fas fa-headphones-alt"></i><span>阿拉斯加海湾</span></div>
+                <div class="song-item"><i class="fas fa-headphones-alt"></i><span>别让我担心</span></div>
+                <div class="song-item"><i class="fas fa-headphones-alt"></i><span>不眠之夜</span></div>
+                <div class="song-item"><i class="fas fa-headphones-alt"></i><span>不完美小孩</span></div>
+                <div class="song-item"><i class="fas fa-headphones-alt"></i><span>凑热闹</span></div>
+                <div class="song-item"><i class="fas fa-headphones-alt"></i><span>发如雪</span></div>
+                <div class="song-item"><i class="fas fa-headphones-alt"></i><span>还是你的笑容最可爱</span></div>
+                <div class="song-item"><i class="fas fa-headphones-alt"></i><span>恋爱频率</span></div>
+                <div class="song-item"><i class="fas fa-headphones-alt"></i><span>淋雨一直走</span></div>
+                <div class="song-item"><i class="fas fa-headphones-alt"></i><span>门的另一端</span></div>
+                <div class="song-item"><i class="fas fa-headphones-alt"></i><span>你说太阳会有心事吗</span></div>
+                <div class="song-item"><i class="fas fa-headphones-alt"></i><span>你在 不在</span></div>
+                <div class="song-item"><i class="fas fa-headphones-alt"></i><span>谁家</span></div>
+                <div class="song-item"><i class="fas fa-headphones-alt"></i><span>生命之名</span></div>
+                <div class="song-item"><i class="fas fa-headphones-alt"></i><span>说好的爱呢</span></div>
+                <div class="song-item"><i class="fas fa-headphones-alt"></i><span>童话</span></div>
+                <div class="song-item"><i class="fas fa-headphones-alt"></i><span>兔子先生</span></div>
+                <div class="song-item"><i class="fas fa-headphones-alt"></i><span>外婆桥</span></div>
+                <div class="song-item"><i class="fas fa-headphones-alt"></i><span>危险派对</span></div>
+                <div class="song-item"><i class="fas fa-headphones-alt"></i><span>我的悲伤是水做的</span></div>
+                <div class="song-item"><i class="fas fa-headphones-alt"></i><span>喜欢你</span></div>
+                <div class="song-item"><i class="fas fa-headphones-alt"></i><span>阳光下的星星</span></div>
+                <div class="song-item"><i class="fas fa-headphones-alt"></i><span>隐形的翅膀</span></div>
+                <div class="song-item"><i class="fas fa-headphones-alt"></i><span>雨爱</span></div>
+                <div class="song-item"><i class="fas fa-headphones-alt"></i><span>在一月的禾木看雪</span></div>
+                <div class="song-item"><i class="fas fa-headphones-alt"></i><span>这世界那么多人</span></div>
+                <div class="song-item"><i class="fas fa-headphones-alt"></i><span>letting go</span></div>
+            </div>
+
+            <!-- 日文歌单区域 -->
+            <div style="display: flex; align-items: center; gap: 10px; margin: 20px 0 10px;">
+                <i class="fas fa-leaf" style="color: #3182c0;"></i>
+                <h3 style="color: #015a9e;">🇯🇵 日文歌曲 · 五十音順</h3>
+            </div>
+            <div id="japanese-songs" class="playlist-grid">
+                <div class="song-item"><i class="fas fa-headphones-alt"></i><span>66号線</span></div>
+                <div class="song-item"><i class="fas fa-headphones-alt"></i><span>Buddy</span></div>
+                <div class="song-item"><i class="fas fa-headphones-alt"></i><span>Say So</span></div>
+                <div class="song-item"><i class="fas fa-headphones-alt"></i><span>World of the happiness!</span></div>
+                <div class="song-item"><i class="fas fa-headphones-alt"></i><span>オノマトペ</span></div>
+                <div class="song-item"><i class="fas fa-headphones-alt"></i><span>おぼえたて</span></div>
+                <div class="song-item"><i class="fas fa-headphones-alt"></i><span>お茶でも飲んで</span></div>
+                <div class="song-item"><i class="fas fa-headphones-alt"></i><span>カタオモイ</span></div>
+                <div class="song-item"><i class="fas fa-headphones-alt"></i><span>さよーならまたいつか！</span></div>
+                <div class="song-item"><i class="fas fa-headphones-alt"></i><span>ダンスホール</span></div>
+                <div class="song-item"><i class="fas fa-headphones-alt"></i><span>パプリカ</span></div>
+                <div class="song-item"><i class="fas fa-headphones-alt"></i><span>ハロ/ハワユ</span></div>
+                <div class="song-item"><i class="fas fa-headphones-alt"></i><span>またねがあれば</span></div>
+                <div class="song-item"><i class="fas fa-headphones-alt"></i><span>嘘つき</span></div>
+                <div class="song-item"><i class="fas fa-headphones-alt"></i><span>可愛くてごめん</span></div>
+                <div class="song-item"><i class="fas fa-headphones-alt"></i><span>花占い</span></div>
+                <div class="song-item"><i class="fas fa-headphones-alt"></i><span>花曇り</span></div>
+                <div class="song-item"><i class="fas fa-headphones-alt"></i><span>灰かぶり</span></div>
+                <div class="song-item"><i class="fas fa-headphones-alt"></i><span>光と闇-弾き語りver-</span></div>
+                <div class="song-item"><i class="fas fa-headphones-alt"></i><span>好きにしなよ</span></div>
+                <div class="song-item"><i class="fas fa-headphones-alt"></i><span>香水</span></div>
+                <div class="song-item"><i class="fas fa-headphones-alt"></i><span>私じゃなかったんだね</span></div>
+                <div class="song-item"><i class="fas fa-headphones-alt"></i><span>私のSymphony</span></div>
+                <div class="song-item"><i class="fas fa-headphones-alt"></i><span>私の思春期へ/致我的思春期日文版</span></div>
+                <div class="song-item"><i class="fas fa-headphones-alt"></i><span>春よ、来い</span></div>
+                <div class="song-item"><i class="fas fa-headphones-alt"></i><span>春愁</span></div>
+                <div class="song-item"><i class="fas fa-headphones-alt"></i><span>春日影</span></div>
+                <div class="song-item"><i class="fas fa-headphones-alt"></i><span>小さな恋のうた</span></div>
+                <div class="song-item"><i class="fas fa-headphones-alt"></i><span>星座になれたら</span></div>
+                <div class="song-item"><i class="fas fa-headphones-alt"></i><span>千本桜</span></div>
+                <div class="song-item"><i class="fas fa-headphones-alt"></i><span>地獄恋文</span></div>
+                <div class="song-item"><i class="fas fa-headphones-alt"></i><span>蝶々結び</span></div>
+                <div class="song-item"><i class="fas fa-headphones-alt"></i><span>逃避行</span></div>
+                <div class="song-item"><i class="fas fa-headphones-alt"></i><span>八月の蛍</span></div>
+                <div class="song-item"><i class="fas fa-headphones-alt"></i><span>風になる</span></div>
+                <div class="song-item"><i class="fas fa-headphones-alt"></i><span>忘れてください</span></div>
+                <div class="song-item"><i class="fas fa-headphones-alt"></i><span>未来は風のように</span></div>
+                <div class="song-item"><i class="fas fa-headphones-alt"></i><span>優しい恋人</span></div>
+                <div class="song-item"><i class="fas fa-headphones-alt"></i><span>恋</span></div>
+                <div class="song-item"><i class="fas fa-headphones-alt"></i><span>恋愛裁判</span></div>
+                <div class="song-item"><i class="fas fa-headphones-alt"></i><span>忏悔录</span></div>
+            </div>
+
+            <div style="text-align: right; margin-top: 18px">
+                <span style="background:#d2e9ff; border-radius:40px; padding:8px 20px; font-size:0.9rem;"><i
+                        class="fas fa-heart"></i> 共69首 · 持续更新中～(大概?)</span>
+            </div>
+        </div>
+
+        <!-- 舰长礼包模板 三个卡片 (歌单之下) -->
+        <div class="section-title" style="margin-top: 40px;">
+            <i class="fas fa-crown"></i>
+            <h2>航海特供 · 舰长礼包</h2>
+        </div>
+        <div class="card">
+            <div class="rank-grid">
+                <!-- 舰长 -->
+                <div class="rank-card">
+                    <h3>🚢 舰长</h3>
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> 吧唧/色卡/亚克力(三选一)</li>
+                        <li><i class="fas fa-check-circle"></i> 舰长亲笔感谢信</li>
+                        <li><i class="fas fa-check-circle"></i> 音声</li>
+                    </ul>
+                    <div class="rank-badge"><i class="fas fa-star"></i> 欢迎上舰喵</div>
+                </div>
+                <!-- 提督 -->
+                <div class="rank-card">
+                    <h3>⚓ 提督</h3>
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> 舰长全部权益</li>
+                        <li><i class="fas fa-check-circle"></i> 广西特产一箱</li>
+                        <li><i class="fas fa-check-circle"></i> 指定歌曲翻唱两曲</li>
+                        <li><i class="fas fa-check-circle"></i> 指定直播内容（游戏，动漫，影视，歌曲学习）</li>
+                    </ul>
+                    <div class="rank-badge"><i class="fas fa-star"></i> 是提督大人!好耶!!!</div>
+                </div>
+                <!-- 总督 -->
+                <div class="rank-card">
+                    <h3>🏴‍☠️ 总督</h3>
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> 提督、舰长全部权益</li>
+                        <li><i class="fas fa-check-circle"></i> 新衣装（新衣回）参与制作</li>
+                        <li><i class="fas fa-check-circle"></i> 定制抱枕1个</li>
+                        <li><i class="fas fa-check-circle"></i> 定制fufu一只</li>
+                        <li><i class="fas fa-check-circle"></i> 限定总督色卡</li>
+                        <li><i class="fas fa-check-circle"></i> 吧唧、亚克力、感谢信</li>
+                    </ul>
+                    <div class="rank-badge"><i class="fas fa-star"></i> bigbig梦!(要是成真就好了)</div>
+                </div>
+            </div>
+            <p style="text-align: center; color: #2b6fa5; margin-top: 10px;"><i class="fas fa-heart"></i> 加入舰队，和雪穗一起航行吧！
+            </p>
+        </div>
+
+        <!-- 活动部分 -->
+        <div class="schedule-wrapper">
+            <h2 class="schedule-title">
+                <i class="fas fa-calendar-alt"></i> 雪穗の日程表
+            </h2>
+
+            <!-- 2月15日卡片 -->
+            <div class="schedule-card">
+                <div class="date-header">
+                    <span class="date-day">2月15日</span>
+                    <span class="date-week">星期天</span>
+                </div>
+                <ul class="event-list">
+                    <li class="event-item">
+                        <span class="event-time"><i class="fas fa-clock"></i> 16:00～18:00</span>
+                        <span class="event-desc">【生化危机7】</span>
+                    </li>
+                    <li class="event-item">
+                        <span class="event-time"><i class="fas fa-clock"></i> 23:00</span>
+                        <span class="event-desc">加班回</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- 2月16日卡片 -->
+            <div class="schedule-card">
+                <div class="date-header">
+                    <span class="date-day">2月16日</span>
+                    <span class="date-week">星期一</span>
+                </div>
+                <ul class="event-list">
+                    <li class="event-item">
+                        <span class="event-time"><i class="fas fa-clock"></i> 全天</span>
+                        <span class="event-desc">随机掉落！</span>
+                    </li>
+                    <li class="event-item">
+                        <span class="event-time"><i class="fas fa-clock"></i> 00:00</span>
+                        <span class="event-desc"><i class="fas fa-glass-cheers"></i> 凌晨准时【跨年回】</span>
+                    </li>
+                </ul>
+                <div class="happy-note">
+                    <i class="fas fa-star"></i> 大家新年快乐喵！ <i class="fas fa-star"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- 圆润字体 & 可爱图标库 (与主页保持一致) -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+        <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&amp;display=swap"
+            rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+        <style>
+            .schedule-wrapper {
+                max-width: 650px;
+                margin: 20px auto;
+                font-family: 'Nunito', 'Segoe UI', sans-serif;
+            }
+
+            .schedule-title {
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                font-size: 2rem;
+                font-weight: 800;
+                color: #015c9b;
+                margin-bottom: 20px;
+                background: rgba(255, 255, 255, 0.6);
+                backdrop-filter: blur(4px);
+                padding: 12px 24px;
+                border-radius: 60px;
+                border: 1px solid white;
+                box-shadow: 0 6px 0 #b2d2f5;
+            }
+
+            .schedule-title i {
+                color: #3182c0;
+                font-size: 2rem;
+            }
+
+            .schedule-card {
+                background: rgba(255, 255, 255, 0.8);
+                backdrop-filter: blur(10px);
+                -webkit-backdrop-filter: blur(10px);
+                border-radius: 50px;
+                padding: 24px 28px;
+                margin-bottom: 25px;
+                box-shadow: 0 15px 25px rgba(80, 160, 255, 0.2),
+                    0 5px 0 0 #ffffff inset,
+                    0 -2px 10px rgba(255, 255, 255, 0.8);
+                border: 1px solid rgba(255, 255, 255, 0.9);
+                transition: all 0.2s ease;
+            }
+
+            .schedule-card:hover {
+                box-shadow: 0 20px 30px -5px #88bae8, 0 8px 0 0 #f0f8ff inset;
+                transform: translateY(-3px);
+            }
+
+            .date-header {
+                display: flex;
+                align-items: baseline;
+                gap: 15px;
+                margin-bottom: 18px;
+                border-bottom: 2px dashed #9bc3e5;
+                padding-bottom: 10px;
+            }
+
+            .date-day {
+                font-size: 2.2rem;
+                font-weight: 800;
+                color: #014a7c;
+                line-height: 1.2;
+            }
+
+            .date-week {
+                font-size: 1.3rem;
+                font-weight: 600;
+                color: #2b6fa5;
+                background: #e1f0ff;
+                padding: 4px 14px;
+                border-radius: 40px;
+                border: 1px solid white;
+            }
+
+            .event-list {
+                list-style: none;
+                padding: 0;
+                margin: 0;
+            }
+
+            .event-item {
+                display: flex;
+                align-items: center;
+                gap: 15px;
+                background: rgba(255, 255, 255, 0.6);
+                border-radius: 50px;
+                padding: 12px 18px;
+                margin-bottom: 10px;
+                border: 1px solid #e5f2ff;
+                transition: background 0.1s;
+            }
+
+            .event-item:hover {
+                background: #deefff;
+                border-color: #80b5e0;
+            }
+
+            .event-time {
+                font-weight: 700;
+                color: #015293;
+                min-width: 120px;
+                display: flex;
+                align-items: center;
+                gap: 5px;
+                font-size: 1rem;
+            }
+
+            .event-time i {
+                color: #3182c0;
+                width: 20px;
+                font-size: 1.1rem;
+            }
+
+            .event-desc {
+                font-weight: 600;
+                color: #02457a;
+                font-size: 1.05rem;
+            }
+
+            .event-desc i {
+                color: #4794d1;
+                margin-right: 5px;
+            }
+
+            .happy-note {
+                text-align: center;
+                margin-top: 20px;
+                font-size: 1.2rem;
+                font-weight: 700;
+                color: #b34180;
+                /* 可爱的粉紫色 */
+                background: rgba(255, 240, 245, 0.8);
+                padding: 12px;
+                border-radius: 50px;
+                border: 2px solid #ffc0cb;
+                box-shadow: 0 5px 0 #f7b0c0;
+                backdrop-filter: blur(2px);
+            }
+
+            .happy-note i {
+                color: #f06292;
+                margin: 0 5px;
+            }
+
+            /* 小屏幕适配 */
+            @media (max-width: 480px) {
+                .schedule-card {
+                    padding: 18px 16px;
+                }
+
+                .date-day {
+                    font-size: 1.8rem;
+                }
+
+                .event-item {
+                    flex-wrap: wrap;
+                    gap: 6px;
+                }
+
+                .event-time {
+                    min-width: 100%;
+                }
+            }
+        </style>
     </div>
     <div class="card">
-      <div class="placeholder-frame">
-        <i class="fas fa-feather-alt"></i>
-        更多活动筹备中 · 敬请期待
-      </div>
+        <div class="placeholder-frame">
+            <i class="fas fa-feather-alt"></i>
+            更多活动筹备中 · 敬请期待
+        </div>
     </div>
 
     <!-- 周边部分 (仅框架) -->
     <div class="section-title" style="margin-top: 40px;">
-      <i class="fas fa-gift"></i>
-      <h2>穗小铺～ · (时尚小垃圾喵)</h2>
+        <i class="fas fa-gift"></i>
+        <h2>穗小铺～ · (时尚小垃圾喵)</h2>
     </div>
     <div class="card">
-      <div class="merch-grid-placeholder">
-        <div class="merch-item-placeholder">
-          <i class="fas fa-box-open"></i>
-          <span>coming soon</span>
+        <div class="merch-grid-placeholder">
+            <div class="merch-item-placeholder">
+                <i class="fas fa-box-open"></i>
+                <span>coming soon</span>
+            </div>
+            <div class="merch-item-placeholder">
+                <i class="fas fa-box-open"></i>
+                <span>coming soon</span>
+            </div>
+            <div class="merch-item-placeholder">
+                <i class="fas fa-box-open"></i>
+                <span>coming soon</span>
+            </div>
+            <div class="merch-item-placeholder">
+                <i class="fas fa-box-open"></i>
+                <span>coming soon</span>
+            </div>
         </div>
-        <div class="merch-item-placeholder">
-          <i class="fas fa-box-open"></i>
-          <span>coming soon</span>
+        <div style="text-align: center; margin-top: 16px; color:#2b6fa5;">
+            <i class="fas fa-heart" style="color: #4794d1;"></i> 周边正在快马加鞭赶来
         </div>
-        <div class="merch-item-placeholder">
-          <i class="fas fa-box-open"></i>
-          <span>coming soon</span>
-        </div>
-        <div class="merch-item-placeholder">
-          <i class="fas fa-box-open"></i>
-          <span>coming soon</span>
-        </div>
-      </div>
-      <div style="text-align: center; margin-top: 16px; color:#2b6fa5;">
-        <i class="fas fa-heart" style="color: #4794d1;"></i> 周边正在快马加鞭赶来
-      </div>
     </div>
 
     <!-- 粉丝小窝 (保留作为气氛组) -->
-    <div style="margin: 40px 0 20px; background: #e1f0ff; border-radius: 80px; padding: 15px 30px; text-align: center; border: 3px solid white; box-shadow: 0 8px 0 #b2d2f5;">
-      <p style="font-size: 1.2rem; font-weight: 600; color:#014276;">
-        <i class="fas fa-comment-dots" style="color: #3d8bcd;"></i> 穗的留言：
-        <span style="background: white; border-radius: 40px; padding: 8px 20px; margin-left: 8px; display: inline-block;">🦉 每天都有在练习新的歌曲！(大概?)</span>
-        <span style="background: #d3e9ff; border-radius: 40px; padding: 8px 20px; margin-left: 6px; display: inline-block;">✨ 祝每天开心～</span>
-    </p></div>
+    <div
+        style="margin: 40px 0 20px; background: #e1f0ff; border-radius: 80px; padding: 15px 30px; text-align: center; border: 3px solid white; box-shadow: 0 8px 0 #b2d2f5;">
+        <p style="font-size: 1.2rem; font-weight: 600; color:#014276;">
+            <i class="fas fa-comment-dots" style="color: #3d8bcd;"></i> 穗的留言：
+            <span
+                style="background: white; border-radius: 40px; padding: 8px 20px; margin-left: 8px; display: inline-block;">🦉
+                每天都有在练习新的歌曲！(大概?)</span>
+            <span
+                style="background: #d3e9ff; border-radius: 40px; padding: 8px 20px; margin-left: 6px; display: inline-block;">✨
+                祝每天开心～</span>
+        </p>
+    </div>
 
     <!-- 小尾巴 -->
     <div class="footer-note">
-      <i class="fas fa-heart"></i> 雪穗的曲单 · 感谢聆听 <i class="fas fa-heart"></i><br>
-      <span style="opacity: 0.7;">❄️ 歌单不定时更新 · 活动与周边筹备中 · 敬请期待 ❄️</span>
+        <i class="fas fa-heart"></i> 雪穗的曲单 · 感谢聆听 <i class="fas fa-heart"></i><br>
+        <span style="opacity: 0.7;">❄️ 歌单不定时更新 · 活动与周边筹备中 · 敬请期待 ❄️</span>
     </div>
-  <!-- 小装饰: 猫头鹰夜话 -->
-  <div style="position:fixed; bottom:20px; right:20px; background: #d1e7ff; border-radius:100px; padding:12px 16px; box-shadow:0 6px 0 #96bde3; z-index:10; font-size:2rem; opacity:0.8;">
-    🦉
-  </div>
-
-  <!-- 排序脚本：中文按拼音，日文按五十音 -->
-  <script>
-    (function() {
-      // 原始歌曲列表（来自用户，保留两个“喜欢你”）
-      const allSongs = [
-        // 中文歌曲（按原顺序，后面会排序）
-        "雨爱", "兔子先生", "淋雨一直走", "恋爱频率", "不完美小孩", 
-        "外婆桥", "说好的爱呢", "letting go", "危险派对", "喜欢你", "生命之名", "谁家", 
-        "发如雪", "隐形的翅膀", "别让我担心", "在一月的禾木看雪", "你在 不在", 
-        "童话", "我的悲伤是水做的", "阳光下的星星", "凑热闹", "不眠之夜", 
-        "还是你的笑容最可爱", "你说太阳会有心事吗", 
-        "这世界那么多人", "阿拉斯加海湾", "门的另一端",
-        // 日文歌曲
-        "春よ、来い", "忏悔录", "灰かぶり", 
-        "さよーならまたいつか！", "春日影", "忘れてください", "地獄恋文", 
-        "嘘つき", "好きにしなよ", "花占い", 
-        "私の思春期へ/致我的思春期日文版", "八月の蛍", "おぼえたて", 
-        "風になる", "優しい恋人", "花曇り", "お茶でも飲んで", 
-        "またねがあれば", "星座になれたら", "恋", "パプリカ", "可愛くてごめん", 
-        "ハロ/ハワユ", "Buddy", "66号線", "春愁", "Say So", "ダンスホール", 
-        "蝶々結び", "World of the happiness!", "カタオモイ", "逃避行", 
-        "私のSymphony", "私じゃなかったんだね", "オノマトペ", "千本桜", 
-        "小さな恋のうた", "香水", "光と闇-弾き語りver-", "恋愛裁判", 
-        "未来は風のように"
-      ];
-
-      // 中文歌曲判别（简单用正则，包含日文假名的归为日文，其余中文；但要注意“Say So”等英文归为日文？用户可能视为日文翻唱，放在日文区。我们使用简单规则：如果字符包含假名（范围\u3040-\u30FF）或常见日文汉字，但不好区分。这里手动分类更准确。根据用户提供的列表，前28个是中文，后48个是日文。我们就按此划分。
-      const chineseRaw = [
-        "雨爱", "兔子先生", "淋雨一直走", "恋爱频率", "喜欢你", "不完美小孩", "谁家", 
-        "外婆桥", "说好的爱呢", "letting go", "危险派对", "生命之名", 
-        "发如雪", "隐形的翅膀", "别让我担心", "在一月的禾木看雪", "你在 不在", 
-        "童话", "我的悲伤是水做的", "阳光下的星星", "凑热闹", "不眠之夜", 
-        "还是你的笑容最可爱", "你说太阳会有心事吗", 
-        "这世界那么多人", "阿拉斯加海湾", "门的另一端",
-      ];
-      const japaneseRaw = [
-        "春よ、来い", "忏悔录", "灰かぶり", 
-        "さよーならまたいつか！", "春日影", "忘れてください", "地獄恋文", 
-        "嘘つき", "好きにしなよ", "花占い", 
-        "私の思春期へ/致我的思春期日文版", "八月の蛍", "おぼえたて", 
-        "風になる", "優しい恋人", "花曇り", "お茶でも飲んで", 
-        "またねがあれば", "星座になれたら", "恋", "パプリカ", "可愛くてごめん", 
-        "ハロ/ハワユ", "Buddy", "66号線", "春愁", "Say So", "ダンスホール", 
-        "蝶々結び", "World of the happiness!", "カタオモイ", "逃避行", 
-        "私のSymphony", "私じゃなかったんだね", "オノマトペ", "千本桜", 
-        "小さな恋のうた", "香水", "光と闇-弾き語りver-", "恋愛裁判", 
-        "未来は風のように"
-      ];
-
-      // 中文排序：拼音。使用localeCompare('zh-CN')
-      const chineseSorted = chineseRaw.sort((a, b) => a.localeCompare(b, 'zh-CN'));
-
-      // 日文排序：五十音 (使用日本locale)
-      const japaneseSorted = japaneseRaw.sort((a, b) => a.localeCompare(b, 'ja'));
-
-      // 渲染中文歌单
-      const chineseContainer = document.getElementById('chinese-songs');
-      chineseSorted.forEach(song => {
-        const item = document.createElement('div');
-        item.className = 'song-item';
-        item.innerHTML = `<i class="fas fa-headphones-alt"></i><span>${song}</span>`;
-        chineseContainer.appendChild(item);
-      });
-
-      // 渲染日文歌单
-      const japaneseContainer = document.getElementById('japanese-songs');
-      japaneseSorted.forEach(song => {
-        const item = document.createElement('div');
-        item.className = 'song-item';
-        item.innerHTML = `<i class="fas fa-headphones-alt"></i><span>${song}</span>`;
-        japaneseContainer.appendChild(item);
-      });
-    })();
-  </script>
-  <div style="display: flex; justify-content: center; margin: 40px 0 20px;">
-  <a href="https://dreamail.cn/send?dm=91801a0a-dac4-47c5-9260-153f73117224" target="_blank" rel="noopener" class="dreamail-letter">
-    <div class="envelope">
-      <i class="fas fa-envelope"></i>
-      <span>✉️ 寄给雪穗</span>
+    <!-- 小装饰: 猫头鹰夜话 -->
+    <div
+        style="position:fixed; bottom:20px; right:20px; background: #d1e7ff; border-radius:100px; padding:12px 16px; box-shadow:0 6px 0 #96bde3; z-index:10; font-size:2rem; opacity:0.8;">
+        🦉
     </div>
-  </a>
-</div>
 
-<style>
-  .dreamail-letter {
-    text-decoration: none;
-    display: inline-block;
-    transition: transform 0.2s ease;
-  }
+    <!-- 排序脚本：中文按拼音，日文按五十音 -->
+    <script>
+        (function () {
+            // 原始歌曲列表（来自用户，保留两个“喜欢你”）
+            const allSongs = [
+                // 中文歌曲（按原顺序，后面会排序）
+                "雨爱", "兔子先生", "淋雨一直走", "恋爱频率", "不完美小孩",
+                "外婆桥", "说好的爱呢", "letting go", "危险派对", "喜欢你", "生命之名", "谁家",
+                "发如雪", "隐形的翅膀", "别让我担心", "在一月的禾木看雪", "你在 不在",
+                "童话", "我的悲伤是水做的", "阳光下的星星", "凑热闹", "不眠之夜",
+                "还是你的笑容最可爱", "你说太阳会有心事吗",
+                "这世界那么多人", "阿拉斯加海湾", "门的另一端",
+                // 日文歌曲
+                "春よ、来い", "忏悔录", "灰かぶり",
+                "さよーならまたいつか！", "春日影", "忘れてください", "地獄恋文",
+                "嘘つき", "好きにしなよ", "花占い",
+                "私の思春期へ/致我的思春期日文版", "八月の蛍", "おぼえたて",
+                "風になる", "優しい恋人", "花曇り", "お茶でも飲んで",
+                "またねがあれば", "星座になれたら", "恋", "パプリカ", "可愛くてごめん",
+                "ハロ/ハワユ", "Buddy", "66号線", "春愁", "Say So", "ダンスホール",
+                "蝶々結び", "World of the happiness!", "カタオモイ", "逃避行",
+                "私のSymphony", "私じゃなかったんだね", "オノマトペ", "千本桜",
+                "小さな恋のうた", "香水", "光と闇-弾き語りver-", "恋愛裁判",
+                "未来は風のように"
+            ];
 
-  .dreamail-letter:hover {
-    transform: translateY(-6px);
-  }
+            // 中文歌曲判别（简单用正则，包含日文假名的归为日文，其余中文；但要注意“Say So”等英文归为日文？用户可能视为日文翻唱，放在日文区。我们使用简单规则：如果字符包含假名（范围\u3040-\u30FF）或常见日文汉字，但不好区分。这里手动分类更准确。根据用户提供的列表，前28个是中文，后48个是日文。我们就按此划分。
+            const chineseRaw = [
+                "雨爱", "兔子先生", "淋雨一直走", "恋爱频率", "喜欢你", "不完美小孩", "谁家",
+                "外婆桥", "说好的爱呢", "letting go", "危险派对", "生命之名",
+                "发如雪", "隐形的翅膀", "别让我担心", "在一月的禾木看雪", "你在 不在",
+                "童话", "我的悲伤是水做的", "阳光下的星星", "凑热闹", "不眠之夜",
+                "还是你的笑容最可爱", "你说太阳会有心事吗",
+                "这世界那么多人", "阿拉斯加海湾", "门的另一端",
+            ];
+            const japaneseRaw = [
+                "春よ、来い", "忏悔录", "灰かぶり",
+                "さよーならまたいつか！", "春日影", "忘れてください", "地獄恋文",
+                "嘘つき", "好きにしなよ", "花占い",
+                "私の思春期へ/致我的思春期日文版", "八月の蛍", "おぼえたて",
+                "風になる", "優しい恋人", "花曇り", "お茶でも飲んで",
+                "またねがあれば", "星座になれたら", "恋", "パプリカ", "可愛くてごめん",
+                "ハロ/ハワユ", "Buddy", "66号線", "春愁", "Say So", "ダンスホール",
+                "蝶々結び", "World of the happiness!", "カタオモイ", "逃避行",
+                "私のSymphony", "私じゃなかったんだね", "オノマトペ", "千本桜",
+                "小さな恋のうた", "香水", "光と闇-弾き語りver-", "恋愛裁判",
+                "未来は風のように"
+            ];
 
-  .envelope {
-    background: white;
-    border-radius: 30px 30px 25px 25px;
-    padding: 30px 40px;
-    box-shadow: 0 12px 0 #aad0f5, 0 10px 25px rgba(30, 110, 180, 0.3);
-    position: relative;
-    border: 2px solid #b8d9ff;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-    width: auto;
-    backdrop-filter: blur(4px);
-  }
+            // 中文排序：拼音。使用localeCompare('zh-CN')
+            const chineseSorted = chineseRaw.sort((a, b) => a.localeCompare(b, 'zh-CN'));
 
-  /* 信封封口三角形 */
-  .envelope::before {
-    content: '';
-    position: absolute;
-    top: -14px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 0;
-    height: 0;
-    border-left: 28px solid transparent;
-    border-right: 28px solid transparent;
-    border-bottom: 26px solid #f0f8ff;
-    z-index: 2;
-    filter: drop-shadow(0 -2px 2px rgba(150, 200, 255, 0.3));
-  }
+            // 日文排序：五十音 (使用日本locale)
+            const japaneseSorted = japaneseRaw.sort((a, b) => a.localeCompare(b, 'ja'));
 
-  .envelope i {
-    font-size: 4rem;
-    color: #3182c0;
-    filter: drop-shadow(0 6px 0 #c0dcff);
-  }
+            // 渲染中文歌单
+            const chineseContainer = document.getElementById('chinese-songs');
+            chineseSorted.forEach(song => {
+                const item = document.createElement('div');
+                item.className = 'song-item';
+                item.innerHTML = `<i class="fas fa-headphones-alt"></i><span>${song}</span>`;
+                chineseContainer.appendChild(item);
+            });
 
-  .envelope span {
-    font-family: 'Nunito', 'Segoe UI', sans-serif;
-    font-weight: 700;
-    font-size: 1.2rem;
-    color: #014682;
-    background: #e8f2ff;
-    padding: 6px 18px;
-    border-radius: 40px;
-    border: 1px solid #9ac4f0;
-    white-space: nowrap;         /* 确保文字不换行 */
-  }
-</style>
-<div class="fold-photo-card">
-  <!-- 可点击的折叠头部（信封按钮） -->
-  <div class="fold-header" id="foldHeader">
-    <i class="fas fa-envelope-open-text"></i>
-    <span>雪穗の写真 📂</span>
-    <i class="fas fa-chevron-down arrow-icon" id="arrowIcon"></i>
-  </div>
-
-  <!-- 折叠内容区域（放置两张照片） -->
-  <div class="fold-content" id="foldContent">
-    <div class="photo-grid">
-      <img src="https://47.239.10.71:30721/down/ij7HkI3gp8Go.png" alt="照片 P1" loading="lazy">
-      <img src="https://47.239.10.71:30721/down/KtepLGrtrgsS.jpg" alt="照片 P2" loading="lazy">
-      <img src="https://47.239.10.71:30721/down/M7cjNM65Q2bW.jpg" alt="照片P3" loading="lazy">
-      <img src="https://47.239.10.71:30721/down/gWUUNedRojDe.png" alt="照片P4" loading="lazy">
+            // 渲染日文歌单
+            const japaneseContainer = document.getElementById('japanese-songs');
+            japaneseSorted.forEach(song => {
+                const item = document.createElement('div');
+                item.className = 'song-item';
+                item.innerHTML = `<i class="fas fa-headphones-alt"></i><span>${song}</span>`;
+                japaneseContainer.appendChild(item);
+            });
+        })();
+    </script>
+    <div style="display: flex; justify-content: center; margin: 40px 0 20px;">
+        <a href="https://dreamail.cn/send?dm=91801a0a-dac4-47c5-9260-153f73117224" target="_blank" rel="noopener"
+            class="dreamail-letter">
+            <div class="envelope">
+                <i class="fas fa-envelope"></i>
+                <span>✉️ 寄给雪穗</span>
+            </div>
+        </a>
     </div>
-  </div>
-</div>
 
-<!-- 字体图标库 (与之前保持一致) -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .dreamail-letter {
+            text-decoration: none;
+            display: inline-block;
+            transition: transform 0.2s ease;
+        }
 
-<style>
-  .fold-photo-card {
-    font-family: 'Nunito', 'Segoe UI', sans-serif;
-    background: rgba(255, 255, 255, 0.75);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    border-radius: 40px;
-    padding: 20px 24px;
-    box-shadow: 0 15px 25px rgba(80, 160, 255, 0.2),
+        .dreamail-letter:hover {
+            transform: translateY(-6px);
+        }
+
+        .envelope {
+            background: white;
+            border-radius: 30px 30px 25px 25px;
+            padding: 30px 40px;
+            box-shadow: 0 12px 0 #aad0f5, 0 10px 25px rgba(30, 110, 180, 0.3);
+            position: relative;
+            border: 2px solid #b8d9ff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            width: auto;
+            backdrop-filter: blur(4px);
+        }
+
+        /* 信封封口三角形 */
+        .envelope::before {
+            content: '';
+            position: absolute;
+            top: -14px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 28px solid transparent;
+            border-right: 28px solid transparent;
+            border-bottom: 26px solid #f0f8ff;
+            z-index: 2;
+            filter: drop-shadow(0 -2px 2px rgba(150, 200, 255, 0.3));
+        }
+
+        .envelope i {
+            font-size: 4rem;
+            color: #3182c0;
+            filter: drop-shadow(0 6px 0 #c0dcff);
+        }
+
+        .envelope span {
+            font-family: 'Nunito', 'Segoe UI', sans-serif;
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: #014682;
+            background: #e8f2ff;
+            padding: 6px 18px;
+            border-radius: 40px;
+            border: 1px solid #9ac4f0;
+            white-space: nowrap;
+            /* 确保文字不换行 */
+        }
+    </style>
+    <div class="fold-photo-card">
+        <!-- 可点击的折叠头部（信封按钮） -->
+        <div class="fold-header" id="foldHeader">
+            <i class="fas fa-envelope-open-text"></i>
+            <span>雪穗の写真 📂</span>
+            <i class="fas fa-chevron-down arrow-icon" id="arrowIcon"></i>
+        </div>
+
+        <!-- 折叠内容区域（放置两张照片） -->
+        <div class="fold-content" id="foldContent">
+            <div class="photo-grid">
+                <img src="https://47.239.10.71:30721/down/ij7HkI3gp8Go.png" alt="照片 P1" loading="lazy">
+                <img src="https://47.239.10.71:30721/down/KtepLGrtrgsS.jpg" alt="照片 P2" loading="lazy">
+                <img src="https://47.239.10.71:30721/down/M7cjNM65Q2bW.jpg" alt="照片P3" loading="lazy">
+                <img src="https://47.239.10.71:30721/down/gWUUNedRojDe.png" alt="照片P4" loading="lazy">
+            </div>
+        </div>
+    </div>
+
+    <!-- 字体图标库 (与之前保持一致) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        .fold-photo-card {
+            font-family: 'Nunito', 'Segoe UI', sans-serif;
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border-radius: 40px;
+            padding: 20px 24px;
+            box-shadow: 0 15px 25px rgba(80, 160, 255, 0.2),
                 0 5px 0 0 #ffffff inset,
                 0 -2px 10px rgba(255, 255, 255, 0.8);
-    border: 1px solid rgba(255, 255, 255, 0.9);
-    max-width: 600px;
-    margin: 20px auto;
-    transition: all 0.2s ease;
-  }
-
-  .fold-header {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    cursor: pointer;
-    padding: 8px 12px;
-    border-radius: 50px;
-    background: rgba(220, 240, 255, 0.6);
-    border: 1px solid #b9d9fc;
-    box-shadow: 0 4px 0 #aac6e5;
-    transition: background 0.15s, transform 0.1s;
-    user-select: none;
-  }
-
-  .fold-header:hover {
-    background: rgba(200, 230, 255, 0.9);
-    transform: translateY(-2px);
-    box-shadow: 0 6px 0 #aac6e5;
-  }
-
-  .fold-header:active {
-    transform: translateY(2px);
-    box-shadow: 0 2px 0 #aac6e5;
-  }
-
-  .fold-header i {
-    font-size: 1.6rem;
-    color: #3182c0;
-    filter: drop-shadow(0 2px 0 #c0dcff);
-  }
-
-  .fold-header span {
-    font-weight: 700;
-    font-size: 1.2rem;
-    color: #014a7c;
-    flex: 1;
-  }
-
-  .arrow-icon {
-    transition: transform 0.3s ease;
-    font-size: 1.4rem !important;
-  }
-
-  /* 内容区域默认隐藏 */
-  .fold-content {
-    display: none;
-    margin-top: 22px;
-    padding-top: 10px;
-    border-top: 2px dashed #9bc3e5;
-  }
-
-  /* 显示状态 */
-  .fold-photo-card.expanded .fold-content {
-    display: block;
-  }
-
-  .fold-photo-card.expanded .arrow-icon {
-    transform: rotate(180deg);
-  }
-
-  /* 照片网格布局 */
-  .photo-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
-  }
-
-  .photo-grid img {
-    max-width: 100%;
-    width: calc(50% - 10px);
-    min-width: 200px;
-    border-radius: 30px;
-    box-shadow: 0 10px 0 #9bbde0, 0 8px 18px rgba(0, 60, 120, 0.2);
-    border: 3px solid white;
-    object-fit: cover;
-    aspect-ratio: 1 / 1;  /* 使图片区域为正方形，根据实际图片比例可调整 */
-    background: #e6f0fa;
-    transition: transform 0.2s;
-  }
-
-  .photo-grid img:hover {
-    transform: scale(1.02);
-  }
-
-  /* 小屏适配 */
-  @media (max-width: 480px) {
-    .photo-grid img {
-      width: 100%;
-    }
-    .fold-photo-card {
-      padding: 16px;
-    }
-  }
-</style>
-
-<script>
-  (function() {
-    // 折叠切换逻辑
-    const card = document.querySelector('.fold-photo-card');
-    const header = document.getElementById('foldHeader');
-
-    if (card && header) {
-      header.addEventListener('click', function(e) {
-        // 切换 expanded 类
-        card.classList.toggle('expanded');
-      });
-    }
-  })();
-</script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-
-<style>
-  /* 所有样式限定在 .ms-container 内，避免影响外部 */
-  .ms-container {
-    max-width: 600px;
-    margin: 20px auto;
-    background: rgba(255, 255, 255, 0.7);
-    backdrop-filter: blur(8px);
-    border-radius: 50px;
-    padding: 24px 16px 30px;
-    box-shadow: 0 20px 30px rgba(70, 140, 210, 0.3);
-    border: 2px solid white;
-    font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
-    box-sizing: border-box;
-  }
-
-  /* 内部所有元素继承边框盒 */
-  .ms-container * {
-    box-sizing: border-box;
-    user-select: none;
-    -webkit-tap-highlight-color: transparent;
-  }
-
-  .ms-header {
-    text-align: center;
-    color: #015c9b;
-    font-weight: 700;
-    font-size: 2rem;
-    margin-bottom: 10px;
-    letter-spacing: 2px;
-  }
-
-  .ms-difficulty {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    flex-wrap: wrap;
-    margin: 15px 0 20px;
-  }
-
-  .ms-difficulty-btn {
-    background: white;
-    border: none;
-    padding: 10px 22px;
-    border-radius: 60px;
-    font-size: 1.1rem;
-    font-weight: 700;
-    color: #015c9b;
-    box-shadow: 0 5px 0 #aac6e5;
-    cursor: pointer;
-    transition: 0.1s ease;
-    border: 2px solid white;
-    flex: 0 1 auto;
-  }
-
-  .ms-difficulty-btn:active {
-    transform: translateY(5px);
-    box-shadow: 0 2px 0 #aac6e5;
-  }
-
-  .ms-status-bar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: rgba(255,255,255,0.5);
-    border-radius: 60px;
-    padding: 6px 16px;
-    margin-bottom: 20px;
-    font-size: 1.2rem;
-    font-weight: 700;
-    color: #014a7c;
-    border: 1px solid white;
-  }
-
-  .ms-mine-count {
-    background: #b3d6ff;
-    padding: 4px 18px;
-    border-radius: 40px;
-  }
-
-  .ms-message {
-    background: #b3d6ff;
-    padding: 4px 18px;
-    border-radius: 40px;
-  }
-
-  /* 游戏面板容器，用于水平居中 */
-  .ms-board-wrapper {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    margin-bottom: 20px;
-  }
-
-  .ms-board {
-    display: grid;
-    gap: 3px;
-    background: #9bbde0;
-    padding: 10px;
-    border-radius: 30px;
-    border: 4px solid white;
-    box-shadow: inset 0 0 0 2px #c7e0ff;
-    width: fit-content;
-    margin: 0 auto;
-  }
-
-  /* 格子尺寸：用clamp适配手机竖屏，保证可点 */
-  .ms-cell {
-    width: clamp(28px, 8vw, 45px);
-    height: clamp(28px, 8vw, 45px);
-    background: #c7e0ff;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 800;
-    font-size: 1.2rem;
-    box-shadow: inset -2px -2px 5px rgba(0,0,0,0.1), inset 2px 2px 5px white;
-    transition: 0.05s;
-    cursor: pointer;
-    color: #014a7c;
-    position: relative;
-    background-size: cover;
-    background-position: center;
-  }
-
-  /* 翻开样式 */
-  .ms-cell.revealed {
-    background: #e5f0ff;
-    box-shadow: inset 2px 2px 5px rgba(0,0,0,0.1);
-    border: 1px solid white;
-  }
-
-  /* 地雷图片 (游戏结束或翻开时显示) */
-  .ms-cell.mine {
-    background-image: url('Z-1.jpg');
-    background-size: cover;
-    background-color: #ffb0b0;
-  }
-
-  .ms-cell.flagged {
-  background-image: url('Z-2.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-color: transparent;
-  font-size: 0;       /* 隐藏可能出现的数字 */
-  color: transparent;
-}
-  /* 数字颜色 */
-  .ms-num1 { color: #0202c2; }
-  .ms-num2 { color: #0f7d0f; }
-  .ms-num3 { color: #c10101; }
-  .ms-num4 { color: #01018a; }
-  .ms-num5 { color: #7f026d; }
-  .ms-num6 { color: #3b7f7f; }
-  .ms-num7 { color: #000; }
-  .ms-num8 { color: #5f5f5f; }
-
-  /* 教程区域 */
-  .ms-tutorial {
-    background: #d9f0ff;
-    border-radius: 60px;
-    padding: 14px 18px;
-    text-align: center;
-    border: 3px solid white;
-    color: #014a7c;
-    font-weight: 600;
-    font-size: 0.95rem;
-    line-height: 1.5;
-    margin-top: 15px;
-  }
-
-  .ms-tutorial i {
-    margin: 0 4px;
-    color: #3182c0;
-  }
-</style>
-<!-- 隐藏式背景音乐模块 (独立于扫雷，音量20%) -->
-<audio id="bgMusic" loop="" preload="auto" style="display: none;">
-  <source src="2.23am.mp3" type="audio/mpeg">
-</audio>
-<script>
-  (function() {
-    const audio = document.getElementById('bgMusic');
-    audio.volume = 0.2; // 音量20%
-
-    function attemptAutoPlay() {
-      audio.play()
-        .then(() => console.log('🎵 背景音乐已自动播放'))
-        .catch(() => {
-          console.log('🎵 自动播放被阻止，等待用户交互');
-          const resumeAudio = () => {
-            audio.play()
-              .then(() => {
-                document.removeEventListener('click', resumeAudio);
-                document.removeEventListener('touchstart', resumeAudio);
-                document.removeEventListener('keydown', resumeAudio);
-              })
-              .catch(e => console.log(e));
-          };
-          document.addEventListener('click', resumeAudio, { once: true });
-          document.addEventListener('touchstart', resumeAudio, { once: true });
-          document.addEventListener('keydown', resumeAudio, { once: true });
-        });
-    }
-    if (document.readyState === 'complete') attemptAutoPlay();
-    else window.addEventListener('load', attemptAutoPlay);
-  })();
-</script>
-<!-- 隐藏式背景音乐模块 (保持不变) -->
-<audio id="bgMusic" loop="" preload="auto" style="display: none;">
-  <source src="2.23am.mp3" type="audio/mpeg">
-</audio>
-<script>
-  (function() {
-    const audio = document.getElementById('bgMusic');
-    audio.volume = 0.2;
-    function attemptAutoPlay() {
-      audio.play().catch(() => {
-        const resumeAudio = () => {
-          audio.play().catch(() => {});
-          document.removeEventListener('click', resumeAudio);
-          document.removeEventListener('touchstart', resumeAudio);
-          document.removeEventListener('keydown', resumeAudio);
-        };
-        document.addEventListener('click', resumeAudio, { once: true });
-        document.addEventListener('touchstart', resumeAudio, { once: true });
-        document.addEventListener('keydown', resumeAudio, { once: true });
-      });
-    }
-    if (document.readyState === 'complete') attemptAutoPlay();
-    else window.addEventListener('load', attemptAutoPlay);
-  })();
-</script>
-
-<!-- 扫雷模块 (含背景音乐控制) -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-<style>
-  /* 样式与之前完全相同，此处省略以节省篇幅，实际使用时保留原样 */
-  .ms-container { /* ... */ }
-  /* ... 所有样式不变 ... */
-</style>
-
-<div class="ms-container">
-  <div class="ms-header">💣 穗雷(太君～这里没地雷)</div>
-  <div class="ms-difficulty">
-    <button class="ms-difficulty-btn" data-diff="easy">🐟 杂鱼～ (3x3)</button>
-    <button class="ms-difficulty-btn" data-diff="medium">⚡ 中等 (9x9)</button>
-    <button class="ms-difficulty-btn" data-diff="hard">🏆 糕手 (11x11)</button>
-  </div>
-  <div class="ms-status-bar">
-    <span class="ms-mine-count">💣 <span id="msMineCounter">10</span></span>
-    <span class="ms-message" id="msMessage">💥 踩雷了...因为你没能排完地雷所以穗君被炸死力!</span>
-  </div>
-  <div class="ms-board-wrapper">
-    <div class="ms-board" id="msBoard" style="grid-template-columns: repeat(9, 1fr);"><div class="ms-cell" data-row="0" data-col="0"></div><div class="ms-cell mine" data-row="0" data-col="1"></div><div class="ms-cell revealed ms-num1" data-row="0" data-col="2">1</div><div class="ms-cell" data-row="0" data-col="3"></div><div class="ms-cell mine" data-row="0" data-col="4"></div><div class="ms-cell" data-row="0" data-col="5"></div><div class="ms-cell mine" data-row="0" data-col="6"></div><div class="ms-cell" data-row="0" data-col="7"></div><div class="ms-cell mine" data-row="0" data-col="8"></div><div class="ms-cell" data-row="1" data-col="0"></div><div class="ms-cell" data-row="1" data-col="1"></div><div class="ms-cell" data-row="1" data-col="2"></div><div class="ms-cell revealed ms-num2" data-row="1" data-col="3">2</div><div class="ms-cell" data-row="1" data-col="4"></div><div class="ms-cell" data-row="1" data-col="5"></div><div class="ms-cell" data-row="1" data-col="6"></div><div class="ms-cell" data-row="1" data-col="7"></div><div class="ms-cell" data-row="1" data-col="8"></div><div class="ms-cell mine" data-row="2" data-col="0"></div><div class="ms-cell" data-row="2" data-col="1"></div><div class="ms-cell revealed ms-num1" data-row="2" data-col="2">1</div><div class="ms-cell mine" data-row="2" data-col="3"></div><div class="ms-cell" data-row="2" data-col="4"></div><div class="ms-cell" data-row="2" data-col="5"></div><div class="ms-cell" data-row="2" data-col="6"></div><div class="ms-cell" data-row="2" data-col="7"></div><div class="ms-cell" data-row="2" data-col="8"></div><div class="ms-cell" data-row="3" data-col="0"></div><div class="ms-cell" data-row="3" data-col="1"></div><div class="ms-cell" data-row="3" data-col="2"></div><div class="ms-cell revealed ms-num3" data-row="3" data-col="3">3</div><div class="ms-cell mine" data-row="3" data-col="4"></div><div class="ms-cell" data-row="3" data-col="5"></div><div class="ms-cell" data-row="3" data-col="6"></div><div class="ms-cell" data-row="3" data-col="7"></div><div class="ms-cell" data-row="3" data-col="8"></div><div class="ms-cell" data-row="4" data-col="0"></div><div class="ms-cell" data-row="4" data-col="1"></div><div class="ms-cell mine" data-row="4" data-col="2"></div><div class="ms-cell" data-row="4" data-col="3"></div><div class="ms-cell" data-row="4" data-col="4"></div><div class="ms-cell" data-row="4" data-col="5"></div><div class="ms-cell" data-row="4" data-col="6"></div><div class="ms-cell" data-row="4" data-col="7"></div><div class="ms-cell" data-row="4" data-col="8"></div><div class="ms-cell" data-row="5" data-col="0"></div><div class="ms-cell" data-row="5" data-col="1"></div><div class="ms-cell" data-row="5" data-col="2"></div><div class="ms-cell" data-row="5" data-col="3"></div><div class="ms-cell" data-row="5" data-col="4"></div><div class="ms-cell" data-row="5" data-col="5"></div><div class="ms-cell" data-row="5" data-col="6"></div><div class="ms-cell mine" data-row="5" data-col="7"></div><div class="ms-cell" data-row="5" data-col="8"></div><div class="ms-cell" data-row="6" data-col="0"></div><div class="ms-cell" data-row="6" data-col="1"></div><div class="ms-cell" data-row="6" data-col="2"></div><div class="ms-cell" data-row="6" data-col="3"></div><div class="ms-cell" data-row="6" data-col="4"></div><div class="ms-cell" data-row="6" data-col="5"></div><div class="ms-cell mine" data-row="6" data-col="6"></div><div class="ms-cell" data-row="6" data-col="7"></div><div class="ms-cell" data-row="6" data-col="8"></div><div class="ms-cell" data-row="7" data-col="0"></div><div class="ms-cell" data-row="7" data-col="1"></div><div class="ms-cell" data-row="7" data-col="2"></div><div class="ms-cell" data-row="7" data-col="3"></div><div class="ms-cell" data-row="7" data-col="4"></div><div class="ms-cell" data-row="7" data-col="5"></div><div class="ms-cell" data-row="7" data-col="6"></div><div class="ms-cell" data-row="7" data-col="7"></div><div class="ms-cell" data-row="7" data-col="8"></div><div class="ms-cell" data-row="8" data-col="0"></div><div class="ms-cell" data-row="8" data-col="1"></div><div class="ms-cell" data-row="8" data-col="2"></div><div class="ms-cell" data-row="8" data-col="3"></div><div class="ms-cell" data-row="8" data-col="4"></div><div class="ms-cell" data-row="8" data-col="5"></div><div class="ms-cell" data-row="8" data-col="6"></div><div class="ms-cell" data-row="8" data-col="7"></div><div class="ms-cell" data-row="8" data-col="8"></div></div>
-  </div>
-  <div class="ms-tutorial">
-    <i class="fas fa-mouse-pointer"></i> <strong>电脑</strong>：左键翻开，右键标记/取消<br>
-    <i class="fas fa-hand-pointer"></i> <strong>手机</strong>：单击翻开，<strong>长按1秒标记</strong>，<strong>长按5秒取消</strong><br>
-    <i class="fas fa-bomb"></i> 首次点击必安全，踩雷即结束
-    <i class="fas fa-bomb"></i> 数字代表周围一圈内的雷含量(即如果是1则周围8格内有一颗雷)
-  </div>
-  <div class="ms-music-control">
-    <button id="msMusicToggleBtn" class="ms-music-btn" style="opacity: 0.8;">
-      <i class="fas fa-music"></i> <span id="msMusicBtnText">开启背景音乐</span>
-    </button>
-  </div>
-</div>
-
-<!-- === 通用页脚 === -->
-<footer class="suki-footer">
-  <div class="footer-content">
-    <p class="footer-text">
-      💙 托管于 <a href="https://github.com/suki-live/suki-live" target="_blank" rel="noopener">suki-live</a>
-      <span class="footer-divider">·</span>
-      <a href="https://suki.live">返回首页</a>
-      <span class="footer-divider">·</span>
-      <a href="https://suki.live/registry.html">主播名录</a>
-      <span class="footer-divider">·</span>
-      <a href="https://dreamail.cn/" target="_blank" rel="noopener">✉️ 匿名信</a>
-    </p>
-    <p class="footer-copyright">
-      © 2026 suki.live · 用记忆与歌声，连接每一个你
-    </p>
-  </div>
-</footer>
-
-<style>
-  .suki-footer {
-    text-align: center;
-    color: #718096;
-    font-size: 0.85rem;
-    padding: 2rem 1rem;
-    margin-top: 2rem;
-    border-top: 1px solid #e2e8f0;
-    background: #fafbfc;
-  }
-  .footer-content {
-    max-width: 960px;
-    margin: 0 auto;
-  }
-  .footer-text {
-    margin-bottom: 0.5rem;
-    line-height: 1.8;
-  }
-  .footer-text a {
-    color: #a7c7e7;
-    text-decoration: none;
-    transition: color 0.2s;
-  }
-  .footer-text a:hover {
-    color: #8ab4d9;
-    text-decoration: underline;
-  }
-  .footer-divider {
-    color: #cbd5e1;
-    margin: 0 0.3rem;
-  }
-  .footer-copyright {
-    color: #a0aec0;
-    font-size: 0.8rem;
-  }
-  @media (max-width: 640px) {
-    .suki-footer {
-      padding: 1.5rem 0.8rem;
-    }
-    .footer-text {
-      font-size: 0.8rem;
-    }
-  }
-</style>
-
-<script>
-  (function() {
-    const MS = {};
-
-    // 难度配置
-    MS.difficulties = {
-      easy:   { rows: 3, cols: 3, mines: 1 },
-      medium: { rows: 9, cols: 9, mines: 10 },
-      hard:   { rows: 11, cols: 11, mines: 15 }
-    };
-
-    // DOM 元素
-    MS.boardEl = document.getElementById('msBoard');
-    MS.mineCounter = document.getElementById('msMineCounter');
-    MS.messageEl = document.getElementById('msMessage');
-
-    // 游戏状态
-    MS.board = [];
-    MS.rows = 0; MS.cols = 0; MS.totalMines = 0;
-    MS.flagCount = 0;
-    MS.gameOver = false; MS.gameWin = false; MS.firstMove = true;
-
-    // 音效
-    MS.boomSound = new Audio('Z-1.mp3');
-    MS.boomSound.preload = 'auto';
-
-    // 辅助函数
-    MS.updateMineCounter = function() {
-      MS.mineCounter.innerText = MS.totalMines - MS.flagCount;
-    };
-    MS.setMessage = function(msg) {
-      MS.messageEl.innerText = msg;
-    };
-
-    MS.createEmptyBoard = function(rows, cols) {
-      const b = [];
-      for (let i = 0; i < rows; i++) {
-        const row = [];
-        for (let j = 0; j < cols; j++) {
-          row.push({
-            mine: false,
-            revealed: false,
-            flagged: false,
-            neighborMines: 0,
-            row: i, col: j
-          });
+            border: 1px solid rgba(255, 255, 255, 0.9);
+            max-width: 600px;
+            margin: 20px auto;
+            transition: all 0.2s ease;
         }
-        b.push(row);
-      }
-      return b;
-    };
 
-    MS.placeMines = function(boardRef, mineCount) {
-      let placed = 0;
-      const r = boardRef.length, c = boardRef[0].length;
-      while (placed < mineCount) {
-        const row = Math.floor(Math.random() * r);
-        const col = Math.floor(Math.random() * c);
-        if (!boardRef[row][col].mine) {
-          boardRef[row][col].mine = true;
-          placed++;
+        .fold-header {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            cursor: pointer;
+            padding: 8px 12px;
+            border-radius: 50px;
+            background: rgba(220, 240, 255, 0.6);
+            border: 1px solid #b9d9fc;
+            box-shadow: 0 4px 0 #aac6e5;
+            transition: background 0.15s, transform 0.1s;
+            user-select: none;
         }
-      }
-    };
 
-    MS.calculateNumbers = function(boardRef) {
-      const r = boardRef.length, c = boardRef[0].length;
-      for (let i = 0; i < r; i++) {
-        for (let j = 0; j < c; j++) {
-          if (boardRef[i][j].mine) continue;
-          let cnt = 0;
-          for (let di = -1; di <= 1; di++) {
-            for (let dj = -1; dj <= 1; dj++) {
-              if (di === 0 && dj === 0) continue;
-              const ni = i + di, nj = j + dj;
-              if (ni >= 0 && ni < r && nj >= 0 && nj < c && boardRef[ni][nj].mine) cnt++;
+        .fold-header:hover {
+            background: rgba(200, 230, 255, 0.9);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 0 #aac6e5;
+        }
+
+        .fold-header:active {
+            transform: translateY(2px);
+            box-shadow: 0 2px 0 #aac6e5;
+        }
+
+        .fold-header i {
+            font-size: 1.6rem;
+            color: #3182c0;
+            filter: drop-shadow(0 2px 0 #c0dcff);
+        }
+
+        .fold-header span {
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: #014a7c;
+            flex: 1;
+        }
+
+        .arrow-icon {
+            transition: transform 0.3s ease;
+            font-size: 1.4rem !important;
+        }
+
+        /* 内容区域默认隐藏 */
+        .fold-content {
+            display: none;
+            margin-top: 22px;
+            padding-top: 10px;
+            border-top: 2px dashed #9bc3e5;
+        }
+
+        /* 显示状态 */
+        .fold-photo-card.expanded .fold-content {
+            display: block;
+        }
+
+        .fold-photo-card.expanded .arrow-icon {
+            transform: rotate(180deg);
+        }
+
+        /* 照片网格布局 */
+        .photo-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .photo-grid img {
+            max-width: 100%;
+            width: calc(50% - 10px);
+            min-width: 200px;
+            border-radius: 30px;
+            box-shadow: 0 10px 0 #9bbde0, 0 8px 18px rgba(0, 60, 120, 0.2);
+            border: 3px solid white;
+            object-fit: cover;
+            aspect-ratio: 1 / 1;
+            /* 使图片区域为正方形，根据实际图片比例可调整 */
+            background: #e6f0fa;
+            transition: transform 0.2s;
+        }
+
+        .photo-grid img:hover {
+            transform: scale(1.02);
+        }
+
+        /* 小屏适配 */
+        @media (max-width: 480px) {
+            .photo-grid img {
+                width: 100%;
             }
-          }
-          boardRef[i][j].neighborMines = cnt;
-        }
-      }
-    };
 
-    MS.resetGame = function(diffKey) {
-      const diff = MS.difficulties[diffKey];
-      if (!diff) return;
-      MS.rows = diff.rows; MS.cols = diff.cols; MS.totalMines = diff.mines;
-      MS.board = MS.createEmptyBoard(MS.rows, MS.cols);
-      MS.placeMines(MS.board, MS.totalMines);
-      MS.calculateNumbers(MS.board);
-      MS.flagCount = 0;
-      MS.gameOver = false; MS.gameWin = false; MS.firstMove = true;
-      MS.updateMineCounter();
-      MS.setMessage('💪 排雷中');
-      MS.renderBoard();
-    };
-
-    MS.renderBoard = function() {
-      MS.boardEl.style.gridTemplateColumns = `repeat(${MS.cols}, 1fr)`;
-      MS.boardEl.innerHTML = '';
-      for (let i = 0; i < MS.rows; i++) {
-        for (let j = 0; j < MS.cols; j++) {
-          const cell = MS.board[i][j];
-          const cellDiv = document.createElement('div');
-          cellDiv.className = 'ms-cell';
-          cellDiv.dataset.row = i; cellDiv.dataset.col = j;
-
-          if (cell.revealed) {
-            cellDiv.classList.add('revealed');
-            if (cell.mine) {
-              cellDiv.classList.add('mine');
-            } else if (cell.neighborMines > 0) {
-              cellDiv.innerText = cell.neighborMines;
-              cellDiv.classList.add(`ms-num${cell.neighborMines}`);
+            .fold-photo-card {
+                padding: 16px;
             }
-          } else {
-            if (cell.flagged) {
-              cellDiv.classList.add('flagged');
+        }
+    </style>
+
+    <script>
+        (function () {
+            // 折叠切换逻辑
+            const card = document.querySelector('.fold-photo-card');
+            const header = document.getElementById('foldHeader');
+
+            if (card && header) {
+                header.addEventListener('click', function (e) {
+                    // 切换 expanded 类
+                    card.classList.toggle('expanded');
+                });
             }
-          }
+        })();
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
-          if (MS.gameOver && cell.mine) {
-            cellDiv.classList.add('mine');
-            cellDiv.classList.remove('flagged');
-          }
-
-          MS.boardEl.appendChild(cellDiv);
+    <style>
+        /* 所有样式限定在 .ms-container 内，避免影响外部 */
+        .ms-container {
+            max-width: 600px;
+            margin: 20px auto;
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(8px);
+            border-radius: 50px;
+            padding: 24px 16px 30px;
+            box-shadow: 0 20px 30px rgba(70, 140, 210, 0.3);
+            border: 2px solid white;
+            font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
+            box-sizing: border-box;
         }
-      }
-    };
 
-    MS.checkWin = function() {
-      for (let i = 0; i < MS.rows; i++) {
-        for (let j = 0; j < MS.cols; j++) {
-          const c = MS.board[i][j];
-          if (!c.mine && !c.revealed) return false;
+        /* 内部所有元素继承边框盒 */
+        .ms-container * {
+            box-sizing: border-box;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
         }
-      }
-      return true;
-    };
 
-    MS.gameLose = function() {
-      if (MS.gameOver || MS.gameWin) return;
-      MS.gameOver = true;
-      MS.setMessage('💥 踩雷了...因为你没能排完地雷所以穗君被炸死力!');
-      MS.boomSound.currentTime = 0;
-      MS.boomSound.play().catch(() => {});
-      MS.renderBoard();
-    };
+        .ms-header {
+            text-align: center;
+            color: #015c9b;
+            font-weight: 700;
+            font-size: 2rem;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
 
-    MS.gameWinFunc = function() {
-      MS.gameWin = true; MS.gameOver = true;
-      MS.setMessage('🎉 胜利！');
-      MS.renderBoard();
-    };
+        .ms-difficulty {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin: 15px 0 20px;
+        }
 
-    MS.revealCell = function(row, col) {
-      if (MS.gameOver || MS.gameWin) return;
-      const cell = MS.board[row][col];
-      if (cell.revealed || cell.flagged) return;
+        .ms-difficulty-btn {
+            background: white;
+            border: none;
+            padding: 10px 22px;
+            border-radius: 60px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #015c9b;
+            box-shadow: 0 5px 0 #aac6e5;
+            cursor: pointer;
+            transition: 0.1s ease;
+            border: 2px solid white;
+            flex: 0 1 auto;
+        }
 
-      if (MS.firstMove && cell.mine) {
-        for (let i = 0; i < MS.rows; i++) {
-          for (let j = 0; j < MS.cols; j++) {
-            if (!MS.board[i][j].mine && !(i === row && j === col)) {
-              MS.board[i][j].mine = true;
-              cell.mine = false;
-              MS.calculateNumbers(MS.board);
-              break;
+        .ms-difficulty-btn:active {
+            transform: translateY(5px);
+            box-shadow: 0 2px 0 #aac6e5;
+        }
+
+        .ms-status-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 60px;
+            padding: 6px 16px;
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #014a7c;
+            border: 1px solid white;
+        }
+
+        .ms-mine-count {
+            background: #b3d6ff;
+            padding: 4px 18px;
+            border-radius: 40px;
+        }
+
+        .ms-message {
+            background: #b3d6ff;
+            padding: 4px 18px;
+            border-radius: 40px;
+        }
+
+        /* 游戏面板容器，用于水平居中 */
+        .ms-board-wrapper {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        .ms-board {
+            display: grid;
+            gap: 3px;
+            background: #9bbde0;
+            padding: 10px;
+            border-radius: 30px;
+            border: 4px solid white;
+            box-shadow: inset 0 0 0 2px #c7e0ff;
+            width: fit-content;
+            margin: 0 auto;
+        }
+
+        /* 格子尺寸：用clamp适配手机竖屏，保证可点 */
+        .ms-cell {
+            width: clamp(28px, 8vw, 45px);
+            height: clamp(28px, 8vw, 45px);
+            background: #c7e0ff;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 1.2rem;
+            box-shadow: inset -2px -2px 5px rgba(0, 0, 0, 0.1), inset 2px 2px 5px white;
+            transition: 0.05s;
+            cursor: pointer;
+            color: #014a7c;
+            position: relative;
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* 翻开样式 */
+        .ms-cell.revealed {
+            background: #e5f0ff;
+            box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.1);
+            border: 1px solid white;
+        }
+
+        /* 地雷图片 (游戏结束或翻开时显示) */
+        .ms-cell.mine {
+            background-image: url('Z-1.jpg');
+            background-size: cover;
+            background-color: #ffb0b0;
+        }
+
+        .ms-cell.flagged {
+            background-image: url('Z-2.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-color: transparent;
+            font-size: 0;
+            /* 隐藏可能出现的数字 */
+            color: transparent;
+        }
+
+        /* 数字颜色 */
+        .ms-num1 {
+            color: #0202c2;
+        }
+
+        .ms-num2 {
+            color: #0f7d0f;
+        }
+
+        .ms-num3 {
+            color: #c10101;
+        }
+
+        .ms-num4 {
+            color: #01018a;
+        }
+
+        .ms-num5 {
+            color: #7f026d;
+        }
+
+        .ms-num6 {
+            color: #3b7f7f;
+        }
+
+        .ms-num7 {
+            color: #000;
+        }
+
+        .ms-num8 {
+            color: #5f5f5f;
+        }
+
+        /* 教程区域 */
+        .ms-tutorial {
+            background: #d9f0ff;
+            border-radius: 60px;
+            padding: 14px 18px;
+            text-align: center;
+            border: 3px solid white;
+            color: #014a7c;
+            font-weight: 600;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin-top: 15px;
+        }
+
+        .ms-tutorial i {
+            margin: 0 4px;
+            color: #3182c0;
+        }
+    </style>
+    <!-- 隐藏式背景音乐模块 (独立于扫雷，音量20%) -->
+    <audio id="bgMusic" loop="" preload="auto" style="display: none;">
+        <source src="2.23am.mp3" type="audio/mpeg">
+    </audio>
+    <script>
+        (function () {
+            const audio = document.getElementById('bgMusic');
+            audio.volume = 0.2; // 音量20%
+
+            function attemptAutoPlay() {
+                audio.play()
+                    .then(() => console.log('🎵 背景音乐已自动播放'))
+                    .catch(() => {
+                        console.log('🎵 自动播放被阻止，等待用户交互');
+                        const resumeAudio = () => {
+                            audio.play()
+                                .then(() => {
+                                    document.removeEventListener('click', resumeAudio);
+                                    document.removeEventListener('touchstart', resumeAudio);
+                                    document.removeEventListener('keydown', resumeAudio);
+                                })
+                                .catch(e => console.log(e));
+                        };
+                        document.addEventListener('click', resumeAudio, { once: true });
+                        document.addEventListener('touchstart', resumeAudio, { once: true });
+                        document.addEventListener('keydown', resumeAudio, { once: true });
+                    });
             }
-          }
-        }
-        MS.firstMove = false;
-      } else {
-        MS.firstMove = false;
-      }
-
-      const target = MS.board[row][col];
-      if (target.mine) {
-        MS.gameLose();
-        return;
-      }
-
-      target.revealed = true;
-      if (target.neighborMines === 0) {
-        const queue = [{ r: row, c: col }];
-        const visited = new Set();
-        visited.add(`${row},${col}`);
-        while (queue.length) {
-          const { r, c } = queue.shift();
-          for (let dr = -1; dr <= 1; dr++) {
-            for (let dc = -1; dc <= 1; dc++) {
-              if (dr === 0 && dc === 0) continue;
-              const nr = r + dr, nc = c + dc;
-              if (nr < 0 || nr >= MS.rows || nc < 0 || nc >= MS.cols) continue;
-              const neighbor = MS.board[nr][nc];
-              const key = `${nr},${nc}`;
-              if (!visited.has(key) && !neighbor.mine && !neighbor.revealed && !neighbor.flagged) {
-                neighbor.revealed = true;
-                visited.add(key);
-                if (neighbor.neighborMines === 0) queue.push({ r: nr, c: nc });
-              }
+            if (document.readyState === 'complete') attemptAutoPlay();
+            else window.addEventListener('load', attemptAutoPlay);
+        })();
+    </script>
+    <!-- 隐藏式背景音乐模块 (保持不变) -->
+    <audio id="bgMusic" loop="" preload="auto" style="display: none;">
+        <source src="2.23am.mp3" type="audio/mpeg">
+    </audio>
+    <script>
+        (function () {
+            const audio = document.getElementById('bgMusic');
+            audio.volume = 0.2;
+            function attemptAutoPlay() {
+                audio.play().catch(() => {
+                    const resumeAudio = () => {
+                        audio.play().catch(() => { });
+                        document.removeEventListener('click', resumeAudio);
+                        document.removeEventListener('touchstart', resumeAudio);
+                        document.removeEventListener('keydown', resumeAudio);
+                    };
+                    document.addEventListener('click', resumeAudio, { once: true });
+                    document.addEventListener('touchstart', resumeAudio, { once: true });
+                    document.addEventListener('keydown', resumeAudio, { once: true });
+                });
             }
-          }
+            if (document.readyState === 'complete') attemptAutoPlay();
+            else window.addEventListener('load', attemptAutoPlay);
+        })();
+    </script>
+
+    <!-- 扫雷模块 (含背景音乐控制) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* 样式与之前完全相同，此处省略以节省篇幅，实际使用时保留原样 */
+        .ms-container {
+            /* ... */
         }
-      }
 
-      if (MS.checkWin()) MS.gameWinFunc();
-      MS.renderBoard();
-    };
+        /* ... 所有样式不变 ... */
+    </style>
 
-    MS.toggleFlag = function(row, col) {
-      if (MS.gameOver || MS.gameWin) return;
-      const cell = MS.board[row][col];
-      if (cell.revealed) return;
-
-      if (!cell.flagged) {
-        cell.flagged = true;
-        MS.flagCount++;
-      } else {
-        cell.flagged = false;
-        MS.flagCount--;
-      }
-      MS.updateMineCounter();
-      MS.renderBoard();
-    };
-
-    // --- 事件绑定 (优化移动端长按) ---
-    function bindEvents() {
-      // 左键点击翻开
-      MS.boardEl.addEventListener('click', (e) => {
-        const cellDiv = e.target.closest('.ms-cell');
-        if (!cellDiv) return;
-        e.preventDefault();
-        const row = parseInt(cellDiv.dataset.row);
-        const col = parseInt(cellDiv.dataset.col);
-        if (!isNaN(row) && !isNaN(col)) MS.revealCell(row, col);
-      });
-
-      // 右键标记/取消
-      MS.boardEl.addEventListener('contextmenu', (e) => {
-        e.preventDefault();
-        const cellDiv = e.target.closest('.ms-cell');
-        if (!cellDiv) return;
-        const row = parseInt(cellDiv.dataset.row);
-        const col = parseInt(cellDiv.dataset.col);
-        if (!isNaN(row) && !isNaN(col)) MS.toggleFlag(row, col);
-      });
-
-      // 移动端长按处理 (1s标记, 5s取消)
-      let markTimer = null, cancelTimer = null;
-      let longPressRow = null, longPressCol = null;
-
-      MS.boardEl.addEventListener('touchstart', (e) => {
-        const touch = e.touches[0];
-        const cellDiv = document.elementFromPoint(touch.clientX, touch.clientY)?.closest('.ms-cell');
-        if (!cellDiv) return;
-        const row = parseInt(cellDiv.dataset.row);
-        const col = parseInt(cellDiv.dataset.col);
-        if (isNaN(row) || isNaN(col)) return;
-
-        // 清除之前的计时器
-        if (markTimer) clearTimeout(markTimer);
-        if (cancelTimer) clearTimeout(cancelTimer);
-
-        longPressRow = row;
-        longPressCol = col;
-
-        // 根据当前格子是否有旗来设置不同计时器
-        const cell = MS.board[row][col];
-        if (!cell.revealed && !cell.flagged) {
-          // 无旗：1秒后标记
-          markTimer = setTimeout(() => {
-            if (longPressRow !== null && longPressCol !== null) {
-              const targetCell = MS.board[longPressRow][longPressCol];
-              if (!targetCell.revealed && !targetCell.flagged) {
-                MS.toggleFlag(longPressRow, longPressCol);
-              }
-            }
-            markTimer = null;
-          }, 1000);
-        } else if (!cell.revealed && cell.flagged) {
-          // 有旗：5秒后取消
-          cancelTimer = setTimeout(() => {
-            if (longPressRow !== null && longPressCol !== null) {
-              const targetCell = MS.board[longPressRow][longPressCol];
-              if (!targetCell.revealed && targetCell.flagged) {
-                MS.toggleFlag(longPressRow, longPressCol);
-              }
-            }
-            cancelTimer = null;
-          }, 5000);
-        }
-      });
-
-      MS.boardEl.addEventListener('touchend', () => {
-        if (markTimer) clearTimeout(markTimer);
-        if (cancelTimer) clearTimeout(cancelTimer);
-        markTimer = null;
-        cancelTimer = null;
-        longPressRow = null;
-        longPressCol = null;
-      });
-
-      MS.boardEl.addEventListener('touchcancel', () => {
-        if (markTimer) clearTimeout(markTimer);
-        if (cancelTimer) clearTimeout(cancelTimer);
-        markTimer = null;
-        cancelTimer = null;
-        longPressRow = null;
-        longPressCol = null;
-      });
-
-      MS.boardEl.addEventListener('touchmove', (e) => e.preventDefault(), { passive: false });
-
-      // 难度按钮
-      document.querySelectorAll('.ms-difficulty-btn').forEach(btn => {
-        btn.addEventListener('click', (e) => {
-          const diff = e.target.dataset.diff;
-          if (diff) MS.resetGame(diff);
-        });
-      });
-    }
-
-    // 背景音乐控制按钮
-    const musicBtn = document.getElementById('msMusicToggleBtn');
-    const musicBtnText = document.getElementById('msMusicBtnText');
-    const bgAudio = document.getElementById('bgMusic');
-
-    function updateMusicButton() {
-      if (bgAudio.paused) {
-        musicBtnText.innerText = '开启背景音乐';
-        musicBtn.style.opacity = '0.8';
-      } else {
-        musicBtnText.innerText = '关闭背景音乐';
-        musicBtn.style.opacity = '1';
-      }
-    }
-
-    if (bgAudio) {
-      setTimeout(updateMusicButton, 500);
-      musicBtn.addEventListener('click', () => {
-        if (bgAudio.paused) {
-          bgAudio.play().then(updateMusicButton).catch(() => {});
-        } else {
-          bgAudio.pause();
-          updateMusicButton();
-        }
-      });
-      bgAudio.addEventListener('play', updateMusicButton);
-      bgAudio.addEventListener('pause', updateMusicButton);
-    } else {
-      musicBtn.style.display = 'none';
-    }
-
-    MS.resetGame('medium');
-    bindEvents();
-  })();
-</script>
-<!-- 独立 Flappy Bird -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-<style>
-  .fb-container {
-    max-width: 500px;
-    width: 100%;
-    margin: 20px auto;
-    background: rgba(255, 255, 255, 0.7);
-    backdrop-filter: blur(8px);
-    border-radius: 50px;
-    padding: 20px 15px 25px;
-    box-shadow: 0 20px 30px rgba(70, 140, 210, 0.3);
-    border: 2px solid white;
-    font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
-    position: relative;
-    overflow: hidden;
-  }
-  .fb-video-bg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: 0;
-    opacity: 0.5;
-    border-radius: 50px;
-    pointer-events: none;
-  }
-  .fb-container > *:not(.fb-video-bg) {
-    position: relative;
-    z-index: 2;
-  }
-  .fb-header {
-    text-align: center;
-    color: #015c9b;
-    font-weight: 700;
-    font-size: 2rem;
-    margin-bottom: 10px;
-    text-shadow: 0 0 10px cyan;
-  }
-  .fb-canvas-wrapper {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 15px;
-    border-radius: 40px;
-    overflow: hidden;
-    box-shadow: 0 0 20px #00ffff88;
-  }
-  #fbCanvas {
-    width: 100%;
-    height: auto;
-    max-width: 400px;
-    background: rgba(0, 0, 0, 0.2);
-    border-radius: 40px;
-    border: 3px solid white;
-    box-shadow: 0 8px 0 #aac6e5;
-    cursor: pointer;
-    display: block;
-    touch-action: manipulation;
-  }
-  .fb-score {
-    background: rgba(255,255,255,0.5);
-    border-radius: 60px;
-    padding: 8px 20px;
-    font-size: 1.8rem;
-    font-weight: 700;
-    color: #014a7c;
-    text-align: center;
-    border: 1px solid white;
-    box-shadow: 0 5px 0 #aac6e5;
-    margin: 15px 0;
-    backdrop-filter: blur(4px);
-  }
-  .fb-controls {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    margin: 15px 0;
-  }
-  .fb-btn {
-    background: white;
-    border: none;
-    padding: 12px 30px;
-    border-radius: 60px;
-    font-size: 1.2rem;
-    font-weight: 700;
-    color: #015c9b;
-    box-shadow: 0 5px 0 #aac6e5;
-    cursor: pointer;
-    transition: 0.1s ease;
-    border: 2px solid white;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    touch-action: manipulation;
-  }
-  .fb-btn:active {
-    transform: translateY(5px);
-    box-shadow: 0 2px 0 #aac6e5;
-  }
-  .fb-leaderboard {
-    margin-top: 20px;
-    background: rgba(255, 255, 255, 0.6);
-    backdrop-filter: blur(4px);
-    border-radius: 60px;
-    border: 2px solid white;
-    box-shadow: 0 5px 0 #aac6e5;
-    padding: 8px 16px;
-    color: #014a7c;
-    font-weight: 600;
-  }
-  .fb-leaderboard summary {
-    list-style: none;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 1.2rem;
-    padding: 6px 0;
-    user-select: none;
-  }
-  .fb-leaderboard summary::-webkit-details-marker {
-    display: none;
-  }
-  .fb-leaderboard summary i {
-    color: #3182c0;
-    font-size: 1.4rem;
-    transition: transform 0.2s;
-  }
-  .fb-leaderboard[open] summary i {
-    transform: rotate(90deg);
-  }
-  .fb-leaderboard-content {
-    padding: 10px 8px;
-    border-top: 1px dashed #9bbde0;
-    font-size: 1rem;
-  }
-  .fb-leaderboard-item {
-    display: flex;
-    justify-content: space-between;
-    margin: 6px 0;
-    padding: 4px 12px;
-    background: rgba(255,255,255,0.3);
-    border-radius: 40px;
-    align-items: center;
-  }
-  .fb-rank {
-    font-weight: 700;
-    color: #015c9b;
-    width: 40px;
-  }
-  .fb-name {
-    flex: 1;
-    text-align: left;
-    padding-left: 10px;
-    font-weight: 600;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-  .fb-score-value {
-    font-family: monospace;
-    background: #b3d6ff;
-    padding: 2px 12px;
-    border-radius: 40px;
-  }
-</style>
-
-<div class="fb-container">
-  <!-- 背景视频 (静音自动播放，按钮可取消静音) -->
-  <video class="fb-video-bg" id="fbVideo" autoplay="" loop="" muted="" playsinline="">
-    <source src="M-1.mp4" type="video/mp4">
-  </video>
-
-  <div class="fb-header">🐦 穗君穗君飞起来!</div>
-
-  <div class="fb-canvas-wrapper">
-    <canvas id="fbCanvas" width="400" height="600"></canvas>
-  </div>
-
-  <div class="fb-score" id="fbScoreDisplay">0</div>
-
-  <div class="fb-controls">
-    <button class="fb-btn" id="fbStartBtn"><i class="fas fa-play"></i> 开始游戏</button>
-    <button class="fb-btn" id="fbVideoBtn"><i class="fas fa-video"></i> 播放视频</button>
-  </div>
-
-  <!-- 排行榜 -->
-  <details class="fb-leaderboard" open="">
-    <summary><i class="fas fa-chevron-right"></i> 🏆 飞起来!榜</summary>
-    <div class="fb-leaderboard-content" id="fbLeaderboardContent">
-      <div class="fb-leaderboard-item">
-        <span class="fb-rank">🥇</span>
-        <span class="fb-name" id="rank1Name">-</span>
-        <span class="fb-score-value" id="rank1Score">-</span>
-      </div>
-      <div class="fb-leaderboard-item">
-        <span class="fb-rank">🥈</span>
-        <span class="fb-name" id="rank2Name">-</span>
-        <span class="fb-score-value" id="rank2Score">-</span>
-      </div>
-      <div class="fb-leaderboard-item">
-        <span class="fb-rank">🥉</span>
-        <span class="fb-name" id="rank3Name">-</span>
-        <span class="fb-score-value" id="rank3Score">-</span>
-      </div>
+    <div class="ms-container">
+        <div class="ms-header">💣 穗雷(太君～这里没地雷)</div>
+        <div class="ms-difficulty">
+            <button class="ms-difficulty-btn" data-diff="easy">🐟 杂鱼～ (3x3)</button>
+            <button class="ms-difficulty-btn" data-diff="medium">⚡ 中等 (9x9)</button>
+            <button class="ms-difficulty-btn" data-diff="hard">🏆 糕手 (11x11)</button>
+        </div>
+        <div class="ms-status-bar">
+            <span class="ms-mine-count">💣 <span id="msMineCounter">10</span></span>
+            <span class="ms-message" id="msMessage">💥 踩雷了...因为你没能排完地雷所以穗君被炸死力!</span>
+        </div>
+        <div class="ms-board-wrapper">
+            <div class="ms-board" id="msBoard" style="grid-template-columns: repeat(9, 1fr);">
+                <div class="ms-cell" data-row="0" data-col="0"></div>
+                <div class="ms-cell mine" data-row="0" data-col="1"></div>
+                <div class="ms-cell revealed ms-num1" data-row="0" data-col="2">1</div>
+                <div class="ms-cell" data-row="0" data-col="3"></div>
+                <div class="ms-cell mine" data-row="0" data-col="4"></div>
+                <div class="ms-cell" data-row="0" data-col="5"></div>
+                <div class="ms-cell mine" data-row="0" data-col="6"></div>
+                <div class="ms-cell" data-row="0" data-col="7"></div>
+                <div class="ms-cell mine" data-row="0" data-col="8"></div>
+                <div class="ms-cell" data-row="1" data-col="0"></div>
+                <div class="ms-cell" data-row="1" data-col="1"></div>
+                <div class="ms-cell" data-row="1" data-col="2"></div>
+                <div class="ms-cell revealed ms-num2" data-row="1" data-col="3">2</div>
+                <div class="ms-cell" data-row="1" data-col="4"></div>
+                <div class="ms-cell" data-row="1" data-col="5"></div>
+                <div class="ms-cell" data-row="1" data-col="6"></div>
+                <div class="ms-cell" data-row="1" data-col="7"></div>
+                <div class="ms-cell" data-row="1" data-col="8"></div>
+                <div class="ms-cell mine" data-row="2" data-col="0"></div>
+                <div class="ms-cell" data-row="2" data-col="1"></div>
+                <div class="ms-cell revealed ms-num1" data-row="2" data-col="2">1</div>
+                <div class="ms-cell mine" data-row="2" data-col="3"></div>
+                <div class="ms-cell" data-row="2" data-col="4"></div>
+                <div class="ms-cell" data-row="2" data-col="5"></div>
+                <div class="ms-cell" data-row="2" data-col="6"></div>
+                <div class="ms-cell" data-row="2" data-col="7"></div>
+                <div class="ms-cell" data-row="2" data-col="8"></div>
+                <div class="ms-cell" data-row="3" data-col="0"></div>
+                <div class="ms-cell" data-row="3" data-col="1"></div>
+                <div class="ms-cell" data-row="3" data-col="2"></div>
+                <div class="ms-cell revealed ms-num3" data-row="3" data-col="3">3</div>
+                <div class="ms-cell mine" data-row="3" data-col="4"></div>
+                <div class="ms-cell" data-row="3" data-col="5"></div>
+                <div class="ms-cell" data-row="3" data-col="6"></div>
+                <div class="ms-cell" data-row="3" data-col="7"></div>
+                <div class="ms-cell" data-row="3" data-col="8"></div>
+                <div class="ms-cell" data-row="4" data-col="0"></div>
+                <div class="ms-cell" data-row="4" data-col="1"></div>
+                <div class="ms-cell mine" data-row="4" data-col="2"></div>
+                <div class="ms-cell" data-row="4" data-col="3"></div>
+                <div class="ms-cell" data-row="4" data-col="4"></div>
+                <div class="ms-cell" data-row="4" data-col="5"></div>
+                <div class="ms-cell" data-row="4" data-col="6"></div>
+                <div class="ms-cell" data-row="4" data-col="7"></div>
+                <div class="ms-cell" data-row="4" data-col="8"></div>
+                <div class="ms-cell" data-row="5" data-col="0"></div>
+                <div class="ms-cell" data-row="5" data-col="1"></div>
+                <div class="ms-cell" data-row="5" data-col="2"></div>
+                <div class="ms-cell" data-row="5" data-col="3"></div>
+                <div class="ms-cell" data-row="5" data-col="4"></div>
+                <div class="ms-cell" data-row="5" data-col="5"></div>
+                <div class="ms-cell" data-row="5" data-col="6"></div>
+                <div class="ms-cell mine" data-row="5" data-col="7"></div>
+                <div class="ms-cell" data-row="5" data-col="8"></div>
+                <div class="ms-cell" data-row="6" data-col="0"></div>
+                <div class="ms-cell" data-row="6" data-col="1"></div>
+                <div class="ms-cell" data-row="6" data-col="2"></div>
+                <div class="ms-cell" data-row="6" data-col="3"></div>
+                <div class="ms-cell" data-row="6" data-col="4"></div>
+                <div class="ms-cell" data-row="6" data-col="5"></div>
+                <div class="ms-cell mine" data-row="6" data-col="6"></div>
+                <div class="ms-cell" data-row="6" data-col="7"></div>
+                <div class="ms-cell" data-row="6" data-col="8"></div>
+                <div class="ms-cell" data-row="7" data-col="0"></div>
+                <div class="ms-cell" data-row="7" data-col="1"></div>
+                <div class="ms-cell" data-row="7" data-col="2"></div>
+                <div class="ms-cell" data-row="7" data-col="3"></div>
+                <div class="ms-cell" data-row="7" data-col="4"></div>
+                <div class="ms-cell" data-row="7" data-col="5"></div>
+                <div class="ms-cell" data-row="7" data-col="6"></div>
+                <div class="ms-cell" data-row="7" data-col="7"></div>
+                <div class="ms-cell" data-row="7" data-col="8"></div>
+                <div class="ms-cell" data-row="8" data-col="0"></div>
+                <div class="ms-cell" data-row="8" data-col="1"></div>
+                <div class="ms-cell" data-row="8" data-col="2"></div>
+                <div class="ms-cell" data-row="8" data-col="3"></div>
+                <div class="ms-cell" data-row="8" data-col="4"></div>
+                <div class="ms-cell" data-row="8" data-col="5"></div>
+                <div class="ms-cell" data-row="8" data-col="6"></div>
+                <div class="ms-cell" data-row="8" data-col="7"></div>
+                <div class="ms-cell" data-row="8" data-col="8"></div>
+            </div>
+        </div>
+        <div class="ms-tutorial">
+            <i class="fas fa-mouse-pointer"></i> <strong>电脑</strong>：左键翻开，右键标记/取消<br>
+            <i class="fas fa-hand-pointer"></i>
+            <strong>手机</strong>：单击翻开，<strong>长按1秒标记</strong>，<strong>长按5秒取消</strong><br>
+            <i class="fas fa-bomb"></i> 首次点击必安全，踩雷即结束
+            <i class="fas fa-bomb"></i> 数字代表周围一圈内的雷含量(即如果是1则周围8格内有一颗雷)
+        </div>
+        <div class="ms-music-control">
+            <button id="msMusicToggleBtn" class="ms-music-btn" style="opacity: 0.8;">
+                <i class="fas fa-music"></i> <span id="msMusicBtnText">开启背景音乐</span>
+            </button>
+        </div>
     </div>
-  </details>
-</div>
 
-<script>
-  (function() {
-    const FB = {};
+    <script>
+        (function () {
+            const MS = {};
 
-    // DOM 元素
-    FB.canvas = document.getElementById('fbCanvas');
-    FB.ctx = FB.canvas.getContext('2d');
-    FB.scoreSpan = document.getElementById('fbScoreDisplay');
-    FB.startBtn = document.getElementById('fbStartBtn');
-    FB.videoBtn = document.getElementById('fbVideoBtn'); // 原停止按钮改为视频按钮
-    FB.video = document.getElementById('fbVideo');
+            // 难度配置
+            MS.difficulties = {
+                easy: { rows: 3, cols: 3, mines: 1 },
+                medium: { rows: 9, cols: 9, mines: 10 },
+                hard: { rows: 11, cols: 11, mines: 15 }
+            };
 
-    FB.canvas.width = 400;
-    FB.canvas.height = 600;
+            // DOM 元素
+            MS.boardEl = document.getElementById('msBoard');
+            MS.mineCounter = document.getElementById('msMineCounter');
+            MS.messageEl = document.getElementById('msMessage');
 
-    // --- 游戏参数 ---
-    FB.gameRunning = false;
-    FB.gameStarted = false;
-    FB.score = 0;
-    FB.frameId = null;
+            // 游戏状态
+            MS.board = [];
+            MS.rows = 0; MS.cols = 0; MS.totalMines = 0;
+            MS.flagCount = 0;
+            MS.gameOver = false; MS.gameWin = false; MS.firstMove = true;
 
-    FB.bird = {
-      x: 100,
-      y: 300,
-      width: 30,
-      height: 30,
-      velocity: 0,
-      gravity: 0.4,
-      lift: -8
-    };
+            // 音效
+            MS.boomSound = new Audio('Z-1.mp3');
+            MS.boomSound.preload = 'auto';
 
-    FB.pipes = [];
-    FB.pipeWidth = 60;
-    FB.pipeGap = 150;
-    FB.pipeSpeed = 2;
-    FB.frameCounter = 0;
-    FB.pipeSpawnInterval = 100;
+            // 辅助函数
+            MS.updateMineCounter = function () {
+                MS.mineCounter.innerText = MS.totalMines - MS.flagCount;
+            };
+            MS.setMessage = function (msg) {
+                MS.messageEl.innerText = msg;
+            };
 
-    // 图片资源 (PNG)
-    FB.pipeImg = new Image();
-    FB.pipeImg.src = 'G-1.png';
-    FB.birdImg = new Image();
-    FB.birdImg.src = 'B-1.png';
+            MS.createEmptyBoard = function (rows, cols) {
+                const b = [];
+                for (let i = 0; i < rows; i++) {
+                    const row = [];
+                    for (let j = 0; j < cols; j++) {
+                        row.push({
+                            mine: false,
+                            revealed: false,
+                            flagged: false,
+                            neighborMines: 0,
+                            row: i, col: j
+                        });
+                    }
+                    b.push(row);
+                }
+                return b;
+            };
 
-    // 音效
-    FB.hitSound = new Audio('MB-1.mp3');
-    FB.hitSound.preload = 'auto';
+            MS.placeMines = function (boardRef, mineCount) {
+                let placed = 0;
+                const r = boardRef.length, c = boardRef[0].length;
+                while (placed < mineCount) {
+                    const row = Math.floor(Math.random() * r);
+                    const col = Math.floor(Math.random() * c);
+                    if (!boardRef[row][col].mine) {
+                        boardRef[row][col].mine = true;
+                        placed++;
+                    }
+                }
+            };
 
-    // --- 像素数据缓存 ---
-    FB.pipePixelData = null;
-    FB.birdPixelData = null;
+            MS.calculateNumbers = function (boardRef) {
+                const r = boardRef.length, c = boardRef[0].length;
+                for (let i = 0; i < r; i++) {
+                    for (let j = 0; j < c; j++) {
+                        if (boardRef[i][j].mine) continue;
+                        let cnt = 0;
+                        for (let di = -1; di <= 1; di++) {
+                            for (let dj = -1; dj <= 1; dj++) {
+                                if (di === 0 && dj === 0) continue;
+                                const ni = i + di, nj = j + dj;
+                                if (ni >= 0 && ni < r && nj >= 0 && nj < c && boardRef[ni][nj].mine) cnt++;
+                            }
+                        }
+                        boardRef[i][j].neighborMines = cnt;
+                    }
+                }
+            };
 
-    // 解析图片像素
-    function loadImageData(img, callback) {
-      const canvas = document.createElement('canvas');
-      const ctx = canvas.getContext('2d');
-      canvas.width = img.naturalWidth;
-      canvas.height = img.naturalHeight;
-      ctx.drawImage(img, 0, 0);
-      const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-      callback({ width: canvas.width, height: canvas.height, data: imageData.data });
-    }
+            MS.resetGame = function (diffKey) {
+                const diff = MS.difficulties[diffKey];
+                if (!diff) return;
+                MS.rows = diff.rows; MS.cols = diff.cols; MS.totalMines = diff.mines;
+                MS.board = MS.createEmptyBoard(MS.rows, MS.cols);
+                MS.placeMines(MS.board, MS.totalMines);
+                MS.calculateNumbers(MS.board);
+                MS.flagCount = 0;
+                MS.gameOver = false; MS.gameWin = false; MS.firstMove = true;
+                MS.updateMineCounter();
+                MS.setMessage('💪 排雷中');
+                MS.renderBoard();
+            };
 
-    let pipeLoaded = false, birdLoaded = false;
-    FB.pipeImg.onload = function() {
-      loadImageData(FB.pipeImg, (data) => {
-        FB.pipePixelData = data;
-        pipeLoaded = true;
-      });
-    };
-    FB.birdImg.onload = function() {
-      loadImageData(FB.birdImg, (data) => {
-        FB.birdPixelData = data;
-        birdLoaded = true;
-      });
-    };
+            MS.renderBoard = function () {
+                MS.boardEl.style.gridTemplateColumns = `repeat(${MS.cols}, 1fr)`;
+                MS.boardEl.innerHTML = '';
+                for (let i = 0; i < MS.rows; i++) {
+                    for (let j = 0; j < MS.cols; j++) {
+                        const cell = MS.board[i][j];
+                        const cellDiv = document.createElement('div');
+                        cellDiv.className = 'ms-cell';
+                        cellDiv.dataset.row = i; cellDiv.dataset.col = j;
 
-    // --- 排行榜 (本地存储) ---
-    FB.leaderboard = [];
-    const STORAGE_KEY = 'flappy_leaderboard';
+                        if (cell.revealed) {
+                            cellDiv.classList.add('revealed');
+                            if (cell.mine) {
+                                cellDiv.classList.add('mine');
+                            } else if (cell.neighborMines > 0) {
+                                cellDiv.innerText = cell.neighborMines;
+                                cellDiv.classList.add(`ms-num${cell.neighborMines}`);
+                            }
+                        } else {
+                            if (cell.flagged) {
+                                cellDiv.classList.add('flagged');
+                            }
+                        }
 
-    FB.loadLeaderboard = function() {
-      try {
-        const stored = localStorage.getItem(STORAGE_KEY);
-        if (stored) {
-          const parsed = JSON.parse(stored);
-          if (Array.isArray(parsed)) {
-            FB.leaderboard = parsed.filter(item => item.name && typeof item.score === 'number');
-          }
+                        if (MS.gameOver && cell.mine) {
+                            cellDiv.classList.add('mine');
+                            cellDiv.classList.remove('flagged');
+                        }
+
+                        MS.boardEl.appendChild(cellDiv);
+                    }
+                }
+            };
+
+            MS.checkWin = function () {
+                for (let i = 0; i < MS.rows; i++) {
+                    for (let j = 0; j < MS.cols; j++) {
+                        const c = MS.board[i][j];
+                        if (!c.mine && !c.revealed) return false;
+                    }
+                }
+                return true;
+            };
+
+            MS.gameLose = function () {
+                if (MS.gameOver || MS.gameWin) return;
+                MS.gameOver = true;
+                MS.setMessage('💥 踩雷了...因为你没能排完地雷所以穗君被炸死力!');
+                MS.boomSound.currentTime = 0;
+                MS.boomSound.play().catch(() => { });
+                MS.renderBoard();
+            };
+
+            MS.gameWinFunc = function () {
+                MS.gameWin = true; MS.gameOver = true;
+                MS.setMessage('🎉 胜利！');
+                MS.renderBoard();
+            };
+
+            MS.revealCell = function (row, col) {
+                if (MS.gameOver || MS.gameWin) return;
+                const cell = MS.board[row][col];
+                if (cell.revealed || cell.flagged) return;
+
+                if (MS.firstMove && cell.mine) {
+                    for (let i = 0; i < MS.rows; i++) {
+                        for (let j = 0; j < MS.cols; j++) {
+                            if (!MS.board[i][j].mine && !(i === row && j === col)) {
+                                MS.board[i][j].mine = true;
+                                cell.mine = false;
+                                MS.calculateNumbers(MS.board);
+                                break;
+                            }
+                        }
+                    }
+                    MS.firstMove = false;
+                } else {
+                    MS.firstMove = false;
+                }
+
+                const target = MS.board[row][col];
+                if (target.mine) {
+                    MS.gameLose();
+                    return;
+                }
+
+                target.revealed = true;
+                if (target.neighborMines === 0) {
+                    const queue = [{ r: row, c: col }];
+                    const visited = new Set();
+                    visited.add(`${row},${col}`);
+                    while (queue.length) {
+                        const { r, c } = queue.shift();
+                        for (let dr = -1; dr <= 1; dr++) {
+                            for (let dc = -1; dc <= 1; dc++) {
+                                if (dr === 0 && dc === 0) continue;
+                                const nr = r + dr, nc = c + dc;
+                                if (nr < 0 || nr >= MS.rows || nc < 0 || nc >= MS.cols) continue;
+                                const neighbor = MS.board[nr][nc];
+                                const key = `${nr},${nc}`;
+                                if (!visited.has(key) && !neighbor.mine && !neighbor.revealed && !neighbor.flagged) {
+                                    neighbor.revealed = true;
+                                    visited.add(key);
+                                    if (neighbor.neighborMines === 0) queue.push({ r: nr, c: nc });
+                                }
+                            }
+                        }
+                    }
+                }
+
+                if (MS.checkWin()) MS.gameWinFunc();
+                MS.renderBoard();
+            };
+
+            MS.toggleFlag = function (row, col) {
+                if (MS.gameOver || MS.gameWin) return;
+                const cell = MS.board[row][col];
+                if (cell.revealed) return;
+
+                if (!cell.flagged) {
+                    cell.flagged = true;
+                    MS.flagCount++;
+                } else {
+                    cell.flagged = false;
+                    MS.flagCount--;
+                }
+                MS.updateMineCounter();
+                MS.renderBoard();
+            };
+
+            // --- 事件绑定 (优化移动端长按) ---
+            function bindEvents() {
+                // 左键点击翻开
+                MS.boardEl.addEventListener('click', (e) => {
+                    const cellDiv = e.target.closest('.ms-cell');
+                    if (!cellDiv) return;
+                    e.preventDefault();
+                    const row = parseInt(cellDiv.dataset.row);
+                    const col = parseInt(cellDiv.dataset.col);
+                    if (!isNaN(row) && !isNaN(col)) MS.revealCell(row, col);
+                });
+
+                // 右键标记/取消
+                MS.boardEl.addEventListener('contextmenu', (e) => {
+                    e.preventDefault();
+                    const cellDiv = e.target.closest('.ms-cell');
+                    if (!cellDiv) return;
+                    const row = parseInt(cellDiv.dataset.row);
+                    const col = parseInt(cellDiv.dataset.col);
+                    if (!isNaN(row) && !isNaN(col)) MS.toggleFlag(row, col);
+                });
+
+                // 移动端长按处理 (1s标记, 5s取消)
+                let markTimer = null, cancelTimer = null;
+                let longPressRow = null, longPressCol = null;
+
+                MS.boardEl.addEventListener('touchstart', (e) => {
+                    const touch = e.touches[0];
+                    const cellDiv = document.elementFromPoint(touch.clientX, touch.clientY)?.closest('.ms-cell');
+                    if (!cellDiv) return;
+                    const row = parseInt(cellDiv.dataset.row);
+                    const col = parseInt(cellDiv.dataset.col);
+                    if (isNaN(row) || isNaN(col)) return;
+
+                    // 清除之前的计时器
+                    if (markTimer) clearTimeout(markTimer);
+                    if (cancelTimer) clearTimeout(cancelTimer);
+
+                    longPressRow = row;
+                    longPressCol = col;
+
+                    // 根据当前格子是否有旗来设置不同计时器
+                    const cell = MS.board[row][col];
+                    if (!cell.revealed && !cell.flagged) {
+                        // 无旗：1秒后标记
+                        markTimer = setTimeout(() => {
+                            if (longPressRow !== null && longPressCol !== null) {
+                                const targetCell = MS.board[longPressRow][longPressCol];
+                                if (!targetCell.revealed && !targetCell.flagged) {
+                                    MS.toggleFlag(longPressRow, longPressCol);
+                                }
+                            }
+                            markTimer = null;
+                        }, 1000);
+                    } else if (!cell.revealed && cell.flagged) {
+                        // 有旗：5秒后取消
+                        cancelTimer = setTimeout(() => {
+                            if (longPressRow !== null && longPressCol !== null) {
+                                const targetCell = MS.board[longPressRow][longPressCol];
+                                if (!targetCell.revealed && targetCell.flagged) {
+                                    MS.toggleFlag(longPressRow, longPressCol);
+                                }
+                            }
+                            cancelTimer = null;
+                        }, 5000);
+                    }
+                });
+
+                MS.boardEl.addEventListener('touchend', () => {
+                    if (markTimer) clearTimeout(markTimer);
+                    if (cancelTimer) clearTimeout(cancelTimer);
+                    markTimer = null;
+                    cancelTimer = null;
+                    longPressRow = null;
+                    longPressCol = null;
+                });
+
+                MS.boardEl.addEventListener('touchcancel', () => {
+                    if (markTimer) clearTimeout(markTimer);
+                    if (cancelTimer) clearTimeout(cancelTimer);
+                    markTimer = null;
+                    cancelTimer = null;
+                    longPressRow = null;
+                    longPressCol = null;
+                });
+
+                MS.boardEl.addEventListener('touchmove', (e) => e.preventDefault(), { passive: false });
+
+                // 难度按钮
+                document.querySelectorAll('.ms-difficulty-btn').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        const diff = e.target.dataset.diff;
+                        if (diff) MS.resetGame(diff);
+                    });
+                });
+            }
+
+            // 背景音乐控制按钮
+            const musicBtn = document.getElementById('msMusicToggleBtn');
+            const musicBtnText = document.getElementById('msMusicBtnText');
+            const bgAudio = document.getElementById('bgMusic');
+
+            function updateMusicButton() {
+                if (bgAudio.paused) {
+                    musicBtnText.innerText = '开启背景音乐';
+                    musicBtn.style.opacity = '0.8';
+                } else {
+                    musicBtnText.innerText = '关闭背景音乐';
+                    musicBtn.style.opacity = '1';
+                }
+            }
+
+            if (bgAudio) {
+                setTimeout(updateMusicButton, 500);
+                musicBtn.addEventListener('click', () => {
+                    if (bgAudio.paused) {
+                        bgAudio.play().then(updateMusicButton).catch(() => { });
+                    } else {
+                        bgAudio.pause();
+                        updateMusicButton();
+                    }
+                });
+                bgAudio.addEventListener('play', updateMusicButton);
+                bgAudio.addEventListener('pause', updateMusicButton);
+            } else {
+                musicBtn.style.display = 'none';
+            }
+
+            MS.resetGame('medium');
+            bindEvents();
+        })();
+    </script>
+    <!-- 独立 Flappy Bird -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .fb-container {
+            max-width: 500px;
+            width: 100%;
+            margin: 20px auto;
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(8px);
+            border-radius: 50px;
+            padding: 20px 15px 25px;
+            box-shadow: 0 20px 30px rgba(70, 140, 210, 0.3);
+            border: 2px solid white;
+            font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
+            position: relative;
+            overflow: hidden;
         }
-      } catch (e) {}
-      FB.leaderboard.sort((a, b) => b.score - a.score);
-      FB.leaderboard = FB.leaderboard.slice(0, 10);
-      FB.updateLeaderboardDisplay();
-    };
 
-    FB.saveLeaderboard = function() {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(FB.leaderboard));
-    };
-
-    FB.updateLeaderboardDisplay = function() {
-      const rank1Name = document.getElementById('rank1Name');
-      const rank1Score = document.getElementById('rank1Score');
-      const rank2Name = document.getElementById('rank2Name');
-      const rank2Score = document.getElementById('rank2Score');
-      const rank3Name = document.getElementById('rank3Name');
-      const rank3Score = document.getElementById('rank3Score');
-
-      if (FB.leaderboard.length >= 1) {
-        rank1Name.innerText = FB.leaderboard[0].name;
-        rank1Score.innerText = FB.leaderboard[0].score;
-      } else {
-        rank1Name.innerText = '-'; rank1Score.innerText = '-';
-      }
-      if (FB.leaderboard.length >= 2) {
-        rank2Name.innerText = FB.leaderboard[1].name;
-        rank2Score.innerText = FB.leaderboard[1].score;
-      } else {
-        rank2Name.innerText = '-'; rank2Score.innerText = '-';
-      }
-      if (FB.leaderboard.length >= 3) {
-        rank3Name.innerText = FB.leaderboard[2].name;
-        rank3Score.innerText = FB.leaderboard[2].score;
-      } else {
-        rank3Name.innerText = '-'; rank3Score.innerText = '-';
-      }
-    };
-
-    FB.tryAddToLeaderboard = function() {
-      let playerName = prompt('游戏结束！输入你的名字（留空即匿名）:', '匿名');
-      if (playerName === null || playerName.trim() === '') {
-        playerName = '匿名';
-      } else {
-        playerName = playerName.trim().substring(0, 10);
-      }
-
-      const newScore = { name: playerName, score: FB.score };
-      FB.leaderboard.push(newScore);
-      FB.leaderboard.sort((a, b) => b.score - a.score);
-      FB.leaderboard = FB.leaderboard.slice(0, 10);
-      FB.saveLeaderboard();
-      FB.updateLeaderboardDisplay();
-    };
-
-    // --- 像素级碰撞检测 (考虑翻转) ---
-    function checkPixelCollision(pipe) {
-      if (!FB.birdPixelData || !FB.pipePixelData) return false;
-
-      const birdLeft = FB.bird.x - FB.bird.width/2;
-      const birdRight = FB.bird.x + FB.bird.width/2;
-      const birdTop = FB.bird.y - FB.bird.height/2;
-      const birdBottom = FB.bird.y + FB.bird.height/2;
-      const pipeLeft = pipe.x;
-      const pipeRight = pipe.x + FB.pipeWidth;
-
-      // 上管道检测
-      const overlapLeft = Math.max(birdLeft, pipeLeft);
-      const overlapRight = Math.min(birdRight, pipeRight);
-      const overlapTop = Math.max(birdTop, 0);
-      const overlapBottom = Math.min(birdBottom, pipe.top);
-
-      if (overlapLeft < overlapRight && overlapTop < overlapBottom) {
-        for (let y = overlapTop; y < overlapBottom; y++) {
-          for (let x = overlapLeft; x < overlapRight; x++) {
-            const birdX = x - birdLeft;
-            const birdY = y - birdTop;
-            const birdImgX = Math.floor(birdX * FB.birdPixelData.width / FB.bird.width);
-            const birdImgY = Math.floor(birdY * FB.birdPixelData.height / FB.bird.height);
-            if (birdImgX < 0 || birdImgX >= FB.birdPixelData.width || birdImgY < 0 || birdImgY >= FB.birdPixelData.height) continue;
-            const birdAlpha = FB.birdPixelData.data[(birdImgY * FB.birdPixelData.width + birdImgX) * 4 + 3];
-            if (birdAlpha === 0) continue;
-
-            const pipeX = x - pipeLeft;
-            const pipeY = y;
-            const pipeImgX = Math.floor(pipeX * FB.pipePixelData.width / FB.pipeWidth);
-            const pipeImgY = Math.floor((1 - pipeY / pipe.top) * FB.pipePixelData.height);
-            if (pipeImgX < 0 || pipeImgX >= FB.pipePixelData.width || pipeImgY < 0 || pipeImgY >= FB.pipePixelData.height) continue;
-            const pipeAlpha = FB.pipePixelData.data[(pipeImgY * FB.pipePixelData.width + pipeImgX) * 4 + 3];
-            if (pipeAlpha !== 0) return true;
-          }
-        }
-      }
-
-      // 下管道检测
-      const bottomOverlapTop = Math.max(birdTop, pipe.bottom);
-      const bottomOverlapBottom = Math.min(birdBottom, FB.canvas.height);
-      if (overlapLeft < overlapRight && bottomOverlapTop < bottomOverlapBottom) {
-        for (let y = bottomOverlapTop; y < bottomOverlapBottom; y++) {
-          for (let x = overlapLeft; x < overlapRight; x++) {
-            const birdX = x - birdLeft;
-            const birdY = y - birdTop;
-            const birdImgX = Math.floor(birdX * FB.birdPixelData.width / FB.bird.width);
-            const birdImgY = Math.floor(birdY * FB.birdPixelData.height / FB.bird.height);
-            if (birdImgX < 0 || birdImgX >= FB.birdPixelData.width || birdImgY < 0 || birdImgY >= FB.birdPixelData.height) continue;
-            const birdAlpha = FB.birdPixelData.data[(birdImgY * FB.birdPixelData.width + birdImgX) * 4 + 3];
-            if (birdAlpha === 0) continue;
-
-            const pipeX = x - pipeLeft;
-            const pipeY = y - pipe.bottom;
-            const pipeImgX = Math.floor(pipeX * FB.pipePixelData.width / FB.pipeWidth);
-            const pipeImgY = Math.floor(pipeY * FB.pipePixelData.height / (FB.canvas.height - pipe.bottom));
-            if (pipeImgX < 0 || pipeImgX >= FB.pipePixelData.width || pipeImgY < 0 || pipeImgY >= FB.pipePixelData.height) continue;
-            const pipeAlpha = FB.pipePixelData.data[(pipeImgY * FB.pipePixelData.width + pipeImgX) * 4 + 3];
-            if (pipeAlpha !== 0) return true;
-          }
-        }
-      }
-
-      return false;
-    }
-
-    // --- 游戏初始化 ---
-    FB.resetGame = function() {
-      FB.gameRunning = false;
-      FB.gameStarted = false;
-      FB.score = 0;
-      FB.updateScore();
-      FB.bird.y = 300;
-      FB.bird.velocity = 0;
-      FB.pipes = [];
-      FB.frameCounter = 0;
-      FB.render();
-    };
-
-    FB.startGame = function() {
-      // 取消视频静音并确保播放
-      FB.video.muted = false;
-      if (FB.video.paused) {
-        FB.video.play().catch(e => console.log('视频播放失败:', e));
-      }
-      FB.resetGame();
-      FB.gameRunning = true;
-      FB.gameStarted = false;
-      if (FB.frameId) cancelAnimationFrame(FB.frameId);
-      FB.gameLoop();
-    };
-
-    // 新增：播放视频按钮功能
-    FB.playVideo = function() {
-      FB.video.muted = false;
-      FB.video.play().catch(e => console.log('视频播放失败:', e));
-    };
-
-    FB.gameOver = function() {
-      FB.gameRunning = false;
-      FB.gameStarted = false;
-      FB.tryAddToLeaderboard();
-      FB.render();
-    };
-
-    FB.flap = function() {
-      if (!FB.gameRunning) return;
-      if (!FB.gameStarted) {
-        FB.gameStarted = true;
-        FB.bird.velocity = FB.bird.lift;
-        FB.hitSound.currentTime = 0;
-        FB.hitSound.play().catch(() => {});
-      } else {
-        FB.bird.velocity = FB.bird.lift;
-        FB.hitSound.currentTime = 0;
-        FB.hitSound.play().catch(() => {});
-      }
-    };
-
-    FB.updateScore = function() {
-      FB.scoreSpan.innerText = FB.score;
-    };
-
-    // --- 游戏逻辑 ---
-    FB.update = function() {
-      if (!FB.gameStarted) return;
-
-      FB.bird.velocity += FB.bird.gravity;
-      FB.bird.y += FB.bird.velocity;
-
-      if (FB.bird.y - FB.bird.height/2 <= 0 || FB.bird.y + FB.bird.height/2 >= FB.canvas.height) {
-        FB.gameOver();
-        return;
-      }
-
-      FB.frameCounter++;
-      if (FB.frameCounter % FB.pipeSpawnInterval === 0) {
-        const pipeY = Math.floor(Math.random() * (FB.canvas.height - FB.pipeGap - 100) + 50);
-        FB.pipes.push({
-          x: FB.canvas.width,
-          top: pipeY,
-          bottom: pipeY + FB.pipeGap,
-          scored: false
-        });
-      }
-
-      for (let i = FB.pipes.length - 1; i >= 0; i--) {
-        const p = FB.pipes[i];
-        p.x -= FB.pipeSpeed;
-
-        const birdRect = {
-          left: FB.bird.x - FB.bird.width/2,
-          right: FB.bird.x + FB.bird.width/2,
-          top: FB.bird.y - FB.bird.height/2,
-          bottom: FB.bird.y + FB.bird.height/2
-        };
-        const pipeTopRect = { left: p.x, right: p.x + FB.pipeWidth, top: 0, bottom: p.top };
-        const pipeBottomRect = { left: p.x, right: p.x + FB.pipeWidth, top: p.bottom, bottom: FB.canvas.height };
-
-        const topOverlap = birdRect.right > pipeTopRect.left && birdRect.left < pipeTopRect.right && birdRect.bottom > pipeTopRect.top && birdRect.top < pipeTopRect.bottom;
-        const bottomOverlap = birdRect.right > pipeBottomRect.left && birdRect.left < pipeBottomRect.right && birdRect.bottom > pipeBottomRect.top && birdRect.top < pipeBottomRect.bottom;
-
-        if (topOverlap || bottomOverlap) {
-          if (checkPixelCollision(p)) {
-            FB.gameOver();
-            return;
-          }
+        .fb-video-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+            opacity: 0.5;
+            border-radius: 50px;
+            pointer-events: none;
         }
 
-        if (!p.scored && p.x + FB.pipeWidth < FB.bird.x) {
-          p.scored = true;
-          FB.score++;
-          FB.updateScore();
+        .fb-container>*:not(.fb-video-bg) {
+            position: relative;
+            z-index: 2;
         }
 
-        if (p.x + FB.pipeWidth < 0) {
-          FB.pipes.splice(i, 1);
+        .fb-header {
+            text-align: center;
+            color: #015c9b;
+            font-weight: 700;
+            font-size: 2rem;
+            margin-bottom: 10px;
+            text-shadow: 0 0 10px cyan;
         }
-      }
-    };
 
-    // --- 渲染 ---
-    FB.render = function() {
-      const ctx = FB.ctx;
-      ctx.clearRect(0, 0, FB.canvas.width, FB.canvas.height);
-
-      FB.pipes.forEach(p => {
-        // 上管道 (垂直翻转)
-        ctx.save();
-        ctx.translate(p.x + FB.pipeWidth/2, p.top/2);
-        ctx.scale(1, -1);
-        if (FB.pipeImg.complete) {
-          ctx.drawImage(FB.pipeImg, -FB.pipeWidth/2, -p.top/2, FB.pipeWidth, p.top);
-        } else {
-          ctx.fillStyle = '#0a0';
-          ctx.fillRect(-FB.pipeWidth/2, -p.top/2, FB.pipeWidth, p.top);
+        .fb-canvas-wrapper {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 15px;
+            border-radius: 40px;
+            overflow: hidden;
+            box-shadow: 0 0 20px #00ffff88;
         }
-        ctx.restore();
 
-        // 下管道
-        if (FB.pipeImg.complete) {
-          ctx.drawImage(FB.pipeImg, p.x, p.bottom, FB.pipeWidth, FB.canvas.height - p.bottom);
-        } else {
-          ctx.fillStyle = '#0a0';
-          ctx.fillRect(p.x, p.bottom, FB.pipeWidth, FB.canvas.height - p.bottom);
+        #fbCanvas {
+            width: 100%;
+            height: auto;
+            max-width: 400px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 40px;
+            border: 3px solid white;
+            box-shadow: 0 8px 0 #aac6e5;
+            cursor: pointer;
+            display: block;
+            touch-action: manipulation;
         }
-      });
 
-      if (FB.birdImg.complete) {
-        ctx.drawImage(FB.birdImg,
-          FB.bird.x - FB.bird.width/2,
-          FB.bird.y - FB.bird.height/2,
-          FB.bird.width,
-          FB.bird.height
-        );
-      } else {
-        ctx.beginPath();
-        ctx.arc(FB.bird.x, FB.bird.y, FB.bird.width/2, 0, 2 * Math.PI);
-        ctx.fillStyle = '#f7d51e';
-        ctx.fill();
-        ctx.strokeStyle = '#b8860b';
-        ctx.lineWidth = 2;
-        ctx.stroke();
-      }
-    };
+        .fb-score {
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 60px;
+            padding: 8px 20px;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #014a7c;
+            text-align: center;
+            border: 1px solid white;
+            box-shadow: 0 5px 0 #aac6e5;
+            margin: 15px 0;
+            backdrop-filter: blur(4px);
+        }
 
-    FB.gameLoop = function() {
-      if (FB.gameRunning) {
-        FB.update();
-        FB.render();
-        FB.frameId = requestAnimationFrame(FB.gameLoop);
-      } else {
-        FB.render();
-        FB.frameId = requestAnimationFrame(FB.gameLoop);
-      }
-    };
+        .fb-controls {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 15px 0;
+        }
 
-    // --- 事件绑定 ---
-    FB.canvas.addEventListener('click', (e) => {
-      e.preventDefault();
-      FB.flap();
-    });
-    FB.canvas.addEventListener('touchstart', (e) => {
-      e.preventDefault();
-      FB.flap();
-    });
-    window.addEventListener('keydown', (e) => {
-      if (e.code === 'Space' && FB.gameRunning) {
-        e.preventDefault();
-        FB.flap();
-      }
-    });
+        .fb-btn {
+            background: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 60px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #015c9b;
+            box-shadow: 0 5px 0 #aac6e5;
+            cursor: pointer;
+            transition: 0.1s ease;
+            border: 2px solid white;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            touch-action: manipulation;
+        }
 
-    FB.startBtn.addEventListener('click', () => {
-      FB.startGame();
-    });
-    FB.videoBtn.addEventListener('click', () => {
-      FB.playVideo();
-    });
+        .fb-btn:active {
+            transform: translateY(5px);
+            box-shadow: 0 2px 0 #aac6e5;
+        }
 
-    // 初始化
-    FB.loadLeaderboard();
-    FB.resetGame();
-  })();
-</script>
+        .fb-leaderboard {
+            margin-top: 20px;
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(4px);
+            border-radius: 60px;
+            border: 2px solid white;
+            box-shadow: 0 5px 0 #aac6e5;
+            padding: 8px 16px;
+            color: #014a7c;
+            font-weight: 600;
+        }
 
-</body></html>
+        .fb-leaderboard summary {
+            list-style: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 1.2rem;
+            padding: 6px 0;
+            user-select: none;
+        }
+
+        .fb-leaderboard summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .fb-leaderboard summary i {
+            color: #3182c0;
+            font-size: 1.4rem;
+            transition: transform 0.2s;
+        }
+
+        .fb-leaderboard[open] summary i {
+            transform: rotate(90deg);
+        }
+
+        .fb-leaderboard-content {
+            padding: 10px 8px;
+            border-top: 1px dashed #9bbde0;
+            font-size: 1rem;
+        }
+
+        .fb-leaderboard-item {
+            display: flex;
+            justify-content: space-between;
+            margin: 6px 0;
+            padding: 4px 12px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 40px;
+            align-items: center;
+        }
+
+        .fb-rank {
+            font-weight: 700;
+            color: #015c9b;
+            width: 40px;
+        }
+
+        .fb-name {
+            flex: 1;
+            text-align: left;
+            padding-left: 10px;
+            font-weight: 600;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .fb-score-value {
+            font-family: monospace;
+            background: #b3d6ff;
+            padding: 2px 12px;
+            border-radius: 40px;
+        }
+    </style>
+
+    <div class="fb-container">
+        <!-- 背景视频 (静音自动播放，按钮可取消静音) -->
+        <video class="fb-video-bg" id="fbVideo" autoplay="" loop="" muted="" playsinline="">
+            <source src="M-1.mp4" type="video/mp4">
+        </video>
+
+        <div class="fb-header">🐦 穗君穗君飞起来!</div>
+
+        <div class="fb-canvas-wrapper">
+            <canvas id="fbCanvas" width="400" height="600"></canvas>
+        </div>
+
+        <div class="fb-score" id="fbScoreDisplay">0</div>
+
+        <div class="fb-controls">
+            <button class="fb-btn" id="fbStartBtn"><i class="fas fa-play"></i> 开始游戏</button>
+            <button class="fb-btn" id="fbVideoBtn"><i class="fas fa-video"></i> 播放视频</button>
+        </div>
+
+        <!-- 排行榜 -->
+        <details class="fb-leaderboard" open="">
+            <summary><i class="fas fa-chevron-right"></i> 🏆 飞起来!榜</summary>
+            <div class="fb-leaderboard-content" id="fbLeaderboardContent">
+                <div class="fb-leaderboard-item">
+                    <span class="fb-rank">🥇</span>
+                    <span class="fb-name" id="rank1Name">-</span>
+                    <span class="fb-score-value" id="rank1Score">-</span>
+                </div>
+                <div class="fb-leaderboard-item">
+                    <span class="fb-rank">🥈</span>
+                    <span class="fb-name" id="rank2Name">-</span>
+                    <span class="fb-score-value" id="rank2Score">-</span>
+                </div>
+                <div class="fb-leaderboard-item">
+                    <span class="fb-rank">🥉</span>
+                    <span class="fb-name" id="rank3Name">-</span>
+                    <span class="fb-score-value" id="rank3Score">-</span>
+                </div>
+            </div>
+        </details>
+    </div>
+
+    <script>
+        (function () {
+            const FB = {};
+
+            // DOM 元素
+            FB.canvas = document.getElementById('fbCanvas');
+            FB.ctx = FB.canvas.getContext('2d');
+            FB.scoreSpan = document.getElementById('fbScoreDisplay');
+            FB.startBtn = document.getElementById('fbStartBtn');
+            FB.videoBtn = document.getElementById('fbVideoBtn'); // 原停止按钮改为视频按钮
+            FB.video = document.getElementById('fbVideo');
+
+            FB.canvas.width = 400;
+            FB.canvas.height = 600;
+
+            // --- 游戏参数 ---
+            FB.gameRunning = false;
+            FB.gameStarted = false;
+            FB.score = 0;
+            FB.frameId = null;
+
+            FB.bird = {
+                x: 100,
+                y: 300,
+                width: 30,
+                height: 30,
+                velocity: 0,
+                gravity: 0.4,
+                lift: -8
+            };
+
+            FB.pipes = [];
+            FB.pipeWidth = 60;
+            FB.pipeGap = 150;
+            FB.pipeSpeed = 2;
+            FB.frameCounter = 0;
+            FB.pipeSpawnInterval = 100;
+
+            // 图片资源 (PNG)
+            FB.pipeImg = new Image();
+            FB.pipeImg.src = 'G-1.png';
+            FB.birdImg = new Image();
+            FB.birdImg.src = 'B-1.png';
+
+            // 音效
+            FB.hitSound = new Audio('MB-1.mp3');
+            FB.hitSound.preload = 'auto';
+
+            // --- 像素数据缓存 ---
+            FB.pipePixelData = null;
+            FB.birdPixelData = null;
+
+            // 解析图片像素
+            function loadImageData(img, callback) {
+                const canvas = document.createElement('canvas');
+                const ctx = canvas.getContext('2d');
+                canvas.width = img.naturalWidth;
+                canvas.height = img.naturalHeight;
+                ctx.drawImage(img, 0, 0);
+                const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+                callback({ width: canvas.width, height: canvas.height, data: imageData.data });
+            }
+
+            let pipeLoaded = false, birdLoaded = false;
+            FB.pipeImg.onload = function () {
+                loadImageData(FB.pipeImg, (data) => {
+                    FB.pipePixelData = data;
+                    pipeLoaded = true;
+                });
+            };
+            FB.birdImg.onload = function () {
+                loadImageData(FB.birdImg, (data) => {
+                    FB.birdPixelData = data;
+                    birdLoaded = true;
+                });
+            };
+
+            // --- 排行榜 (本地存储) ---
+            FB.leaderboard = [];
+            const STORAGE_KEY = 'flappy_leaderboard';
+
+            FB.loadLeaderboard = function () {
+                try {
+                    const stored = localStorage.getItem(STORAGE_KEY);
+                    if (stored) {
+                        const parsed = JSON.parse(stored);
+                        if (Array.isArray(parsed)) {
+                            FB.leaderboard = parsed.filter(item => item.name && typeof item.score === 'number');
+                        }
+                    }
+                } catch (e) { }
+                FB.leaderboard.sort((a, b) => b.score - a.score);
+                FB.leaderboard = FB.leaderboard.slice(0, 10);
+                FB.updateLeaderboardDisplay();
+            };
+
+            FB.saveLeaderboard = function () {
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(FB.leaderboard));
+            };
+
+            FB.updateLeaderboardDisplay = function () {
+                const rank1Name = document.getElementById('rank1Name');
+                const rank1Score = document.getElementById('rank1Score');
+                const rank2Name = document.getElementById('rank2Name');
+                const rank2Score = document.getElementById('rank2Score');
+                const rank3Name = document.getElementById('rank3Name');
+                const rank3Score = document.getElementById('rank3Score');
+
+                if (FB.leaderboard.length >= 1) {
+                    rank1Name.innerText = FB.leaderboard[0].name;
+                    rank1Score.innerText = FB.leaderboard[0].score;
+                } else {
+                    rank1Name.innerText = '-'; rank1Score.innerText = '-';
+                }
+                if (FB.leaderboard.length >= 2) {
+                    rank2Name.innerText = FB.leaderboard[1].name;
+                    rank2Score.innerText = FB.leaderboard[1].score;
+                } else {
+                    rank2Name.innerText = '-'; rank2Score.innerText = '-';
+                }
+                if (FB.leaderboard.length >= 3) {
+                    rank3Name.innerText = FB.leaderboard[2].name;
+                    rank3Score.innerText = FB.leaderboard[2].score;
+                } else {
+                    rank3Name.innerText = '-'; rank3Score.innerText = '-';
+                }
+            };
+
+            FB.tryAddToLeaderboard = function () {
+                let playerName = prompt('游戏结束！输入你的名字（留空即匿名）:', '匿名');
+                if (playerName === null || playerName.trim() === '') {
+                    playerName = '匿名';
+                } else {
+                    playerName = playerName.trim().substring(0, 10);
+                }
+
+                const newScore = { name: playerName, score: FB.score };
+                FB.leaderboard.push(newScore);
+                FB.leaderboard.sort((a, b) => b.score - a.score);
+                FB.leaderboard = FB.leaderboard.slice(0, 10);
+                FB.saveLeaderboard();
+                FB.updateLeaderboardDisplay();
+            };
+
+            // --- 像素级碰撞检测 (考虑翻转) ---
+            function checkPixelCollision(pipe) {
+                if (!FB.birdPixelData || !FB.pipePixelData) return false;
+
+                const birdLeft = FB.bird.x - FB.bird.width / 2;
+                const birdRight = FB.bird.x + FB.bird.width / 2;
+                const birdTop = FB.bird.y - FB.bird.height / 2;
+                const birdBottom = FB.bird.y + FB.bird.height / 2;
+                const pipeLeft = pipe.x;
+                const pipeRight = pipe.x + FB.pipeWidth;
+
+                // 上管道检测
+                const overlapLeft = Math.max(birdLeft, pipeLeft);
+                const overlapRight = Math.min(birdRight, pipeRight);
+                const overlapTop = Math.max(birdTop, 0);
+                const overlapBottom = Math.min(birdBottom, pipe.top);
+
+                if (overlapLeft < overlapRight && overlapTop < overlapBottom) {
+                    for (let y = overlapTop; y < overlapBottom; y++) {
+                        for (let x = overlapLeft; x < overlapRight; x++) {
+                            const birdX = x - birdLeft;
+                            const birdY = y - birdTop;
+                            const birdImgX = Math.floor(birdX * FB.birdPixelData.width / FB.bird.width);
+                            const birdImgY = Math.floor(birdY * FB.birdPixelData.height / FB.bird.height);
+                            if (birdImgX < 0 || birdImgX >= FB.birdPixelData.width || birdImgY < 0 || birdImgY >= FB.birdPixelData.height) continue;
+                            const birdAlpha = FB.birdPixelData.data[(birdImgY * FB.birdPixelData.width + birdImgX) * 4 + 3];
+                            if (birdAlpha === 0) continue;
+
+                            const pipeX = x - pipeLeft;
+                            const pipeY = y;
+                            const pipeImgX = Math.floor(pipeX * FB.pipePixelData.width / FB.pipeWidth);
+                            const pipeImgY = Math.floor((1 - pipeY / pipe.top) * FB.pipePixelData.height);
+                            if (pipeImgX < 0 || pipeImgX >= FB.pipePixelData.width || pipeImgY < 0 || pipeImgY >= FB.pipePixelData.height) continue;
+                            const pipeAlpha = FB.pipePixelData.data[(pipeImgY * FB.pipePixelData.width + pipeImgX) * 4 + 3];
+                            if (pipeAlpha !== 0) return true;
+                        }
+                    }
+                }
+
+                // 下管道检测
+                const bottomOverlapTop = Math.max(birdTop, pipe.bottom);
+                const bottomOverlapBottom = Math.min(birdBottom, FB.canvas.height);
+                if (overlapLeft < overlapRight && bottomOverlapTop < bottomOverlapBottom) {
+                    for (let y = bottomOverlapTop; y < bottomOverlapBottom; y++) {
+                        for (let x = overlapLeft; x < overlapRight; x++) {
+                            const birdX = x - birdLeft;
+                            const birdY = y - birdTop;
+                            const birdImgX = Math.floor(birdX * FB.birdPixelData.width / FB.bird.width);
+                            const birdImgY = Math.floor(birdY * FB.birdPixelData.height / FB.bird.height);
+                            if (birdImgX < 0 || birdImgX >= FB.birdPixelData.width || birdImgY < 0 || birdImgY >= FB.birdPixelData.height) continue;
+                            const birdAlpha = FB.birdPixelData.data[(birdImgY * FB.birdPixelData.width + birdImgX) * 4 + 3];
+                            if (birdAlpha === 0) continue;
+
+                            const pipeX = x - pipeLeft;
+                            const pipeY = y - pipe.bottom;
+                            const pipeImgX = Math.floor(pipeX * FB.pipePixelData.width / FB.pipeWidth);
+                            const pipeImgY = Math.floor(pipeY * FB.pipePixelData.height / (FB.canvas.height - pipe.bottom));
+                            if (pipeImgX < 0 || pipeImgX >= FB.pipePixelData.width || pipeImgY < 0 || pipeImgY >= FB.pipePixelData.height) continue;
+                            const pipeAlpha = FB.pipePixelData.data[(pipeImgY * FB.pipePixelData.width + pipeImgX) * 4 + 3];
+                            if (pipeAlpha !== 0) return true;
+                        }
+                    }
+                }
+
+                return false;
+            }
+
+            // --- 游戏初始化 ---
+            FB.resetGame = function () {
+                FB.gameRunning = false;
+                FB.gameStarted = false;
+                FB.score = 0;
+                FB.updateScore();
+                FB.bird.y = 300;
+                FB.bird.velocity = 0;
+                FB.pipes = [];
+                FB.frameCounter = 0;
+                FB.render();
+            };
+
+            FB.startGame = function () {
+                // 取消视频静音并确保播放
+                FB.video.muted = false;
+                if (FB.video.paused) {
+                    FB.video.play().catch(e => console.log('视频播放失败:', e));
+                }
+                FB.resetGame();
+                FB.gameRunning = true;
+                FB.gameStarted = false;
+                if (FB.frameId) cancelAnimationFrame(FB.frameId);
+                FB.gameLoop();
+            };
+
+            // 新增：播放视频按钮功能
+            FB.playVideo = function () {
+                FB.video.muted = false;
+                FB.video.play().catch(e => console.log('视频播放失败:', e));
+            };
+
+            FB.gameOver = function () {
+                FB.gameRunning = false;
+                FB.gameStarted = false;
+                FB.tryAddToLeaderboard();
+                FB.render();
+            };
+
+            FB.flap = function () {
+                if (!FB.gameRunning) return;
+                if (!FB.gameStarted) {
+                    FB.gameStarted = true;
+                    FB.bird.velocity = FB.bird.lift;
+                    FB.hitSound.currentTime = 0;
+                    FB.hitSound.play().catch(() => { });
+                } else {
+                    FB.bird.velocity = FB.bird.lift;
+                    FB.hitSound.currentTime = 0;
+                    FB.hitSound.play().catch(() => { });
+                }
+            };
+
+            FB.updateScore = function () {
+                FB.scoreSpan.innerText = FB.score;
+            };
+
+            // --- 游戏逻辑 ---
+            FB.update = function () {
+                if (!FB.gameStarted) return;
+
+                FB.bird.velocity += FB.bird.gravity;
+                FB.bird.y += FB.bird.velocity;
+
+                if (FB.bird.y - FB.bird.height / 2 <= 0 || FB.bird.y + FB.bird.height / 2 >= FB.canvas.height) {
+                    FB.gameOver();
+                    return;
+                }
+
+                FB.frameCounter++;
+                if (FB.frameCounter % FB.pipeSpawnInterval === 0) {
+                    const pipeY = Math.floor(Math.random() * (FB.canvas.height - FB.pipeGap - 100) + 50);
+                    FB.pipes.push({
+                        x: FB.canvas.width,
+                        top: pipeY,
+                        bottom: pipeY + FB.pipeGap,
+                        scored: false
+                    });
+                }
+
+                for (let i = FB.pipes.length - 1; i >= 0; i--) {
+                    const p = FB.pipes[i];
+                    p.x -= FB.pipeSpeed;
+
+                    const birdRect = {
+                        left: FB.bird.x - FB.bird.width / 2,
+                        right: FB.bird.x + FB.bird.width / 2,
+                        top: FB.bird.y - FB.bird.height / 2,
+                        bottom: FB.bird.y + FB.bird.height / 2
+                    };
+                    const pipeTopRect = { left: p.x, right: p.x + FB.pipeWidth, top: 0, bottom: p.top };
+                    const pipeBottomRect = { left: p.x, right: p.x + FB.pipeWidth, top: p.bottom, bottom: FB.canvas.height };
+
+                    const topOverlap = birdRect.right > pipeTopRect.left && birdRect.left < pipeTopRect.right && birdRect.bottom > pipeTopRect.top && birdRect.top < pipeTopRect.bottom;
+                    const bottomOverlap = birdRect.right > pipeBottomRect.left && birdRect.left < pipeBottomRect.right && birdRect.bottom > pipeBottomRect.top && birdRect.top < pipeBottomRect.bottom;
+
+                    if (topOverlap || bottomOverlap) {
+                        if (checkPixelCollision(p)) {
+                            FB.gameOver();
+                            return;
+                        }
+                    }
+
+                    if (!p.scored && p.x + FB.pipeWidth < FB.bird.x) {
+                        p.scored = true;
+                        FB.score++;
+                        FB.updateScore();
+                    }
+
+                    if (p.x + FB.pipeWidth < 0) {
+                        FB.pipes.splice(i, 1);
+                    }
+                }
+            };
+
+            // --- 渲染 ---
+            FB.render = function () {
+                const ctx = FB.ctx;
+                ctx.clearRect(0, 0, FB.canvas.width, FB.canvas.height);
+
+                FB.pipes.forEach(p => {
+                    // 上管道 (垂直翻转)
+                    ctx.save();
+                    ctx.translate(p.x + FB.pipeWidth / 2, p.top / 2);
+                    ctx.scale(1, -1);
+                    if (FB.pipeImg.complete) {
+                        ctx.drawImage(FB.pipeImg, -FB.pipeWidth / 2, -p.top / 2, FB.pipeWidth, p.top);
+                    } else {
+                        ctx.fillStyle = '#0a0';
+                        ctx.fillRect(-FB.pipeWidth / 2, -p.top / 2, FB.pipeWidth, p.top);
+                    }
+                    ctx.restore();
+
+                    // 下管道
+                    if (FB.pipeImg.complete) {
+                        ctx.drawImage(FB.pipeImg, p.x, p.bottom, FB.pipeWidth, FB.canvas.height - p.bottom);
+                    } else {
+                        ctx.fillStyle = '#0a0';
+                        ctx.fillRect(p.x, p.bottom, FB.pipeWidth, FB.canvas.height - p.bottom);
+                    }
+                });
+
+                if (FB.birdImg.complete) {
+                    ctx.drawImage(FB.birdImg,
+                        FB.bird.x - FB.bird.width / 2,
+                        FB.bird.y - FB.bird.height / 2,
+                        FB.bird.width,
+                        FB.bird.height
+                    );
+                } else {
+                    ctx.beginPath();
+                    ctx.arc(FB.bird.x, FB.bird.y, FB.bird.width / 2, 0, 2 * Math.PI);
+                    ctx.fillStyle = '#f7d51e';
+                    ctx.fill();
+                    ctx.strokeStyle = '#b8860b';
+                    ctx.lineWidth = 2;
+                    ctx.stroke();
+                }
+            };
+
+            FB.gameLoop = function () {
+                if (FB.gameRunning) {
+                    FB.update();
+                    FB.render();
+                    FB.frameId = requestAnimationFrame(FB.gameLoop);
+                } else {
+                    FB.render();
+                    FB.frameId = requestAnimationFrame(FB.gameLoop);
+                }
+            };
+
+            // --- 事件绑定 ---
+            FB.canvas.addEventListener('click', (e) => {
+                e.preventDefault();
+                FB.flap();
+            });
+            FB.canvas.addEventListener('touchstart', (e) => {
+                e.preventDefault();
+                FB.flap();
+            });
+            window.addEventListener('keydown', (e) => {
+                if (e.code === 'Space' && FB.gameRunning) {
+                    e.preventDefault();
+                    FB.flap();
+                }
+            });
+
+            FB.startBtn.addEventListener('click', () => {
+                FB.startGame();
+            });
+            FB.videoBtn.addEventListener('click', () => {
+                FB.playVideo();
+            });
+
+            // 初始化
+            FB.loadLeaderboard();
+            FB.resetGame();
+        })();
+    </script>
+
+    <!-- === 通用页脚 === -->
+    <footer class="suki-footer">
+        <div class="footer-content">
+            <p class="footer-text">
+                💙 托管于 <a href="https://github.com/suki-live/suki-live" target="_blank" rel="noopener">suki-live</a>
+                <span class="footer-divider">·</span>
+                <a href="https://suki.live">返回首页</a>
+                <span class="footer-divider">·</span>
+                <a href="https://suki.live/registry.html">主播名录</a>
+                <span class="footer-divider">·</span>
+                <a href="https://dreamail.cn/" target="_blank" rel="noopener">✉️ 匿名信</a>
+            </p>
+            <p class="footer-copyright">
+                © 2026 suki.live · 用记忆与歌声，连接每一个你
+            </p>
+        </div>
+    </footer>
+
+    <style>
+        .suki-footer {
+            text-align: center;
+            color: #718096;
+            font-size: 0.85rem;
+            padding: 2rem 1rem;
+            margin-top: 2rem;
+            border-top: 1px solid #e2e8f0;
+            background: #fafbfc;
+        }
+
+        .footer-content {
+            max-width: 960px;
+            margin: 0 auto;
+        }
+
+        .footer-text {
+            margin-bottom: 0.5rem;
+            line-height: 1.8;
+        }
+
+        .footer-text a {
+            color: #a7c7e7;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-text a:hover {
+            color: #8ab4d9;
+            text-decoration: underline;
+        }
+
+        .footer-divider {
+            color: #cbd5e1;
+            margin: 0 0.3rem;
+        }
+
+        .footer-copyright {
+            color: #a0aec0;
+            font-size: 0.8rem;
+        }
+
+        @media (max-width: 640px) {
+            .suki-footer {
+                padding: 1.5rem 0.8rem;
+            }
+
+            .footer-text {
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+
+</body>
+
+</html>
