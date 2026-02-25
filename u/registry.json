@@ -9,13 +9,19 @@
       "status": "inactive"
     },
     {
+      "id": "miaomiao",
+      "name": "淼淼Miya",
+      "tagline": "一条唱歌的文鳐鱼——小鱼小鱼快快游，四面八方都自由",
+      "registered_at": "2026-2-25",
+      "status": "inactive"
+    },
+    {
       "id": "lumi",
       "name": "Lumi又又",
       "tagline": "这个人反应比较慢",
       "registered_at": "2026-2-24",
       "status": "active"
-    }
-    ,
+    },
     {
       "id": "suyi",
       "name": "素衣QwQ",
