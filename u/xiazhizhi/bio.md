@@ -71,7 +71,7 @@
 
 ## 📱 来教室坐坐吧
 
-- **Bilibili**: [@夏知之 - 唱见连](https://space.bilibili.com/xxxxxx)  
+- **Bilibili**: [@夏知之 - 唱见连](https://space.bilibili.com/3690980385491506)  
   🎬 弹唱投稿｜电台读文｜直播回放｜治愈碎片
 
 > 💙 每一条动态都是小心思，每一次开播都是小期待  
