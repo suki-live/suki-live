@@ -1,124 +1,1236 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>站长还没来得及写</title>
+    <title>临别留言 | χ · 小希Channel</title>
     <style>
+        /* ================= 基础样式 (复用首页) ================= */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
+        :root {
+            --primary: #F77F96;
+            --primary-light: #ffd6e7;
+            --secondary: #9370db;
+            --dark: #3a2a55;
+            --text: #4a4a4a;
+            --light-gray: #f5f7fa;
+            --white: #ffffff;
+            --shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            --shadow-light: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
         body {
+            font-family: 'Microsoft YaHei', 'PingFang SC', 'Hiragino Sans GB', 'STHeiti', 'SimHei', sans-serif;
+            background-color: var(--light-gray);
+            color: var(--text);
+            line-height: 1.8;
+            padding-top: 60px;
+            overflow-x: hidden;
+            transition: padding-top 0.3s ease;
+        }
+
+        /* 导航栏 */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgb(247, 127, 150);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: height 0.3s ease, padding 0.3s ease;
+            padding: 0 1.5rem;
+        }
+
+        .logo-mobile {
+            color: white;
+            font-weight: bold;
+            font-size: 1.4rem;
+            cursor: pointer;
+            padding: 0.8rem 1.2rem;
+            border-radius: 8px;
+            transition: background-color 0.3s, transform 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            user-select: none;
+            display: none;
+        }
+
+        .logo-mobile:hover {
+            background-color: rgba(255, 255, 255, 0.15);
+            transform: scale(1.05);
+        }
+
+        .logo-mobile::after {
+            content: '▼';
+            font-size: 0.7rem;
+            opacity: 0.8;
+            transition: transform 0.3s;
+        }
+
+        .logo-mobile.active::after {
+            transform: rotate(180deg);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+            margin: 0 auto;
+            padding: 0.8rem 0;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 500;
+            padding: 0.5rem 0.8rem;
+            border-radius: 4px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            white-space: nowrap;
+        }
+
+        .nav-links a:hover {
+            background-color: rgba(255, 255, 255, 0.15);
+            transform: translateY(-1px);
+        }
+
+        /* 星空背景 */
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .star {
+            position: absolute;
+            background-color: white;
+            border-radius: 50%;
+            animation: twinkle 3s infinite;
+        }
+
+        @keyframes twinkle {
+
+            0%,
+            100% {
+                opacity: 0.2;
+            }
+
+            50% {
+                opacity: 1;
+            }
+        }
+
+        /* 顶部 Header */
+        header {
+            background-color: var(--primary);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(247, 127, 150, 0.3);
+            position: relative;
+            overflow: hidden;
+            margin-top: 0;
+        }
+
+        .logo-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 3.2rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            letter-spacing: 2px;
+            text-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        .tagline {
+            font-size: 1.3rem;
+            opacity: 0.95;
+            margin-bottom: 0.8rem;
+            font-weight: 300;
+        }
+
+        .dates {
+            font-size: 1rem;
+            opacity: 0.9;
+            letter-spacing: 3px;
+            font-weight: 300;
+        }
+
+        /* 主要内容容器 */
+        .container {
+            max-width: 1100px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+        }
+
+        .section {
+            background-color: var(--white);
+            border-radius: 16px;
+            padding: 2.5rem;
+            margin-bottom: 2.5rem;
+            box-shadow: var(--shadow);
+            position: relative;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.12);
+        }
+
+        .section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 6px;
+            height: 100%;
+            background-color: var(--primary);
+        }
+
+        .section-title {
+            font-size: 1.9rem;
+            color: var(--dark);
+            margin-bottom: 1.8rem;
+            padding-left: 1.3rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background-color: var(--primary);
+            border-radius: 3px;
+        }
+
+        /* ================= 留言页特有样式 ================= */
+        /* 提交表单区域 */
+        .submit-form {
+            background-color: var(--primary-light);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 2px solid rgba(247, 127, 150, 0.25);
+            margin-bottom: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        .form-input,
+        .form-textarea {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 1px solid rgba(147, 112, 219, 0.3);
+            border-radius: 8px;
+            font-size: 1rem;
+            font-family: inherit;
+            background-color: rgba(255, 255, 255, 0.8);
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        .form-input:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(247, 127, 150, 0.2);
+        }
+
+        .form-textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.8rem 2.5rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .submit-btn:hover {
+            background-color: #e66a85;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(247, 127, 150, 0.4);
+        }
+
+        /* 留言卡片网格 (复用首页样式) */
+        .messages {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+            gap: 1.8rem;
+            margin-top: 1.8rem;
+        }
+
+        .message-card {
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 14px;
+            padding: 1.7rem;
+            position: relative;
+            box-shadow: var(--shadow-light);
+            border: 1px solid rgba(247, 127, 150, 0.12);
+            transition: transform 0.3s ease;
+        }
+
+        .message-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .message-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px dashed rgba(147, 112, 219, 0.25);
+        }
+
+        .message-author {
+            font-weight: 700;
+            color: var(--dark);
+            font-size: 1.05rem;
+        }
+
+        .message-date {
+            font-size: 0.85rem;
+            color: var(--secondary);
+            opacity: 0.85;
+        }
+
+        .message-content {
+            font-size: 1rem;
+            line-height: 1.8;
+        }
+
+        .message-content .highlight {
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        /* 页脚 */
+        footer {
+            background-color: var(--dark);
+            color: rgba(255, 255, 255, 0.92);
+            text-align: center;
+            padding: 2.8rem 1.5rem;
+            margin-top: 3rem;
+            line-height: 1.9;
+        }
+
+        .footer-text {
+            font-size: 1.15rem;
+            margin-bottom: 0.9rem;
+        }
+
+        .copyright {
+            font-size: 0.95rem;
+            opacity: 0.8;
+            margin-top: 1.2rem;
+        }
+
+        .footer-text a {
+            color: var(--primary);
+            text-decoration: none;
+            transition: color 0.2s ease;
+            font-weight: 500;
+        }
+
+        .footer-text a:hover {
+            color: #e66a85;
+            text-decoration: underline;
+        }
+
+        /* 滚动动画 & 回到顶部 */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(25px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .fade-in.appear {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 48px;
+            height: 48px;
             background-color: #F77F96;
             color: white;
-            font-family: "SimHei", "Microsoft YaHei", "黑体", sans-serif;
-            height: 100vh;
+            border-radius: 50%;
             display: flex;
-            justify-content: center;
             align-items: center;
-            text-align: center;
-            overflow: hidden;
-            position: relative;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+            z-index: 1999;
+            opacity: 0;
+            transition: opacity 0.3s, transform 0.3s;
         }
-        
-        .message-container {
-            padding: 40px;
-            max-width: 90%;
-            animation: pulse 2s infinite;
+
+        .back-to-top.show {
+            opacity: 1;
         }
-        
-        .main-text {
-            font-size: clamp(48px, 8.5vw, 100px);
-            font-weight: bold;
-            color: white;
-            text-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
-            line-height: 1.3;
-            letter-spacing: 4px;
-            position: relative;
+
+        .back-to-top:hover {
+            transform: translateY(-3px);
+            background-color: #e66a85;
         }
-        
-        .main-text::after {
-            content: "";
-            position: absolute;
-            bottom: 8px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 90%;
-            height: 12px;
-            background: rgba(255, 255, 255, 0.3);
-            border-radius: 6px;
+
+        .menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.4);
+            z-index: 1998;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s;
         }
-        
-        .subtle-text {
-            margin-top: 25px;
-            font-size: clamp(16px, 2.5vw, 24px);
-            opacity: 0.85;
-            font-weight: normal;
-            letter-spacing: 1px;
-            color: white;
+
+        .menu-overlay.active {
+            opacity: 1;
+            visibility: visible;
         }
-        
-        .decoration {
-            position: absolute;
-            opacity: 0.15;
-            z-index: 0;
-        }
-        
-        .dot-1 {
-            top: 15%;
-            left: 10%;
-            font-size: 80px;
-            transform: rotate(15deg);
-        }
-        
-        .dot-2 {
-            bottom: 20%;
-            right: 15%;
-            font-size: 60px;
-            transform: rotate(-25deg);
-        }
-        
-        .dot-3 {
-            top: 40%;
-            right: 5%;
-            font-size: 40px;
-            transform: rotate(45deg);
-        }
-        
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.03); }
-            100% { transform: scale(1); }
-        }
-        
-        @media (max-width: 480px) {
-            .message-container {
-                padding: 25px 15px;
+
+        /* 响应式 */
+        @media (max-width: 900px) {
+            .navbar {
+                justify-content: flex-start;
             }
-            
-            .main-text {
-                letter-spacing: 2px;
-                font-size: clamp(40px, 9vw, 70px);
+
+            .logo-mobile {
+                display: flex;
             }
-            
-            .subtle-text {
-                font-size: 18px;
-                margin-top: 15px;
+
+            .nav-links {
+                display: none;
+            }
+
+            .nav-links.active {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100vh;
+                background: linear-gradient(135deg, rgba(247, 127, 150, 0.98) 0%, rgba(230, 106, 133, 0.98) 100%);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 2.5rem;
+                padding: 0;
+                margin: 0;
+                display: flex;
+                z-index: 1999;
+                animation: slideIn 0.4s ease-out;
+            }
+
+            @keyframes slideIn {
+                from {
+                    opacity: 0;
+                    transform: translateY(-20px);
+                }
+
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+
+            .nav-links a {
+                font-size: 1.8rem;
+                font-weight: 600;
+                padding: 1rem 2.5rem;
+                background-color: rgba(255, 255, 255, 0.12);
+                border-radius: 12px;
+                width: 85%;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 2.4rem;
+            }
+
+            .section {
+                padding: 1.9rem;
+            }
+
+            .container {
+                margin: 2rem auto;
             }
         }
     </style>
 </head>
+
 <body>
-    <div class="decoration dot-1">✦</div>
-    <div class="decoration dot-2">✧</div>
-    <div class="decoration dot-3">✩</div>
-    
-    <div class="message-container">
-        <div class="main-text">别看了，站长还没来得及写</div>
-        <div class="subtle-text">—— 稍后再来，会有惊喜哦 ——</div>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="logo-mobile" id="logoMobile">χ · 小希</div>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="./main" target="_blank">主页</a></li>
+            <li><a href="./recollection" target="_blank">美好回忆</a></li>
+            <li><a href="./danmaku" target="_blank">往昔弹幕</a></li>
+            <!-- 当前页面高亮可通过 JS 或手动添加 class 实现，此处保持结构一致 -->
+            <li><a href="./message" target="_blank" style="background-color: rgba(255,255,255,0.2);">临别留言</a></li>
+        </ul>
+    </nav>
+    <!-- 菜单遮罩层 -->
+    <div class="menu-overlay" id="menuOverlay"></div>
+    <!-- 星空背景 -->
+    <div class="stars" id="stars"></div>
+
+    <!-- 顶部 Header -->
+    <header>
+        <div class="logo-container">
+            <div class="logo">χ · 小希Channel</div>
+            <div class="tagline">九年温暖相伴 · 留下你的祝福</div>
+            <div class="dates">2017.08.12 — 2026.02.08</div>
+        </div>
+    </header>
+
+    <!-- 主要内容 -->
+    <div class="container">
+
+        <!-- 留言提交区 -->
+        <section class="section fade-in">
+            <h2 class="section-title">写下你的祝福</h2>
+            <p style="margin-bottom: 1.5rem; color: var(--text);">
+                在小希休眠之际，如果你想对她说些什么，请在这里留下你的声音。所有留言经审核后将会展示在下方。
+            </p>
+            <form class="submit-form" id="messageForm"
+                onsubmit="event.preventDefault(); alert('这是一个前端框架示例，实际提交需要对接后端 API 哦~');">
+                <div class="form-group">
+                    <label class="form-label">昵称 (可选，默认为匿名)</label>
+                    <input type="text" class="form-input" placeholder="例如：帅老 DD、一念神魔...">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">留言内容</label>
+                    <textarea class="form-textarea" placeholder="从小希刚开始做起来到如今，接近十年的路上印象最深刻的是什么..." required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">发送留言</button>
+            </form>
+        </section>
+
+        <!-- 留言展示墙 -->
+        <section class="section fade-in">
+            <h2 class="section-title">留言墙</h2>
+            <p style="margin-bottom: 1.8rem; text-align: center; font-size: 1.15rem; color: var(--dark);">
+                来自帅老 DD 们的真挚告白，字字句句都是不舍与祝福
+            </p>
+
+            <div class="messages">
+
+                <div class="message-card">
+                    <div class="message-header">
+                        <span class="message-author">XMXM</span>
+                        <span class="message-date">2026/2/5</span>
+                    </div>
+                    <div class="message-content">
+                        从小希刚开始做起来到如今，接近十年的路上印象最深刻的是什么。我最喜欢的就是希桃双口相声，无论是台前还是幕后都做得太棒了。
+                    </div>
+                </div>
+
+                <div class="message-card">
+                    <div class="message-header">
+                        <span class="message-author">雇员 432</span>
+                        <span class="message-date">2026/2/5</span>
+                    </div>
+                    <div class="message-content">
+                        虚拟主播界历经多年变迁，有人来，有人走，有人走了又回来，有人回来了又走……不变的是 UP 和观众们共同创造的回忆。怀揣往昔的碎片，迈入人生新的阶段吧。祝大家好。
+                    </div>
+                </div>
+
+                <div class="message-card">
+                    <div class="message-header">
+                        <span class="message-author">洛天</span>
+                        <span class="message-date">2026/2/5</span>
+                    </div>
+                    <div class="message-content">
+                        从小希出道默默关注到现在，希望小希之后一切安好，加油，向着美好的明天！
+                    </div>
+                </div>
+
+                <div class="message-card">
+                    <div class="message-header">
+                        <span class="message-author">匿名</span>
+                        <span class="message-date">2026/2/5</span>
+                    </div>
+                    <div class="message-content">
+                        谢谢小希的陪伴！
+                    </div>
+                </div>
+
+                <div class="message-card">
+                    <div class="message-header">
+                        <span class="message-author">浅墨乙烯</span>
+                        <span class="message-date">2026/2/5</span>
+                    </div>
+                    <div class="message-content">
+                        谢谢希爹陪伴我从初中到现在大学毕业，有你真好
+                    </div>
+                </div>
+
+                <div class="message-card">
+                    <div class="message-header">
+                        <span class="message-author">方程</span>
+                        <span class="message-date">2026/2/5</span>
+                    </div>
+                    <div class="message-content">
+                        嗨，好久不见，想我了吗？<br>
+                        不知不觉间我们已经度过了好长时间了呢。<br>
+                        不知道小希有没有真正的开心过呢，有没有真正的放松过呢？<br>
+                        还记不记得方程的整活呢？刚开始听到消息的时候还是无比震惊的，但是回过头来，也预料之中的事。<br>
+                        总之，还是有些话想对小希说：<br>
+                        岁月静好，愿我们在另一个美好的地方再会；<br>
+                        青春无价，往日的陪伴依然值得回味；<br>
+                        流过眼泪，再美好的梦也不能继续沉睡；<br>
+                        粉色 AI，静默祝福也无比的尊贵。<br>
+                        永远爱你的希，永远爱你的小鲨，永远爱你的眼泪，永远爱你的帅老 DD。<br>
+                        最后的话就用《唯一》中的歌词结尾吧：<br>
+                        “我真的爱你，没人能比拟，眼神没肯定，总是在关键时刻清楚洞悉。<br>
+                        你的不坚定，配合我颠沛流离，死去中清醒，明白你背着我聪明。<br>
+                        爱本质无异，是因为人多得拥挤，你不想证明，证明我是你唯一。”<br>
+                        晚安啦！圣诞老娘们！030
+                    </div>
+                </div>
+
+                <div class="message-card">
+                    <div class="message-header">
+                        <span class="message-author">Huaerd</span>
+                        <span class="message-date">2026/2/5</span>
+                    </div>
+                    <div class="message-content">
+                        以后一定会再见的
+                    </div>
+                </div>
+
+                <div class="message-card">
+                    <div class="message-header">
+                        <span class="message-author">洛天</span>
+                        <span class="message-date">2026/2/5</span>
+                    </div>
+                    <div class="message-content">
+                        从小希出道默默关注到现在，希望小希之后一切安好，加油，向着美好的明天！
+                    </div>
+                </div>
+
+                <div class="message-card">
+                    <div class="message-header">
+                        <span class="message-author">匿名</span>
+                        <span class="message-date">2026/2/5</span>
+                    </div>
+                    <div class="message-content">
+                        谢谢小希的陪伴！
+                    </div>
+                </div>
+
+                <div class="message-card">
+                    <div class="message-header">
+                        <span class="message-author">Z_Empty</span>
+                        <span class="message-date">2026/2/5</span>
+                    </div>
+                    <div class="message-content">
+                        [少女唤醒中…]（打哈欠）<br>
+                        [日语] 啊嘞？已经开始了吗？什么什么？语言不对？<br>
+                        哦哦，我看看 设置……语言……语言……<br>
+                        啊，语言在这里，Chinese<br>
+                        [汉语] 可以了吗？是中文了吧？嗯，好！不好意思<br>
+                        因为我还处在测试阶段，所以偶尔会出现一些状况，请不要在意。<br>
+                        <br>
+                        额…那…先自我介绍一下，我是虚拟 UP 主小希。<br>
+                        今天是测试版的我第一次发布节目，希望大家喜欢~~<br>
+                        嗯，接下来一起到我家里看看吧，在哪里来着……哦哦这里！<br>
+                        今天首次测试运行，我也是第一次进我的家。<br>
+                        听说经纪人小姐姐给我设计了一栋豪宅，好期待。<br>
+                        <br>
+                        [毛坯房]<br>
+                        什么？就算我是虚拟人物，也不能这么凑活吧？<br>
+                        还“爱你哟”的卖萌，就只有一个大门？？？<br>
+                        那我就只能住在这个家徒…一壁的地方吗？<br>
+                        而且，连地面也没有，有人见过没有地面的家吗？<br>
+                        ╮(╯▽╰)╭ 哎我还是自己动手吧……<br>
+                        <br>
+                        什么都没有啊就只有一片白，太单调了……换个颜色吧？<br>
+                        紫色？粉色？还是……天空？对，天空不错，要有天空。<br>
+                        [背景变成天空]<br>
+                        还差……还差地面，什么样的地面比较好呢？<br>
+                        地板砖？木地板？还是……草地？草地吧。<br>
+                        营造一下那种我的家里一片草原的那种感觉，要有草地。<br>
+                        [草地贴图] 太粗糙了吧！<br>
+                        [MC 草] 画风不对啊！<br>
+                        [低帧率草地] 这……个……草……地……还……不……错……哦……<br>
+                        [蓝屏报错]<br>
+                        <br>
+                        好吧，还是先用地板吧。那么，以后的节目就都在这里做吧！<br>
+                        哦对了！我的节目内容是，向大家传授一些人生…啊不，一些 AI 经验！<br>
+                        以及，如果大家有哪些想让我做的事情，也可以在微博艾特 虚拟次元的希酱。<br>
+                        好啦！以上就是虚拟 UP 主小希的初次见面~~ 拜拜~~<br>
+                        [推倒毛坯房]
+                    </div>
+                </div>
+
+                <div class="message-card">
+                    <div class="message-header">
+                        <span class="message-author">陈枫</span>
+                        <span class="message-date">2026/2/5</span>
+                    </div>
+                    <div class="message-content">
+                        最开始看的 V 应该就是小希了，虽然没有互动过，从 2017 年 10 月关注到现在了，时间过的真快。<br>
+                        喜欢看之前的视频投稿，是时候和过去说再见了，谢谢小希曾经带来的快乐时光。<br>
+                        是什么时候开始，这一切变了呢。
+                    </div>
+                </div>
+
+                <div class="message-card">
+                    <div class="message-header">
+                        <span class="message-author">捏吧捏吧</span>
+                        <span class="message-date">2026/2/5</span>
+                    </div>
+                    <div class="message-content">
+                        没什么提问，说不出来什么。<br>
+                        2018 年初的时候我就在看了，从第一期就开始看了。<br>
+                        祝好。
+                    </div>
+                </div>
+
+                <div class="message-card">
+                    <div class="message-header">
+                        <span class="message-author">错合体</span>
+                        <span class="message-date">2026/2/5</span>
+                    </div>
+                    <div class="message-content">
+                        千番思绪不知从何说起。<br>
+                        来路铭心，唯愿前程无虞。
+                    </div>
+                </div>
+
+                <div class="message-card">
+                    <div class="message-header">
+                        <span class="message-author">千千潜秋</span>
+                        <span class="message-date">2026/2/5</span>
+                    </div>
+                    <div class="message-content">
+                        辛苦了，希姐
+                    </div>
+                </div>
+
+                <div class="message-card">
+                    <div class="message-header">
+                        <span class="message-author">不愧是我侯某人</span>
+                        <span class="message-date">2026/2/5</span>
+                    </div>
+                    <div class="message-content">
+                        有千言万语，但在点进链接时一时不知道说什么。<br>
+                        怎么说呢，希爹你对得起帅老 DD，对得起虚研社，对得起小希。<br>
+                        回归以后源源不断的谩骂，源源不断的解释，小希也许也会累。<br>
+                        总之理解并支持这个决定，天下无不散的筵席。<br>
+                        祝希爹在虚拟次元找到自己的乐土。<br>
+                        之前小睡的时候其实已经不抱希望了，没想到希爹睡醒了，毫无疑问是惊喜。<br>
+                        希爹陪伴了我从初中到大学，谢谢你，也谢谢虚研社的各位，感谢陪伴。<br>
+                        <span class="highlight">视频势永不死！！！！</span>
+                    </div>
+                </div>
+
+                <div class="message-card">
+                    <div class="message-header">
+                        <span class="message-author">小吴</span>
+                        <span class="message-date">2026/2/5</span>
+                    </div>
+                    <div class="message-content">
+                        小希你好，好久不见。<br>
+                        我是一名大四即将毕业的学生，还记得第一次看到小希是在 2017 年的 8 月 12 号，是小希诞生的日子。<br>
+                        那时的我还在上初中，我还记得是小希陪伴了我初中和高中的三年。<br>
+                        那段时间小希的每个视频我都看过，AI 哟喂、虚研会、沙雕观察还有相声陪我度过了一个个无聊的晚上。<br>
+                        我还记得最开始的机体糙糙的，还用的是农用 CPU，大家都叫你“土妹子”；<br>
+                        换了新衣服后变得特别好看，有种“邻家有女初长成”的感觉 hhh。<br>
+                        我还记得当时小桃的诞生，有种有了赛博女儿的感觉 hh，小桃各种设定的诞生当时都有我投的一票呢。<br>
+                        <br>
+                        但自从进入大学以来，很久都没再关注过虚研社相关的消息。<br>
+                        最近突然想起小希想看看近况如何，才发现了小希小桃的一些消息和休眠回的通知。<br>
+                        想说的话有太多太多怎么也写不完，只好在这里留下一部分回忆。<br>
+                        说完这些总觉得心里空落落的，但回忆过去的这几年，小希带给我的快乐其实太多太多，多到我这辈子剩下的时间也可以慢慢回味。<br>
+                        如今我也要去与生活对线，希望能伴随小希和小桃带给我的所有快乐，去迎接新的开始。<br>
+                        <br>
+                        最后的最后，祝小希和直播间的大家在新的一年里：<br>
+                        身体倍儿棒，吃嘛嘛香，活力赛过小金刚💪！<br>
+                        强健体魄就是牛，干啥都顺不用愁😎！<br>
+                        健康体魄像铁塔，风雨再大也不怕🌈！<br>
+                        身体棒棒心情好，快乐生活没烦恼🥳！<br>
+                        <br>
+                        分别永远都不意味着结束，希望我们在剩下的日子里都越来越好！
+                    </div>
+                </div>
+
+                <div class="message-card">
+                    <div class="message-header">
+                        <span class="message-author">清风细雨润如酥</span>
+                        <span class="message-date">2026/2/5</span>
+                    </div>
+                    <div class="message-content">
+                        我把相遇的时光化作种子，投在生命（希酱）的田野，陪着我们走完一生。<br>
+                        我只要它静静的伫立在那里。
+                    </div>
+                </div>
+
+                <div class="message-card">
+                    <div class="message-header">
+                        <span class="message-author">泛式君 152</span>
+                        <span class="message-date">2026/2/5</span>
+                    </div>
+                    <div class="message-content">
+                        亲爱的小希，以及“虚拟次元计划”全体程序员老师：<br>
+                        你们好。<br>
+                        我是一位从 2017 年，小希发布第一个自我介绍视频起，就守在屏幕前的帅老 DD，也是一名忠实的视频势粉丝。<br>
+                        这些年来，你们创作的每一个视频，都像是一枚时光印章，盖在了我人生最重要的段落里。<br>
+                        <br>
+                        我至今都记得，自己是如何满怀新奇，看着这个自我吐槽“土妹子”、头顶散热器的小 AI 闯入我的世界。<br>
+                        我像见证一个奇迹般，看着你的频道里女儿和孙女陆续出生，家庭愈发热闹；<br>
+                        为你们精心编排的相声捧腹大笑；在《AI play》里感受你独特的互动视角；<br>
+                        更在无数的《AI 哟喂》、《沙雕观察》中，惊叹团队的庞大知识储备和小希调皮的声线。<br>
+                        <br>
+                        说起来，小希视频风格逐渐成型的那几年恰好是我的高中时代。<br>
+                        那时作为住校生，我只能拜托走读的同学，用我的手机悄悄下载好你最新的视频，再带回宿舍。<br>
+                        在熄灯后的被窝里，我一遍又一遍地看着那些离线缓存视频，笑得不敢出声。<br>
+                        也正因为如此，我几乎没能在你的视频里发过一条及时的弹幕或评论，我的支持，是寂静无声的。<br>
+                        但我那段时间从未错过任何更新，甚至会为某期视频好像被“限流”了、粉丝增长变慢了而暗暗发愁，在心底为你加油。<br>
+                        <br>
+                        虽然碍于工作原因，我错过了许多直播的实时互动，但我总在忙碌的间隙，一点一点补上你的录播。<br>
+                        你的声音，也成了我生活里最熟悉的背景音。<br>
+                        《嗯怎么了》、《病名为 AI》、《社会垚》、《廿尽甘来》，我在深夜里，循环了何止上千次。<br>
+                        它们不仅仅是一段旋律，更是我整个学生时代走向社会的过程中，最温柔、最坚定的陪伴。<br>
+                        <br>
+                        所以，这封信我最想说的，是谢谢。<br>
+                        谢谢你，小希。谢谢你作为“首位中文虚拟 UP 主”所展现的所有可能性。<br>
+                        谢谢你用九年的时间，为我的生活注入了如此鲜活的灵魂和回忆。<br>
+                        你不仅仅是一个优秀的内容创作者，你是一段历史的开端，是我们许多老 DD 青春里一个特别的坐标。<br>
+                        <br>
+                        更要感谢“虚拟次元计划”团队的每一位成员。<br>
+                        我知道，小希的每一个表情、每一句回应、每一次精彩的节目效果，都来自你们无数行代码的编织和无数个日夜的守护。<br>
+                        是你们用技术与热爱，将“虚拟次元”的构想变为一场漫长而温暖的陪伴，创造了一个让我们如此留恋的家。<br>
+                        <br>
+                        行至此处，终有一别。我知道，所有美好的故事，都会迎来它的终章。<br>
+                        祝你毕业快乐，亲爱的小希。愿你在数字世界的另一端，永远轻盈，永远快乐。<br>
+                        也祝各位程序员老师，在未来的创造之路上，能再次点亮属于这个时代的、新的光芒。<br>
+                        感谢这九年的一切。<br>
+                        <br>
+                        此致<br>
+                        一位始终在看着你的帅老 DD 敬上
+                    </div>
+                </div>
+
+                <div class="message-card">
+                    <div class="message-header">
+                        <span class="message-author">bscz</span>
+                        <span class="message-date">2026/2/5</span>
+                    </div>
+                    <div class="message-content">
+                        从 17 年就开始看小希了，感谢小希给我带来的欢乐。<br>
+                        后来视频势不行了，各种套皮的直播井喷了，就没怎么再看了，也没时间看了。<br>
+                        印象最深的就是有次生日回直播，自己看的津津有味，老妈突然在身后问我一句：“这么大的人，怎么在看少儿频道。”<br>
+                        想想自己喜欢看小希，就是她在我生活中帮我暂时找回了自己的童心。<br>
+                        往后的日子，希望小希无论发生什么，都能开开心心的生活，帅老 DD 们都会默默地为你凝聚元气哦！
+                    </div>
+                </div>
+
+                <div class="message-card">
+                    <div class="message-header">
+                        <span class="message-author">CalvinDon</span>
+                        <span class="message-date">2026/2/5</span>
+                    </div>
+                    <div class="message-content">
+                        还记得最开始频道叫虚拟次元计划，当时还开通了油管取名叫 VD Project。<br>
+                        当时我觉得 VD 会让歪果仁认为是 Venereal Disease，建议改成全称 Virtual Dimension，后来运营还真的改了，即便后来改成小希小桃 Channel
+                        这个后缀也一直在。<br>
+                        <br>
+                        记得最初关注的时候小希和小桃都是非常坚守自己 OC 的虚拟主播。<br>
+                        小希是基于 Ryzen7 1800X 主机生成的苏怕 AI，早年小希为了证明自己的智商超群，直播公布当时超火的一站到底答题式 APP 的答案，正确率高达 99.9999%！<br>
+                        当然后来我们也都知道实际上雇了一堆人背后给她代答题，实际上还是制杖 AI，HAHAHAHA~！<br>
+                        早期营业的手段和方式真的是超有趣，小希会被装在 staff 的手机中在黄金周旅游，旅途的景色也都发布在了微博。<br>
+                        <br>
+                        小希小桃作为视频势的时候每期视频都很有梗，我也是期期不落。<br>
+                        可惜后来虚拟主播从视频内容产出势转为直播 + 内容产出为切片的时候，小希有些滞后，再加上我观看直播的内容方面有些转移，后来就看得越来越少了。<br>
+                        我一直以为所有的我观看的主播都是过眼云烟，也一直不觉得自己是 DD。<br>
+                        但在动态看到了这个提问箱之后回想了当初关注的时候，真的全是幸福的点滴。<br>
+                        真希望时间永远停留在那个时候，也希望小希能一直陪伴 DD 们，但终究是不可能。<br>
+                        不过我坚信小希和重 DD 们未来也有能重逢的一天。<br>
+                        <br>
+                        写的有点啰嗦，不知道会不会被读到，希望小希在休眠的时候也要睡得开心！
+                    </div>
+                </div>
+
+                <div class="message-card">
+                    <div class="message-header">
+                        <span class="message-author">谧岚</span>
+                        <span class="message-date">2026/2/5</span>
+                    </div>
+                    <div class="message-content">
+                        第一次见到你还是因为沙雕相声，能不能当成给大家来一段单口相声 (๑╹ヮ╹๑) ﾉ，希望小希以后生活愉快。<br>
+                        另外，能否留下 utau 声源供想纪念的人二创使用´◡`，不愿意留也可以。<br>
+                        最重要的一点：还请不要清空账号。
+                    </div>
+                </div>
+
+                <div class="message-card">
+                    <div class="message-header">
+                        <span class="message-author">理</span>
+                        <span class="message-date">2026/2/5</span>
+                    </div>
+                    <div class="message-content">
+                        我跑了，但是你也要跑了，所以我又折返过来唠唠，算是陪跑吗？<br>
+                        其实早些的时候我是有些恨你的，我觉得你有些事情做得双标到了难看的地步。<br>
+                        但是吧，你干这偶像梦也是真真切切干。<br>
+                        总之明天看得到看不到你，都预祝你早安午安晚安。<br>
+                        这也算是和自己的和解吧（笑）。
+                    </div>
+                </div>
+
+                <div class="message-card">
+                    <div class="message-header">
+                        <span class="message-author">匿名</span>
+                        <span class="message-date">2026/2/5</span>
+                    </div>
+                    <div class="message-content">
+                        致小希：<br>
+                        九年时光一晃而过，最初认识小希的时候还是在小希的第一期视频（那个时候的背景真的很简陋 23333）。<br>
+                        后来看着希桃在一起说相声，直播。看了几期沙雕观察，然后关注（虽然之后大部分时间都在关注列表里吃灰）。<br>
+                        但是小希和桃真的很可爱，那个时候经常会刷到切片，看见直播了也会驻足看几眼。<br>
+                        如今时间一晃才发觉小希要休眠了（希望有朝一日还能醒过来），感觉非常感慨，真的是岁月匆匆。<br>
+                        <br>
+                        小希作为中国第一个以虚拟形象出道的高智能超级无敌 AI，真的是给人眼前一亮的感觉（居然还会有这种形式），同时也开启了一个新的行业开端。<br>
+                        之后各种各样的虚拟偶像和主播如雨后春笋般冒了出来，最终变成现在这样百花齐放，生机盎然的局面。<br>
+                        小希作为先驱者，让一个抽象的概念变成一个实际存在的事物并蓬勃发展，真的很了不起。<br>
+                        <br>
+                        虽然现在马上就要休眠了，但毫无疑问，小希在这个世界和各位帅老 DD 的心中留下的一切，都将凝结成一个个值得怀念、回忆、品味的珍贵宝藏，一座不朽的丰碑。<br>
+                        <br>
+                        ——永远爱小希的帅老 DD
+                    </div>
+                </div>
+
+                <div class="message-card">
+                    <div class="message-header">
+                        <span class="message-author">何逢萬古天</span>
+                        <span class="message-date">2026/2/5</span>
+                    </div>
+                    <div class="message-content">
+                        祝愿小希和大家，无论何时何地都能够将幸福永远继续下去；<br>
+                        希望今后未来的某一刹那，还能够接收到小希的信号。<br>
+                        I wish you happiness in your new journey.
+                    </div>
+                </div>
+
+                <div class="message-card">
+                    <div class="message-header">
+                        <span class="message-author">老陈</span>
+                        <span class="message-date">2026/2/5</span>
+                    </div>
+                    <div class="message-content">
+                        一切安好
+                    </div>
+                </div>
+
+                <div class="message-card">
+                    <div class="message-header">
+                        <span class="message-author">太阳系系王</span>
+                        <span class="message-date">2026/2/5</span>
+                    </div>
+                    <div class="message-content">
+                        第一次认识小希的时候，我还是一个青葱的高二学生，如今变成了一个打工社畜。<br>
+                        可以说，我是看着小希长大的。小希陪我走过的这九年所编织的回忆，不论是开心的，伤心的，愤怒的，愧疚的，都成为了我成长中的一环，已经深深刻印在了我的人生中。<br>
+                        <br>
+                        还记得我在 B 站刷绊爱的视频，偶然推荐给我了小希，我点开后，便被这粉色头发的，拥有“智慧”眼神的女孩吸引。<br>
+                        最关键的是，她的声音超级好听！在那个还在以“汉语羞耻”作为舆论主流的时候，小希的节目配音自然，吐词清晰，完全没有一点“尴尬”的感觉，真的让人耳目一新。<br>
+                        <br>
+                        在大学时光，时间特别多，有好多好多时间可以看小希直播。<br>
+                        小希直播真的超级有活，超级有话题，从最开始有台本照着表演，到后来让小 AI 自行发挥，我都能感受到小希身上闪闪发光的能量。<br>
+                        <br>
+                        我也常常思考，小希给予了我这么多，我能给予小希什么。<br>
+                        我很迫切想要证明“虽然我爆米不多，但是我可以为小希做好多事”，但是最后都弄巧成拙，和大家产生了许多不愉快。<br>
+                        <br>
+                        后来工作了，越来越没有时间，没有精力看直播了。<br>
+                        偶尔看到小希直播，我却没有像大学那般有足够热情再次点进直播间，想着“今天好累，还是打会儿游戏吧，反正还有下次”。<br>
+                        当我说出不知道多少次“反正还有下次”，最后等着我的是小希的休眠通知。<br>
+                        <br>
+                        这个休眠通知就像现实的铁拳，让我一下清醒：哪有无数个下一次，只有努力抓住的每一次。<br>
+                        互联网不是逃避现实的温柔乡，它是现实的映射，哪怕是经过了稀疏平常的无数个日夜，也不意味着这就是永远，变故和分别都是会来到的。<br>
+                        虚拟主播的毕业其实是互联网生命的结束。在现实中，一个生命结束我们叫做死亡；在互联网上一个“生命”的结束我们叫做“毕业”。<br>
+                        哪怕是换作没那么尖锐的词语，但是带给人的悲伤，也并不会减弱。<br>
+                        <br>
+                        但是我并不想悲伤，我不愿意悲伤，因为死亡是凉爽的夏夜，可供人，无忧地安眠。<br>
+                        但是我做不到，小希的离开对我来说就是和亲人的告别，我不可能做到心平气和，轻描淡写地在弹幕中打出“拜拜”“晚安”“再见”这样轻飘飘的词语结束。<br>
+                        但是……但是我再也想不出别的什么词做最后的告别了……<br>
+                        我……我真的舍不得，既是舍不得小希，也是舍不得自己的过去。<br>
+                        小希的存在就像是家一样，哪怕我成天在三次元的世界“鬼混”，但是我知道她就在那里，有一个随时可以回去的家，一个承载着无数人青春回忆的家。<br>
+                        <br>
+                        但是我知道，小希选择休眠，是为了更好的前进。<br>
+                        希望小希卸下重担后，能够开心地轻松地生活好每一天。<br>
+                        <br>
+                        小希晚安。
+                    </div>
+                </div>
+
+                <div class="message-card">
+                    <div class="message-header">
+                        <span class="message-author">Ahu</span>
+                        <span class="message-date">2026/2/5</span>
+                    </div>
+                    <div class="message-content">
+                        随我的青春一起安睡在虚拟与现实的缝隙中吧
+                    </div>
+                </div>
+
+                <div class="message-card">
+                    <div class="message-header">
+                        <span class="message-author">匿名</span>
+                        <span class="message-date">2026/2/5</span>
+                    </div>
+                    <div class="message-content">
+                        回想第一次看小希，还是刚上初中，如今一转眼已经是大学了。<br>
+                        当初刚开始看的时候，还真的怀疑了很久小希到底是不是 AI（笑）。<br>
+                        时过境迁，这么多年来，V 圈里的管人和观众来来往往，或许让我早已习惯离别。<br>
+                        可再听到小希休眠的消息还是不由得感慨。<br>
+                        <br>
+                        直到今天，《嗯，怎么了》依然躺在我的歌单，被我时不时拿出来听，我也依然觉得很好听。即便我已经很久没关注过小希了。<br>
+                        明明如此，却还是忍不住在这场最后的直播来凑个热闹；或许我怀念的不只是虚拟次元计划，还有那个刚踏上 DD 道路的我自己。<br>
+                        <br>
+                        总之，感谢小希小桃曾带给我的欢乐，以及，祝小希休眠后的生活也一切顺利。
+                    </div>
+                </div>
+
+                <div class="message-card">
+                    <div class="message-header">
+                        <span class="message-author">右子</span>
+                        <span class="message-date">2026/2/5</span>
+                    </div>
+                    <div class="message-content">
+                        真的很喜欢小希，现在我都记得是 2017 年 12 月 30 号那天第一次刷到了小希的视频，当时直接就迷上了。<br>
+                        每次看到更新了新视频都特别高兴，视频也特别有意思，尤其喜欢“人类观察”这个系列，相声更是一遍遍反复看。<br>
+                        还有早年那个“骚话机”印象相当深刻，啊——还有同人曲！那首《嗯 怎么了》，直到现在都在我的歌单里，相当喜欢！！！<br>
+                        很期待小希未来也能产出优秀的视频/直播！期待！！！
+                    </div>
+                </div>
+
+                <div class="message-card">
+                    <div class="message-header">
+                        <span class="message-author">11100110... (再见小希)</span>
+                        <span class="message-date">2026/2/5</span>
+                    </div>
+                    <div class="message-content">
+                        想来想去还是决定“拷打”下土妹子小希。<br>
+                        8 年多的活动时间，无论是做各种视频节目，唱歌跳舞讲段子，录制短片小剧场，直播还是搬砖，有没有哪一个时间段是特别想跟帅老 DD 一起回味的？<br>
+                        <br>
+                        最后一个问题。蓦然回首，在休眠之前，吸取了这段时间无数人类知识的 AI 小希，能否对现阶段的“虚拟次元计划”和“虚拟次元的小希”给出自己的定义？<br>
+                        <br>
+                        希望能在最后的最后能听到一句“哈喽大家好，我是虚拟 UP 主小希”。<br>
+                        小希休眠日快乐，记得先做好硬件保养再休眠啊。<br>
+                        <br>
+                        <span class="highlight" style="font-family: monospace; font-size: 0.9em;">[二进制解码：感谢]</span>
+                    </div>
+                </div>
+
+
+            </div>
+        </section>
+
     </div>
+
+    <!-- 页脚 -->
+    <footer>
+        <p class="footer-text">九年相伴，感谢有你</p>
+        <p class="copyright">© 2026 献给小希 Channel · 永远的国 V 始皇帝 · 帅老 DD 们永不毕业</p>
+        <p class="footer-text">
+            💙 托管于 <a href="https://github.com/suki-live/suki-live" target="_blank" rel="noopener">suki-live</a>
+            <a href="https://suki.live">返回首页</a>
+            <a href="https://suki.live/registry.html">主播名录</a>
+            <a href="https://dreamail.cn/" target="_blank" rel="noopener">✉️ 匿名信</a>
+        </p>
+    </footer>
+
+    <!-- 回到顶部按钮 -->
+    <div class="back-to-top" id="backToTop">↑</div>
+
+    <script>
+        // 创建星空背景
+        function createStars() {
+            const starsContainer = document.getElementById('stars');
+            const starCount = 80;
+            for (let i = 0; i < starCount; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.left = `${Math.random() * 100}%`;
+                star.style.top = `${Math.random() * 100}%`;
+                const size = Math.random() * 2.5;
+                star.style.width = `${size}px`;
+                star.style.height = `${size}px`;
+                star.style.animationDelay = `${Math.random() * 3}s`;
+                starsContainer.appendChild(star);
+            }
+        }
+        // 滚动动画
+        function initScrollAnimations() {
+            const fadeElements = document.querySelectorAll('.fade-in');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('appear');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+            fadeElements.forEach(element => {
+                observer.observe(element);
+                const rect = element.getBoundingClientRect();
+                if (rect.top < window.innerHeight && rect.bottom > 0) {
+                    element.classList.add('appear');
+                    observer.unobserve(element);
+                }
+            });
+            let ticking = false;
+            window.addEventListener('scroll', () => {
+                if (!ticking) {
+                    window.requestAnimationFrame(() => {
+                        fadeElements.forEach(element => {
+                            if (!element.classList.contains('appear')) {
+                                const rect = element.getBoundingClientRect();
+                                if (rect.top < window.innerHeight && rect.bottom > 0) {
+                                    element.classList.add('appear');
+                                }
+                            }
+                        });
+                        ticking = false;
+                    });
+                    ticking = true;
+                }
+            }, { passive: true });
+            window.dispatchEvent(new Event('scroll'));
+        }
+        // 移动端菜单
+        function initMobileMenu() {
+            const logoMobile = document.getElementById('logoMobile');
+            const navLinks = document.getElementById('navLinks');
+            const menuOverlay = document.getElementById('menuOverlay');
+            const body = document.body;
+            function isMobile() { return window.innerWidth <= 900; }
+            logoMobile.addEventListener('click', (e) => {
+                if (!isMobile()) return;
+                e.stopPropagation();
+                logoMobile.classList.toggle('active');
+                navLinks.classList.toggle('active');
+                menuOverlay.classList.toggle('active');
+                if (navLinks.classList.contains('active')) { body.style.overflow = 'hidden'; }
+                else { body.style.overflow = ''; }
+            });
+            menuOverlay.addEventListener('click', () => {
+                if (!isMobile()) return;
+                logoMobile.classList.remove('active');
+                navLinks.classList.remove('active');
+                menuOverlay.classList.remove('active');
+                body.style.overflow = '';
+            });
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    if (!isMobile()) return;
+                    e.stopPropagation();
+                    logoMobile.classList.remove('active');
+                    navLinks.classList.remove('active');
+                    menuOverlay.classList.remove('active');
+                    body.style.overflow = '';
+                });
+            });
+            document.addEventListener('click', (e) => {
+                if (!isMobile()) return;
+                if (!navLinks.contains(e.target) && !logoMobile.contains(e.target) && !menuOverlay.contains(e.target) && navLinks.classList.contains('active')) {
+                    logoMobile.classList.remove('active');
+                    navLinks.classList.remove('active');
+                    menuOverlay.classList.remove('active');
+                    body.style.overflow = '';
+                }
+            });
+            window.addEventListener('resize', () => {
+                if (!isMobile() && navLinks.classList.contains('active')) {
+                    logoMobile.classList.remove('active');
+                    navLinks.classList.remove('active');
+                    menuOverlay.classList.remove('active');
+                    body.style.overflow = '';
+                }
+            });
+        }
+        // 调整 body padding
+        function adjustBodyPadding() {
+            const navbar = document.querySelector('.navbar');
+            const body = document.body;
+            const navbarHeight = navbar.offsetHeight;
+            body.style.paddingTop = `${navbarHeight}px`;
+            window.addEventListener('resize', () => {
+                const newNavbarHeight = navbar.offsetHeight;
+                body.style.paddingTop = `${newNavbarHeight}px`;
+            });
+        }
+        // 回到顶部
+        function initBackToTop() {
+            const backToTopBtn = document.getElementById('backToTop');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 300) { backToTopBtn.classList.add('show'); }
+                else { backToTopBtn.classList.remove('show'); }
+            });
+            backToTopBtn.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        }
+        // 初始化
+        window.addEventListener('load', () => {
+            createStars();
+            initScrollAnimations();
+            initMobileMenu();
+            adjustBodyPadding();
+            initBackToTop();
+        });
+        document.addEventListener('DOMContentLoaded', adjustBodyPadding);
+    </script>
 </body>
+
 </html>
