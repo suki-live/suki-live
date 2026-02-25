@@ -1083,16 +1083,6 @@
         navigator.clipboard.writeText(text)
           .then(() => {
             showCopyToast(`✅ 已复制：${text}`);
-
-            // 按钮视觉反馈（可选）
-            const btn = document.querySelector('.modal-btn-copy');
-            if (btn) {
-              btn.textContent = '✅ 已复制';
-              btn.style.background = '#c6f6d5';
-              btn.style.color = '#22543d';
-            }
-
-            // 800ms 后关闭弹窗
             setTimeout(() => closeModal(), 800);
           })
           .catch(() => fallbackCopy(text));
