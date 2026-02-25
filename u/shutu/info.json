@@ -1,0 +1,15 @@
+{
+  "name": "奕殊途",
+  "tagline": "呐呐~这里是殊途姐姐~ 欢迎大家来直播间逗猫听歌哦～",
+  "bio": true,
+  "show_playlist": true,
+  "anonymail": "https://dreamail.cn/send?dm=1ff5bed6-254d-4a3e-977e-bf9117c0b59c",
+  "social": [
+    {
+      "label": "B站",
+      "url": "https://space.bilibili.com/174053011"
+    }
+  ],
+  "created_at": "2026-02-25",
+  "updated_at": "2026-02-25"
+}
