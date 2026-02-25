@@ -1,0 +1,638 @@
+{
+  "title": "精选歌单",
+  "description": "流行·古风 · 多元音乐合集",
+  "items": [
+    {
+      "title": "碎",
+      "artist": "Unknown",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "胆怯",
+      "artist": "Unknown",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "镇痛剂",
+      "artist": "Unknown",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "致命情人",
+      "artist": "Unknown",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "滥俗的歌",
+      "artist": "Unknown",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "彩色复活卷",
+      "artist": "Unknown",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "少女作妖日记",
+      "artist": "纳豆 nado",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "雾霾时期的爱情",
+      "artist": "Unknown",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "异类",
+      "artist": "Unknown",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "1+1",
+      "artist": "Unknown",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "分解者",
+      "artist": "Unknown",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "想起了你",
+      "artist": "Unknown",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "越来越不懂",
+      "artist": "Unknown",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "听帘卷西风",
+      "artist": "Unknown",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "不做你的朋友",
+      "artist": "Unknown",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "第 57 次取消发送",
+      "artist": "Unknown",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "鲸语",
+      "artist": "Unknown",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "过活",
+      "artist": "Unknown",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "表达欢",
+      "artist": "Unknown",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "多想还小",
+      "artist": "Unknown",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "可以跟烂咯",
+      "artist": "Unknown",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "亲爱的下雨了",
+      "artist": "Unknown",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "你眼里带着笑",
+      "artist": "Unknown",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "反正我也没什么关系",
+      "artist": "Unknown",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "失格",
+      "artist": "Unknown",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "QQ 爱",
+      "artist": "王蓉",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "凑热闹",
+      "artist": "BY2",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "寻你三千遍",
+      "artist": "Unknown",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "世界真疯狂",
+      "artist": "Unknown",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "直到对的人来",
+      "artist": "Unknown",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "悲伤的流行歌",
+      "artist": "Unknown",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "如果你爱我就别爱我",
+      "artist": "Unknown",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "夜车",
+      "artist": "Unknown",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "月亮船",
+      "artist": "Unknown",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "向云端",
+      "artist": "黄绮珊",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "不就是落单",
+      "artist": "Unknown",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "唱不熟的情歌",
+      "artist": "Unknown",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "相遇才是意外",
+      "artist": "Unknown",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "我不信你不惭愧",
+      "artist": "Unknown",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "蠢货",
+      "artist": "裘德",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "我们俩",
+      "artist": "郭顶",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "非你不爱",
+      "artist": "薛明媛",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "爱的就是你",
+      "artist": "王力宏",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "没天的富贵",
+      "artist": "Unknown",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "见面就告白吧",
+      "artist": "Unknown",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "走卒",
+      "artist": "Unknown",
+      "language": "中文",
+      "genre": "古风",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "花旦",
+      "artist": "Unknown",
+      "language": "中文",
+      "genre": "古风",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "酒家",
+      "artist": "小阿七",
+      "language": "中文",
+      "genre": "古风",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "画个饼",
+      "artist": "Unknown",
+      "language": "中文",
+      "genre": "古风",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "拜无忧",
+      "artist": "萧忆情",
+      "language": "中文",
+      "genre": "古风",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "戏文说",
+      "artist": "Unknown",
+      "language": "中文",
+      "genre": "古风",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "叙世",
+      "artist": "Unknown",
+      "language": "中文",
+      "genre": "古风",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "步戏",
+      "artist": "Unknown",
+      "language": "中文",
+      "genre": "古风",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "谪居",
+      "artist": "Unknown",
+      "language": "中文",
+      "genre": "古风",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "孽海记",
+      "artist": "Unknown",
+      "language": "中文",
+      "genre": "古风",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "虞兮叹",
+      "artist": "闻人听書_",
+      "language": "中文",
+      "genre": "古风",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "星河叹",
+      "artist": "Unknown",
+      "language": "中文",
+      "genre": "古风",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "怎叹",
+      "artist": "Unknown",
+      "language": "中文",
+      "genre": "古风",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "探窗",
+      "artist": "Unknown",
+      "language": "中文",
+      "genre": "古风",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "相思遥",
+      "artist": "Unknown",
+      "language": "中文",
+      "genre": "古风",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "胭脂盏",
+      "artist": "Unknown",
+      "language": "中文",
+      "genre": "古风",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "广寒宫",
+      "artist": "丸子呦",
+      "language": "中文",
+      "genre": "古风",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "伯虎说",
+      "artist": "Unknown",
+      "language": "中文",
+      "genre": "古风",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "昔言",
+      "artist": "Unknown",
+      "language": "中文",
+      "genre": "古风",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "难却",
+      "artist": "Unknown",
+      "language": "中文",
+      "genre": "古风",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "离人言",
+      "artist": "Unknown",
+      "language": "中文",
+      "genre": "古风",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "大天蓬",
+      "artist": "Unknown",
+      "language": "中文",
+      "genre": "古风",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "风催雨",
+      "artist": "Unknown",
+      "language": "中文",
+      "genre": "古风",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "泛舟人",
+      "artist": "Unknown",
+      "language": "中文",
+      "genre": "古风",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "难生恨",
+      "artist": "Unknown",
+      "language": "中文",
+      "genre": "古风",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "空探枝",
+      "artist": "Unknown",
+      "language": "中文",
+      "genre": "古风",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "棠梨煎雪",
+      "artist": "银临",
+      "language": "中文",
+      "genre": "古风",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "小城画师",
+      "artist": "Unknown",
+      "language": "中文",
+      "genre": "古风",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "折枝花满衣",
+      "artist": "Unknown",
+      "language": "中文",
+      "genre": "古风",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "若相惜",
+      "artist": "Unknown",
+      "language": "中文",
+      "genre": "古风",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "探故知",
+      "artist": "Unknown",
+      "language": "中文",
+      "genre": "古风",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "东成西就",
+      "artist": "Unknown",
+      "language": "中文",
+      "genre": "古风",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "凉风有信",
+      "artist": "Unknown",
+      "language": "中文",
+      "genre": "古风",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "新贵妃醉酒",
+      "artist": "李玉刚",
+      "language": "中文",
+      "genre": "古风",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    }
+  ]
+}
