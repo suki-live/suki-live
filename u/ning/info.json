@@ -1,0 +1,23 @@
+{
+  "name": "简宁_Ning",
+  "tagline": "恭喜你关注了一个超无聊的人",
+  "bio": true,
+  "show_playlist": true,
+  "anonymail": "https://pome.vip/x8iVfglK",
+  "social": [
+    {
+      "label": "B站",
+      "url": "https://www.bilibili.com/opus/1125758314659971081"
+    },
+    {
+      "label": "舰礼兑换",
+      "url": "https://www.kdocs.cn/wo/sl/v13gb9Uf"
+    },
+    {
+      "label": "歌单",
+      "url": "https://vtber.cn/ning"
+    }
+  ],
+  "created_at": "2026-02-25",
+  "updated_at": "2026-02-25"
+}

@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-02-24",
+  "updated_at": "2026-02-25",
   "vtubers": [
     {
       "id": "xiaoxi",
@@ -27,6 +27,13 @@
       "name": "素衣QwQ",
       "tagline": "努力融入人类的蔷薇花妖！",
       "registered_at": "2026-02-24",
+      "status": "active"
+    },
+    {
+      "id": "ning",
+      "name": "简宁_Ning",
+      "tagline": "恭喜你关注了一个超无聊的人",
+      "registered_at": "2026-2-25",
       "status": "active"
     },
     {

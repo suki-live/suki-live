@@ -584,6 +584,16 @@
         padding: 0.25rem 0.5rem;
       }
     }
+
+    /* === 歌单点击反馈 === */
+    .playlist li {
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .playlist li:active {
+      transform: scale(0.98);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+    }
   </style>
 </head>
 
@@ -853,7 +863,7 @@
     function renderPlaylist(items, viewMode) {
       if (viewMode === 'grid') {
         return items.map(song => `
-          <li>
+          <li onclick="copySongTitle('${escapeHtml(song.title)}')" style="cursor: pointer;" title="点击复制「点歌 ${escapeHtml(song.title)}」">
             ${song.cover ? `<img class="song-cover" src="${song.cover}" alt="${escapeHtml(song.title)}" onerror="this.style.display='none'"/>` : ''}
             <div class="song-info">
               <div class="song-title">${escapeHtml(song.title)}</div>
@@ -861,12 +871,14 @@
                 ${escapeHtml(song.artist || '')}${song.artist && song.source ? ' · ' : ''}${escapeHtml(song.source || '')}
               </div>
             </div>
-            ${song.url ? `<a class="song-link" href="${escapeHtml(song.url)}" target="_blank" rel="noopener">▶️ 播放</a>` : ''}
+            <div class="song-actions">
+              ${song.url ? `<a class="song-link" href="${escapeHtml(song.url)}" target="_blank" rel="noopener" onclick="event.stopPropagation()">▶️ 播放</a>` : ''}
+            </div>
           </li>
         `).join('');
       } else {
         return items.map(song => `
-          <li>
+          <li onclick="copySongTitle('${escapeHtml(song.title)}')" style="cursor: pointer;" title="点击复制「点歌 ${escapeHtml(song.title)}」">
             ${song.cover ? `<img class="song-cover" src="${song.cover}" alt="${escapeHtml(song.title)}" onerror="this.style.display='none'"/>` : ''}
             <div class="song-info">
               <div class="song-title">${escapeHtml(song.title)}</div>
@@ -875,10 +887,94 @@
                 ${song.added_at ? ` · 添加于 ${song.added_at}` : ''}
               </div>
             </div>
-            ${song.url ? `<a class="song-link" href="${escapeHtml(song.url)}" target="_blank" rel="noopener">播放</a>` : ''}
+            ${song.url ? `<a class="song-link" href="${escapeHtml(song.url)}" target="_blank" rel="noopener" onclick="event.stopPropagation()">播放</a>` : ''}
           </li>
         `).join('');
       }
+    }
+
+    // ========================================
+    // ✅ 复制歌曲名到剪贴板
+    // ========================================
+    function copySongTitle(title) {
+      const text = `点歌 ${title}`;
+
+      // 使用 Clipboard API 复制
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(text)
+          .then(() => showCopyToast(`✅ 已复制：${text}`))
+          .catch(() => fallbackCopy(text));
+      } else {
+        // 降级方案：兼容旧浏览器/非 HTTPS
+        fallbackCopy(text);
+      }
+    }
+
+    // 降级复制方案（使用 execCommand）
+    function fallbackCopy(text) {
+      const textarea = document.createElement('textarea');
+      textarea.value = text;
+      textarea.style.position = 'fixed';
+      textarea.style.left = '-9999px';
+      document.body.appendChild(textarea);
+      textarea.focus();
+      textarea.select();
+
+      try {
+        document.execCommand('copy');
+        showCopyToast(`✅ 已复制：${text}`);
+      } catch (err) {
+        showCopyToast('❌ 复制失败，请手动复制');
+      }
+
+      document.body.removeChild(textarea);
+    }
+
+    // 显示复制提示（Toast）
+    function showCopyToast(message) {
+      // 移除已存在的 toast
+      const existing = document.getElementById('copy-toast');
+      if (existing) existing.remove();
+
+      // 创建新 toast
+      const toast = document.createElement('div');
+      toast.id = 'copy-toast';
+      toast.textContent = message;
+      toast.style.cssText = `
+        position: fixed;
+        bottom: 80px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: var(--card);
+        color: var(--text);
+        padding: 0.8rem 1.5rem;
+        border-radius: 30px;
+        box-shadow: var(--shadow);
+        font-size: 0.9rem;
+        z-index: 10000;
+        animation: toastIn 0.3s ease, toastOut 0.3s ease 2s forwards;
+      `;
+      document.body.appendChild(toast);
+
+      // 添加动画 keyframes（只添加一次）
+      if (!document.getElementById('toast-style')) {
+        const style = document.createElement('style');
+        style.id = 'toast-style';
+        style.textContent = `
+          @keyframes toastIn {
+            from { opacity: 0; transform: translate(-50%, 20px); }
+            to { opacity: 1; transform: translate(-50%, 0); }
+          }
+          @keyframes toastOut {
+            from { opacity: 1; }
+            to { opacity: 0; }
+          }
+        `;
+        document.head.appendChild(style);
+      }
+
+      // 2.5 秒后自动移除
+      setTimeout(() => toast.remove(), 2500);
     }
 
     // ========================================
