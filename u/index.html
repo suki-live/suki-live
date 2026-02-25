@@ -638,7 +638,7 @@
       <p class="modal-song-title" id="modal-song-title">歌曲名称</p>
       <div class="modal-buttons">
         <button class="modal-btn modal-btn-cancel" onclick="closeModal()">确定</button>
-        <button class="modal-btn modal-btn-copy" onclick="copyRandomSong()">📋 复制</button>
+        <button class="modal-btn modal-btn-copy" onclick="copyRandomSong()">复制</button>
         <button class="modal-btn modal-btn-play" onclick="playSelected()">播放</button>
       </div>
     </div>
@@ -1083,12 +1083,17 @@
         navigator.clipboard.writeText(text)
           .then(() => {
             showCopyToast(`✅ 已复制：${text}`);
-            setTimeout(() => closeModal(), 800); // 复制后 0.8 秒自动关闭
-            // 按钮反馈
+
+            // 按钮视觉反馈（可选）
             const btn = document.querySelector('.modal-btn-copy');
-            const originalText = btn.textContent;
-            btn.textContent = '✅ 已复制';
-            setTimeout(() => btn.textContent = originalText, 1500);
+            if (btn) {
+              btn.textContent = '✅ 已复制';
+              btn.style.background = '#c6f6d5';
+              btn.style.color = '#22543d';
+            }
+
+            // 800ms 后关闭弹窗
+            setTimeout(() => closeModal(), 800);
           })
           .catch(() => fallbackCopy(text));
       } else {
