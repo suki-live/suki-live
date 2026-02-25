@@ -509,6 +509,19 @@
       color: var(--accent);
     }
 
+    /* 弹窗复制按钮样式 */
+    .modal-btn-copy {
+      background: var(--accent-soft);
+      border-color: var(--accent);
+      color: #c2185b;
+      font-weight: 500;
+    }
+
+    .modal-btn-copy:hover {
+      background: var(--accent);
+      color: #1a202c;
+    }
+
     .modal-btn-play {
       background: var(--accent);
       border-color: var(--accent);
@@ -625,6 +638,7 @@
       <p class="modal-song-title" id="modal-song-title">歌曲名称</p>
       <div class="modal-buttons">
         <button class="modal-btn modal-btn-cancel" onclick="closeModal()">确定</button>
+        <button class="modal-btn modal-btn-copy" onclick="copyRandomSong()">📋 复制</button>
         <button class="modal-btn modal-btn-play" onclick="playSelected()">播放</button>
       </div>
     </div>
@@ -1051,6 +1065,102 @@
         btn.style.background = '';
         btn.style.color = '';
       }, 2000);
+    }
+
+    // ========================================
+    // ✅ 复制随机选中的歌曲名
+    // ========================================
+    function copyRandomSong() {
+      if (!currentRandomSong?.title) {
+        showCopyToast('❌ 暂无可复制的歌曲');
+        return;
+      }
+
+      const text = `点歌 ${currentRandomSong.title}`;
+
+      // 使用 Clipboard API 复制
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(text)
+          .then(() => {
+            showCopyToast(`✅ 已复制：${text}`);
+            setTimeout(() => closeModal(), 800); // 复制后 0.8 秒自动关闭
+            // 按钮反馈
+            const btn = document.querySelector('.modal-btn-copy');
+            const originalText = btn.textContent;
+            btn.textContent = '✅ 已复制';
+            setTimeout(() => btn.textContent = originalText, 1500);
+          })
+          .catch(() => fallbackCopy(text));
+      } else {
+        fallbackCopy(text);
+      }
+    }
+
+    // 降级复制方案（兼容旧浏览器/非 HTTPS）
+    function fallbackCopy(text) {
+      const textarea = document.createElement('textarea');
+      textarea.value = text;
+      textarea.style.position = 'fixed';
+      textarea.style.left = '-9999px';
+      document.body.appendChild(textarea);
+      textarea.focus();
+      textarea.select();
+
+      try {
+        document.execCommand('copy');
+        showCopyToast(`✅ 已复制：${text}`);
+      } catch (err) {
+        showCopyToast('❌ 复制失败，请手动复制');
+      }
+
+      document.body.removeChild(textarea);
+    }
+
+    // 显示复制提示（Toast）
+    function showCopyToast(message) {
+      // 移除已存在的 toast
+      const existing = document.getElementById('copy-toast');
+      if (existing) existing.remove();
+
+      // 创建新 toast
+      const toast = document.createElement('div');
+      toast.id = 'copy-toast';
+      toast.textContent = message;
+      toast.style.cssText = `
+        position: fixed;
+        bottom: 80px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: var(--card);
+        color: var(--text);
+        padding: 0.8rem 1.5rem;
+        border-radius: 30px;
+        box-shadow: var(--shadow);
+        font-size: 0.9rem;
+        z-index: 10000;
+        animation: toastIn 0.3s ease, toastOut 0.3s ease 2s forwards;
+      `;
+      document.body.appendChild(toast);
+
+      // 添加动画 keyframes（只添加一次）
+      if (!document.getElementById('toast-style')) {
+        const style = document.createElement('style');
+        style.id = 'toast-style';
+        style.textContent = `
+          @keyframes toastIn {
+            from { opacity: 0; transform: translate(-50%, 20px); }
+            to { opacity: 1; transform: translate(-50%, 0); }
+          }
+          @keyframes toastOut {
+            from { opacity: 1; }
+            to { opacity: 0; }
+          }
+        `;
+        document.head.appendChild(style);
+      }
+
+      // 2.5 秒后自动移除
+      setTimeout(() => toast.remove(), 2500);
     }
 
     // ========================================
