@@ -539,12 +539,40 @@
         justify-content: center;
       }
 
+      /* ✅ 卡片视图：手机端一行两个 */
       .playlist.grid-view {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr);
+        /* 👈 关键修改 */
+        gap: 0.6rem;
+        /* 👈 减小间距 */
+      }
+
+      .playlist.grid-view li {
+        padding: 0.7rem 0.5rem;
+        /* 👈 减小内边距 */
       }
 
       .grid-view .song-cover {
-        height: 140px;
+        height: 90px;
+        /* 👈 减小封面高度（原 120px） */
+        border-radius: 6px;
+      }
+
+      .grid-view .song-title {
+        font-size: 0.85rem;
+        /* 👈 减小标题字体 */
+        margin-bottom: 0.1rem;
+      }
+
+      .grid-view .song-meta {
+        font-size: 0.7rem;
+        /* 👈 减小描述字体 */
+      }
+
+      .grid-view .song-link {
+        font-size: 0.75rem;
+        padding: 0.2rem 0.4rem;
+        margin-top: 0.2rem;
       }
 
       .social-links {
