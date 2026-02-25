@@ -224,6 +224,159 @@
       }
     }
 
+    /* === 歌单搜索 + 筛选 === */
+    .playlist-filters {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .search-box {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .search-input {
+      width: 100%;
+      padding: 0.5rem 2rem 0.5rem 1rem;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-size: 0.9rem;
+      background: var(--card);
+      color: var(--text);
+      transition: border-color 0.2s;
+    }
+
+    .search-input:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+
+    .search-clear {
+      position: absolute;
+      right: 0.8rem;
+      background: none;
+      border: none;
+      color: var(--text-light);
+      cursor: pointer;
+      font-size: 1rem;
+      padding: 0.2rem;
+      border-radius: 50%;
+      transition: background 0.2s;
+    }
+
+    .search-clear:hover {
+      background: var(--accent-soft);
+      color: var(--accent);
+    }
+
+    .filter-group {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .filter-select {
+      padding: 0.4rem 0.8rem;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      background: var(--card);
+      color: var(--text);
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: border-color 0.2s;
+    }
+
+    .filter-select:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+
+    .playlist-controls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+    }
+
+    .search-tip {
+      text-align: center;
+      font-style: italic;
+      color: var(--text-light);
+      font-size: 0.9rem;
+      margin: 0.5rem 0;
+    }
+
+    /* 权限标签样式 */
+    .access-tag {
+      display: inline-block;
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: 500;
+      margin-left: 0.4rem;
+    }
+
+    .access-免费 {
+      background: #c6f6d5;
+      color: #22543d;
+    }
+
+    .access-付费 {
+      background: #fed7d7;
+      color: #822727;
+    }
+
+    .access-歌切 {
+      background: #e9d8fd;
+      color: #553c9a;
+    }
+
+    .access-舰长专属 {
+      background: #bee3f8;
+      color: #2a4365;
+    }
+
+    .access-提督专属 {
+      background: #f6e05e;
+      color: #744210;
+    }
+
+    .access-总督专属 {
+      background: #fbb6ce;
+      color: #9b2c2c;
+    }
+
+    /* 移动端适配 */
+    @media (max-width: 640px) {
+      .playlist-filters {
+        gap: 0.6rem;
+      }
+
+      .filter-group {
+        flex-wrap: wrap;
+      }
+
+      .filter-select {
+        flex: 1;
+        min-width: 100px;
+        font-size: 0.8rem;
+        padding: 0.35rem 0.6rem;
+      }
+
+      .playlist-controls {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .view-toggle {
+        justify-content: center;
+      }
+    }
+
     /* === 歌单控制栏 === */
     .playlist-header {
       display: flex;
@@ -509,7 +662,6 @@
       color: var(--accent);
     }
 
-    /* 弹窗复制按钮样式 */
     .modal-btn-copy {
       background: var(--accent-soft);
       border-color: var(--accent);
@@ -555,31 +707,25 @@
       /* ✅ 卡片视图：手机端一行两个 */
       .playlist.grid-view {
         grid-template-columns: repeat(2, 1fr);
-        /* 👈 关键修改 */
         gap: 0.6rem;
-        /* 👈 减小间距 */
       }
 
       .playlist.grid-view li {
         padding: 0.7rem 0.5rem;
-        /* 👈 减小内边距 */
       }
 
       .grid-view .song-cover {
         height: 90px;
-        /* 👈 减小封面高度（原 120px） */
         border-radius: 6px;
       }
 
       .grid-view .song-title {
         font-size: 0.85rem;
-        /* 👈 减小标题字体 */
         margin-bottom: 0.1rem;
       }
 
       .grid-view .song-meta {
         font-size: 0.7rem;
-        /* 👈 减小描述字体 */
       }
 
       .grid-view .song-link {
@@ -601,6 +747,7 @@
     /* === 歌单点击反馈 === */
     .playlist li {
       transition: transform 0.15s ease, box-shadow 0.15s ease;
+      cursor: pointer;
     }
 
     .playlist li:active {
@@ -627,7 +774,7 @@
   <p class="footer-note">
     💙 托管于 <a href="https://github.com/suki-live/suki-live" target="_blank" rel="noopener">suki-live</a> ·
     <a href="https://suki.live">返回首页</a> ·
-    <a href="https://suki.live/registry.html">主播名录</a> ·
+    <a href="/registry.html">主播名录</a> ·
     <a href="https://dreamail.cn/" target="_blank" rel="noopener">✉️ 匿名信</a>
   </p>
 
@@ -638,8 +785,8 @@
       <p class="modal-song-title" id="modal-song-title">歌曲名称</p>
       <div class="modal-buttons">
         <button class="modal-btn modal-btn-cancel" onclick="closeModal()">确定</button>
-        <button class="modal-btn modal-btn-copy" onclick="copyRandomSong()">复制</button>
-        <button class="modal-btn modal-btn-play" onclick="playSelected()">播放</button>
+        <button class="modal-btn modal-btn-copy" onclick="copyRandomSong()">📋 复制</button>
+        <button class="modal-btn modal-btn-play" onclick="playSelected()">▶️ 播放</button>
       </div>
     </div>
   </div>
@@ -739,7 +886,7 @@
                     </p>
                     <p style="margin-top:1.5rem">
                       <a href="https://suki.live" style="color:#a7c7e7">返回首页</a> · 
-                      <a href="https://suki.live/registry.html" style="color:#a7c7e7">查看名录</a>
+                      <a href="/registry.html" style="color:#a7c7e7">查看名录</a>
                     </p>
                   </div>`;
               });
@@ -821,21 +968,64 @@
         html += `
           <div class="card">
             <h2>🎵 ${playlist.title || '推荐歌单'}</h2>
-            <div class="playlist-header">
-              <div class="view-toggle">
-                <button class="view-btn active" data-view="list" onclick="switchView('list')">📋 列表</button>
-                <button class="view-btn" data-view="grid" onclick="switchView('grid')">🔲 卡片</button>
+            <!-- ✅ 搜索栏 + 筛选器 -->
+            <div class="playlist-filters">
+              <!-- 搜索框 -->
+              <div class="search-box">
+                <input type="text" id="song-search" class="search-input" placeholder="🔍 搜索歌名/歌手/曲风..." oninput="filterSongs()">
+                <button class="search-clear" onclick="clearSearch()">✕</button>
               </div>
-              <button class="random-btn" onclick="playRandom()">🎲 随机选歌</button>
+              <!-- 筛选下拉框 -->
+              <div class="filter-group">
+                <select id="filter-language" class="filter-select" onchange="filterSongs()">
+                  <option value="">🌐 全部语言</option>
+                  <option value="中文">中文</option>
+                  <option value="日文">日文</option>
+                  <option value="英文">英文</option>
+                  <option value="其他">其他</option>
+                </select>
+                <select id="filter-genre" class="filter-select" onchange="filterSongs()">
+                  <option value="">🎵 全部曲风</option>
+                  <option value="流行">流行</option>
+                  <option value="J-POP">J-POP</option>
+                  <option value="电子">电子</option>
+                  <option value="治愈系">治愈系</option>
+                  <option value="摇滚">摇滚</option>
+                  <option value="古风">古风</option>
+                  <option value="其他">其他</option>
+                </select>
+                <select id="filter-access" class="filter-select" onchange="filterSongs()">
+                  <option value="">🔓 全部权限</option>
+                  <option value="免费">免费</option>
+                  <option value="付费">付费</option>
+                  <option value="歌切">歌切</option>
+                  <option value="舰长专属">舰长专属</option>
+                  <option value="提督专属">提督专属</option>
+                  <option value="总督专属">总督专属</option>
+                </select>
+              </div>
+              <!-- 视图切换 + 随机选歌 -->
+              <div class="playlist-controls">
+                <div class="view-toggle">
+                  <button class="view-btn active" data-view="list" onclick="switchView('list')">📋 列表</button>
+                  <button class="view-btn" data-view="grid" onclick="switchView('grid')">🔲 卡片</button>
+                </div>
+                <button class="random-btn" onclick="playRandom()">🎲 随机选歌</button>
+              </div>
             </div>
             ${playlist.description ? `<p class="playlist-desc">${playlist.description}</p>` : ''}
             <ul class="playlist list-view" id="playlist-container">
               ${renderPlaylist(playlist.items, 'list')}
             </ul>
+            <!-- ✅ 搜索结果提示 -->
+            <p id="search-result-tip" class="search-tip" style="display:none;"></p>
           </div>`;
       }
 
       document.getElementById('content').innerHTML = html;
+
+      // ✅ 关键修复：渲染完成后立即恢复用户视图偏好
+      restorePlaylistView();
 
       // 加载 bio.md（使用 marked.js 解析）
       if (info.bio) {
@@ -872,17 +1062,37 @@
     }
 
     // ========================================
+    // ✅ 恢复用户视图偏好（确保在歌单渲染后执行）
+    // ========================================
+    function restorePlaylistView() {
+      const savedView = localStorage.getItem('suki_playlist_view');
+      const container = document.getElementById('playlist-container');
+
+      // ✅ 确保：有保存的偏好 + 不是默认列表 + 容器存在 + 歌单数据存在
+      if (savedView && savedView !== 'list' && container && playlistData?.items) {
+        switchView(savedView);  // ✅ 直接调用，无需 setTimeout
+      }
+    }
+
+    // ========================================
     // ✅ 歌单渲染函数
     // ========================================
     function renderPlaylist(items, viewMode) {
+      // ✅ 先过滤：搜索 + 筛选
+      const filteredItems = filterSongsLogic(items);
+
       if (viewMode === 'grid') {
-        return items.map(song => `
+        return filteredItems.map(song => `
           <li onclick="copySongTitle('${escapeHtml(song.title)}')" style="cursor: pointer;" title="点击复制「点歌 ${escapeHtml(song.title)}」">
             ${song.cover ? `<img class="song-cover" src="${song.cover}" alt="${escapeHtml(song.title)}" onerror="this.style.display='none'"/>` : ''}
             <div class="song-info">
-              <div class="song-title">${escapeHtml(song.title)}</div>
+              <div class="song-title">
+                ${escapeHtml(song.title)}
+                ${song.access ? `<span class="access-tag access-${escapeHtml(song.access)}">${escapeHtml(song.access)}</span>` : ''}
+              </div>
               <div class="song-meta">
                 ${escapeHtml(song.artist || '')}${song.artist && song.source ? ' · ' : ''}${escapeHtml(song.source || '')}
+                ${song.language || song.genre ? `<br/>${song.language || ''}${song.language && song.genre ? ' · ' : ''}${song.genre || ''}` : ''}
               </div>
             </div>
             <div class="song-actions">
@@ -891,14 +1101,18 @@
           </li>
         `).join('');
       } else {
-        return items.map(song => `
+        return filteredItems.map(song => `
           <li onclick="copySongTitle('${escapeHtml(song.title)}')" style="cursor: pointer;" title="点击复制「点歌 ${escapeHtml(song.title)}」">
             ${song.cover ? `<img class="song-cover" src="${song.cover}" alt="${escapeHtml(song.title)}" onerror="this.style.display='none'"/>` : ''}
             <div class="song-info">
-              <div class="song-title">${escapeHtml(song.title)}</div>
+              <div class="song-title">
+                ${escapeHtml(song.title)}
+                ${song.access ? `<span class="access-tag access-${escapeHtml(song.access)}">${escapeHtml(song.access)}</span>` : ''}
+              </div>
               <div class="song-meta">
                 ${escapeHtml(song.artist || '')}${song.artist && song.source ? ' · ' : ''}${escapeHtml(song.source || '')}
                 ${song.added_at ? ` · 添加于 ${song.added_at}` : ''}
+                ${song.language || song.genre ? `<br/>${song.language || ''}${song.language && song.genre ? ' · ' : ''}${song.genre || ''}` : ''}
               </div>
             </div>
             ${song.url ? `<a class="song-link" href="${escapeHtml(song.url)}" target="_blank" rel="noopener" onclick="event.stopPropagation()">播放</a>` : ''}
@@ -912,19 +1126,16 @@
     // ========================================
     function copySongTitle(title) {
       const text = `点歌 ${title}`;
-
-      // 使用 Clipboard API 复制
       if (navigator.clipboard && window.isSecureContext) {
         navigator.clipboard.writeText(text)
           .then(() => showCopyToast(`✅ 已复制：${text}`))
           .catch(() => fallbackCopy(text));
       } else {
-        // 降级方案：兼容旧浏览器/非 HTTPS
         fallbackCopy(text);
       }
     }
 
-    // 降级复制方案（使用 execCommand）
+    // 降级复制方案
     function fallbackCopy(text) {
       const textarea = document.createElement('textarea');
       textarea.value = text;
@@ -933,24 +1144,20 @@
       document.body.appendChild(textarea);
       textarea.focus();
       textarea.select();
-
       try {
         document.execCommand('copy');
         showCopyToast(`✅ 已复制：${text}`);
       } catch (err) {
         showCopyToast('❌ 复制失败，请手动复制');
       }
-
       document.body.removeChild(textarea);
     }
 
     // 显示复制提示（Toast）
     function showCopyToast(message) {
-      // 移除已存在的 toast
       const existing = document.getElementById('copy-toast');
       if (existing) existing.remove();
 
-      // 创建新 toast
       const toast = document.createElement('div');
       toast.id = 'copy-toast';
       toast.textContent = message;
@@ -970,7 +1177,6 @@
       `;
       document.body.appendChild(toast);
 
-      // 添加动画 keyframes（只添加一次）
       if (!document.getElementById('toast-style')) {
         const style = document.createElement('style');
         style.id = 'toast-style';
@@ -986,8 +1192,6 @@
         `;
         document.head.appendChild(style);
       }
-
-      // 2.5 秒后自动移除
       setTimeout(() => toast.remove(), 2500);
     }
 
@@ -1021,10 +1225,8 @@
         alert('暂无可播放的歌曲～');
         return;
       }
-
       const randomIndex = Math.floor(Math.random() * playlistData.items.length);
       currentRandomSong = playlistData.items[randomIndex];
-
       document.getElementById('modal-song-title').textContent = currentRandomSong.title;
       document.getElementById('random-modal').style.display = 'flex';
     }
@@ -1041,20 +1243,14 @@
     // ✅ 播放选中的歌曲
     // ========================================
     function playSelected() {
-      if (!currentRandomSong) {
-        closeModal();
-        return;
-      }
-
+      if (!currentRandomSong) { closeModal(); return; }
       if (!currentRandomSong?.url) {
         alert(`"${currentRandomSong.title}" 暂无播放链接～`);
         closeModal();
         return;
       }
-
       window.open(currentRandomSong.url, '_blank', 'noopener,noreferrer');
       closeModal();
-
       const btn = document.querySelector('.random-btn');
       const originalText = btn.textContent;
       btn.textContent = `✅ 已播放`;
@@ -1075,10 +1271,7 @@
         showCopyToast('❌ 暂无可复制的歌曲');
         return;
       }
-
       const text = `点歌 ${currentRandomSong.title}`;
-
-      // 使用 Clipboard API 复制
       if (navigator.clipboard && window.isSecureContext) {
         navigator.clipboard.writeText(text)
           .then(() => {
@@ -1091,83 +1284,61 @@
       }
     }
 
-    // 降级复制方案（兼容旧浏览器/非 HTTPS）
-    function fallbackCopy(text) {
-      const textarea = document.createElement('textarea');
-      textarea.value = text;
-      textarea.style.position = 'fixed';
-      textarea.style.left = '-9999px';
-      document.body.appendChild(textarea);
-      textarea.focus();
-      textarea.select();
+    // ========================================
+    // ✅ 搜索 + 筛选逻辑
+    // ========================================
+    function filterSongsLogic(items) {
+      const searchText = document.getElementById('song-search')?.value?.toLowerCase().trim() || '';
+      const filterLang = document.getElementById('filter-language')?.value || '';
+      const filterGenre = document.getElementById('filter-genre')?.value || '';
+      const filterAccess = document.getElementById('filter-access')?.value || '';
 
-      try {
-        document.execCommand('copy');
-        showCopyToast(`✅ 已复制：${text}`);
-      } catch (err) {
-        showCopyToast('❌ 复制失败，请手动复制');
-      }
-
-      document.body.removeChild(textarea);
+      return items.filter(song => {
+        const matchSearch = !searchText ||
+          song.title?.toLowerCase().includes(searchText) ||
+          song.artist?.toLowerCase().includes(searchText) ||
+          song.genre?.toLowerCase().includes(searchText) ||
+          song.language?.toLowerCase().includes(searchText);
+        const matchLang = !filterLang || song.language === filterLang;
+        const matchGenre = !filterGenre || song.genre === filterGenre;
+        const matchAccess = !filterAccess || song.access === filterAccess;
+        return matchSearch && matchLang && matchGenre && matchAccess;
+      });
     }
 
-    // 显示复制提示（Toast）
-    function showCopyToast(message) {
-      // 移除已存在的 toast
-      const existing = document.getElementById('copy-toast');
-      if (existing) existing.remove();
-
-      // 创建新 toast
-      const toast = document.createElement('div');
-      toast.id = 'copy-toast';
-      toast.textContent = message;
-      toast.style.cssText = `
-        position: fixed;
-        bottom: 80px;
-        left: 50%;
-        transform: translateX(-50%);
-        background: var(--card);
-        color: var(--text);
-        padding: 0.8rem 1.5rem;
-        border-radius: 30px;
-        box-shadow: var(--shadow);
-        font-size: 0.9rem;
-        z-index: 10000;
-        animation: toastIn 0.3s ease, toastOut 0.3s ease 2s forwards;
-      `;
-      document.body.appendChild(toast);
-
-      // 添加动画 keyframes（只添加一次）
-      if (!document.getElementById('toast-style')) {
-        const style = document.createElement('style');
-        style.id = 'toast-style';
-        style.textContent = `
-          @keyframes toastIn {
-            from { opacity: 0; transform: translate(-50%, 20px); }
-            to { opacity: 1; transform: translate(-50%, 0); }
-          }
-          @keyframes toastOut {
-            from { opacity: 1; }
-            to { opacity: 0; }
-          }
-        `;
-        document.head.appendChild(style);
-      }
-
-      // 2.5 秒后自动移除
-      setTimeout(() => toast.remove(), 2500);
-    }
-
-    // ========================================
-    // ✅ 恢复用户视图偏好
-    // ========================================
-    document.addEventListener('DOMContentLoaded', () => {
-      const savedView = localStorage.getItem('suki_playlist_view');
+    // ✅ 执行筛选并重新渲染
+    function filterSongs() {
+      if (!playlistData?.items) return;
       const container = document.getElementById('playlist-container');
-      if (savedView && savedView !== 'list' && container && playlistData?.items) {
-        setTimeout(() => switchView(savedView), 100);
+      const viewMode = container?.classList.contains('grid-view') ? 'grid' : 'list';
+      const filtered = filterSongsLogic(playlistData.items);
+
+      if (container) {
+        container.innerHTML = renderPlaylist(playlistData.items, viewMode);
       }
-    });
+
+      const tip = document.getElementById('search-result-tip');
+      if (tip) {
+        const total = playlistData.items.length;
+        const shown = filtered.length;
+        if (shown < total || document.getElementById('song-search')?.value) {
+          tip.style.display = 'block';
+          tip.textContent = `🔍 找到 ${shown} / ${total} 首歌曲`;
+        } else {
+          tip.style.display = 'none';
+        }
+      }
+    }
+
+    // ✅ 清空搜索
+    function clearSearch() {
+      const input = document.getElementById('song-search');
+      if (input) {
+        input.value = '';
+        filterSongs();
+        input.focus();
+      }
+    }
   </script>
 </body>
 
