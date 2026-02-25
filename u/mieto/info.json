@@ -1,0 +1,18 @@
+{
+  "name": "番茄_Mieto",
+  "tagline": "欢迎光临番茄大卖场，可以见到可爱的番茄还有美妙的歌声~期待您的光临~",
+  "bio": true,
+  "show_playlist": true,
+  "social": [
+    {
+      "label": "B站",
+      "url": "https://space.bilibili.com/3546976662587663"
+    },
+    {
+      "label": "网页歌单",
+      "url": "https://bot.starlwr.com/songlist?uid=3546976662587663"
+    }
+  ],
+  "created_at": "2026-02-25",
+  "updated_at": "2026-02-25"
+}
