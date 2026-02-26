@@ -58,7 +58,7 @@
       "status": "active"
     },
     {
-      "id": "tangzhike",
+      "id": "zhike",
       "name": "棠之可",
       "tagline": "励志成为你们关注列表里最后一个主播",
       "registered_at": "2026-02-25",
@@ -69,6 +69,13 @@
       "name": "桃栗",
       "tagline": "为人间歌声挣脱封印的天使✨",
       "registered_at": "2026-02-24",
+      "status": "active"
+    },
+    {
+      "id": "mengmeng",
+      "name": "江萌萌",
+      "tagline": "我们都会遇见自己的小太阳！",
+      "registered_at": "2026-02-26",
       "status": "active"
     },
     {
