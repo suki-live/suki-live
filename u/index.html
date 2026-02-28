@@ -754,6 +754,63 @@
       transform: scale(0.98);
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
     }
+
+    /* === 导航栏 === */
+    .nav-bar {
+      position: sticky;
+      top: 1rem;
+      z-index: 100;
+      display: flex;
+      justify-content: center;
+      margin: 1rem auto 1.5rem;
+      padding: 0.3rem;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      box-shadow: var(--shadow);
+      max-width: fit-content;
+    }
+
+    .nav-link {
+      padding: 0.5rem 1.2rem;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--text-light);
+      text-decoration: none;
+      transition: all 0.2s;
+      cursor: pointer;
+    }
+
+    .nav-link:hover {
+      color: var(--accent);
+      background: var(--accent-soft);
+    }
+
+    .nav-link.active {
+      color: #1a202c;
+      background: var(--accent);
+      box-shadow: 0 2px 6px rgba(167, 199, 231, 0.4);
+    }
+
+    @media (max-width: 640px) {
+      .nav-bar {
+        top: 0.5rem;
+        width: 95%;
+        border-radius: 8px;
+      }
+
+      .nav-link {
+        padding: 0.4rem 1rem;
+        font-size: 0.9rem;
+      }
+    }
+
+    /* === 内容区域间距 === */
+    .section-anchor {
+      scroll-margin-top: 80px;
+      /* 适配 sticky 导航栏 */
+    }
   </style>
 </head>
 
@@ -766,6 +823,13 @@
   </div>
 
   <div class="container">
+    <!-- ✅ 导航栏（初始隐藏，JS 渲染后显示） -->
+    <nav id="main-nav" class="nav-bar" style="display:none;">
+      <a href="#section-bio" class="nav-link active" data-target="bio" onclick="switchSection('bio'); return false;">📝
+        简介</a>
+      <a href="#section-playlist" class="nav-link" data-target="playlist"
+        onclick="switchSection('playlist'); return false;">🎵 歌单</a>
+    </nav>
     <div id="content">
       <div class="loading">✨ 正在加载主播信息…</div>
     </div>
@@ -957,7 +1021,7 @@
       // 自我介绍
       if (info.bio) {
         html += `
-          <div class="card">
+          <div class="card section-anchor" id="section-bio">
             <h2>📝 关于我</h2>
             <div class="bio" id="bio-content">加载中…</div>
           </div>`;
@@ -966,7 +1030,7 @@
       // 🎵 歌单
       if (info.show_playlist !== false && playlist.items?.length) {
         html += `
-          <div class="card">
+          <div class="card section-anchor" id="section-playlist">
             <h2>🎵 ${playlist.title || '推荐歌单'}</h2>
             <!-- ✅ 搜索栏 + 筛选器 -->
             <div class="playlist-filters">
@@ -1023,6 +1087,11 @@
       }
 
       document.getElementById('content').innerHTML = html;
+      // ✅ 在 renderDefaultTemplate 末尾调用
+      // 找到这行: document.getElementById('content').innerHTML = html;
+      // 在下面添加:
+      document.getElementById('main-nav').style.display = 'flex';  // 显示导航栏
+      setTimeout(initNavScrollSpy, 100);  // 初始化滚动监听
 
       // ✅ 关键修复：渲染完成后立即恢复用户视图偏好
       restorePlaylistView();
@@ -1338,6 +1407,43 @@
         filterSongs();
         input.focus();
       }
+    }
+
+    // ========================================
+    // ✅ 导航栏切换功能
+    // ========================================
+    function switchSection(target) {
+      // 更新激活状态
+      document.querySelectorAll('.nav-link').forEach(link => {
+        link.classList.toggle('active', link.dataset.target === target);
+      });
+
+      // 平滑滚动到目标区域
+      const section = document.getElementById(`section-${target}`);
+      if (section) {
+        section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+
+    // ✅ 滚动监听：自动高亮当前区块
+    function initNavScrollSpy() {
+      const sections = ['bio', 'playlist'].map(id => document.getElementById(`section-${id}`)).filter(Boolean);
+      if (!sections.length) return;
+
+      const navLinks = document.querySelectorAll('.nav-link');
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const id = entry.target.id.replace('section-', '');
+            navLinks.forEach(link => {
+              link.classList.toggle('active', link.dataset.target === id);
+            });
+          }
+        });
+      }, { rootMargin: '-40% 0px -55% 0px', threshold: 0 });
+
+      sections.forEach(sec => observer.observe(sec));
     }
   </script>
 </body>
