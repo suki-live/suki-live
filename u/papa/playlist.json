@@ -2321,6 +2321,54 @@
       "genre": "流行",
       "access": "免费",
       "added_at": "2026-02-25"
+    },
+    {
+      "title": "大眠",
+      "artist": "王心凌",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "冬眠",
+      "artist": "司南",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "苏公堤",
+      "artist": "杨一歌",
+      "language": "中文",
+      "genre": "古风",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "终于明白",
+      "artist": "Unknown",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "想你时风起",
+      "artist": "单依纯",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "来自天堂的魔鬼",
+      "artist": "邓紫棋",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-02-25"
     }
   ]
 }
