@@ -72,10 +72,17 @@
       "status": "active"
     },
     {
+      "id": "purr",
+      "name": "知宁Purr",
+      "tagline": "非专业甜妹治愈系歌丝小猫 谢谢你们的喜欢和宠爱",
+      "registered_at": "2026-02-28",
+      "status": "active"
+    },
+    {
       "id": "yuwan",
       "name": "玉晚音音",
       "tagline": "本是上市集团CEO，被属下陷害，夺我财产抢我公司，我忍辱负重潜伏在此站，来听我一首歌助我东山再起!",
-      "registered_at": "2026-02-24",
+      "registered_at": "2026-02-28",
       "status": "active"
     },
     {
