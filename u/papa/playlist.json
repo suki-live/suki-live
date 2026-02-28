@@ -2369,6 +2369,94 @@
       "genre": "流行",
       "access": "免费",
       "added_at": "2026-02-25"
+    },
+    {
+      "title": "爱如火",
+      "artist": "那艺娜",
+      "language": "中文",
+      "genre": "流行",
+      "access": "付费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "大花轿",
+      "artist": "火风",
+      "language": "中文",
+      "genre": "流行",
+      "access": "付费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "痒",
+      "artist": "黄龄",
+      "language": "中文",
+      "genre": "流行",
+      "access": "付费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "飞机场",
+      "artist": "徐良/小凌",
+      "language": "中文",
+      "genre": "流行",
+      "access": "付费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "套马杆",
+      "artist": "乌兰托娅",
+      "language": "中文",
+      "genre": "民谣",
+      "access": "付费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "The Fox",
+      "artist": "Ylvis",
+      "language": "英文",
+      "genre": "流行",
+      "access": "付费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "达拉崩吧",
+      "artist": "ilem",
+      "language": "中文",
+      "genre": "二次元",
+      "access": "付费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "香水有毒",
+      "artist": "胡杨林",
+      "language": "中文",
+      "genre": "流行",
+      "access": "付费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "给他一电炮",
+      "artist": "Unknown",
+      "language": "中文",
+      "genre": "流行",
+      "access": "付费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "姐就是女王",
+      "artist": "王莎莎",
+      "language": "中文",
+      "genre": "流行",
+      "access": "付费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "酒醉的蝴蝶",
+      "artist": "崔伟立",
+      "language": "中文",
+      "genre": "流行",
+      "access": "付费",
+      "added_at": "2026-02-25"
     }
   ]
 }
