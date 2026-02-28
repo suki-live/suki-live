@@ -1,6 +1,6 @@
 {
   "name": "Example",
-  "tagline": "用歌声传递温柔的虚拟歌姬 🌸",
+  "tagline": "用歌声传递温柔的虚拟歌姬🌸",
   "bio": true,
   "show_playlist": true,
   "anonymail": "https://dreamail.cn/send?dm=xxxxxx",
@@ -22,6 +22,6 @@
       "url": "https://example.com"
     }
   ],
-  "created_at": "2026-02-26",
-  "updated_at": "2026-02-26"
+  "created_at": "2026-02-28",
+  "updated_at": "2026-02-28"
 }
