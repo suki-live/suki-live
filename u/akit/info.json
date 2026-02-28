@@ -1,0 +1,19 @@
+{
+  "name": "阿焓Akit",
+  "tagline": "大家好，这里是考川市的实习歌手阿焓Akit，感谢你的关注汪！",
+  "bio": true,
+  "show_playlist": true,
+  "anonymail": "https://wj.qq.com/s2/25721620/256f/",
+  "social": [
+    {
+      "label": "B站",
+      "url": "https://space.bilibili.com/3632312134667110"
+    },
+    {
+      "label": "粉丝群体约定",
+      "url": "https://share.mubu.com/doc/37xoH-KOv69"
+    }
+  ],
+  "created_at": "2026-02-28",
+  "updated_at": "2026-02-28"
+}
