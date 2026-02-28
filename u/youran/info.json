@@ -1,0 +1,14 @@
+{
+  "name": "尤然然",
+  "tagline": "谢谢你来看我 愿所有真诚的人都会被善待",
+  "bio": true,
+  "show_playlist": true,
+  "social": [
+    {
+      "label": "B站",
+      "url": "https://space.bilibili.com/3690976950355969"
+    }
+  ],
+  "created_at": "2026-02-28",
+  "updated_at": "2026-02-28"
+}
