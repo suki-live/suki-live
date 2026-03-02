@@ -107,6 +107,20 @@
       "status": "active"
     },
     {
+      "id": "miko",
+      "name": "浮笙Miko",
+      "tagline": "私皮歌势小猫～喜欢唱歌，主唱流行和古风喵 欢迎来找我玩呀！",
+      "registered_at": "2026-03-02",
+      "status": "active"
+    },
+    {
+      "id": "yine",
+      "name": "吟禾Yine",
+      "tagline": "以歌为信撞进你的次元",
+      "registered_at": "2026-03-02",
+      "status": "active"
+    },
+    {
       "id": "mengmeng",
       "name": "江萌萌",
       "tagline": "我们都会遇见自己的小太阳！",

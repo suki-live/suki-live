@@ -1,0 +1,14 @@
+{
+  "name": "吟禾Yine",
+  "tagline": "以歌为信撞进你的次元",
+  "bio": true,
+  "show_playlist": true,
+  "social": [
+    {
+      "label": "B站",
+      "url": "https://space.bilibili.com/3690996520979414"
+    }
+  ],
+  "created_at": "2026-03-02",
+  "updated_at": "2026-03-02"
+}
