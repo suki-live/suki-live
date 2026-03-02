@@ -1,0 +1,574 @@
+{
+  "title": "精选歌单",
+  "description": "中日双语 · 动漫·VOCALOID·流行 · 多元音乐合集",
+  "items": [
+    {
+      "title": "水果篮子~For フルーツバスケット",
+      "artist": "Unknown",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "愛して愛して愛して",
+      "artist": "Kairiki Bear",
+      "language": "日文",
+      "genre": "VOCALOID",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "ラブ・ストーリーは突然に",
+      "artist": "小田和正",
+      "language": "日文",
+      "genre": "J-POP",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "Limbo",
+      "artist": "Unknown",
+      "language": "日文",
+      "genre": "J-POP",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "庭園にて",
+      "artist": "Unknown",
+      "language": "日文",
+      "genre": "J-POP",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "不安なガレーのうた",
+      "artist": "Unknown",
+      "language": "日文",
+      "genre": "J-POP",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "青柠",
+      "artist": "Unknown",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "世界上的另一个我",
+      "artist": "Unknown",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "パンぱんだ",
+      "artist": "Unknown",
+      "language": "日文",
+      "genre": "J-POP",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "撒野",
+      "artist": "Unknown",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "心做し",
+      "artist": "GUMI",
+      "language": "日文",
+      "genre": "VOCALOID",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "慢慢走",
+      "artist": "Unknown",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "勾指起誓",
+      "artist": "洛天依",
+      "language": "中文",
+      "genre": "虚拟歌手",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "for ya",
+      "artist": "Unknown",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "温软宇宙",
+      "artist": "Unknown",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "春日影",
+      "artist": "MyGO!!!!!",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "遇见",
+      "artist": "孙燕姿",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "午后我的猫和冻柠茶",
+      "artist": "Unknown",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "Departures ~あなたにおくるアイの歌~",
+      "artist": "EGOIST",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "酔いどれ知らず",
+      "artist": "Kanaria",
+      "language": "日文",
+      "genre": "VOCALOID",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "OK",
+      "artist": "Unknown",
+      "language": "日文",
+      "genre": "J-POP",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "蜜月 Un·Deux·Trois",
+      "artist": "Unknown",
+      "language": "日文",
+      "genre": "J-POP",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "食虫植物",
+      "artist": "Unknown",
+      "language": "日文",
+      "genre": "J-POP",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "焦糖星 人声本家",
+      "artist": "Unknown",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "転がる岩、君に朝が降る",
+      "artist": "Unknown",
+      "language": "日文",
+      "genre": "J-POP",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "泛泛人类不会祈祷",
+      "artist": "Unknown",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "Spring Has Come",
+      "artist": "Unknown",
+      "language": "英文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "星月夜の調べ",
+      "artist": "Unknown",
+      "language": "日文",
+      "genre": "J-POP",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "celeste feat. 春野",
+      "artist": "春野",
+      "language": "日文",
+      "genre": "J-POP",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "少女レイ",
+      "artist": "初音ミク",
+      "language": "日文",
+      "genre": "VOCALOID",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "空の箱",
+      "artist": "Unknown",
+      "language": "日文",
+      "genre": "J-POP",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "Don't say \"lazy\"",
+      "artist": "放課後ティータイム",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "恋爱困难少女",
+      "artist": "Unknown",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "ツギハギスタッカート",
+      "artist": "初音ミク",
+      "language": "日文",
+      "genre": "VOCALOID",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "LADY",
+      "artist": "Unknown",
+      "language": "日文",
+      "genre": "J-POP",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "カラカラ",
+      "artist": "Unknown",
+      "language": "日文",
+      "genre": "J-POP",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "深昏睡",
+      "artist": "Unknown",
+      "language": "日文",
+      "genre": "J-POP",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "偏食",
+      "artist": "Unknown",
+      "language": "日文",
+      "genre": "J-POP",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "色は匂へど散りぬるを 幻想万華鏡 OP",
+      "artist": "Unknown",
+      "language": "日文",
+      "genre": "东方 Project",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "FRUITS CANDY",
+      "artist": "Unknown",
+      "language": "日文",
+      "genre": "J-POP",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "独りんぼエンヴィー",
+      "artist": "初音ミク",
+      "language": "日文",
+      "genre": "VOCALOID",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "晚安喵",
+      "artist": "Unknown",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "那颗星",
+      "artist": "Unknown",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "九万字",
+      "artist": "黄诗扶",
+      "language": "中文",
+      "genre": "古风",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "我只在乎你",
+      "artist": "邓丽君",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "情人",
+      "artist": "Unknown",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "celeste feat.",
+      "artist": "Unknown",
+      "language": "日文",
+      "genre": "J-POP",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "星見る頃を過ぎ",
+      "artist": "Unknown",
+      "language": "日文",
+      "genre": "J-POP",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "secret base ~君がくれたもの~未闻花名 ED",
+      "artist": "ZONE",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "Ready Steady",
+      "artist": "Unknown",
+      "language": "日文",
+      "genre": "J-POP",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "YOU & IDOL",
+      "artist": "Unknown",
+      "language": "日文",
+      "genre": "J-POP",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "あのバンド",
+      "artist": "Unknown",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "Venus Flytrap feat.",
+      "artist": "Unknown",
+      "language": "日文",
+      "genre": "J-POP",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "宙でおやすみ",
+      "artist": "Unknown",
+      "language": "日文",
+      "genre": "J-POP",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "キャットフード",
+      "artist": "初音ミク",
+      "language": "日文",
+      "genre": "VOCALOID",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "us feat. ゆきな",
+      "artist": "Unknown",
+      "language": "日文",
+      "genre": "J-POP",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "ド屑",
+      "artist": "Unknown",
+      "language": "日文",
+      "genre": "J-POP",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "愛♡スクリ～ム！",
+      "artist": "Unknown",
+      "language": "日文",
+      "genre": "J-POP",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "鬼ごっこ",
+      "artist": "Unknown",
+      "language": "日文",
+      "genre": "J-POP",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "少女 A",
+      "artist": "Unknown",
+      "language": "日文",
+      "genre": "J-POP",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "砂のこども",
+      "artist": "Unknown",
+      "language": "日文",
+      "genre": "J-POP",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "东京不太热",
+      "artist": "洛天依",
+      "language": "中文",
+      "genre": "虚拟歌手",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "Slow Down",
+      "artist": "Unknown",
+      "language": "英文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "夜宴风波",
+      "artist": "Unknown",
+      "language": "中文",
+      "genre": "古风",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "好像掉进了爱情海里",
+      "artist": "Unknown",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "遇到",
+      "artist": "Unknown",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "藏",
+      "artist": "Unknown",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "日光下",
+      "artist": "Unknown",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "CH4NGE",
+      "artist": "Unknown",
+      "language": "日文",
+      "genre": "J-POP",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "God knows...",
+      "artist": "平野綾",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    },
+    {
+      "title": "玛德琳娜电塔",
+      "artist": "Unknown",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-02-25"
+    }
+  ]
+}
