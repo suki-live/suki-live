@@ -1,0 +1,15 @@
+{
+  "name": "方焰Flint",
+  "tagline": "用歌声传递温柔的虚拟歌姬🌸",
+  "bio": true,
+  "show_playlist": true,
+  "anonymail": "https://dreamail.cn/send?dm=53df3f53-7bbb-48c1-b694-cf541f2bf3e3",
+  "social": [
+    {
+      "label": "B站",
+      "url": "https://space.bilibili.com/3546820863068250"
+    }
+  ],
+  "created_at": "2026-03-03",
+  "updated_at": "2026-03-03"
+}
