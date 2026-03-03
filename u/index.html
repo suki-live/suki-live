@@ -836,21 +836,21 @@
         onclick="switchSection('bio'); return false;">简介</a>
     </nav>
     <div id="content">
-      <div class="loading">✨ 正在加载主播信息…</div>
+      <div class="loading">正在加载主播信息…</div>
     </div>
   </div>
 
   <p class="footer-note">
-    💙 托管于 <a href="https://github.com/suki-live/suki-live" target="_blank" rel="noopener">suki-live</a> ·
+    托管于 <a href="https://github.com/suki-live/suki-live" target="_blank" rel="noopener">suki-live</a> ·
     <a href="https://suki.live">返回首页</a> ·
     <a href="https://suki.live/registry.html">主播名录</a> ·
-    <a href="https://dreamail.cn/" target="_blank" rel="noopener">✉️ 匿名信</a>
+    <a href="https://dreamail.cn/" target="_blank" rel="noopener">匿名信</a>
   </p>
 
   <!-- ✅ 随机选歌弹窗 -->
   <div id="random-modal" class="modal" style="display:none;">
     <div class="modal-content">
-      <h3>🎲 随机选歌</h3>
+      <h3>随机选歌</h3>
       <p class="modal-song-title" id="modal-song-title">歌曲名称</p>
       <div class="modal-buttons">
         <button class="modal-btn modal-btn-cancel" onclick="closeModal()">确定</button>
@@ -890,7 +890,7 @@
     if (!id) {
       document.getElementById('content').innerHTML = `
         <div class="card">
-          <h2>🌸 这片星空暂时无人驻留</h2>
+          <h2>这片星空暂时无人驻留</h2>
           <p style="color:var(--text-light)">
             你访问的主播主页尚未创建，或链接有误。
           </p>
@@ -946,10 +946,10 @@
                 });
               })
               .catch(err => {
-                console.warn(`⚠️ 自定义页面未找到: custom.html`, err);
+                console.warn(`自定义页面未找到: custom.html`, err);
                 document.body.innerHTML = `
                   <div style="font-family:sans-serif;max-width:600px;margin:4rem auto;padding:2rem;text-align:center">
-                    <h2>🌸 主页定制中</h2>
+                    <h2>主页定制中</h2>
                     <p style="color:#718096">
                       主播 <code>${id}</code> 正在定制专属页面，请稍后再访～
                     </p>
@@ -975,7 +975,7 @@
           const missing = err === 'info' ? 'info.json' : 'playlist.json';
           document.getElementById('content').innerHTML = `
             <div class="card">
-              <h2>⚠️ 加载失败</h2>
+              <h2>加载失败</h2>
               <p style="color:var(--text-light)">
                 文件 <code>${missing}</code> 未找到。<br/>
                 主播 <code>${id}</code> 的配置可能尚未完成。
@@ -1016,36 +1016,36 @@
       if (info.anonymail) {
         socialEl.innerHTML += `
           <a href="${escapeHtml(info.anonymail)}" target="_blank" rel="noopener" class="anonymail">
-            ✉️ 匿名信
+            匿名信
           </a>`;
       }
 
       // 组装页面内容
       let html = '';
 
-      // 🎵 歌单
+      // 歌单
       if (info.show_playlist !== false && playlist.items?.length) {
         html += `
           <div class="card section-anchor" id="section-playlist">
-            <h2>🎵 ${playlist.title || '推荐歌单'}</h2>
-            <!-- ✅ 搜索栏 + 筛选器 -->
+            <h2>${playlist.title || '推荐歌单'}</h2>
+            <!-- 搜索栏 + 筛选器 -->
             <div class="playlist-filters">
               <!-- 搜索框 -->
               <div class="search-box">
-                <input type="text" id="song-search" class="search-input" placeholder="🔍 搜索歌名/歌手/曲风..." oninput="filterSongs()">
+                <input type="text" id="song-search" class="search-input" placeholder="搜索歌名/歌手/曲风..." oninput="filterSongs()">
                 <button class="search-clear" onclick="clearSearch()">✕</button>
               </div>
               <!-- 筛选下拉框 -->
               <div class="filter-group">
                 <select id="filter-language" class="filter-select" onchange="filterSongs()">
-                  <option value="">🌐 全部语言</option>
+                  <option value="">全部语言</option>
                   <option value="中文">中文</option>
                   <option value="日文">日文</option>
                   <option value="英文">英文</option>
                   <option value="其他">其他</option>
                 </select>
                 <select id="filter-genre" class="filter-select" onchange="filterSongs()">
-                  <option value="">🎵 全部曲风</option>
+                  <option value="">全部曲风</option>
                   <option value="流行">流行</option>
                   <option value="J-POP">J-POP</option>
                   <option value="电子">电子</option>
@@ -1055,7 +1055,7 @@
                   <option value="其他">其他</option>
                 </select>
                 <select id="filter-access" class="filter-select" onchange="filterSongs()">
-                  <option value="">🔓 全部权限</option>
+                  <option value="">全部权限</option>
                   <option value="免费">免费</option>
                   <option value="付费">付费</option>
                   <option value="歌切">歌切</option>
@@ -1067,17 +1067,17 @@
               <!-- 视图切换 + 随机选歌 -->
               <div class="playlist-controls">
                 <div class="view-toggle">
-                  <button class="view-btn active" data-view="list" onclick="switchView('list')">📋 列表</button>
-                  <button class="view-btn" data-view="grid" onclick="switchView('grid')">🔲 卡片</button>
+                  <button class="view-btn active" data-view="list" onclick="switchView('list')">列表</button>
+                  <button class="view-btn" data-view="grid" onclick="switchView('grid')">卡片</button>
                 </div>
-                <button class="random-btn" onclick="playRandom()">🎲 随机选歌</button>
+                <button class="random-btn" onclick="playRandom()">随机选歌</button>
               </div>
             </div>
             ${playlist.description ? `<p class="playlist-desc">${playlist.description}</p>` : ''}
             <ul class="playlist list-view" id="playlist-container">
               ${renderPlaylist(playlist.items, 'list')}
             </ul>
-            <!-- ✅ 搜索结果提示 -->
+            <!-- 搜索结果提示 -->
             <p id="search-result-tip" class="search-tip" style="display:none;"></p>
           </div>`;
       }
@@ -1086,7 +1086,7 @@
       if (info.bio) {
         html += `
           <div class="card section-anchor" id="section-bio">
-            <h2>📝 关于我</h2>
+            <h2>关于我</h2>
             <div class="bio" id="bio-content">加载中…</div>
           </div>`;
       }
@@ -1202,7 +1202,7 @@
       const text = `点歌 ${title}`;
       if (navigator.clipboard && window.isSecureContext) {
         navigator.clipboard.writeText(text)
-          .then(() => showCopyToast(`✅ 已复制：${text}`))
+          .then(() => showCopyToast(`已复制：${text}`))
           .catch(() => fallbackCopy(text));
       } else {
         fallbackCopy(text);
@@ -1220,9 +1220,9 @@
       textarea.select();
       try {
         document.execCommand('copy');
-        showCopyToast(`✅ 已复制：${text}`);
+        showCopyToast(`已复制：${text}`);
       } catch (err) {
-        showCopyToast('❌ 复制失败，请手动复制');
+        showCopyToast('复制失败，请手动复制');
       }
       document.body.removeChild(textarea);
     }
@@ -1327,7 +1327,7 @@
       closeModal();
       const btn = document.querySelector('.random-btn');
       const originalText = btn.textContent;
-      btn.textContent = `✅ 已播放`;
+      btn.textContent = `已播放`;
       btn.style.background = '#c6f6d5';
       btn.style.color = '#22543d';
       setTimeout(() => {
@@ -1342,14 +1342,14 @@
     // ========================================
     function copyRandomSong() {
       if (!currentRandomSong?.title) {
-        showCopyToast('❌ 暂无可复制的歌曲');
+        showCopyToast('暂无可复制的歌曲');
         return;
       }
       const text = `点歌 ${currentRandomSong.title}`;
       if (navigator.clipboard && window.isSecureContext) {
         navigator.clipboard.writeText(text)
           .then(() => {
-            showCopyToast(`✅ 已复制：${text}`);
+            showCopyToast(`已复制：${text}`);
             setTimeout(() => closeModal(), 800);
           })
           .catch(() => fallbackCopy(text));
@@ -1397,7 +1397,7 @@
         const shown = filtered.length;
         if (shown < total || document.getElementById('song-search')?.value) {
           tip.style.display = 'block';
-          tip.textContent = `🔍 找到 ${shown} / ${total} 首歌曲`;
+          tip.textContent = `找到 ${shown} / ${total} 首歌曲`;
         } else {
           tip.style.display = 'none';
         }
