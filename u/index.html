@@ -706,7 +706,8 @@
 
       /* ✅ 卡片视图：手机端一行两个 */
       .playlist.grid-view {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        /* ✅ 强制均分，允许内容收缩 */
         gap: 0.6rem;
       }
 
@@ -722,6 +723,10 @@
       .grid-view .song-title {
         font-size: 0.85rem;
         margin-bottom: 0.1rem;
+        overflow-wrap: break-word;
+        /* ✅ 防止长文本撑破卡片 */
+        word-break: break-all;
+        /* ✅ 兼容极端长字符 */
       }
 
       .grid-view .song-meta {
