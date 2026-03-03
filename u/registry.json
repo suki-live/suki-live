@@ -149,6 +149,13 @@
       "status": "active"
     },
     {
+      "id": "choo",
+      "name": "秋秋糖Ah-Choo",
+      "tagline": "喂~别看了，进来吃小嘴巴子了。",
+      "registered_at": "2026-03-03",
+      "status": "active"
+    },
+    {
       "id": "mengmeng",
       "name": "江萌萌",
       "tagline": "我们都会遇见自己的小太阳！",
@@ -247,6 +254,13 @@
       "status": "active"
     },
     {
+      "id": "baitian",
+      "name": "白甜er",
+      "tagline": "全职陪伴系甜嗓歌姬｜晚十~唱不动惹 甜歌/古风/杂谈｜投喂续航~",
+      "registered_at": "2026-02-24",
+      "status": "active"
+    },
+    {
       "id": "siamira",
       "name": "笙笙siamira",
       "tagline": "冷感傲娇地雷系猫塑siamira",
@@ -257,13 +271,6 @@
       "id": "pp",
       "name": "PP",
       "tagline": "温柔正能量努力的唱见~~~",
-      "registered_at": "2026-02-24",
-      "status": "active"
-    },
-    {
-      "id": "baitian",
-      "name": "白甜er",
-      "tagline": "全职陪伴系甜嗓歌姬｜晚十~唱不动惹 甜歌/古风/杂谈｜投喂续航~",
       "registered_at": "2026-02-24",
       "status": "active"
     },
