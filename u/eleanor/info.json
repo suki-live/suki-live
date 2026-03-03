@@ -1,0 +1,14 @@
+{
+  "name": "埃莉诺_Eleanor",
+  "tagline": "如果世界很危险，只有音乐最安全",
+  "bio": true,
+  "show_playlist": true,
+  "social": [
+    {
+      "label": "B站",
+      "url": "https://space.bilibili.com/197735336"
+    }
+  ],
+  "created_at": "2026-03-03",
+  "updated_at": "2026-03-03"
+}
