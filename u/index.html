@@ -816,6 +816,69 @@
       scroll-margin-top: 80px;
       /* 适配 sticky 导航栏 */
     }
+
+    /* === 🔹 B站数据统计栏 🔹 === */
+    .bili-stats {
+      display: none;
+      /* ✅ 默认隐藏，JS 提取成功后再显示 */
+      justify-content: center;
+      gap: 1rem;
+      margin: 0.6rem 0 0.3rem;
+      flex-wrap: wrap;
+    }
+
+    .bili-stat-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-width: 56px;
+      padding: 0.2rem 0.4rem;
+    }
+
+    .bili-stat-value {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.2;
+    }
+
+    .bili-stat-label {
+      font-size: 0.7rem;
+      color: var(--text-light);
+      margin-top: 0.15rem;
+    }
+
+    .bili-stats .bili-stat-item:hover .bili-stat-value {
+      color: var(--accent);
+      transition: color 0.2s;
+    }
+
+    /* 加载/错误状态 */
+    .bili-stat-value.loading {
+      color: var(--text-light);
+      font-weight: 400;
+    }
+
+    .bili-stat-value.error {
+      color: #e53e3e;
+      font-size: 0.8rem;
+    }
+
+    /* 移动端适配 */
+    @media (max-width: 640px) {
+      .bili-stats {
+        gap: 0.6rem;
+        margin: 0.4rem 0 0.2rem;
+      }
+
+      .bili-stat-value {
+        font-size: 0.95rem;
+      }
+
+      .bili-stat-label {
+        font-size: 0.65rem;
+      }
+    }
   </style>
 </head>
 
@@ -824,6 +887,27 @@
     <img id="avatar" class="avatar" src="./avatar.png" alt="avatar" onerror="this.style.display='none'" />
     <div id="name" class="name">加载中…</div>
     <div id="tagline" class="tagline"></div>
+
+    <!-- ✅ 🔹 B站数据统计栏（自动插入）🔹 -->
+    <div class="bili-stats" id="bili-stats">
+      <div class="bili-stat-item">
+        <span class="bili-stat-value loading" id="stat-follower">-</span>
+        <span class="bili-stat-label">粉丝</span>
+      </div>
+      <div class="bili-stat-item">
+        <span class="bili-stat-value loading" id="stat-following">-</span>
+        <span class="bili-stat-label">关注</span>
+      </div>
+      <div class="bili-stat-item">
+        <span class="bili-stat-value loading" id="stat-views">-</span>
+        <span class="bili-stat-label">播放</span>
+      </div>
+      <div class="bili-stat-item">
+        <span class="bili-stat-value loading" id="stat-likes">-</span>
+        <span class="bili-stat-label">获赞</span>
+      </div>
+    </div>
+
     <div id="social" class="social-links"></div>
   </div>
 
@@ -944,6 +1028,10 @@
                   }
                   document.body.appendChild(newScript);
                 });
+
+                if (typeof info !== 'undefined') {
+                  tryInitBiliStatsForCustom(info);
+                }
               })
               .catch(err => {
                 console.warn(`自定义页面未找到: custom.html`, err);
@@ -1139,6 +1227,8 @@
             if (bioCard) bioCard.remove();
           });
       }
+
+      initBiliStatsFromInfo(info);
     }
 
     // ========================================
@@ -1455,6 +1545,138 @@
       }, { rootMargin: '-40% 0px -55% 0px', threshold: 0 });
 
       sections.forEach(sec => observer.observe(sec));
+    }
+
+    // ========================================
+    // ✅ 🔹 函数 1：从 B站链接提取 UID 🔹
+    // ========================================
+    function extractBiliMid(url) {
+      if (!url) return null;
+      const cleanUrl = url.trim();
+
+      // 支持多种 B站空间链接格式
+      const patterns = [
+        /space\.bilibili\.com\/(\d+)/,      // https://space.bilibili.com/123456
+        /bilibili\.com\/space\/(\d+)/,      // 备用格式
+        /mid[=:](\d+)/,                      // 带参数格式
+      ];
+
+      for (const pattern of patterns) {
+        const match = cleanUrl.match(pattern);
+        if (match?.[1]) return match[1];
+      }
+      return null;  // ❌ 匹配失败返回 null
+    }
+
+    // ========================================
+    // ✅ 🔹 函数 2：获取并渲染 B站统计数据 🔹
+    // ========================================
+    function fetchBiliStats(mid) {
+      const statsEl = document.getElementById('bili-stats');
+      if (!mid || !statsEl) {
+        if (statsEl) statsEl.style.display = 'none';
+        return;
+      }
+
+      const fmt = (num) => {
+        if (num === undefined || num === null) return '-';
+        return Number(num).toLocaleString('zh-CN');  // 千位分隔
+      };
+
+      const hideOnError = () => {
+        statsEl.style.display = 'none';
+      };
+
+      // 并行请求两个接口
+      Promise.all([
+        fetch(`https://api.bilibili.com/x/relation/stat?vmid=${mid}`, {
+          headers: { 'Referer': 'https://space.bilibili.com/' }
+        }).then(r => r.ok ? r.json() : null),
+        fetch(`https://api.bilibili.com/x/space/upstat?mid=${mid}`, {
+          headers: { 'Referer': 'https://space.bilibili.com/' }
+        }).then(r => r.ok ? r.json() : null)
+      ])
+        .then(([relation, upstat]) => {
+          // ✅ 两个接口都失败则隐藏
+          if (!relation?.data && !upstat?.data) {
+            hideOnError();
+            return;
+          }
+
+          // ✅ 至少一个成功则显示
+          statsEl.style.display = 'flex';
+
+          // 渲染各字段（有数据才更新）
+          if (relation?.data?.follower !== undefined) {
+            document.getElementById('stat-follower').textContent = fmt(relation.data.follower);
+            document.getElementById('stat-follower').classList.remove('loading');
+          }
+          if (relation?.data?.following !== undefined) {
+            document.getElementById('stat-following').textContent = fmt(relation.data.following);
+            document.getElementById('stat-following').classList.remove('loading');
+          }
+          if (upstat?.data?.archive?.view !== undefined) {
+            const totalViews = (upstat.data.archive.view || 0) + (upstat.data.article?.view || 0);
+            document.getElementById('stat-views').textContent = fmt(totalViews);
+            document.getElementById('stat-views').classList.remove('loading');
+          }
+          if (upstat?.data?.likes !== undefined) {
+            document.getElementById('stat-likes').textContent = fmt(upstat.data.likes);
+            document.getElementById('stat-likes').classList.remove('loading');
+          }
+        })
+        .catch(err => {
+          console.warn('B站数据获取异常:', err);
+          hideOnError();
+        });
+    }
+
+    // ========================================
+    // ✅ 🔹 函数 3：初始化 B站数据（核心入口）🔹
+    // ========================================
+    function initBiliStatsFromInfo(info) {
+      const statsEl = document.getElementById('bili-stats');
+
+      // ✅ 先确保默认隐藏（防止闪烁）
+      if (statsEl) statsEl.style.display = 'none';
+
+      if (!info?.social || !Array.isArray(info.social)) return;
+
+      // 🔍 查找 B站链接（支持 "B站" / "bilibili" 等标签）
+      const biliLink = info.social.find(item =>
+        item.label?.toLowerCase().includes('b站') ||
+        item.label?.toLowerCase().includes('bilibili')
+      );
+
+      // ❌ 没找到 B站链接 → 隐藏并返回
+      if (!biliLink?.url) {
+        if (statsEl) statsEl.style.display = 'none';
+        return;
+      }
+
+      // 🔍 提取 UID
+      const mid = extractBiliMid(biliLink.url);
+
+      // ❌ 提取失败 → 隐藏并返回
+      if (!mid) {
+        console.warn('无法从链接提取 B站 UID:', biliLink.url);
+        if (statsEl) statsEl.style.display = 'none';
+        return;
+      }
+
+      // ✅ UID 有效 → 显示统计栏 + 请求数据
+      if (statsEl) statsEl.style.display = 'flex';
+      setTimeout(() => fetchBiliStats(mid), 300);  // 延迟确保 DOM 已渲染
+    }
+
+    // ========================================
+    // ✅ 🔹 函数 4：自定义页面也支持（可选）🔹
+    // ========================================
+    function tryInitBiliStatsForCustom(info) {
+      // 自定义页面如果也包含 #bili-stats 元素，同样初始化
+      if (info?.social && document.getElementById('bili-stats')) {
+        setTimeout(() => initBiliStatsFromInfo(info), 500);
+      }
     }
   </script>
 </body>
