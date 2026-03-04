@@ -1569,7 +1569,7 @@
     }
 
     // ========================================
-    // ✅ 获取并渲染 B站统计数据（修复版 - 兼容 Worker 直接返回 JSON）
+    // ✅ 获取并渲染 B 站统计数据
     // ========================================
     function fetchBiliStats(mid) {
       const statsEl = document.getElementById('bili-stats');
@@ -1578,7 +1578,6 @@
         return;
       }
 
-      // ✅ 您的 Cloudflare Worker 代理
       const WORKER_PROXY = 'https://suki-live.sunnycherry2023.workers.dev/?url=';
 
       const fmt = (num) => {
@@ -1592,14 +1591,12 @@
 
       // ✅ 并行请求两个接口
       Promise.all([
-        // 1. 关系统计
         fetch(`${WORKER_PROXY}${encodeURIComponent(`https://api.bilibili.com/x/relation/stat?vmid=${mid}`)}`)
           .then(async r => {
             if (!r.ok) return null;
             const text = await r.text();
             try { return JSON.parse(text); } catch (e) { return null; }
           }),
-        // 2. 创作统计
         fetch(`${WORKER_PROXY}${encodeURIComponent(`https://api.bilibili.com/x/space/upstat?mid=${mid}`)}`)
           .then(async r => {
             if (!r.ok) return null;
@@ -1608,7 +1605,7 @@
           })
       ])
         .then(([relationResp, upstatResp]) => {
-          // ✅ 提取 data 字段（Worker 直接返回 B站原始 JSON）
+          // ✅ 提取 data 字段
           const relationData = relationResp?.data || null;
           const upstatData = upstatResp?.data || null;
 
@@ -1639,14 +1636,37 @@
             document.getElementById('stat-views').textContent = fmt(totalViews);
             document.getElementById('stat-views').classList.remove('loading');
           }
-          // 🔹 渲染获赞数
-          if (upstatData?.likes !== undefined) {
-            document.getElementById('stat-likes').textContent = fmt(upstatData.likes);
+          // 🔹 渲染获赞数（✅ 多层兼容解析）
+          if (upstatData) {
+            // 尝试多种路径获取 likes
+            let likes = null;
+            if (typeof upstatData.likes === 'number') {
+              likes = upstatData.likes;                    // ✅ 路径 1: data.likes
+            } else if (typeof upstatData?.archive?.likes === 'number') {
+              likes = upstatData.archive.likes;            // 路径 2: data.archive.likes
+            } else if (typeof upstatResp?.likes === 'number') {
+              likes = upstatResp.likes;                    // 路径 3: 根级别 likes
+            }
+
+            // ✅ 有值才显示，否则显示 0
+            if (likes !== null && likes >= 0) {
+              document.getElementById('stat-likes').textContent = fmt(likes);
+            } else {
+              document.getElementById('stat-likes').textContent = '0';
+            }
             document.getElementById('stat-likes').classList.remove('loading');
           }
+
+          // ✅ 调试日志（生产环境可删除）
+          console.log('🔍 B 站数据解析:', {
+            relationData,
+            upstatData,
+            likes: upstatData?.likes,
+            upstatResp
+          });
         })
         .catch(err => {
-          console.warn('B站数据获取异常:', err);
+          console.warn('B 站数据获取异常:', err);
           hideOnError();
         });
     }
