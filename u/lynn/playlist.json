@@ -1,0 +1,878 @@
+{
+  "title": "澜璃 Lynn 精选歌单",
+  "description": "中文·英文·西语·法语·日语 · 多语种音乐合集",
+  "items": [
+    {
+      "title": "默",
+      "artist": "那英",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "泪桥",
+      "artist": "Unknown",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "小酒窝",
+      "artist": "林俊杰/蔡卓妍",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "七里香",
+      "artist": "周杰伦",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "斑马斑马",
+      "artist": "宋冬野",
+      "language": "中文",
+      "genre": "民谣",
+      "access": "免费",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "我怀念的",
+      "artist": "孙燕姿",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "至少还有你",
+      "artist": "林忆莲",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "遇见你的时候所有星星都落到我头上",
+      "artist": "Unknown",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "爱你",
+      "artist": "王心凌",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "慢冷",
+      "artist": "梁静茹",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "复乐园",
+      "artist": "Unknown",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "兰亭序",
+      "artist": "周杰伦",
+      "language": "中文",
+      "genre": "古风",
+      "access": "免费",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "词不达意",
+      "artist": "Unknown",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "一笑倾城",
+      "artist": "汪苏泷",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "阿拉斯加海湾",
+      "artist": "菲道尔",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "成全",
+      "artist": "刘若英",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "晴天",
+      "artist": "周杰伦",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "无情画",
+      "artist": "Unknown",
+      "language": "中文",
+      "genre": "古风",
+      "access": "免费",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "发如雪",
+      "artist": "周杰伦",
+      "language": "中文",
+      "genre": "古风",
+      "access": "免费",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "好久不见",
+      "artist": "陈奕迅",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "因为爱情",
+      "artist": "Unknown",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "你要的全拿走",
+      "artist": "胡彦斌",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "大鱼",
+      "artist": "周深",
+      "language": "中文",
+      "genre": "古风",
+      "access": "免费",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "姗姗",
+      "artist": "Unknown",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "我想念",
+      "artist": "Unknown",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "红昭愿",
+      "artist": "音阙诗听",
+      "language": "中文",
+      "genre": "古风",
+      "access": "免费",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "忽然之间",
+      "artist": "莫文蔚",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "红色高跟鞋",
+      "artist": "蔡健雅",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "世界赠予我的",
+      "artist": "Unknown",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "当你",
+      "artist": "林俊杰",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "唯一",
+      "artist": "告五人",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "太聪明",
+      "artist": "陈绮贞",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "带我走",
+      "artist": "Unknown",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "连名带姓",
+      "artist": "张惠妹",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "会呼吸的痛",
+      "artist": "梁静茹",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "多远都要在一起",
+      "artist": "邓紫棋",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "红豆",
+      "artist": "王菲",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "心墙",
+      "artist": "郭静",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "他不懂",
+      "artist": "张杰",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "胆小鬼",
+      "artist": "Unknown",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "让她降落",
+      "artist": "Unknown",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "旅行中忘记",
+      "artist": "Unknown",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "怎么说我不爱你",
+      "artist": "Unknown",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "后来",
+      "artist": "刘若英",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "演员",
+      "artist": "薛之谦",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "说爱你",
+      "artist": "蔡依林",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "同花顺",
+      "artist": "Unknown",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "红尘客栈",
+      "artist": "周杰伦",
+      "language": "中文",
+      "genre": "古风",
+      "access": "免费",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "慢慢喜欢你",
+      "artist": "莫文蔚",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "这世界那么多人",
+      "artist": "莫文蔚",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "画心",
+      "artist": "张靓颖",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "有点甜",
+      "artist": "汪苏泷/BY2",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "日不落",
+      "artist": "蔡依林",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "阿楚姑娘",
+      "artist": "梁凡",
+      "language": "中文",
+      "genre": "民谣",
+      "access": "免费",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "说散就散",
+      "artist": "袁娅维",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "我只在乎你",
+      "artist": "邓丽君",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "刻在我心底的名字",
+      "artist": "卢广仲",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "江南",
+      "artist": "林俊杰",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "萱草花",
+      "artist": "张小斐",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "牵丝戏",
+      "artist": "银临/Aki 阿杰",
+      "language": "中文",
+      "genre": "古风",
+      "access": "免费",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "百年孤寂",
+      "artist": "王菲",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "修炼爱情",
+      "artist": "林俊杰",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "下一个天亮",
+      "artist": "郭静",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "MELODY",
+      "artist": "陶喆",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "A MILLION DREAMS",
+      "artist": "Unknown",
+      "language": "英文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "CITY OF STARS",
+      "artist": "Unknown",
+      "language": "英文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "HOW FAR I'LL GO",
+      "artist": "Unknown",
+      "language": "英文",
+      "genre": "动漫",
+      "access": "免费",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "EVERYTHING I NEED",
+      "artist": "Unknown",
+      "language": "英文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "EXILE",
+      "artist": "Unknown",
+      "language": "英文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "EASY ON ME",
+      "artist": "Adele",
+      "language": "英文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "PLASTIC",
+      "artist": "Unknown",
+      "language": "英文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "SHALLOW",
+      "artist": "Unknown",
+      "language": "英文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "BAD ROMANCE",
+      "artist": "Lady Gaga",
+      "language": "英文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "DIAMOND",
+      "artist": "Unknown",
+      "language": "英文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "SUNFLOWER",
+      "artist": "Unknown",
+      "language": "英文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "SATISFIED",
+      "artist": "Unknown",
+      "language": "英文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "SHAKE IT OFF",
+      "artist": "Taylor Swift",
+      "language": "英文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "SAFE & SOUND",
+      "artist": "Unknown",
+      "language": "英文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "BLANK SPACE",
+      "artist": "Taylor Swift",
+      "language": "英文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "LOVE STORY",
+      "artist": "Taylor Swift",
+      "language": "英文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "WILLOW",
+      "artist": "Taylor Swift",
+      "language": "英文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "CALL ME MAYBE",
+      "artist": "Carly Rae Jepsen",
+      "language": "英文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "ESPRESSO",
+      "artist": "Unknown",
+      "language": "英文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "LOVE ME LIKE YOU DO",
+      "artist": "Unknown",
+      "language": "英文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "LOVING STRANGERS",
+      "artist": "Unknown",
+      "language": "英文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "TV IN BLACK & WHITE",
+      "artist": "Unknown",
+      "language": "英文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "YOUNG AND BEAUTIFUL",
+      "artist": "Lana Del Rey",
+      "language": "英文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "SALVATORE",
+      "artist": "Lana Del Rey",
+      "language": "英文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "PERFECT",
+      "artist": "Unknown",
+      "language": "英文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "ATTENTION",
+      "artist": "Unknown",
+      "language": "英文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "PHOTOGRAPH",
+      "artist": "Unknown",
+      "language": "英文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "WE DON'T TALK ANYMORE",
+      "artist": "Charlie Puth",
+      "language": "英文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "SOMEONE LIKE YOU",
+      "artist": "Adele",
+      "language": "英文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "FIVE HUNDRED MILES",
+      "artist": "Unknown",
+      "language": "英文",
+      "genre": "民谣",
+      "access": "免费",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "YESTERDAY ONCE MORE",
+      "artist": "Unknown",
+      "language": "英文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "MY HEART WILL GO ON",
+      "artist": "Celine Dion",
+      "language": "英文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "THE SOUND OF SILENCE",
+      "artist": "Unknown",
+      "language": "英文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "SHAPE OF MY HEART",
+      "artist": "Unknown",
+      "language": "英文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "LET HER GO",
+      "artist": "Unknown",
+      "language": "英文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "SOMEBODY THAT I USED TO KNOW",
+      "artist": "Unknown",
+      "language": "英文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "DUVET",
+      "artist": "Unknown",
+      "language": "英文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "HAVANA",
+      "artist": "Unknown",
+      "language": "英文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "恋愛サーキュレーション",
+      "artist": "Unknown",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "BABY DON'T CRY",
+      "artist": "陈伟霆",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "TUSA",
+      "artist": "KAROL G & Nicki Minaj",
+      "language": "西语",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "LA LLORONA",
+      "artist": "Unknown",
+      "language": "西语",
+      "genre": "民谣",
+      "access": "免费",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "HIPS DON'T LIE",
+      "artist": "Shakira",
+      "language": "西语",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "LES CHAMPS-ELYSEES",
+      "artist": "Joe Dassin",
+      "language": "法语",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "JE M'APPELLE HÉLÈNE",
+      "artist": "Hélène Rollès",
+      "language": "法语",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-03-02"
+    }
+  ]
+}

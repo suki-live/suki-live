@@ -9,10 +9,17 @@
       "status": "inactive"
     },
     {
+      "id": "wink",
+      "name": "妮可_wink",
+      "tagline": "小魔女的魔法空间！马猴烧酒在此！",
+      "registered_at": "2026-03-04",
+      "status": "active"
+    },
+    {
       "id": "lumi",
       "name": "Lumi又又",
       "tagline": "这个人反应比较慢",
-      "registered_at": "2026-2-24",
+      "registered_at": "2026-02-24",
       "status": "active"
     },
     {
@@ -26,35 +33,35 @@
       "id": "ning",
       "name": "简宁_Ning",
       "tagline": "恭喜你关注了一个超无聊的人",
-      "registered_at": "2026-2-25",
+      "registered_at": "2026-02-25",
       "status": "active"
     },
     {
       "id": "shutu",
       "name": "奕殊途",
       "tagline": "呐呐~这里是殊途姐姐~ 欢迎大家来直播间逗猫听歌哦～",
-      "registered_at": "2026-2-25",
+      "registered_at": "2026-02-25",
       "status": "active"
     },
     {
       "id": "yuexia",
       "name": "月夏_Ch",
       "tagline": "无人扶我青云志，我劝大家看看我。",
-      "registered_at": "2026-2-25",
+      "registered_at": "2026-02-25",
       "status": "active"
     },
     {
       "id": "nniu",
       "name": "年九九_nniu",
       "tagline": "千年招财灵喵-年九 踏烟火而来✨ 戏腔婉转古韵浓，国风改编超对味！",
-      "registered_at": "2026-2-25",
+      "registered_at": "2026-02-25",
       "status": "active"
     },
     {
       "id": "yueci",
       "name": "簌月辞",
       "tagline": "望月楼中歌声绕，七世轮回只为与你相遇",
-      "registered_at": "2026-2-25",
+      "registered_at": "2026-02-25",
       "status": "active"
     },
     {
@@ -223,6 +230,13 @@
       "name": "哆哆qwq",
       "tagline": "想杂就杂，想唱就唱，啥都能学",
       "registered_at": "2026-03-03",
+      "status": "active"
+    },
+    {
+      "id": "lynn",
+      "name": "澜璃Lynn",
+      "tagline": "异世界科研牛马，努力克服社恐和大家做朋友的养成系歌姬～( ´▽｀)?",
+      "registered_at": "2026-03-04",
       "status": "active"
     },
     {
