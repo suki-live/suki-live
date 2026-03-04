@@ -1,6 +1,7 @@
 {
   "title": "澜璃 Lynn 精选歌单",
   "description": "中文·英文·西语·法语·日语 · 多语种音乐合集",
+  "creator": "澜璃 (Lynn)",
   "items": [
     {
       "title": "默",
@@ -515,7 +516,7 @@
       "added_at": "2026-03-02"
     },
     {
-      "title": "A MILLION DREAMS",
+      "title": "A MILLION DREAMS (百万梦想)",
       "artist": "Unknown",
       "language": "英文",
       "genre": "流行",
@@ -523,7 +524,7 @@
       "added_at": "2026-03-02"
     },
     {
-      "title": "CITY OF STARS",
+      "title": "CITY OF STARS (星光之城)",
       "artist": "Unknown",
       "language": "英文",
       "genre": "流行",
@@ -531,7 +532,7 @@
       "added_at": "2026-03-02"
     },
     {
-      "title": "HOW FAR I'LL GO",
+      "title": "HOW FAR I'LL GO (我能走多远)",
       "artist": "Unknown",
       "language": "英文",
       "genre": "动漫",
@@ -539,7 +540,7 @@
       "added_at": "2026-03-02"
     },
     {
-      "title": "EVERYTHING I NEED",
+      "title": "EVERYTHING I NEED (我需要的一切)",
       "artist": "Unknown",
       "language": "英文",
       "genre": "流行",
@@ -547,7 +548,7 @@
       "added_at": "2026-03-02"
     },
     {
-      "title": "EXILE",
+      "title": "EXILE (流放)",
       "artist": "Unknown",
       "language": "英文",
       "genre": "流行",
@@ -555,7 +556,7 @@
       "added_at": "2026-03-02"
     },
     {
-      "title": "EASY ON ME",
+      "title": "EASY ON ME (对我温柔点)",
       "artist": "Adele",
       "language": "英文",
       "genre": "流行",
@@ -563,7 +564,7 @@
       "added_at": "2026-03-02"
     },
     {
-      "title": "PLASTIC",
+      "title": "PLASTIC (塑料)",
       "artist": "Unknown",
       "language": "英文",
       "genre": "流行",
@@ -571,7 +572,7 @@
       "added_at": "2026-03-02"
     },
     {
-      "title": "SHALLOW",
+      "title": "SHALLOW (浅滩)",
       "artist": "Unknown",
       "language": "英文",
       "genre": "流行",
@@ -579,7 +580,7 @@
       "added_at": "2026-03-02"
     },
     {
-      "title": "BAD ROMANCE",
+      "title": "BAD ROMANCE (坏浪漫)",
       "artist": "Lady Gaga",
       "language": "英文",
       "genre": "流行",
@@ -587,7 +588,7 @@
       "added_at": "2026-03-02"
     },
     {
-      "title": "DIAMOND",
+      "title": "DIAMOND (钻石)",
       "artist": "Unknown",
       "language": "英文",
       "genre": "流行",
@@ -595,7 +596,7 @@
       "added_at": "2026-03-02"
     },
     {
-      "title": "SUNFLOWER",
+      "title": "SUNFLOWER (向日葵)",
       "artist": "Unknown",
       "language": "英文",
       "genre": "流行",
@@ -603,7 +604,7 @@
       "added_at": "2026-03-02"
     },
     {
-      "title": "SATISFIED",
+      "title": "SATISFIED (满足)",
       "artist": "Unknown",
       "language": "英文",
       "genre": "流行",
@@ -611,7 +612,7 @@
       "added_at": "2026-03-02"
     },
     {
-      "title": "SHAKE IT OFF",
+      "title": "SHAKE IT OFF (甩掉烦恼)",
       "artist": "Taylor Swift",
       "language": "英文",
       "genre": "流行",
@@ -619,7 +620,7 @@
       "added_at": "2026-03-02"
     },
     {
-      "title": "SAFE & SOUND",
+      "title": "SAFE&SOUND (安然无恙)",
       "artist": "Unknown",
       "language": "英文",
       "genre": "流行",
@@ -627,7 +628,7 @@
       "added_at": "2026-03-02"
     },
     {
-      "title": "BLANK SPACE",
+      "title": "BLANK SPACE (空白空间)",
       "artist": "Taylor Swift",
       "language": "英文",
       "genre": "流行",
@@ -635,7 +636,7 @@
       "added_at": "2026-03-02"
     },
     {
-      "title": "LOVE STORY",
+      "title": "LOVE STORY (爱情故事)",
       "artist": "Taylor Swift",
       "language": "英文",
       "genre": "流行",
@@ -643,7 +644,7 @@
       "added_at": "2026-03-02"
     },
     {
-      "title": "WILLOW",
+      "title": "WILLOW (柳树)",
       "artist": "Taylor Swift",
       "language": "英文",
       "genre": "流行",
@@ -651,7 +652,7 @@
       "added_at": "2026-03-02"
     },
     {
-      "title": "CALL ME MAYBE",
+      "title": "CALL ME MAYBE (也许给我打电话)",
       "artist": "Carly Rae Jepsen",
       "language": "英文",
       "genre": "流行",
@@ -659,7 +660,7 @@
       "added_at": "2026-03-02"
     },
     {
-      "title": "ESPRESSO",
+      "title": "ESPRESSO (浓缩咖啡)",
       "artist": "Unknown",
       "language": "英文",
       "genre": "流行",
@@ -667,7 +668,7 @@
       "added_at": "2026-03-02"
     },
     {
-      "title": "LOVE ME LIKE YOU DO",
+      "title": "LOVE ME LIKE YOU DO (像你一样爱我)",
       "artist": "Unknown",
       "language": "英文",
       "genre": "流行",
@@ -675,7 +676,7 @@
       "added_at": "2026-03-02"
     },
     {
-      "title": "LOVING STRANGERS",
+      "title": "LOVING STRANGERS (爱陌生人)",
       "artist": "Unknown",
       "language": "英文",
       "genre": "流行",
@@ -683,7 +684,7 @@
       "added_at": "2026-03-02"
     },
     {
-      "title": "TV IN BLACK & WHITE",
+      "title": "TV IN BLACK&WHITE (黑白电视)",
       "artist": "Unknown",
       "language": "英文",
       "genre": "流行",
@@ -691,7 +692,7 @@
       "added_at": "2026-03-02"
     },
     {
-      "title": "YOUNG AND BEAUTIFUL",
+      "title": "YOUNG AND BEAUTIFUL (年轻美丽)",
       "artist": "Lana Del Rey",
       "language": "英文",
       "genre": "流行",
@@ -699,7 +700,7 @@
       "added_at": "2026-03-02"
     },
     {
-      "title": "SALVATORE",
+      "title": "SALVATORE (萨尔瓦多)",
       "artist": "Lana Del Rey",
       "language": "英文",
       "genre": "流行",
@@ -707,31 +708,15 @@
       "added_at": "2026-03-02"
     },
     {
-      "title": "PERFECT",
-      "artist": "Unknown",
+      "title": "PERFECT (完美)",
+      "artist": "Ed Sheeran",
       "language": "英文",
       "genre": "流行",
       "access": "免费",
       "added_at": "2026-03-02"
     },
     {
-      "title": "ATTENTION",
-      "artist": "Unknown",
-      "language": "英文",
-      "genre": "流行",
-      "access": "免费",
-      "added_at": "2026-03-02"
-    },
-    {
-      "title": "PHOTOGRAPH",
-      "artist": "Unknown",
-      "language": "英文",
-      "genre": "流行",
-      "access": "免费",
-      "added_at": "2026-03-02"
-    },
-    {
-      "title": "WE DON'T TALK ANYMORE",
+      "title": "ATTENTION (注意)",
       "artist": "Charlie Puth",
       "language": "英文",
       "genre": "流行",
@@ -739,7 +724,23 @@
       "added_at": "2026-03-02"
     },
     {
-      "title": "SOMEONE LIKE YOU",
+      "title": "PHOTOGRAPH (照片)",
+      "artist": "Unknown",
+      "language": "英文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "WE DON'T TALK ANYMORE (我们不再交谈)",
+      "artist": "Charlie Puth",
+      "language": "英文",
+      "genre": "流行",
+      "access": "免费",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "SOMEONE LIKE YOU (像你这样的人)",
       "artist": "Adele",
       "language": "英文",
       "genre": "流行",
@@ -747,7 +748,7 @@
       "added_at": "2026-03-02"
     },
     {
-      "title": "FIVE HUNDRED MILES",
+      "title": "FIVE HUNDRED MILES (五百英里)",
       "artist": "Unknown",
       "language": "英文",
       "genre": "民谣",
@@ -755,7 +756,7 @@
       "added_at": "2026-03-02"
     },
     {
-      "title": "YESTERDAY ONCE MORE",
+      "title": "YESTERDAY ONCE MORE (昨日重现)",
       "artist": "Unknown",
       "language": "英文",
       "genre": "流行",
@@ -763,7 +764,7 @@
       "added_at": "2026-03-02"
     },
     {
-      "title": "MY HEART WILL GO ON",
+      "title": "MY HEART WILL GO ON (我心永恒)",
       "artist": "Celine Dion",
       "language": "英文",
       "genre": "流行",
@@ -771,7 +772,7 @@
       "added_at": "2026-03-02"
     },
     {
-      "title": "THE SOUND OF SILENCE",
+      "title": "THE SOUND OF SILENCE (寂静之声)",
       "artist": "Unknown",
       "language": "英文",
       "genre": "流行",
@@ -779,7 +780,7 @@
       "added_at": "2026-03-02"
     },
     {
-      "title": "SHAPE OF MY HEART",
+      "title": "SHAPE OF MY HEART (我心的形状)",
       "artist": "Unknown",
       "language": "英文",
       "genre": "流行",
@@ -787,7 +788,7 @@
       "added_at": "2026-03-02"
     },
     {
-      "title": "LET HER GO",
+      "title": "LET HER GO (让她走)",
       "artist": "Unknown",
       "language": "英文",
       "genre": "流行",
@@ -795,7 +796,7 @@
       "added_at": "2026-03-02"
     },
     {
-      "title": "SOMEBODY THAT I USED TO KNOW",
+      "title": "SOMEBODY THAT I USED TO KNOW (曾经熟悉的人)",
       "artist": "Unknown",
       "language": "英文",
       "genre": "流行",
@@ -803,7 +804,15 @@
       "added_at": "2026-03-02"
     },
     {
-      "title": "DUVET",
+      "title": "DUVET (羽绒被)",
+      "artist": "Unknown",
+      "language": "英文",
+      "genre": "动漫",
+      "access": "免费",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "HAVANA (哈瓦那)",
       "artist": "Unknown",
       "language": "英文",
       "genre": "流行",
@@ -811,15 +820,7 @@
       "added_at": "2026-03-02"
     },
     {
-      "title": "HAVANA",
-      "artist": "Unknown",
-      "language": "英文",
-      "genre": "流行",
-      "access": "免费",
-      "added_at": "2026-03-02"
-    },
-    {
-      "title": "恋愛サーキュレーション",
+      "title": "恋愛サーキュレーション (恋爱循环)",
       "artist": "Unknown",
       "language": "日文",
       "genre": "动漫",
@@ -827,7 +828,7 @@
       "added_at": "2026-03-02"
     },
     {
-      "title": "BABY DON'T CRY",
+      "title": "BABY DON'T CRY (宝贝别哭)",
       "artist": "陈伟霆",
       "language": "中文",
       "genre": "流行",
@@ -835,7 +836,7 @@
       "added_at": "2026-03-02"
     },
     {
-      "title": "TUSA",
+      "title": "TUSA (心痛/分手)",
       "artist": "KAROL G & Nicki Minaj",
       "language": "西语",
       "genre": "流行",
@@ -843,7 +844,7 @@
       "added_at": "2026-03-02"
     },
     {
-      "title": "LA LLORONA",
+      "title": "LA LLORONA (哭泣的女人)",
       "artist": "Unknown",
       "language": "西语",
       "genre": "民谣",
@@ -851,7 +852,7 @@
       "added_at": "2026-03-02"
     },
     {
-      "title": "HIPS DON'T LIE",
+      "title": "HIPS DON'T LIE (腰肢不撒谎)",
       "artist": "Shakira",
       "language": "西语",
       "genre": "流行",
@@ -859,7 +860,7 @@
       "added_at": "2026-03-02"
     },
     {
-      "title": "LES CHAMPS-ELYSEES",
+      "title": "LES CHAMPS-ELYSEES (香榭丽舍)",
       "artist": "Joe Dassin",
       "language": "法语",
       "genre": "流行",
@@ -867,7 +868,7 @@
       "added_at": "2026-03-02"
     },
     {
-      "title": "JE M'APPELLE HÉLÈNE",
+      "title": "JE M'APPELLE HÉLÈNE (我叫海伦)",
       "artist": "Hélène Rollès",
       "language": "法语",
       "genre": "流行",
