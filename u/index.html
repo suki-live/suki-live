@@ -1569,7 +1569,7 @@
     }
 
     // ========================================
-    // ✅ 🔹 函数 2：获取并渲染 B站统计数据 🔹
+    // ✅ 获取并渲染 B站统计数据（含 Worker 代理支持）
     // ========================================
     function fetchBiliStats(mid) {
       const statsEl = document.getElementById('bili-stats');
@@ -1578,23 +1578,25 @@
         return;
       }
 
+      // ✅ 配置：您的 Cloudflare Worker 代理地址
+      // 格式：Worker地址 + ?url= + 编码后的B站API地址
+      const WORKER_PROXY = 'https://suki-live.sunnycherry2023.workers.dev/?url=';
+
       const fmt = (num) => {
         if (num === undefined || num === null) return '-';
-        return Number(num).toLocaleString('zh-CN');  // 千位分隔
+        return Number(num).toLocaleString('zh-CN');
       };
 
       const hideOnError = () => {
-        statsEl.style.display = 'none';
+        if (statsEl) statsEl.style.display = 'none';
       };
 
-      // 并行请求两个接口
+      // ✅ 并行请求两个接口（通过 Worker 代理）
       Promise.all([
-        fetch(`https://api.bilibili.com/x/relation/stat?vmid=${mid}`, {
-          headers: { 'Referer': 'https://space.bilibili.com/' }
-        }).then(r => r.ok ? r.json() : null),
-        fetch(`https://api.bilibili.com/x/space/upstat?mid=${mid}`, {
-          headers: { 'Referer': 'https://space.bilibili.com/' }
-        }).then(r => r.ok ? r.json() : null)
+        fetch(`${WORKER_PROXY}${encodeURIComponent(`https://api.bilibili.com/x/relation/stat?vmid=${mid}`)}`)
+          .then(r => r.ok ? r.json() : null),
+        fetch(`${WORKER_PROXY}${encodeURIComponent(`https://api.bilibili.com/x/space/upstat?mid=${mid}`)}`)
+          .then(r => r.ok ? r.json() : null)
       ])
         .then(([relation, upstat]) => {
           // ✅ 两个接口都失败则隐藏
@@ -1603,7 +1605,7 @@
             return;
           }
 
-          // ✅ 至少一个成功则显示
+          // ✅ 至少一个成功则显示统计栏
           statsEl.style.display = 'flex';
 
           // 渲染各字段（有数据才更新）
