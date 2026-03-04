@@ -616,7 +616,7 @@
       border: 1px solid var(--border);
       border-radius: 12px;
       padding: 1.5rem 2rem;
-      max-width: 320px;
+      max-width: 360px;
       width: 90%;
       text-align: center;
       box-shadow: var(--shadow);
@@ -628,28 +628,81 @@
       margin-bottom: 0.8rem;
     }
 
+    /* ✅ 新增：封面图片样式 */
+    .modal-song-cover {
+      width: 120px;
+      height: 120px;
+      border-radius: 10px;
+      object-fit: cover;
+      background: #edf2f7;
+      margin: 0 auto 0.8rem;
+      display: block;
+      box-shadow: var(--shadow);
+    }
+
     .modal-song-title {
-      font-size: 1rem;
-      color: var(--text-light);
-      margin-bottom: 1.2rem;
-      padding: 0.8rem;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 0.8rem;
+      padding: 0.6rem;
       background: var(--accent-soft);
       border-radius: 8px;
+      line-height: 1.4;
+    }
+
+    /* ✅ 新增：详细信息样式 */
+    .modal-song-info {
+      text-align: left;
+      background: var(--bg);
+      border-radius: 8px;
+      padding: 0.8rem 1rem;
+      margin-bottom: 1.2rem;
+      font-size: 0.85rem;
+    }
+
+    .modal-song-info p {
+      margin: 0.3rem 0;
+      color: var(--text-light);
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .modal-song-info p::before {
+      content: "•";
+      color: var(--accent);
+    }
+
+    .modal-song-info p:empty {
+      display: none;
+    }
+
+    /* 权限标签 */
+    .modal-access-tag {
+      display: inline-block;
+      padding: 0.15rem 0.4rem;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: 500;
     }
 
     .modal-buttons {
       display: flex;
-      gap: 0.8rem;
+      gap: 0.6rem;
       justify-content: center;
+      flex-wrap: wrap;
     }
 
     .modal-btn {
-      padding: 0.5rem 1.2rem;
+      padding: 0.5rem 1rem;
       border: 1px solid var(--border);
       border-radius: 8px;
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       cursor: pointer;
       transition: all 0.2s;
+      flex: 1;
+      min-width: 80px;
     }
 
     .modal-btn-cancel {
@@ -925,6 +978,11 @@
     <div class="modal-content">
       <h3>随机选歌</h3>
       <p class="modal-song-title" id="modal-song-title">歌曲名称</p>
+      <div class="modal-song-info" id="modal-song-info">
+        <p id="modal-song-artist"></p>
+        <p id="modal-song-meta"></p>
+        <p id="modal-song-access"></p>
+      </div>
       <div class="modal-buttons">
         <button class="modal-btn modal-btn-cancel" onclick="closeModal()">确定</button>
         <button class="modal-btn modal-btn-copy" onclick="copyRandomSong()">复制</button>
@@ -1377,25 +1435,71 @@
     }
 
     // ========================================
-    // ✅ 随机选歌：显示弹窗
+    // ✅ 随机选歌：显示弹窗 (修改版)
     // ========================================
     function playRandom() {
       if (!playlistData?.items?.length) {
         alert('暂无可播放的歌曲～');
         return;
       }
-      const randomIndex = Math.floor(Math.random() * playlistData.items.length);
-      currentRandomSong = playlistData.items[randomIndex];
+
+      // ✅ 从当前筛选后的列表中随机
+      const filteredItems = filterSongsLogic(playlistData.items);
+
+      if (!filteredItems.length) {
+        alert('当前筛选条件下暂无可播放的歌曲～');
+        return;
+      }
+
+      const randomIndex = Math.floor(Math.random() * filteredItems.length);
+      currentRandomSong = filteredItems[randomIndex];
+
+      // ✅ 填充弹窗信息
       document.getElementById('modal-song-title').textContent = currentRandomSong.title;
+
+      // 封面
+      const coverEl = document.getElementById('modal-song-cover');
+      if (currentRandomSong.cover) {
+        coverEl.src = currentRandomSong.cover;
+        coverEl.style.display = 'block';
+      } else {
+        coverEl.style.display = 'none';
+      }
+
+      // 歌手
+      const artistEl = document.getElementById('modal-song-artist');
+      artistEl.textContent = currentRandomSong.artist ? `${currentRandomSong.artist}` : '';
+
+      // 语言 + 曲风
+      const metaEl = document.getElementById('modal-song-meta');
+      const metaParts = [];
+      if (currentRandomSong.language) metaParts.push(`${currentRandomSong.language}`);
+      if (currentRandomSong.genre) metaParts.push(`${currentRandomSong.genre}`);
+      metaEl.textContent = metaParts.join('  |  ');
+
+      // 权限
+      const accessEl = document.getElementById('modal-song-access');
+      if (currentRandomSong.access) {
+        accessEl.innerHTML = `<span class="modal-access-tag access-${currentRandomSong.access}">${currentRandomSong.access}</span>`;
+      } else {
+        accessEl.textContent = '';
+      }
+
+      // 显示弹窗
       document.getElementById('random-modal').style.display = 'flex';
     }
 
     // ========================================
-    // ✅ 关闭弹窗
+    // ✅ 关闭弹窗 (修改版)
     // ========================================
     function closeModal() {
       document.getElementById('random-modal').style.display = 'none';
       currentRandomSong = null;
+      // 清空信息（可选）
+      document.getElementById('modal-song-cover').style.display = 'none';
+      document.getElementById('modal-song-artist').textContent = '';
+      document.getElementById('modal-song-meta').textContent = '';
+      document.getElementById('modal-song-access').innerHTML = '';
     }
 
     // ========================================
