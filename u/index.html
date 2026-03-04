@@ -817,12 +817,13 @@
       /* 适配 sticky 导航栏 */
     }
 
-    /* === 🔹 B站数据统计栏 🔹 === */
+    /* === 🔹 B站数据统计栏（精简版）🔹 === */
     .bili-stats {
       display: none;
-      /* ✅ 默认隐藏，JS 提取成功后再显示 */
+      /* 默认隐藏，JS 成功后显示 */
       justify-content: center;
-      gap: 1rem;
+      gap: 2rem;
+      /* ✅ 加大间距，适配两项 */
       margin: 0.6rem 0 0.3rem;
       flex-wrap: wrap;
     }
@@ -831,19 +832,21 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      min-width: 56px;
+      min-width: 64px;
+      /* ✅ 更宽，视觉平衡 */
       padding: 0.2rem 0.4rem;
     }
 
     .bili-stat-value {
-      font-size: 1rem;
+      font-size: 1.1rem;
+      /* ✅ 稍大字号 */
       font-weight: 600;
       color: var(--text);
       line-height: 1.2;
     }
 
     .bili-stat-label {
-      font-size: 0.7rem;
+      font-size: 0.75rem;
       color: var(--text-light);
       margin-top: 0.15rem;
     }
@@ -853,30 +856,24 @@
       transition: color 0.2s;
     }
 
-    /* 加载/错误状态 */
+    /* 加载状态 */
     .bili-stat-value.loading {
       color: var(--text-light);
       font-weight: 400;
     }
 
-    .bili-stat-value.error {
-      color: #e53e3e;
-      font-size: 0.8rem;
-    }
-
     /* 移动端适配 */
     @media (max-width: 640px) {
       .bili-stats {
-        gap: 0.6rem;
-        margin: 0.4rem 0 0.2rem;
+        gap: 1.5rem;
       }
 
       .bili-stat-value {
-        font-size: 0.95rem;
+        font-size: 1rem;
       }
 
       .bili-stat-label {
-        font-size: 0.65rem;
+        font-size: 0.7rem;
       }
     }
   </style>
@@ -888,8 +885,8 @@
     <div id="name" class="name">加载中…</div>
     <div id="tagline" class="tagline"></div>
 
-    <!-- ✅ 🔹 B站数据统计栏（自动插入）🔹 -->
-    <div class="bili-stats" id="bili-stats">
+    <!-- ✅ B站数据统计栏 -->
+    <div class="bili-stats" id="bili-stats" style="display:none;">
       <div class="bili-stat-item">
         <span class="bili-stat-value loading" id="stat-follower">-</span>
         <span class="bili-stat-label">粉丝</span>
@@ -897,14 +894,6 @@
       <div class="bili-stat-item">
         <span class="bili-stat-value loading" id="stat-following">-</span>
         <span class="bili-stat-label">关注</span>
-      </div>
-      <div class="bili-stat-item">
-        <span class="bili-stat-value loading" id="stat-views">-</span>
-        <span class="bili-stat-label">播放</span>
-      </div>
-      <div class="bili-stat-item">
-        <span class="bili-stat-value loading" id="stat-likes">-</span>
-        <span class="bili-stat-label">获赞</span>
       </div>
     </div>
 
@@ -1569,7 +1558,7 @@
     }
 
     // ========================================
-    // ✅ 获取并渲染 B 站统计数据
+    // ✅ 获取并渲染 B站统计数据（精简版：只获取粉丝/关注）
     // ========================================
     function fetchBiliStats(mid) {
       const statsEl = document.getElementById('bili-stats');
@@ -1579,39 +1568,19 @@
       }
 
       const WORKER_PROXY = 'https://suki-live.sunnycherry2023.workers.dev/?url=';
+      const fmt = (num) => num != null ? Number(num).toLocaleString('zh-CN') : '-';
 
-      const fmt = (num) => {
-        if (num === undefined || num === null) return '-';
-        return Number(num).toLocaleString('zh-CN');
-      };
-
-      const hideOnError = () => {
-        if (statsEl) statsEl.style.display = 'none';
-      };
-
-      // ✅ 并行请求两个接口
-      Promise.all([
-        fetch(`${WORKER_PROXY}${encodeURIComponent(`https://api.bilibili.com/x/relation/stat?vmid=${mid}`)}`)
-          .then(async r => {
-            if (!r.ok) return null;
-            const text = await r.text();
-            try { return JSON.parse(text); } catch (e) { return null; }
-          }),
-        fetch(`${WORKER_PROXY}${encodeURIComponent(`https://api.bilibili.com/x/space/upstat?mid=${mid}`)}`)
-          .then(async r => {
-            if (!r.ok) return null;
-            const text = await r.text();
-            try { return JSON.parse(text); } catch (e) { return null; }
-          })
-      ])
-        .then(([relationResp, upstatResp]) => {
-          // ✅ 提取 data 字段
-          const relationData = relationResp?.data || null;
-          const upstatData = upstatResp?.data || null;
-
-          // ✅ 至少有一个成功就显示统计栏
-          if (!relationData && !upstatData) {
-            hideOnError();
+      // ✅ 只请求 relation/stat（粉丝/关注），跳过被风控的 upstat
+      fetch(`${WORKER_PROXY}${encodeURIComponent(`https://api.bilibili.com/x/relation/stat?vmid=${mid}`)}`)
+        .then(async r => {
+          if (!r.ok) throw new Error('Failed');
+          const text = await r.text();
+          return JSON.parse(text);
+        })
+        .then(resp => {
+          const data = resp?.data;
+          if (!data) {
+            statsEl.style.display = 'none';
             return;
           }
 
@@ -1619,55 +1588,19 @@
           statsEl.style.display = 'flex';
 
           // 🔹 渲染粉丝数
-          if (relationData?.follower !== undefined) {
-            document.getElementById('stat-follower').textContent = fmt(relationData.follower);
+          if (data.follower !== undefined) {
+            document.getElementById('stat-follower').textContent = fmt(data.follower);
             document.getElementById('stat-follower').classList.remove('loading');
           }
           // 🔹 渲染关注数
-          if (relationData?.following !== undefined) {
-            document.getElementById('stat-following').textContent = fmt(relationData.following);
+          if (data.following !== undefined) {
+            document.getElementById('stat-following').textContent = fmt(data.following);
             document.getElementById('stat-following').classList.remove('loading');
           }
-          // 🔹 渲染播放数（视频 + 文章）
-          if (upstatData) {
-            const videoViews = upstatData.archive?.view ?? 0;
-            const articleViews = upstatData.article?.view ?? 0;
-            const totalViews = videoViews + articleViews;
-            document.getElementById('stat-views').textContent = fmt(totalViews);
-            document.getElementById('stat-views').classList.remove('loading');
-          }
-          // 🔹 渲染获赞数（✅ 多层兼容解析）
-          if (upstatData) {
-            // 尝试多种路径获取 likes
-            let likes = null;
-            if (typeof upstatData.likes === 'number') {
-              likes = upstatData.likes;                    // ✅ 路径 1: data.likes
-            } else if (typeof upstatData?.archive?.likes === 'number') {
-              likes = upstatData.archive.likes;            // 路径 2: data.archive.likes
-            } else if (typeof upstatResp?.likes === 'number') {
-              likes = upstatResp.likes;                    // 路径 3: 根级别 likes
-            }
-
-            // ✅ 有值才显示，否则显示 0
-            if (likes !== null && likes >= 0) {
-              document.getElementById('stat-likes').textContent = fmt(likes);
-            } else {
-              document.getElementById('stat-likes').textContent = '0';
-            }
-            document.getElementById('stat-likes').classList.remove('loading');
-          }
-
-          // ✅ 调试日志（生产环境可删除）
-          console.log('🔍 B 站数据解析:', {
-            relationData,
-            upstatData,
-            likes: upstatData?.likes,
-            upstatResp
-          });
         })
         .catch(err => {
-          console.warn('B 站数据获取异常:', err);
-          hideOnError();
+          console.warn('B站数据获取失败:', err);
+          statsEl.style.display = 'none';
         });
     }
 
