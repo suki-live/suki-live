@@ -1569,7 +1569,7 @@
     }
 
     // ========================================
-    // ✅ 获取并渲染 B站统计数据（含 Worker 代理支持）
+    // ✅ 获取并渲染 B站统计数据（修复版 - 兼容 Worker 直接返回 JSON）
     // ========================================
     function fetchBiliStats(mid) {
       const statsEl = document.getElementById('bili-stats');
@@ -1578,8 +1578,7 @@
         return;
       }
 
-      // ✅ 配置：您的 Cloudflare Worker 代理地址
-      // 格式：Worker地址 + ?url= + 编码后的B站API地址
+      // ✅ 您的 Cloudflare Worker 代理
       const WORKER_PROXY = 'https://suki-live.sunnycherry2023.workers.dev/?url=';
 
       const fmt = (num) => {
@@ -1591,39 +1590,58 @@
         if (statsEl) statsEl.style.display = 'none';
       };
 
-      // ✅ 并行请求两个接口（通过 Worker 代理）
+      // ✅ 并行请求两个接口
       Promise.all([
+        // 1. 关系统计
         fetch(`${WORKER_PROXY}${encodeURIComponent(`https://api.bilibili.com/x/relation/stat?vmid=${mid}`)}`)
-          .then(r => r.ok ? r.json() : null),
+          .then(async r => {
+            if (!r.ok) return null;
+            const text = await r.text();
+            try { return JSON.parse(text); } catch (e) { return null; }
+          }),
+        // 2. 创作统计
         fetch(`${WORKER_PROXY}${encodeURIComponent(`https://api.bilibili.com/x/space/upstat?mid=${mid}`)}`)
-          .then(r => r.ok ? r.json() : null)
+          .then(async r => {
+            if (!r.ok) return null;
+            const text = await r.text();
+            try { return JSON.parse(text); } catch (e) { return null; }
+          })
       ])
-        .then(([relation, upstat]) => {
-          // ✅ 两个接口都失败则隐藏
-          if (!relation?.data && !upstat?.data) {
+        .then(([relationResp, upstatResp]) => {
+          // ✅ 提取 data 字段（Worker 直接返回 B站原始 JSON）
+          const relationData = relationResp?.data || null;
+          const upstatData = upstatResp?.data || null;
+
+          // ✅ 至少有一个成功就显示统计栏
+          if (!relationData && !upstatData) {
             hideOnError();
             return;
           }
 
-          // ✅ 至少一个成功则显示统计栏
+          // ✅ 显示统计栏
           statsEl.style.display = 'flex';
 
-          // 渲染各字段（有数据才更新）
-          if (relation?.data?.follower !== undefined) {
-            document.getElementById('stat-follower').textContent = fmt(relation.data.follower);
+          // 🔹 渲染粉丝数
+          if (relationData?.follower !== undefined) {
+            document.getElementById('stat-follower').textContent = fmt(relationData.follower);
             document.getElementById('stat-follower').classList.remove('loading');
           }
-          if (relation?.data?.following !== undefined) {
-            document.getElementById('stat-following').textContent = fmt(relation.data.following);
+          // 🔹 渲染关注数
+          if (relationData?.following !== undefined) {
+            document.getElementById('stat-following').textContent = fmt(relationData.following);
             document.getElementById('stat-following').classList.remove('loading');
           }
-          if (upstat?.data?.archive?.view !== undefined) {
-            const totalViews = (upstat.data.archive.view || 0) + (upstat.data.article?.view || 0);
+          // 🔹 渲染播放数（视频 + 文章）
+          if (upstatData) {
+            const videoViews = upstatData.archive?.view ?? 0;
+            const articleViews = upstatData.article?.view ?? 0;
+            const totalViews = videoViews + articleViews;
             document.getElementById('stat-views').textContent = fmt(totalViews);
             document.getElementById('stat-views').classList.remove('loading');
           }
-          if (upstat?.data?.likes !== undefined) {
-            document.getElementById('stat-likes').textContent = fmt(upstat.data.likes);
+          // 🔹 渲染获赞数
+          if (upstatData?.likes !== undefined) {
+            document.getElementById('stat-likes').textContent = fmt(upstatData.likes);
             document.getElementById('stat-likes').classList.remove('loading');
           }
         })
