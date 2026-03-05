@@ -1,0 +1,26 @@
+{
+  "name": "洛澜Aurelia",
+  "tagline": "我会有破碎，但阳光明媚才是我。",
+  "bio": true,
+  "show_playlist": true,
+  "social": [
+    {
+      "label": "B站",
+      "url": "https://space.bilibili.com/1560400081"
+    },
+    {
+      "label": "文档歌单",
+      "url": "https://docs.qq.com/sheet/DQk5SWGtyd0ZGaXpC?tab=BB08J2"
+    },
+    {
+      "label": "舰礼兑换",
+      "url": "https://multidvar.com"
+    },
+    {
+      "label": "歌切搜索",
+      "url": "https://www.kdocs.cn/etapps/query/q/Ic0VcoJi"
+    }
+  ],
+  "created_at": "2026-03-04",
+  "updated_at": "2026-03-04"
+}
