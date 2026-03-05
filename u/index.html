@@ -524,6 +524,16 @@
       font-size: 0.85rem;
     }
 
+    .song-note {
+      font-size: 0.8rem;
+      color: var(--text-light);
+      margin-top: 0.25rem;
+      font-style: italic;
+      line-height: 1.4;
+      word-break: break-all;
+      /* 防止长备注撑破卡片 */
+    }
+
     .song-link {
       color: var(--accent);
       text-decoration: none;
@@ -792,6 +802,33 @@
         margin-top: 0.2rem;
       }
 
+      /* 网格视图下的备注微调 */
+      .grid-view .song-note {
+        font-size: 0.75rem;
+        /* 兼容旧版 WebKit 内核 */
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        /* ✅ 新增：标准属性，供新式浏览器使用 */
+        line-clamp: 2;
+        overflow: hidden;
+      }
+
+      /* 弹窗内的备注样式 */
+      .modal-song-note {
+        font-size: 0.85rem;
+        color: var(--text-light);
+        margin-top: 0.4rem;
+        padding-top: 0.4rem;
+        border-top: 1px dashed var(--border);
+        font-style: italic;
+        text-align: left;
+      }
+
+      .modal-song-note:empty {
+        display: none;
+      }
+
       .social-links {
         gap: 0.4rem;
       }
@@ -986,6 +1023,7 @@
         <p id="modal-song-artist"></p>
         <p id="modal-song-meta"></p>
         <p id="modal-song-access"></p>
+        <p id="modal-song-note" class="modal-song-note"></p>
       </div>
       <!-- 按钮 -->
       <div class="modal-buttons">
@@ -1172,7 +1210,7 @@
             <div class="playlist-filters">
               <!-- 搜索框 -->
               <div class="search-box">
-                <input type="text" id="song-search" class="search-input" placeholder="搜索歌名/歌手/曲风..." oninput="filterSongs()">
+                <input type="text" id="song-search" class="search-input" placeholder="搜索歌名/歌手/曲风/备注..." oninput="filterSongs()">
                 <button class="search-clear" onclick="clearSearch()">✕</button>
               </div>
               <!-- 筛选下拉框 -->
@@ -1317,6 +1355,7 @@
               <div class="song-meta">
                 ${escapeHtml(song.artist || '')}${song.artist && song.source ? ' · ' : ''}${escapeHtml(song.source || '')}
                 ${song.language || song.genre ? `<br/>${song.language || ''}${song.language && song.genre ? ' · ' : ''}${song.genre || ''}` : ''}
+                ${song.note ? `<div class="song-note">${escapeHtml(song.note)}</div>` : ''}
               </div>
             </div>
             <div class="song-actions">
@@ -1337,6 +1376,7 @@
                 ${escapeHtml(song.artist || '')}${song.artist && song.source ? ' · ' : ''}${escapeHtml(song.source || '')}
                 ${song.added_at ? ` · 添加于 ${song.added_at}` : ''}
                 ${song.language || song.genre ? `<br/>${song.language || ''}${song.language && song.genre ? ' · ' : ''}${song.genre || ''}` : ''}
+                ${song.note ? `<div class="song-note">${escapeHtml(song.note)}</div>` : ''}
               </div>
             </div>
             ${song.url ? `<a class="song-link" href="${escapeHtml(song.url)}" target="_blank" rel="noopener" onclick="event.stopPropagation()">播放</a>` : ''}
@@ -1492,6 +1532,15 @@
         accessEl.textContent = '';
       }
 
+      const noteEl = document.getElementById('modal-song-note');
+      if (currentRandomSong.note) {
+        noteEl.textContent = currentRandomSong.note;
+        noteEl.style.display = 'block';
+      } else {
+        noteEl.textContent = '';
+        noteEl.style.display = 'none';
+      }
+
       // 显示弹窗
       document.getElementById('random-modal').style.display = 'flex';
     }
@@ -1568,7 +1617,8 @@
           song.title?.toLowerCase().includes(searchText) ||
           song.artist?.toLowerCase().includes(searchText) ||
           song.genre?.toLowerCase().includes(searchText) ||
-          song.language?.toLowerCase().includes(searchText);
+          song.language?.toLowerCase().includes(searchText) ||
+          (song.note && song.note.toLowerCase().includes(searchText));
         const matchLang = !filterLang || song.language === filterLang;
         const matchGenre = !filterGenre || song.genre === filterGenre;
         const matchAccess = !filterAccess || song.access === filterAccess;

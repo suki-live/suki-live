@@ -1,0 +1,3282 @@
+{
+  "title": "精选歌单合集",
+  "description": "中文·日文 · 流行·古风·整活 · 多元音乐合集",
+  "items": [
+    {
+      "title": "煌めく瞬間に捕われて (捕捉闪耀的瞬间)",
+      "artist": "MANISH",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "捕捉闪耀的瞬间",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "世界が終るまでは (直到世界的尽头)",
+      "artist": "WANDS",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "直到世界的尽头",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "君が好きだと叫びたい (好想大声说爱你)",
+      "artist": "BAAD",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "好想大声说爱你",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "あなただけ見つめてる (只注视着你)",
+      "artist": "大黒摩季",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "只注视着你",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "Prover (Prover)",
+      "artist": "milet",
+      "language": "日文",
+      "genre": "J-POP",
+      "access": "免费",
+      "note": "Prover",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "Tell me (Tell me)",
+      "artist": "milet",
+      "language": "日文",
+      "genre": "J-POP",
+      "access": "免费",
+      "note": "Tell me",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "Anytime,Anywhere (Anytime,Anywhere)",
+      "artist": "milet",
+      "language": "日文",
+      "genre": "J-POP",
+      "access": "免费",
+      "note": "Anytime,Anywhere",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "bliss (bliss)",
+      "artist": "milet",
+      "language": "日文",
+      "genre": "J-POP",
+      "access": "免费",
+      "note": "bliss",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "December (December)",
+      "artist": "milet",
+      "language": "日文",
+      "genre": "J-POP",
+      "access": "免费",
+      "note": "December",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "Departures ~あなたにおくるアイの歌~ (Departures ~赠于你的爱之歌~)",
+      "artist": "EGOIST",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "Departures ~赠于你的爱之歌~",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "Euterpe/エウテルペ (Euterpe)",
+      "artist": "EGOIST",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "Euterpe",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "ninelie (ninelie)",
+      "artist": "Aimer/EGOIST",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "ninelie",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "Ref:rain (恋如雨止)",
+      "artist": "Aimer",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "恋如雨止",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "七月之翼 (七月之翼)",
+      "artist": "Aimer",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "七月之翼",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "あなたに出会わなければ~夏雪冬花 (夏雪冬花)",
+      "artist": "Aimer",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "夏雪冬花",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "茜さす (夕晖)",
+      "artist": "Aimer",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "夕晖",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "春はゆく (春逝)",
+      "artist": "Aimer",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "春逝",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "I beg you (I beg you)",
+      "artist": "Aimer",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "I beg you",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "六等星の夜 (六等星之夜)",
+      "artist": "Aimer",
+      "language": "日文",
+      "genre": "J-POP",
+      "access": "免费",
+      "note": "六等星之夜",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "カタオモイ/拉胯 (单相思)",
+      "artist": "Aimer",
+      "language": "日文",
+      "genre": "J-POP",
+      "access": "免费",
+      "note": "单相思",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "星屑ビーナス (星尘中的维纳斯)",
+      "artist": "Aimer",
+      "language": "日文",
+      "genre": "J-POP",
+      "access": "免费",
+      "note": "星尘中的维纳斯",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "STAND-ALONE (独自伫立)",
+      "artist": "Aimer",
+      "language": "日文",
+      "genre": "J-POP",
+      "access": "免费",
+      "note": "独自伫立",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "Brave Shine (勇敢之光)",
+      "artist": "Aimer",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "勇敢之光",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "LAST STARDUST (最后的星尘)",
+      "artist": "Aimer",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "最后的星尘",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "残響散歌/TV ver. (残響散歌)",
+      "artist": "Aimer",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "残響散歌",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "竈門炭治郎のうた (灶门炭治郎的歌)",
+      "artist": "椎名豪/中川奈美",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "灶门炭治郎的歌",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "竈門禰豆子のうた (灶门祢豆子的歌)",
+      "artist": "椎名豪/中川奈美",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "灶门祢豆子的歌",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "紅蓮華/TV ver. (红莲华)",
+      "artist": "LiSA",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "红莲华",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "炎 TV ver. (炎)",
+      "artist": "LiSA",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "炎",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "一番の宝物 (一番宝物)",
+      "artist": "LiSA",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "一番宝物",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "unlasting (昙花之恋)",
+      "artist": "LiSA",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "昙花之恋",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "EXEC_COSMOFLIPS (EXEC_COSMOFLIPS)",
+      "artist": "KOKIA 吉田亚纪子",
+      "language": "日文",
+      "genre": "游戏",
+      "access": "免费",
+      "note": "EXEC_COSMOFLIPS",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "ありがとう (泪的告白)",
+      "artist": "KOKIA 吉田亚纪子",
+      "language": "日文",
+      "genre": "J-POP",
+      "access": "免费",
+      "note": "泪的告白",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "調和 oto~with reflection~ (調和 oto~with reflection~)",
+      "artist": "KOKIA 吉田亚纪子",
+      "language": "日文",
+      "genre": "游戏",
+      "access": "免费",
+      "note": "調和 oto~with reflection~",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "フクロウ ~フクロウが知らせる客が来たと (猫头鹰的来客通知)",
+      "artist": "KOKIA 吉田亚纪子",
+      "language": "日文",
+      "genre": "游戏",
+      "access": "免费",
+      "note": "猫头鹰的来客通知",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "水の证 (水之证)",
+      "artist": "田中理惠",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "水之证",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "静かな夜に (在寂静之夜)",
+      "artist": "田中理惠",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "在寂静之夜",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "暁の車 (晓之车)",
+      "artist": "南里侑香",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "晓之车",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "ETERNAL WIND~ほほえみは光る風の中~ (ETERNAL WIND～在光芒的风中微笑～)",
+      "artist": "森口博子",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "ETERNAL WIND～在光芒的风中微笑～",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "水の星へ愛をこめて (致水之星满怀的爱意)",
+      "artist": "森口博子",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "致水之星满怀的爱意",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "未来の二人に (未来的两人)",
+      "artist": "米仓千寻",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "未来的两人",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "あなたがいた森 (曾有你的森林)",
+      "artist": "樹海",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "曾有你的森林",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "空は高く風は歌う (天高云阔风语如歌)",
+      "artist": "春奈るな",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "天高云阔风语如歌",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "to the beginning (回到原点)",
+      "artist": "Kalafina",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "回到原点",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "満天 (满天)",
+      "artist": "Kalafina",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "满天",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "光の旋律 (光的旋律)",
+      "artist": "Kalafina",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "光的旋律",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "ARIA (ARIA)",
+      "artist": "Kalafina",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "ARIA",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "oblivious (oblivious)",
+      "artist": "Kalafina",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "oblivious",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "seventh heaven (第七天堂)",
+      "artist": "Kalafina",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "第七天堂",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "Gloria (荣耀颂歌)",
+      "artist": "Kalafina",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "荣耀颂歌",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "绯色月下、狂咲の绝 (绯色月下，狂笑不绝)",
+      "artist": "nayuta",
+      "language": "日文",
+      "genre": "二次元",
+      "access": "免费",
+      "note": "绯色月下，狂笑不绝",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "色は匂へど散りぬるを (繁花锦丽 终或凋零)",
+      "artist": "森永真由美",
+      "language": "日文",
+      "genre": "二次元",
+      "access": "免费",
+      "note": "繁花锦丽 终或凋零",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "魂のルフラン (魂之轮回)",
+      "artist": "高橋洋子",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "魂之轮回",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "残酷な天使のテーゼ (残酷天使的行动纲领)",
+      "artist": "高橋洋子",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "残酷天使的行动纲领",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "one last kiss (卢浮宫（？）最终一吻)",
+      "artist": "宇多田ヒカル",
+      "language": "日文",
+      "genre": "J-POP",
+      "access": "免费",
+      "note": "卢浮宫（？）最终一吻",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "first love (初恋)",
+      "artist": "宇多田ヒカル",
+      "language": "日文",
+      "genre": "J-POP",
+      "access": "免费",
+      "note": "初恋",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "stay gold (stay gold)",
+      "artist": "宇多田ヒカル",
+      "language": "日文",
+      "genre": "J-POP",
+      "access": "免费",
+      "note": "stay gold",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "さよならソリティア (再见了 Solitia)",
+      "artist": "HIMEKA",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "再见了 Solitia",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "Stories (无尽故事)",
+      "artist": "黒石ひとみ",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "无尽故事",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "レクイエム (安魂曲)",
+      "artist": "柊奈绪",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "安魂曲",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "名もなき種 (无名的种子)",
+      "artist": "阿兰",
+      "language": "日文",
+      "genre": "J-POP",
+      "access": "免费",
+      "note": "无名的种子",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "悲しみ雪に眠る (哀伤沉眠雪中)",
+      "artist": "阿兰",
+      "language": "日文",
+      "genre": "J-POP",
+      "access": "免费",
+      "note": "哀伤沉眠雪中",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "いのちの名前 (生命的名字)",
+      "artist": "木村弓",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "生命的名字",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "好き好き大好き (喜欢喜欢最喜欢)",
+      "artist": "戸川純",
+      "language": "日文",
+      "genre": "流行",
+      "access": "免费",
+      "note": "喜欢喜欢最喜欢",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "蛹化の女 (蛹化的女人)",
+      "artist": "戸川純",
+      "language": "日文",
+      "genre": "流行",
+      "access": "免费",
+      "note": "蛹化的女人",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "LilaS (紫丁香)",
+      "artist": "たかはしほのか",
+      "language": "日文",
+      "genre": "二次元",
+      "access": "免费",
+      "note": "紫丁香",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "月光石 (月光石)",
+      "artist": "ルルティア",
+      "language": "日文",
+      "genre": "J-POP",
+      "access": "免费",
+      "note": "月光石",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "Adesso e fortuna ～炎と永遠 (炎と永遠)",
+      "artist": "新居昭乃",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "炎と永遠",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "LILIUM (百合)",
+      "artist": "小黑久美子",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "百合",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "Sis puella magica! (成为魔法少女吧！)",
+      "artist": "伊東恵里",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "成为魔法少女吧！",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "Cras numquam scire (丹特丽安的书架)",
+      "artist": "Yucca / 小野大輔",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "丹特丽安的书架",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "恋をしたのは (关于恋爱的事)",
+      "artist": "aiko",
+      "language": "日文",
+      "genre": "J-POP",
+      "access": "免费",
+      "note": "关于恋爱的事",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "旅の途中 (旅途之中)",
+      "artist": "清浦夏実",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "旅途之中",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "紙一重 (一纸之隔)",
+      "artist": "Uru",
+      "language": "日文",
+      "genre": "J-POP",
+      "access": "免费",
+      "note": "一纸之隔",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "フリージア (小苍兰)",
+      "artist": "Uru",
+      "language": "日文",
+      "genre": "J-POP",
+      "access": "免费",
+      "note": "小苍兰",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "謎 (谜题)",
+      "artist": "小松未步",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "谜题",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "運命のルーレット廻して (转动命运之轮)",
+      "artist": "ZARD",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "转动命运之轮",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "光と影のロマン (光与影的浪漫)",
+      "artist": "宇徳敬子",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "光与影的浪漫",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "君がいない夏 (没有你的盛夏)",
+      "artist": "DEEN",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "没有你的盛夏",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "世界 止めて (世界暂停吧)",
+      "artist": "竹井詩織里",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "世界暂停吧",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "Dream x Dream (Dream x Dream)",
+      "artist": "愛内里菜",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "Dream x Dream",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "I still believe ～ため息 (I still believe～叹息)",
+      "artist": "滴草由実",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "I still believe～叹息",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "Secret of my heart (心中的秘密)",
+      "artist": "倉木麻衣",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "心中的秘密",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "きみと恋のままで終われない いつも夢のままじゃいられない (恋人以上，无法满足的梦)",
+      "artist": "倉木麻衣",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "恋人以上，无法满足的梦",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "渡月橋 ～君 想ふ～ (渡月桥思君)",
+      "artist": "倉木麻衣",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "渡月桥思君",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "Time after time ～花舞う街で～ (时过境迁～在落花纷飞的街道上～)",
+      "artist": "倉木麻衣",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "时过境迁～在落花纷飞的街道上～",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "Always (Always)",
+      "artist": "倉木麻衣",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "Always",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "風のららら (风的啦啦啦)",
+      "artist": "倉木麻衣",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "风的啦啦啦",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "Revive TV ver. (救赎)",
+      "artist": "倉木麻衣",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "救赎",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "もう一度 (再一次)",
+      "artist": "倉木麻衣",
+      "language": "日文",
+      "genre": "J-POP",
+      "access": "免费",
+      "note": "再一次",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "1000 万回のキス (千万次的亲吻)",
+      "artist": "倉木麻衣",
+      "language": "日文",
+      "genre": "J-POP",
+      "access": "免费",
+      "note": "千万次的亲吻",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "Snow halation (雪之光晕)",
+      "artist": "μ's",
+      "language": "日文",
+      "genre": "二次元",
+      "access": "免费",
+      "note": "雪之光晕",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "START:DASH!! (START:DASH!!)",
+      "artist": "μ's",
+      "language": "日文",
+      "genre": "二次元",
+      "access": "免费",
+      "note": "START:DASH!!",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "輝夜の城で踊りたい (欲于辉夜之城起舞)",
+      "artist": "μ's",
+      "language": "日文",
+      "genre": "二次元",
+      "access": "免费",
+      "note": "欲于辉夜之城起舞",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "愛してるばんざーい! (爱你万岁！)",
+      "artist": "μ's",
+      "language": "日文",
+      "genre": "二次元",
+      "access": "免费",
+      "note": "爱你万岁！",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "友情ノーチェンジ (友情不变)",
+      "artist": "μ's",
+      "language": "日文",
+      "genre": "二次元",
+      "access": "免费",
+      "note": "友情不变",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "だってだって噫無情 (啊，太无情)",
+      "artist": "μ's",
+      "language": "日文",
+      "genre": "二次元",
+      "access": "免费",
+      "note": "啊，太无情",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "soldier game (soldier game)",
+      "artist": "μ's",
+      "language": "日文",
+      "genre": "二次元",
+      "access": "免费",
+      "note": "soldier game",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "夏、終わらないで (夏天、请不要结束)",
+      "artist": "BiBi",
+      "language": "日文",
+      "genre": "二次元",
+      "access": "免费",
+      "note": "夏天、请不要结束",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "冬がくれた予感 (冬日的预感)",
+      "artist": "BiBi",
+      "language": "日文",
+      "genre": "二次元",
+      "access": "免费",
+      "note": "冬日的预感",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "秋のあなたの空遠く (秋之彼端路遥远)",
+      "artist": "lily white",
+      "language": "日文",
+      "genre": "二次元",
+      "access": "免费",
+      "note": "秋之彼端路遥远",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "微熱から Mystery (来自微热的 Mystery)",
+      "artist": "lily white",
+      "language": "日文",
+      "genre": "二次元",
+      "access": "免费",
+      "note": "来自微热的 Mystery",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "キミのくせに! (明明只是你)",
+      "artist": "lily white",
+      "language": "日文",
+      "genre": "二次元",
+      "access": "免费",
+      "note": "明明只是你",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "まほうつかいはじめました (我开始做魔法使了！)",
+      "artist": "徳井青空",
+      "language": "日文",
+      "genre": "二次元",
+      "access": "免费",
+      "note": "我开始做魔法使了！",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "なわとび (跳绳)",
+      "artist": "久保ユリカ",
+      "language": "日文",
+      "genre": "二次元",
+      "access": "免费",
+      "note": "跳绳",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "Life is Like a Boat (生之如舟)",
+      "artist": "Rie fu",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "生之如舟",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "ほうき星 (彗星)",
+      "artist": "ユンナ",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "彗星",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "Rolling star (Rolling star)",
+      "artist": "YUI",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "Rolling star",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "ヒトヒラのハナビラ (一片花瓣)",
+      "artist": "STEREOPONY/",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "一片花瓣",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "少女 S (少女 s)",
+      "artist": "SCANDAL",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "少女 s",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "HANABI (花火)",
+      "artist": "いきものがかり 生物股长",
+      "language": "日文",
+      "genre": "J-POP",
+      "access": "免费",
+      "note": "花火",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "ブルーバード (青鸟)",
+      "artist": "いきものがかり 生物股长",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "青鸟",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "ホタルノヒカリ (萤之光)",
+      "artist": "いきものがかり 生物股长",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "萤之光",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "うたかた花火 (泡沫花火)",
+      "artist": "supercell",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "泡沫花火",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "花は桜 君は美し (樱花飞雪 最美是你)",
+      "artist": "いきものがかり 生物股长",
+      "language": "日文",
+      "genre": "J-POP",
+      "access": "免费",
+      "note": "樱花飞雪 最美是你",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "YELL (YELL)",
+      "artist": "いきものがかり 生物股长",
+      "language": "日文",
+      "genre": "J-POP",
+      "access": "免费",
+      "note": "YELL",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "SAKURA (SAKURA)",
+      "artist": "いきものがかり 生物股长",
+      "language": "日文",
+      "genre": "J-POP",
+      "access": "免费",
+      "note": "SAKURA",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "笑顔 (笑颜)",
+      "artist": "いきものがかり 生物股长",
+      "language": "日文",
+      "genre": "J-POP",
+      "access": "免费",
+      "note": "笑颜",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "めざせポケモンマスター (目标是宝可梦大师)",
+      "artist": "松本梨香",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "目标是宝可梦大师",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "ニャースのうた (喵喵之歌)",
+      "artist": "犬山イヌコ",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "喵喵之歌",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "Butter-Fly (Butter-Fly)",
+      "artist": "和田光司",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "Butter-Fly",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "brave heart (brave heart)",
+      "artist": "宮崎歩",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "brave heart",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "Break up! (Break up!)",
+      "artist": "宮崎歩",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "Break up!",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "keep on (keep on)",
+      "artist": "前田愛",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "keep on",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "I wish (I wish)",
+      "artist": "前田愛",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "I wish",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "いつも いつでも (总是 无论什么时候)",
+      "artist": "前田愛",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "总是 无论什么时候",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "アシタハアタシノカゼガフク (我的未来不是梦)",
+      "artist": "前田愛",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "我的未来不是梦",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "オレンジ (orange)",
+      "artist": "7!!",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "orange",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "光るなら (若能绽放光芒)",
+      "artist": "Goose house",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "若能绽放光芒",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "オトノナルホウヘ→ (向着声音的方向前进→)",
+      "artist": "Goose house",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "向着声音的方向前进→",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "冬のエピローグ (冬之终章)",
+      "artist": "Goose house",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "冬之终章",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "十六夜涙 TV ver. (十六夜泪)",
+      "artist": "吉岡亜衣加",
+      "language": "日文",
+      "genre": "游戏",
+      "access": "免费",
+      "note": "十六夜泪",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "君ノ記憶 TV ver. (君之记忆)",
+      "artist": "mao",
+      "language": "日文",
+      "genre": "游戏",
+      "access": "免费",
+      "note": "君之记忆",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "極楽浄土 (极乐净土)",
+      "artist": "GARNiDELiA",
+      "language": "日文",
+      "genre": "二次元",
+      "access": "免费",
+      "note": "极乐净土",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "風になる (幻化成风)",
+      "artist": "辻亚弥乃",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "幻化成风",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "アイドル (偶像)",
+      "artist": "YOASOBI",
+      "language": "日文",
+      "genre": "J-POP",
+      "access": "免费",
+      "note": "偶像",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "群青 (群青)",
+      "artist": "YOASOBI",
+      "language": "日文",
+      "genre": "J-POP",
+      "access": "免费",
+      "note": "群青",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "怪物 (怪物)",
+      "artist": "YOASOBI",
+      "language": "日文",
+      "genre": "J-POP",
+      "access": "免费",
+      "note": "怪物",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "たぶん (大概)",
+      "artist": "YOASOBI",
+      "language": "日文",
+      "genre": "J-POP",
+      "access": "免费",
+      "note": "大概",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "ほろよい (微醺)",
+      "artist": "さんひ",
+      "language": "日文",
+      "genre": "J-POP",
+      "access": "免费",
+      "note": "微醺",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "愛してる (我爱你)",
+      "artist": "高铃",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "我爱你",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "夏夕空 (夏夕空)",
+      "artist": "中孝介",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "夏夕空",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "only my railgun (only my railgun)",
+      "artist": "fripSide",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "only my railgun",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "届かない恋 (届不到的爱)",
+      "artist": "上原れな",
+      "language": "日文",
+      "genre": "游戏",
+      "access": "免费",
+      "note": "届不到的爱",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "WHITE ALBUM (白色相簿)",
+      "artist": "平野绫",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "白色相簿",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "Misa no Uta (弥莎的歌)",
+      "artist": "平野绫",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "弥莎的歌",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "すずめ feat.十明 (铃芽之旅)",
+      "artist": "RADWIMPS/十明",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "铃芽之旅",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "前前前世（Slow Ver.） (前前前世)",
+      "artist": "泠鸢 yousa",
+      "language": "日文",
+      "genre": "二次元",
+      "access": "免费",
+      "note": "前前前世",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "One more time, One more chance (愿往事重来)",
+      "artist": "山崎まさよし",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "愿往事重来",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "打ち上げ花火 (打上花火)",
+      "artist": "Daoko / 米津玄師",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "打上花火",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "小さな恋のうた (小小恋歌)",
+      "artist": "高橋李依",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "小小恋歌",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "一番綺麗な私を (将最美的我)",
+      "artist": "中岛美嘉",
+      "language": "日文",
+      "genre": "J-POP",
+      "access": "免费",
+      "note": "将最美的我",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "桜色舞うころ (樱花纷飞时)",
+      "artist": "中岛美嘉",
+      "language": "日文",
+      "genre": "J-POP",
+      "access": "免费",
+      "note": "樱花纷飞时",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "雪の華 (雪之华)",
+      "artist": "中岛美嘉",
+      "language": "日文",
+      "genre": "J-POP",
+      "access": "免费",
+      "note": "雪之华",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "僕が死のうと思ったのは (一了百了)",
+      "artist": "中岛美嘉",
+      "language": "日文",
+      "genre": "J-POP",
+      "access": "免费",
+      "note": "一了百了",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "ORION (ORION)",
+      "artist": "中岛美嘉",
+      "language": "日文",
+      "genre": "J-POP",
+      "access": "免费",
+      "note": "ORION",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "ALWAYS (ALWAYS)",
+      "artist": "中岛美嘉",
+      "language": "日文",
+      "genre": "J-POP",
+      "access": "免费",
+      "note": "ALWAYS",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "FIND THE WAY (FIND THE WAY)",
+      "artist": "中岛美嘉",
+      "language": "日文",
+      "genre": "J-POP",
+      "access": "免费",
+      "note": "FIND THE WAY",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "銀の龍の背に乗って (骑在银龙的背上)",
+      "artist": "中岛美雪",
+      "language": "日文",
+      "genre": "J-POP",
+      "access": "免费",
+      "note": "骑在银龙的背上",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "不可思議のカルテ (不可思议的病历)",
+      "artist": "瀬戸麻沙美/东山奈央/种崎敦美/内田真礼",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "不可思议的病历",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "冷たい部屋、一人 (冰冷的房间 孤独一人)",
+      "artist": "小松未可子",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "冰冷的房间 孤独一人",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "美しき残酷な世界 (残酷又美丽的世界)",
+      "artist": "日笠阳子",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "残酷又美丽的世界",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "ガヴリールの数え歌 (数珈百璃之歌)",
+      "artist": "大西沙織",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "数珈百璃之歌",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "FIRE BIRD (火鸟)",
+      "artist": "Roselia",
+      "language": "日文",
+      "genre": "二次元",
+      "access": "免费",
+      "note": "火鸟",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "I SAY YES (I SAY YES)",
+      "artist": "ICHIKO",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "I SAY YES",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "still doll (still doll)",
+      "artist": "分島花音",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "still doll",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "departure! (departure!)",
+      "artist": "小野正利",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "departure!",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "silky heart (silky heart)",
+      "artist": "堀江由衣",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "silky heart",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "ホーリーナイト (神圣夜)",
+      "artist": "钉宫理惠/喜多村英梨 (きたむら えり)",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "神圣夜",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "恋愛サーキュレーション (恋爱循环)",
+      "artist": "花澤香菜",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "恋爱循环",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "happy endings (happy endings)",
+      "artist": "花澤香菜",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "happy endings",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "嘟嘟噜 (嘟嘟噜)",
+      "artist": "花澤香菜",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "嘟嘟噜",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "わたしの声 (我的声音)",
+      "artist": "水瀬いのり",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "我的声音",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "玉子の中にはなにがある (鸡蛋里有什么)",
+      "artist": "内山昂輝",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "鸡蛋里有什么",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "For フルーツバスケット (水果篮子)",
+      "artist": "冈崎律子",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "水果篮子",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "with“you”－絆－ (you)",
+      "artist": "保志総一朗",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "you",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "you (you)",
+      "artist": "雪野五月",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "you",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "奈落の花 (地狱之花)",
+      "artist": "島みやえい子",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "地狱之花",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "ひぐらしのなく頃に (寒蝉鸣泣之时)",
+      "artist": "島みやえい子",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "寒蝉鸣泣之时",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "おどるポンポコリン (大家来跳舞)",
+      "artist": "B.B.Queens",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "大家来跳舞",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "ドラえもんのうた (哆啦 A 梦之歌)",
+      "artist": "大杉久美子",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "哆啦 A 梦之歌",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "Growing! (Growing!)",
+      "artist": "佐藤しずく",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "Growing!",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "别れ 1940 (再见，1940)",
+      "artist": "深津絵里",
+      "language": "日文",
+      "genre": "流行",
+      "access": "免费",
+      "note": "再见，1940",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "今晩はお月さん (晚上好，月亮)",
+      "artist": "Humbert Humbert",
+      "language": "日文",
+      "genre": "流行",
+      "access": "免费",
+      "note": "晚上好，月亮",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "日が落ちるまで (日落之前)",
+      "artist": "Humbert Humbert",
+      "language": "日文",
+      "genre": "流行",
+      "access": "免费",
+      "note": "日落之前",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "HIKARI (光)",
+      "artist": "ELISA",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "光",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "だんご大家族 (团子大家族)",
+      "artist": "茶太",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "团子大家族",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "なきむし。 (爱哭鬼)",
+      "artist": "沢井美空",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "爱哭鬼",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "secret base (secret base ～你所赠予之物～)",
+      "artist": "茅野愛衣",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "secret base ～你所赠予之物～",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "美しきもの (美丽之物)",
+      "artist": "吉田 有希",
+      "language": "日文",
+      "genre": "二次元",
+      "access": "免费",
+      "note": "美丽之物",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "ガーネット (石榴石)",
+      "artist": "奥华子",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "石榴石",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "変わらないもの (不变之物)",
+      "artist": "奥华子",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "不变之物",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "初恋 (初恋)",
+      "artist": "奥华子",
+      "language": "日文",
+      "genre": "J-POP",
+      "access": "免费",
+      "note": "初恋",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "冬花火 (冬花火)",
+      "artist": "奥华子",
+      "language": "日文",
+      "genre": "J-POP",
+      "access": "免费",
+      "note": "冬花火",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "悠哉山歌大王 (悠哉山歌大王)",
+      "artist": "JYTJiayu",
+      "language": "日文",
+      "genre": "流行",
+      "access": "免费",
+      "note": "悠哉山歌大王",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "かくしん的☆めたまるふぉ～ぜっ！ (革新性的☆小埋变身)",
+      "artist": "田中あいみ",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "革新性的☆小埋变身",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "Lemon (柠檬)",
+      "artist": "米津玄師",
+      "language": "日文",
+      "genre": "J-POP",
+      "access": "免费",
+      "note": "柠檬",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "Silly (silly)",
+      "artist": "家入レオ",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "silly",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "沙羅双樹 (娑罗双树)",
+      "artist": "岛谷瞳",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "娑罗双树",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "みちしるべ (路标)",
+      "artist": "茅原实里",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "路标",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "Dearest (最爱)",
+      "artist": "滨崎步",
+      "language": "日文",
+      "genre": "J-POP",
+      "access": "免费",
+      "note": "最爱",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "Every Heart -ミンナノキモチ- (everyheart)",
+      "artist": "BoA",
+      "language": "日文",
+      "genre": "J-POP",
+      "access": "免费",
+      "note": "everyheart",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "冷めたスープ (冷汤)",
+      "artist": "柴田淳",
+      "language": "日文",
+      "genre": "J-POP",
+      "access": "免费",
+      "note": "冷汤",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "東京 (东京)",
+      "artist": "柴田淳",
+      "language": "日文",
+      "genre": "J-POP",
+      "access": "免费",
+      "note": "东京",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "秋桜 (秋樱)",
+      "artist": "柴田淳",
+      "language": "日文",
+      "genre": "J-POP",
+      "access": "免费",
+      "note": "秋樱",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "好き (爱你)",
+      "artist": "杉本エマ",
+      "language": "日文",
+      "genre": "流行",
+      "access": "免费",
+      "note": "爱你",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "瞬き (眨眼)",
+      "artist": "back number",
+      "language": "日文",
+      "genre": "J-POP",
+      "access": "免费",
+      "note": "眨眼",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "クリスマスソング (Christmas song)",
+      "artist": "back number",
+      "language": "日文",
+      "genre": "J-POP",
+      "access": "免费",
+      "note": "Christmas song",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "Plastic Love (塑料爱)",
+      "artist": "竹内まりや",
+      "language": "日文",
+      "genre": "J-POP",
+      "access": "免费",
+      "note": "塑料爱",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "明日への手紙 (写给明天的信)",
+      "artist": "手嶌葵",
+      "language": "日文",
+      "genre": "J-POP",
+      "access": "免费",
+      "note": "写给明天的信",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "朝ごはんの歌 (早餐歌)",
+      "artist": "手嶌葵",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "早餐歌",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "テルーの唄 (特露之歌)",
+      "artist": "手嶌葵",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "特露之歌",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "別の人 (别人)",
+      "artist": "手嶌葵",
+      "language": "日文",
+      "genre": "J-POP",
+      "access": "免费",
+      "note": "别人",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "虹 (彩虹)",
+      "artist": "手嶌葵",
+      "language": "日文",
+      "genre": "J-POP",
+      "access": "免费",
+      "note": "彩虹",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "さよならの夏～コクリコ坂から～ (道别之夏，虞美人盛开的山坡)",
+      "artist": "手嶌葵",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "道别之夏，虞美人盛开的山坡",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "輝きの庭～I'm not alone～ (輝きの庭～I'm not alone～)",
+      "artist": "手嶌葵",
+      "language": "日文",
+      "genre": "J-POP",
+      "access": "免费",
+      "note": "輝きの庭～I'm not alone～",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "moonlight (月光)",
+      "artist": "沐月",
+      "language": "日文",
+      "genre": "J-POP",
+      "access": "免费",
+      "note": "月光",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "summertime (夏日时光)",
+      "artist": "沐月",
+      "language": "日文",
+      "genre": "J-POP",
+      "access": "免费",
+      "note": "夏日时光",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "ENDLESS STORY (永无止尽的爱)",
+      "artist": "伊藤由奈",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "永无止尽的爱",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "a little pain (a little pain)",
+      "artist": "OLIVIA inspi' REIRA(TRAPNEST)",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "a little pain",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "everytime you kissed me (everytime you kissed me)",
+      "artist": "Emily Bindiger",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "everytime you kissed me",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "クロイウタ (黑暗之歌)",
+      "artist": "藍井エイル",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "黑暗之歌",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "ラピスラズリ tv.ver (天青石)",
+      "artist": "藍井エイル",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "天青石",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "Rage your dream (Rage your dream)",
+      "artist": "move",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "Rage your dream",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "扉をあけて (打开心扉)",
+      "artist": "ANZA",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "打开心扉",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "夜の歌 (夜の歌)",
+      "artist": "岩男潤子",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "夜の歌",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "鳥の詩 (鸟之诗)",
+      "artist": "Lia",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "鸟之诗",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "日和 (日和)",
+      "artist": "Canappeco",
+      "language": "日文",
+      "genre": "二次元",
+      "access": "免费",
+      "note": "日和",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "踊 (踊)",
+      "artist": "Ado",
+      "language": "日文",
+      "genre": "J-POP",
+      "access": "免费",
+      "note": "踊",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "逆光 (逆光)",
+      "artist": "Ado",
+      "language": "日文",
+      "genre": "J-POP",
+      "access": "免费",
+      "note": "逆光",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "うっせぇわ (吵死了)",
+      "artist": "Ado",
+      "language": "日文",
+      "genre": "J-POP",
+      "access": "免费",
+      "note": "吵死了",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "aLIEz (aLIEz)",
+      "artist": "SawanoHiroyuki[nZk]/瑞葵 (mizuki)",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "aLIEz",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "Sincerely (Sincerely)",
+      "artist": "浜田朱里",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "Sincerely",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "SWEET MEMORIES (SWEET MEMORIES)",
+      "artist": "幾田りら",
+      "language": "日文",
+      "genre": "J-POP",
+      "access": "免费",
+      "note": "SWEET MEMORIES",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "おとなの掟 /Maki Maki (成年人的规则)",
+      "artist": "松隆子",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "成年人的规则",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "たいせつなきみのために、ぼくにできるいちばんのこと (为了最重要的你、我能做的最重要的事)",
+      "artist": "Duca",
+      "language": "日文",
+      "genre": "游戏",
+      "access": "免费",
+      "note": "为了最重要的你、我能做的最重要的事",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "One more time, One more chance (愿往事重来)",
+      "artist": "山崎将义",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "愿往事重来",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "白い恋人達 (白色恋人)",
+      "artist": "土岐麻子",
+      "language": "日文",
+      "genre": "J-POP",
+      "access": "免费",
+      "note": "白色恋人",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "スパイス (香辛料)",
+      "artist": "东京カランコロ",
+      "language": "日文",
+      "genre": "J-POP",
+      "access": "免费",
+      "note": "香辛料",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "あいも〜こいのうた (爱的歌)",
+      "artist": "坂本真绫",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "爱的歌",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "everlasting song (everlasting song)",
+      "artist": "結城アイラ",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "everlasting song",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "ツキアカリのミチシルベ (月光的指引)",
+      "artist": "ステレオポニー",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "月光的指引",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "ムーンライト伝説 (月光传说)",
+      "artist": "美少女戦士セーラームーン",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "月光传说",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "おどるポンポコリン (大家来跳舞)",
+      "artist": "大原櫻子",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "大家来跳舞",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "ドラえもんのうた (哆啦 A 梦之歌)",
+      "artist": "山野さと子",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "哆啦 A 梦之歌",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "旦那様とのラブラブ・ラブソング (Love Love Love Song)",
+      "artist": "釘宮理恵",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "Love Love Love Song",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "ユーフォリア (Euforia)",
+      "artist": "牧野由依",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "Euforia",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "my long forgotten cloistered sleep (my long forgotten cloistered sleep)",
+      "artist": "Emily Bindiger",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "my long forgotten cloistered sleep",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "镇命歌 -しずめうた- (镇命歌)",
+      "artist": "瀧沢一留",
+      "language": "日文",
+      "genre": "游戏",
+      "access": "免费",
+      "note": "镇命歌",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "みずいろの雨 (淡蓝色之雨)",
+      "artist": "八神純子",
+      "language": "日文",
+      "genre": "流行",
+      "access": "免费",
+      "note": "淡蓝色之雨",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "星間飛行 (星间飞行)",
+      "artist": "中島愛",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "星间飞行",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "Anemone heart (Anemone heart)",
+      "artist": "三森すずこ/内田彩",
+      "language": "日文",
+      "genre": "二次元",
+      "access": "免费",
+      "note": "Anemone heart",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "夜奏花 (夜奏花)",
+      "artist": "YURiKA",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "夜奏花",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "あなたが…いない (你不在)",
+      "artist": "栗林みな実",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "你不在",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "悲しみの向こうへ (向着悲伤的彼岸)",
+      "artist": "伊藤香奈子",
+      "language": "日文",
+      "genre": "游戏",
+      "access": "免费",
+      "note": "向着悲伤的彼岸",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "別の人の彼女になったよ (成了别人的女朋友哦)",
+      "artist": "茶泡饭",
+      "language": "日文",
+      "genre": "流行",
+      "access": "免费",
+      "note": "成了别人的女朋友哦",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "ハミング (哼唱)",
+      "artist": "幾田りら",
+      "language": "日文",
+      "genre": "J-POP",
+      "access": "免费",
+      "note": "哼唱",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "幾年月 (几年月)",
+      "artist": "Mili",
+      "language": "日文",
+      "genre": "二次元",
+      "access": "免费",
+      "note": "几年月",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "It's only the Fairy Tale (It's only the Fairy Tale)",
+      "artist": "宮村優子",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "It's only the Fairy Tale",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "Justiφ's (Justiφ's)",
+      "artist": "ISSA",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "Justiφ's",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "if~ひとり思う~ (if~一个人深思~)",
+      "artist": "森下弘生",
+      "language": "日文",
+      "genre": "游戏",
+      "access": "免费",
+      "note": "if~一个人深思~",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "梦想歌 (梦想歌)",
+      "artist": "Suara",
+      "language": "日文",
+      "genre": "游戏",
+      "access": "免费",
+      "note": "梦想歌",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "unravel (unravel)",
+      "artist": "TK from 凛として時雨",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "unravel",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "时雨 (时雨)",
+      "artist": "川岛爱",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "时雨",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "津轻海峡冬景色 (津轻海峡冬景色)",
+      "artist": "石川さゆり",
+      "language": "日文",
+      "genre": "演歌",
+      "access": "免费",
+      "note": "津轻海峡冬景色",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "ヤキモチ (吃醋)",
+      "artist": "高桥优",
+      "language": "日文",
+      "genre": "J-POP",
+      "access": "免费",
+      "note": "吃醋",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "re-sublimity (re-sublimity)",
+      "artist": "KOTOKO",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "re-sublimity",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "檄！帝国華撃団 (帝国华击团)",
+      "artist": "横山智佐",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "帝国华击团",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "だきしめるまで。 (直到拥抱)",
+      "artist": "MIMI",
+      "language": "日文",
+      "genre": "流行",
+      "access": "免费",
+      "note": "直到拥抱",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "悲しい自由 (悲伤的自由)",
+      "artist": "岡崎律子",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "悲伤的自由",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "云雀 (云雀)",
+      "artist": "ASCA",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "云雀",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "青い宝 (青宝)",
+      "artist": "やなわらばー",
+      "language": "日文",
+      "genre": "流行",
+      "access": "免费",
+      "note": "青宝",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "coloring (coloring)",
+      "artist": "堀江由衣",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "coloring",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "銀色飛行船 (银色飞行船)",
+      "artist": "supercell",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "银色飞行船",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "嵐の中で輝いて (在暴风雨中断断续续的光辉)",
+      "artist": "米倉千尋",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "在暴风雨中断断续续的光辉",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "10 years after (10 年之后)",
+      "artist": "米倉千尋",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "10 年之后",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "prototype (prototype)",
+      "artist": "石川智晶",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "prototype",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "find the way (find the way)",
+      "artist": "中島美嘉",
+      "language": "日文",
+      "genre": "J-POP",
+      "access": "免费",
+      "note": "find the way",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "遠い記憶 (遥远的记忆)",
+      "artist": "椎名恵",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "遥远的记忆",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "いつか空に届いて (总会到达天空)",
+      "artist": "椎名恵",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "总会到达天空",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "I Can't Do Anything - Sorayo (I Can't Do Anything - Sorayo)",
+      "artist": "Takayuki Hattori",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "I Can't Do Anything - Sorayo",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "真珠楼 (真珠楼)",
+      "artist": "Anna Evans",
+      "language": "日文",
+      "genre": "流行",
+      "access": "免费",
+      "note": "真珠楼",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "ただ声一つ (只想说一声)",
+      "artist": "ロクデナシ",
+      "language": "日文",
+      "genre": "流行",
+      "access": "免费",
+      "note": "只想说一声",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "ちゅ、多様性 (啾，多样性。)",
+      "artist": "ano",
+      "language": "日文",
+      "genre": "J-POP",
+      "access": "免费",
+      "note": "啾，多样性。",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "初恋 (初恋)",
+      "artist": "東山奈央",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "初恋",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "僕は君に恋をする (恋上你)",
+      "artist": "Naomile",
+      "language": "日文",
+      "genre": "流行",
+      "access": "免费",
+      "note": "恋上你",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "^^ (^^)",
+      "artist": "當山みれい",
+      "language": "日文",
+      "genre": "J-POP",
+      "access": "免费",
+      "note": "^^",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "もしも (如果)",
+      "artist": "RADWIMPS",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "如果",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "call of silence (call of silence)",
+      "artist": "澤野弘之",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "call of silence",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "未来へ (Mirai e)",
+      "artist": "Kiroro",
+      "language": "日文",
+      "genre": "J-POP",
+      "access": "免费",
+      "note": "Mirai e",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "anemone (anemone)",
+      "artist": "佐々木恵梨",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "anemone",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "JIMO-AI Dash! (地元爱 冲!)",
+      "artist": "Aqours",
+      "language": "日文",
+      "genre": "二次元",
+      "access": "免费",
+      "note": "地元爱 冲!",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "好きですが好きですか (我喜欢你你喜欢我吗？)",
+      "artist": "μ's",
+      "language": "日文",
+      "genre": "二次元",
+      "access": "免费",
+      "note": "我喜欢你你喜欢我吗？",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "清廉なる Heretics (清廉的异端)",
+      "artist": "DracoVirgo",
+      "language": "日文",
+      "genre": "二次元",
+      "access": "免费",
+      "note": "清廉的异端",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "おもいでをかさねて (记忆重叠)",
+      "artist": "佐倉江美",
+      "language": "日文",
+      "genre": "流行",
+      "access": "免费",
+      "note": "记忆重叠",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "それが大事 (それが大事)",
+      "artist": "大事 MAN ブラザーズバンド",
+      "language": "日文",
+      "genre": "流行",
+      "access": "免费",
+      "note": "それが大事",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "にんじゃりばんばん (忍者棒棒)",
+      "artist": "きゃりーぱみゅぱみゅ",
+      "language": "日文",
+      "genre": "J-POP",
+      "access": "免费",
+      "note": "忍者棒棒",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "PONPONPON (PONPONPON)",
+      "artist": "きゃりーぱみゅぱみゅ",
+      "language": "日文",
+      "genre": "J-POP",
+      "access": "免费",
+      "note": "PONPONPON",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "tiny stars (小星星)",
+      "artist": "伊達さゆり/Liyuu",
+      "language": "日文",
+      "genre": "二次元",
+      "access": "免费",
+      "note": "小星星",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "ふたりのきもちのほんとのひみつ (二人心意的真正秘密)",
+      "artist": "赤﨑千夏",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "二人心意的真正秘密",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "春日影 (春日影)",
+      "artist": "CRYCHIC",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "春日影",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "真夜中のドア/Stay With Me (午夜之门/留在我身)",
+      "artist": "松原みき",
+      "language": "日文",
+      "genre": "J-POP",
+      "access": "免费",
+      "note": "午夜之门/留在我身",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "あんなに一緒だったのに (我们曾如此形影不离)",
+      "artist": "see-saw",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "我们曾如此形影不离",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "before I rise (before I rise)",
+      "artist": "やなぎなぎ",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "before I rise",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "からくりピエロ (活动小丑)",
+      "artist": "40mP",
+      "language": "日文",
+      "genre": "二次元",
+      "access": "免费",
+      "note": "活动小丑",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "君が生まれた日 (你所诞生的日子)",
+      "artist": "初音ミク",
+      "language": "日文",
+      "genre": "二次元",
+      "access": "免费",
+      "note": "你所诞生的日子",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "桜ノ雨 (樱花雨)",
+      "artist": "初音ミク",
+      "language": "日文",
+      "genre": "二次元",
+      "access": "免费",
+      "note": "樱花雨",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "ヒバナ (火花)",
+      "artist": "DECO*27/初音ミク",
+      "language": "日文",
+      "genre": "二次元",
+      "access": "免费",
+      "note": "火花",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "千本桜 (千本樱)",
+      "artist": "初音ミク",
+      "language": "日文",
+      "genre": "二次元",
+      "access": "免费",
+      "note": "千本樱",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "右肩の蝶 (右肩的蝶)",
+      "artist": "镜音铃/镜音连",
+      "language": "日文",
+      "genre": "二次元",
+      "access": "免费",
+      "note": "右肩的蝶",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "スキキライ (喜欢讨厌)",
+      "artist": "镜音铃/镜音连",
+      "language": "日文",
+      "genre": "二次元",
+      "access": "免费",
+      "note": "喜欢讨厌",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "ワールドイズマイン (世界第一公主殿下)",
+      "artist": "supercell/初音ミク",
+      "language": "日文",
+      "genre": "二次元",
+      "access": "免费",
+      "note": "世界第一公主殿下",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "King (KING)",
+      "artist": "Kanaria/Gumi",
+      "language": "日文",
+      "genre": "二次元",
+      "access": "免费",
+      "note": "KING",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "夢と葉桜 (梦与叶樱)",
+      "artist": "青木月光/初音ミク",
+      "language": "日文",
+      "genre": "二次元",
+      "access": "免费",
+      "note": "梦与叶樱",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "フォニイ (伪物)",
+      "artist": "ツミキ/可不 (KAFU)",
+      "language": "日文",
+      "genre": "二次元",
+      "access": "免费",
+      "note": "伪物",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "もっとかわいい (再可爱一点)",
+      "artist": "可不",
+      "language": "日文",
+      "genre": "二次元",
+      "access": "免费",
+      "note": "再可爱一点",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "絵本『人柱アリス』 (人柱爱丽丝)",
+      "artist": "镜音双子/Meiko/カイト",
+      "language": "日文",
+      "genre": "二次元",
+      "access": "免费",
+      "note": "人柱爱丽丝",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "大江戸ジュリアナイト (大江户 Julia-Night)",
+      "artist": "Mitchie M/初音ミク/カイト",
+      "language": "日文",
+      "genre": "二次元",
+      "access": "免费",
+      "note": "大江户 Julia-Night",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "キャットフード (猫粮)",
+      "artist": "doriko/初音ミク",
+      "language": "日文",
+      "genre": "二次元",
+      "access": "免费",
+      "note": "猫粮",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "炉心融解 (炉心融解)",
+      "artist": "鏡音リン",
+      "language": "日文",
+      "genre": "二次元",
+      "access": "免费",
+      "note": "炉心融解",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "歌に形はないけれど (歌虽无形)",
+      "artist": "doriko/初音ミク",
+      "language": "日文",
+      "genre": "二次元",
+      "access": "免费",
+      "note": "歌虽无形",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "家に帰ると妻が必ず死んだふりをして (每天回家都会看到我老婆在装死)",
+      "artist": "ほぼ日 P/初音ミク",
+      "language": "日文",
+      "genre": "二次元",
+      "access": "免费",
+      "note": "每天回家都会看到我老婆在装死",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "強風オールバック (强风大背头)",
+      "artist": "歌愛ユキ",
+      "language": "日文",
+      "genre": "二次元",
+      "access": "免费",
+      "note": "强风大背头",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "心做し (心理作用)",
+      "artist": "一之瀬ユウ/初音ミク",
+      "language": "日文",
+      "genre": "二次元",
+      "access": "免费",
+      "note": "心理作用",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "六兆年と一夜物語 (六兆年零一夜物语)",
+      "artist": "KEMU VOXX",
+      "language": "日文",
+      "genre": "二次元",
+      "access": "免费",
+      "note": "六兆年零一夜物语",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "マインドブランド (Mind Brand)",
+      "artist": "MARETU/初音ミク",
+      "language": "日文",
+      "genre": "二次元",
+      "access": "免费",
+      "note": "Mind Brand",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "僕は依存症 (我已成瘾)",
+      "artist": "みきと P/初音ミク",
+      "language": "日文",
+      "genre": "二次元",
+      "access": "免费",
+      "note": "我已成瘾",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "神っぽいな (像神一样呐)",
+      "artist": "ピノキオピー",
+      "language": "日文",
+      "genre": "二次元",
+      "access": "免费",
+      "note": "像神一样呐",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "サリシノハラ (离去之原)",
+      "artist": "みきと P/初音ミク",
+      "language": "日文",
+      "genre": "二次元",
+      "access": "免费",
+      "note": "离去之原",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "吉原ラメント (吉原哀歌)",
+      "artist": "重音テト",
+      "language": "日文",
+      "genre": "二次元",
+      "access": "免费",
+      "note": "吉原哀歌",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "深海少女 (深海少女)",
+      "artist": "ゆうゆ/初音ミク",
+      "language": "日文",
+      "genre": "二次元",
+      "access": "免费",
+      "note": "深海少女",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "恋爱裁判 (恋爱裁判)",
+      "artist": "40mP",
+      "language": "日文",
+      "genre": "二次元",
+      "access": "免费",
+      "note": "恋爱裁判",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "テトリス (俄罗斯方块)",
+      "artist": "重音テト",
+      "language": "日文",
+      "genre": "二次元",
+      "access": "免费",
+      "note": "俄罗斯方块",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "天之弱 (天之弱)",
+      "artist": "Akie 秋绘",
+      "language": "日文",
+      "genre": "二次元",
+      "access": "免费",
+      "note": "天之弱",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "心拍数♯0822 (心拍数)",
+      "artist": "Akie 秋绘",
+      "language": "日文",
+      "genre": "二次元",
+      "access": "免费",
+      "note": "心拍数",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "朧月 (胧月)",
+      "artist": "湊貴大",
+      "language": "日文",
+      "genre": "流行",
+      "access": "免费",
+      "note": "胧月",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "cry for me (cry for me)",
+      "artist": "Michita",
+      "language": "日文",
+      "genre": "流行",
+      "access": "免费",
+      "note": "cry for me",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "晚餐歌 (晚餐歌)",
+      "artist": "tuki.優里",
+      "language": "日文",
+      "genre": "流行",
+      "access": "免费",
+      "note": "晚餐歌",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "変わり行く世界のために (为了逐渐改变的世界)",
+      "artist": "茶太",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "为了逐渐改变的世界",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "鬼ノ宴 (鬼之宴)",
+      "artist": "友成空",
+      "language": "日文",
+      "genre": "流行",
+      "access": "免费",
+      "note": "鬼之宴",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "オノマトペ (拟声词)",
+      "artist": "羽生まゐご/りりあ。",
+      "language": "日文",
+      "genre": "流行",
+      "access": "免费",
+      "note": "拟声词",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "Say So/Japanese ver. (Say so)",
+      "artist": "多多 poi",
+      "language": "日文",
+      "genre": "流行",
+      "access": "免费",
+      "note": "Say so",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "うちょうてん (有顶天)",
+      "artist": "ど～ぱみん",
+      "language": "日文",
+      "genre": "流行",
+      "access": "免费",
+      "note": "有顶天",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "ぱられループ (平行轮回)",
+      "artist": "火西肆",
+      "language": "日文",
+      "genre": "流行",
+      "access": "免费",
+      "note": "平行轮回",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "ハロ/ハワユ (你好/你好吗)",
+      "artist": "鹿乃",
+      "language": "日文",
+      "genre": "二次元",
+      "access": "免费",
+      "note": "你好/你好吗",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "悲しみは水のよう (我的悲伤是水做的)",
+      "artist": "夏野 Natsuno",
+      "language": "日文",
+      "genre": "流行",
+      "access": "免费",
+      "note": "我的悲伤是水做的",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "YOU & IDOL (single ver.) (你是爱抖露)",
+      "artist": "相対性理論",
+      "language": "日文",
+      "genre": "J-POP",
+      "access": "免费",
+      "note": "你是爱抖露",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "全部ホントで全部ウソ (全部是真的全部也是假的)",
+      "artist": "ナナヲアカリ",
+      "language": "日文",
+      "genre": "二次元",
+      "access": "免费",
+      "note": "全部是真的全部也是假的",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "可愛くてごめん (feat. かぴ) (这么可爱真的很抱歉)",
+      "artist": "HoneyWorks/かぴ",
+      "language": "日文",
+      "genre": "二次元",
+      "access": "免费",
+      "note": "这么可爱真的很抱歉",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "東京サマーセッション (东京相会)",
+      "artist": "HoneyWorks/CHICO",
+      "language": "日文",
+      "genre": "二次元",
+      "access": "免费",
+      "note": "东京相会",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "シリウスの心臓 (天狼星的心脏)",
+      "artist": "ヰ世界情緒",
+      "language": "日文",
+      "genre": "二次元",
+      "access": "免费",
+      "note": "天狼星的心脏",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "なまえのないうた (无名歌)",
+      "artist": "vip 店長",
+      "language": "日文",
+      "genre": "二次元",
+      "access": "免费",
+      "note": "无名歌",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "威风糖糖 (威风糖糖)",
+      "artist": "早稻叽",
+      "language": "日文",
+      "genre": "流行",
+      "access": "免费",
+      "note": "威风糖糖",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "さくら、もゆ。 (樱花、盛开)",
+      "artist": "夏和小",
+      "language": "日文",
+      "genre": "游戏",
+      "access": "免费",
+      "note": "樱花、盛开",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "ニッポン笑顔百景 (笑颜百景)",
+      "artist": "桃黒亭一門",
+      "language": "日文",
+      "genre": "流行",
+      "access": "免费",
+      "note": "笑颜百景",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "我愛你 - 上海蟹- (我爱你上海蟹)",
+      "artist": "カニ研究会",
+      "language": "日文",
+      "genre": "流行",
+      "access": "免费",
+      "note": "我爱你上海蟹",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "恋愛偏差値上昇中！ (恋爱偏差值上升中)",
+      "artist": "P 丸様｡",
+      "language": "日文",
+      "genre": "二次元",
+      "access": "免费",
+      "note": "恋爱偏差值上升中",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "粛聖!! ロリ神レクイエム☆ (肃清萝莉神)",
+      "artist": "时雨羽衣",
+      "language": "日文",
+      "genre": "二次元",
+      "access": "免费",
+      "note": "肃清萝莉神",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "僕らの手には何もないけど、 (尽管我们的手中空无一物)",
+      "artist": "RAM WIRE",
+      "language": "日文",
+      "genre": "动漫",
+      "access": "免费",
+      "note": "尽管我们的手中空无一物",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "秋绪 (秋绪)",
+      "artist": "塞壬唱片-MSR/田井中彩智 (タイナカ彩智)",
+      "language": "日文",
+      "genre": "游戏",
+      "access": "免费",
+      "note": "秋绪",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "落下 (落下)",
+      "artist": "日向文",
+      "language": "日文",
+      "genre": "流行",
+      "access": "免费",
+      "note": "落下",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "baby you (baby you)",
+      "artist": "bell 玲惠",
+      "language": "日文",
+      "genre": "流行",
+      "access": "免费",
+      "note": "baby you",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "fish in the pool (fish in the pool)",
+      "artist": "椎名琴音",
+      "language": "日文",
+      "genre": "流行",
+      "access": "免费",
+      "note": "fish in the pool",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "おとぎの世界へ (进入童话世界)",
+      "artist": "sui",
+      "language": "日文",
+      "genre": "流行",
+      "access": "免费",
+      "note": "进入童话世界",
+      "added_at": "2026-03-02"
+    }
+  ]
+}
