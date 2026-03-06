@@ -3716,8 +3716,8 @@
       "artist": "誓言",
       "language": "中文",
       "genre": "流行",
-      "access": "付费",
-      "note": "SC 点歌（付费）（其余为免费）",
+      "access": "免费",
+      "note": "",
       "added_at": "2026-03-02"
     },
     {
@@ -3725,8 +3725,8 @@
       "artist": "网络歌曲",
       "language": "中文",
       "genre": "整活",
-      "access": "免费",
-      "note": "",
+      "access": "付费",
+      "note": "SC 点歌",
       "added_at": "2026-03-02"
     },
     {
@@ -3734,8 +3734,8 @@
       "artist": "网络歌曲",
       "language": "中文",
       "genre": "整活",
-      "access": "免费",
-      "note": "",
+      "access": "付费",
+      "note": "SC 点歌",
       "added_at": "2026-03-02"
     }
   ]
