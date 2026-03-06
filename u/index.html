@@ -1261,15 +1261,15 @@
               <!-- 视图切换 + 随机选歌 -->
               <div class="playlist-controls">
                 <div class="view-toggle">
-                  <button class="view-btn active" data-view="list" onclick="switchView('list')">列表</button>
-                  <button class="view-btn" data-view="grid" onclick="switchView('grid')">卡片</button>
+                  <button class="view-btn" data-view="list" onclick="switchView('list')">列表</button>
+                  <button class="view-btn active" data-view="grid" onclick="switchView('grid')">卡片</button>
                 </div>
                 <button class="random-btn" onclick="playRandom()">随机选歌</button>
               </div>
             </div>
             ${playlist.description ? `<p class="playlist-desc">${playlist.description}</p>` : ''}
             <ul class="playlist list-view" id="playlist-container">
-              ${renderPlaylist(playlist.items, 'list')}
+              ${renderPlaylist(playlist.items, 'grid')}
             </ul>
             <!-- 搜索结果提示 -->
             <p id="search-result-tip" class="search-tip" style="display:none;"></p>
@@ -1338,9 +1338,9 @@
       const savedView = localStorage.getItem('suki_playlist_view');
       const container = document.getElementById('playlist-container');
 
-      // ✅ 确保：有保存的偏好 + 不是默认列表 + 容器存在 + 歌单数据存在
-      if (savedView && savedView !== 'list' && container && playlistData?.items) {
-        switchView(savedView);  // ✅ 直接调用，无需 setTimeout
+      // ✅ 新逻辑：只要有保存的偏好，就切换到该模式（无论是 list 还是 grid）
+      if (savedView && container && playlistData?.items) {
+        switchView(savedView);
       }
     }
 
