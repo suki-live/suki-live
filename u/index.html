@@ -1048,6 +1048,12 @@
         .replace(/'/g, '&#039;');
     }
 
+    // ✅ 新增：获取 access 字段的主标签（以 / 分隔的第一个）
+    function getPrimaryAccess(accessStr) {
+      if (!accessStr) return '';
+      return accessStr.split('/')[0].trim();
+    }
+
     // 获取主播 ID（子域名）
     const getVtuberId = () => {
       const host = window.location.hostname;
@@ -1352,7 +1358,7 @@
             <div class="song-info">
               <div class="song-title">
                 ${escapeHtml(song.title)}
-                ${song.access ? `<span class="access-tag access-${escapeHtml(song.access)}">${escapeHtml(song.access)}</span>` : ''}
+                ${song.access ? `<span class="access-tag access-${escapeHtml(getPrimaryAccess(song.access))}">${escapeHtml(song.access)}</span>` : ''}
               </div>
               <div class="song-meta">
                 ${escapeHtml(song.artist || '')}${song.artist && song.source ? ' · ' : ''}${escapeHtml(song.source || '')}
@@ -1372,7 +1378,7 @@
             <div class="song-info">
               <div class="song-title">
                 ${escapeHtml(song.title)}
-                ${song.access ? `<span class="access-tag access-${escapeHtml(song.access)}">${escapeHtml(song.access)}</span>` : ''}
+                ${song.access ? `<span class="access-tag access-${escapeHtml(getPrimaryAccess(song.access))}">${escapeHtml(song.access)}</span>` : ''}
               </div>
               <div class="song-meta">
                 ${escapeHtml(song.artist || '')}${song.artist && song.source ? ' · ' : ''}${escapeHtml(song.source || '')}
@@ -1529,7 +1535,7 @@
       // 权限
       const accessEl = document.getElementById('modal-song-access');
       if (currentRandomSong.access) {
-        accessEl.innerHTML = `<span class="modal-access-tag access-${currentRandomSong.access}">${currentRandomSong.access}</span>`;
+        accessEl.innerHTML = `<span class="modal-access-tag access-${escapeHtml(getPrimaryAccess(currentRandomSong.access))}">${escapeHtml(currentRandomSong.access)}</span>`;
       } else {
         accessEl.textContent = '';
       }
@@ -1623,7 +1629,7 @@
           (song.note && song.note.toLowerCase().includes(searchText));
         const matchLang = !filterLang || song.language === filterLang;
         const matchGenre = !filterGenre || song.genre === filterGenre;
-        const matchAccess = !filterAccess || song.access === filterAccess;
+        const matchAccess = !filterAccess || (song.access && song.access.includes(filterAccess));
         return matchSearch && matchLang && matchGenre && matchAccess;
       });
     }
