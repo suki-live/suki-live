@@ -1,0 +1,14 @@
+{
+  "name": "星野Rika",
+  "tagline": "正在用歌声连接现实与漫画世界的温柔歌姬~",
+  "bio": true,
+  "show_playlist": true,
+  "social": [
+    {
+      "label": "B站",
+      "url": "https://space.bilibili.com/1784458"
+    }
+  ],
+  "created_at": "2026-03-04",
+  "updated_at": "2026-03-04"
+}
