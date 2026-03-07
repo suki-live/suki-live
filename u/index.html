@@ -1268,7 +1268,7 @@
               </div>
             </div>
             ${playlist.description ? `<p class="playlist-desc">${playlist.description}</p>` : ''}
-            <ul class="playlist list-view" id="playlist-container">
+            <ul class="playlist grid-view" id="playlist-container">
               ${renderPlaylist(playlist.items, 'grid')}
             </ul>
             <!-- 搜索结果提示 -->
@@ -1337,6 +1337,9 @@
     function restorePlaylistView() {
       const savedView = localStorage.getItem('suki_playlist_view');
       const container = document.getElementById('playlist-container');
+
+      // ✅ 修改：如果没有保存的偏好，默认使用 'grid' (卡片模式)
+      const viewMode = savedView || 'grid';
 
       // ✅ 新逻辑：只要有保存的偏好，就切换到该模式（无论是 list 还是 grid）
       if (savedView && container && playlistData?.items) {
