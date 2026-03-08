@@ -55,7 +55,8 @@
       "artist": "孟萌、刘泓君",
       "language": "中文",
       "genre": "古风",
-      "access": "免费",
+      "access": "付费",
+      "note": "30SC",
       "added_at": "2026-03-02"
     },
     {
@@ -471,7 +472,8 @@
       "artist": "林忆莲",
       "language": "中文",
       "genre": "流行",
-      "access": "免费",
+      "access": "付费",
+      "note": "30SC",
       "added_at": "2026-03-02"
     },
     {
@@ -511,7 +513,8 @@
       "artist": "李佳薇",
       "language": "中文",
       "genre": "流行",
-      "access": "免费",
+      "access": "付费",
+      "note": "50SC",
       "added_at": "2026-03-02"
     },
     {
@@ -519,7 +522,8 @@
       "artist": "张韶涵",
       "language": "中文",
       "genre": "流行",
-      "access": "免费",
+      "access": "付费",
+      "note": "30SC",
       "added_at": "2026-03-02"
     },
     {
@@ -2183,7 +2187,8 @@
       "artist": "等什么君",
       "language": "中文",
       "genre": "古风",
-      "access": "免费",
+      "access": "付费",
+      "note": "30SC",
       "added_at": "2026-03-02"
     },
     {
@@ -2223,7 +2228,8 @@
       "artist": "小时姑娘",
       "language": "中文",
       "genre": "古风",
-      "access": "免费",
+      "access": "付费",
+      "note": "30SC",
       "added_at": "2026-03-02"
     },
     {
@@ -2575,7 +2581,8 @@
       "artist": "谭维维",
       "language": "中文",
       "genre": "民族",
-      "access": "免费",
+      "access": "付费",
+      "note": "50SC",
       "added_at": "2026-03-02"
     },
     {
@@ -3039,7 +3046,8 @@
       "artist": "薛之谦",
       "language": "中文",
       "genre": "流行",
-      "access": "免费",
+      "access": "付费",
+      "note": "30SC",
       "added_at": "2026-03-02"
     },
     {
@@ -3351,7 +3359,8 @@
       "artist": "蛀牙",
       "language": "中文",
       "genre": "古风",
-      "access": "免费",
+      "access": "付费",
+      "note": "50SC",
       "added_at": "2026-03-02"
     },
     {
@@ -3639,7 +3648,8 @@
       "artist": "彭佳慧",
       "language": "中文",
       "genre": "摇滚",
-      "access": "免费",
+      "access": "付费",
+      "note": "30SC",
       "added_at": "2026-03-02"
     },
     {
@@ -3735,7 +3745,8 @@
       "artist": "黄诗扶",
       "language": "中文",
       "genre": "古风",
-      "access": "免费",
+      "access": "付费",
+      "note": "30SC",
       "added_at": "2026-03-02"
     },
     {
@@ -3975,12 +3986,13 @@
       "artist": "萨顶顶",
       "language": "中文",
       "genre": "古风",
-      "access": "免费",
+      "access": "付费",
+      "note": "30SC",
       "added_at": "2026-03-02"
     },
     {
       "title": "大喜",
-      "artist": "泠鸢 youse",
+      "artist": "泠鸢 yousa",
       "language": "中文",
       "genre": "古风",
       "access": "免费",
