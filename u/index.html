@@ -33,13 +33,21 @@
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       background: var(--bg);
+      background-image: var(--body-bg, none);
+      background-size: var(--body-bg-size, cover);
+      background-position: var(--body-bg-position, center);
+      background-repeat: no-repeat;
+      background-attachment: fixed;
       color: var(--text);
       line-height: 1.6;
       padding-bottom: 3rem;
     }
 
     .header {
-      background: linear-gradient(135deg, var(--accent-soft), #f8f9fa);
+      background: var(--header-bg, linear-gradient(135deg, var(--accent-soft), #f8f9fa));
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
       padding: 2.5rem 1rem 2rem;
       text-align: center;
       border-bottom: 1px solid var(--border);
@@ -1009,7 +1017,8 @@
     托管于 <a href="https://github.com/suki-live/suki-live" target="_blank" rel="noopener">suki-live</a> ·
     <a href="https://suki.live">返回首页</a> ·
     <a href="https://suki.live/registry.html">主播名录</a> ·
-    <a href="https://dreamail.cn/" target="_blank" rel="noopener">匿名信</a>
+    <a href="https://dreamail.cn/" target="_blank" rel="noopener">匿名信</a> ·
+    <a href="https://afdian.com/a/NatsukoYamamura" target="_blank" rel="noopener">爱发电</a>
   </p>
 
   <!-- ✅ 随机选歌弹窗 -->
@@ -1208,89 +1217,108 @@
 
       // 组装页面内容
       let html = '';
+      let sectionCount = 0;  // ✅ 记录实际渲染的区块数量
 
       // 歌单
       if (info.show_playlist !== false && playlist.items?.length) {
         html += `
-          <div class="card section-anchor" id="section-playlist">
-            <h2>${playlist.title || '推荐歌单'}</h2>
-            <!-- 搜索栏 + 筛选器 -->
-            <div class="playlist-filters">
-              <!-- 搜索框 -->
-              <div class="search-box">
-                <input type="text" id="song-search" class="search-input" placeholder="搜索歌名/歌手/曲风/备注..." oninput="filterSongs()">
-                <button class="search-clear" onclick="clearSearch()">✕</button>
-              </div>
-              <!-- 筛选下拉框 -->
-              <div class="filter-group">
-                <select id="filter-language" class="filter-select" onchange="filterSongs()">
-                  <option value="">全部语言</option>
-                  <option value="中文">中文</option>
-                  <option value="日文">日文</option>
-                  <option value="英文">英文</option>
-                  <option value="韩文">韩文</option>
-                  <option value="西语">西语</option>
-                  <option value="法语">法语</option>
-                  <option value="其他">其他</option>
-                </select>
-                <select id="filter-genre" class="filter-select" onchange="filterSongs()">
-                  <option value="">全部曲风</option>
-                  <option value="动漫">动漫</option>
-                  <option value="二次元">二次元</option>
-                  <option value="VOCALOID">VOCALOID</option>
-                  <option value="VTuber">VTuber</option>
-                  <option value="流行">流行</option>
-                  <option value="J-POP">J-POP</option>
-                  <option value="R&B">R&B</option>
-                  <option value="电子">电子</option>
-                  <option value="治愈系">治愈系</option>
-                  <option value="摇滚">摇滚</option>
-                  <option value="古风">古风</option>
-                  <option value="其他">其他</option>
-                </select>
-                <select id="filter-access" class="filter-select" onchange="filterSongs()">
-                  <option value="">全部权限</option>
-                  <option value="免费">免费</option>
-                  <option value="付费">付费</option>
-                  <option value="歌切">歌切</option>
-                  <option value="舰长专属">舰长专属</option>
-                  <option value="提督专属">提督专属</option>
-                  <option value="总督专属">总督专属</option>
-                </select>
-              </div>
-              <!-- 视图切换 + 随机选歌 -->
-              <div class="playlist-controls">
-                <div class="view-toggle">
-                  <button class="view-btn" data-view="list" onclick="switchView('list')">列表</button>
-                  <button class="view-btn active" data-view="grid" onclick="switchView('grid')">卡片</button>
-                </div>
-                <button class="random-btn" onclick="playRandom()">随机选歌</button>
-              </div>
-            </div>
-            ${playlist.description ? `<p class="playlist-desc">${playlist.description}</p>` : ''}
-            <ul class="playlist grid-view" id="playlist-container">
-              ${renderPlaylist(playlist.items, 'grid')}
-            </ul>
-            <!-- 搜索结果提示 -->
-            <p id="search-result-tip" class="search-tip" style="display:none;"></p>
-          </div>`;
+<div class="card section-anchor" id="section-playlist">
+<h2>${playlist.title || '推荐歌单'}</h2>
+<!-- 搜索栏 + 筛选器 -->
+<div class="playlist-filters">
+<!-- 搜索框 -->
+<div class="search-box">
+<input type="text" id="song-search" class="search-input" placeholder="搜索歌名/歌手/曲风/备注..." oninput="filterSongs()">
+<button class="search-clear" onclick="clearSearch()">✕</button>
+</div>
+<!-- 筛选下拉框 -->
+<div class="filter-group">
+<select id="filter-language" class="filter-select" onchange="filterSongs()">
+<option value="">全部语言</option>
+<option value="中文">中文</option>
+<option value="日文">日文</option>
+<option value="英文">英文</option>
+<option value="韩文">韩文</option>
+<option value="西语">西语</option>
+<option value="法语">法语</option>
+<option value="其他">其他</option>
+</select>
+<select id="filter-genre" class="filter-select" onchange="filterSongs()">
+<option value="">全部曲风</option>
+<option value="动漫">动漫</option>
+<option value="二次元">二次元</option>
+<option value="VOCALOID">VOCALOID</option>
+<option value="VTuber">VTuber</option>
+<option value="流行">流行</option>
+<option value="J-POP">J-POP</option>
+<option value="R&B">R&B</option>
+<option value="电子">电子</option>
+<option value="治愈系">治愈系</option>
+<option value="摇滚">摇滚</option>
+<option value="古风">古风</option>
+<option value="其他">其他</option>
+</select>
+<select id="filter-access" class="filter-select" onchange="filterSongs()">
+<option value="">全部权限</option>
+<option value="免费">免费</option>
+<option value="付费">付费</option>
+<option value="歌切">歌切</option>
+<option value="舰长专属">舰长专属</option>
+<option value="提督专属">提督专属</option>
+<option value="总督专属">总督专属</option>
+</select>
+</div>
+<!-- 视图切换 + 随机选歌 -->
+<div class="playlist-controls">
+<div class="view-toggle">
+<button class="view-btn" data-view="list" onclick="switchView('list')">列表</button>
+<button class="view-btn active" data-view="grid" onclick="switchView('grid')">卡片</button>
+</div>
+<button class="random-btn" onclick="playRandom()">随机选歌</button>
+</div>
+</div>
+${playlist.description ? `<p class="playlist-desc">${playlist.description}</p>` : ''}
+<ul class="playlist grid-view" id="playlist-container">
+${renderPlaylist(playlist.items, 'grid')}
+</ul>
+<!-- 搜索结果提示 -->
+<p id="search-result-tip" class="search-tip" style="display:none;"></p>
+</div>`;
+        sectionCount++;  // ✅ 歌单区块计数+1
       }
 
       // 自我介绍
       if (info.bio) {
         html += `
-          <div class="card section-anchor" id="section-bio">
-            <h2>关于我</h2>
-            <div class="bio" id="bio-content">加载中…</div>
-          </div>`;
+<div class="card section-anchor" id="section-bio">
+<h2>关于我</h2>
+<div class="bio" id="bio-content">加载中…</div>
+</div>`;
+        sectionCount++;  // ✅ bio 区块计数+1
       }
 
       document.getElementById('content').innerHTML = html;
-      // ✅ 在 renderDefaultTemplate 末尾调用
-      // 找到这行: document.getElementById('content').innerHTML = html;
-      // 在下面添加:
-      document.getElementById('main-nav').style.display = 'flex';  // 显示导航栏
-      setTimeout(initNavScrollSpy, 100);  // 初始化滚动监听
+
+      // ✅ 根据区块数量决定是否显示导航栏
+      const navEl = document.getElementById('main-nav');
+      if (sectionCount >= 2) {
+        // 🔹 两个区块都显示：显示导航栏 + 初始化滚动监听
+        navEl.style.display = 'flex';
+        setTimeout(initNavScrollSpy, 100);
+      } else if (sectionCount === 1) {
+        // 🔹 只有一个区块：隐藏导航栏，内容直接展示
+        navEl.style.display = 'none';
+        // 可选：移除滚动监听避免冗余
+        // initNavScrollSpy 不会被调用
+      } else {
+        // 🔹 无内容：隐藏导航栏
+        navEl.style.display = 'none';
+      }
+
+      // ✅ 关键修复：渲染完成后立即恢复用户视图偏好（仅当歌单存在时）
+      if (sectionCount > 0 && document.getElementById('playlist-container')) {
+        restorePlaylistView();
+      }
 
       // ✅ 关键修复：渲染完成后立即恢复用户视图偏好
       restorePlaylistView();
@@ -1329,6 +1357,118 @@
       }
 
       initBiliStatsFromInfo(info);
+
+      // ✅ 设置 Header 背景图（支持移动端适配 + 自动回退）
+      function setupHeaderBackground() {
+        if (info.show_header_bg !== true) return;
+
+        const base = id ? '.' : '';
+        const isMobile = window.innerWidth <= 640;
+
+        const applyHeaderBg = (url) => {
+          document.documentElement.style.setProperty('--header-bg', `url(${url})`);
+          // 可选：添加文字阴影提升可读性
+          const headerEl = document.querySelector('.header');
+          if (headerEl) {
+            headerEl.style.textShadow = '0 1px 4px rgba(0,0,0,0.25)';
+            headerEl.style.color = 'var(--text)'; // 确保文字颜色清晰
+          }
+        };
+
+        const checkImage = (url) => {
+          return fetch(url, { method: 'HEAD' })
+            .then(r => r.ok ? url : null)
+            .catch(() => null);
+        };
+
+        const loadHeaderBg = () => {
+          const mobileUrl = `${base}top-mobile.png?t=${Date.now()}`;
+          const desktopUrl = `${base}top.png?t=${Date.now()}`;
+
+          if (isMobile) {
+            // 移动端：优先尝试 mobile 图，失败则回退 desktop
+            checkImage(mobileUrl)
+              .then(found => found ? applyHeaderBg(found) : checkImage(desktopUrl))
+              .then(found => found && applyHeaderBg(found));
+          } else {
+            // 桌面端：直接使用 desktop 图
+            checkImage(desktopUrl).then(found => found && applyHeaderBg(found));
+          }
+        };
+
+        // 初始加载
+        loadHeaderBg();
+
+        // 监听窗口变化（处理横竖屏/缩放）
+        let resizeTimer;
+        window.addEventListener('resize', () => {
+          clearTimeout(resizeTimer);
+          resizeTimer = setTimeout(() => {
+            const newIsMobile = window.innerWidth <= 640;
+            if (newIsMobile !== isMobile) {
+              // 设备类型变化时重新加载
+              loadHeaderBg();
+            }
+          }, 250);
+        });
+      }
+
+      // 调用 Header 背景设置
+      setupHeaderBackground();
+
+      // ✅ 设置正文背景图（支持移动端适配）
+      function setupBodyBackground() {
+        if (info.show_body_bg !== true) return;
+
+        const getBgUrl = (isMobile) => {
+          // 移动端优先尝试 background-mobile.png，不存在则回退到 background.png
+          const mobileUrl = `${base}background-mobile.png?t=${Date.now()}`;
+          const desktopUrl = `${base}background.png?t=${Date.now()}`;
+          return isMobile ? mobileUrl : desktopUrl;
+        };
+
+        const applyBg = (url) => {
+          document.documentElement.style.setProperty('--body-bg', `url(${url})`);
+          document.documentElement.style.setProperty('--body-bg-size', 'cover');
+          document.documentElement.style.setProperty('--body-bg-position', 'center');
+        };
+
+        const checkAndApply = (isMobile) => {
+          const preferredUrl = getBgUrl(isMobile);
+          const fallbackUrl = `${base}background.png?t=${Date.now()}`;
+
+          fetch(preferredUrl, { method: 'HEAD' })
+            .then(r => {
+              if (r.ok) {
+                applyBg(preferredUrl);
+              } else if (isMobile) {
+                // 移动端图片不存在，尝试回退到桌面端图片
+                return fetch(fallbackUrl, { method: 'HEAD' });
+              }
+            })
+            .then(r => {
+              if (r?.ok) {
+                applyBg(fallbackUrl);
+              }
+            })
+            .catch(() => console.log('Body background not found'));
+        };
+
+        // 初始应用
+        checkAndApply(window.innerWidth <= 640);
+
+        // 监听窗口变化（处理横竖屏/缩放）
+        let resizeTimer;
+        window.addEventListener('resize', () => {
+          clearTimeout(resizeTimer);
+          resizeTimer = setTimeout(() => {
+            checkAndApply(window.innerWidth <= 640);
+          }, 250);
+        });
+      }
+
+      // 调用背景设置函数
+      setupBodyBackground();
     }
 
     // ========================================

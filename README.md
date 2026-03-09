@@ -2,7 +2,7 @@
 
 > 为虚拟主播打造的轻量歌单主页 · 自由注册 · 永久托管 · 用记忆与歌声，连接每一个你
 
-[✨ 访问首页](https://suki.live) · [📋 主播名录](https://suki.live/registry.html) · [📬 匿名信指引](https://dreamail.cn/)
+[✨ 访问首页](https://suki.live) · [📋 主播名录](https://suki.live/registry.html) · [🔐 CMS 后台](https://cms.suki.live) · [📬 匿名信指引](https://dreamail.cn/)
 
 ---
 
@@ -18,6 +18,7 @@
 - 🌐 **子域名访问**：`your-id.suki.live` 专属主页
 - 🎨 **混合模式**：99% 主播用统一模板，1% 主播可完全自定义
 - 🚀 **零成本托管**：GitHub Pages + Cloudflare 免费额度
+- ⚙️ **CMS 后台**：图形化编辑歌单，每小时自动同步，无需 Git 操作
 
 > 💡 适合：虚拟主播、独立音乐人、内容创作者、想拥有个人主页的你
 
@@ -37,6 +38,7 @@
 | 🎨 清新淡色风格 | CSS 变量统一管理，视觉轻盈温柔 |
 | 🔒 安全加载 | 相对路径 + XSS 转义，避免路径冲突与注入风险 |
 | 🤝 PR 注册制 | Fork → 修改 → 提交 PR → 审核合并，流程透明 |
+| ⚙️ CMS 后台管理 | 图形化编辑歌单，每小时自动提交，密码认证登录 |
 
 ---
 
@@ -49,6 +51,13 @@ suki-live/
 ├── CNAME                   # GitHub Pages 自定义域名：suki.live
 ├── README.md               # 本文档
 │
+├── cms/                    # 🔐 CMS 后台系统目录
+│   ├── index.html          # 登录页 + 管理界面（单页应用）
+│   ├── api/
+│   │   └── sync.js         # Cloudflare Worker：处理歌单同步请求
+│   └── auth/
+│       └── password.js     # 管理员密码生成工具（命令行）
+│
 └── u/                      # 👈 子域名内容根目录（所有主播共用）
     ├── index.html          # ✅ 统一主播页模板（所有子域名自动加载）
     ├── registry.json       # 📦 所有主播注册信息汇总（用于名录页）
@@ -59,6 +68,10 @@ suki-live/
     │   ├── bio.md          # 自我介绍（Markdown，可选）
     │   ├── favicon.ico     # 网站图标（可选，16x16px+）
     │   ├── avatar.png      # 头像（可选，200x200px+，用于名录页）
+    │   ├── top.png         # 🔹 Header 背景图（桌面端）
+    │   ├── top-mobile.png  # 🔹 Header 背景图（移动端，可选）
+    │   ├── background.png  # 🔹 正文背景图（桌面端）
+    │   ├── background-mobile.png # 🔹 正文背景图（移动端，可选）
     │   └── custom.html     # 🔵 完全自定义页面（启用开关时使用，可选）
     │
     ├── taoli/              # 其他主播目录...
@@ -101,6 +114,8 @@ suki-live/
   "tagline": "一句温柔的签名 🌸",
   "bio": true,
   "show_playlist": true,
+  "show_header_bg": false,
+  "show_body_bg": false,
   "anonymail": "https://dreamail.cn/send?dm=xxx",
   "social": [
     { "label": "B 站", "url": "https://space.bilibili.com/xxx" },
@@ -112,7 +127,7 @@ suki-live/
 }
 ```
 
-#### 🔹 字段说明
+##### 🔹 info.json 字段说明
 
 | 字段 | 类型 | 必填 | 默认值 | 说明 |
 |------|------|------|--------|------|
@@ -120,6 +135,8 @@ suki-live/
 | `tagline` | string | ❌ | - | 个性签名，显示在头像下方 |
 | `bio` | boolean | ❌ | `false` | 是否加载 `bio.md` 作为自我介绍 |
 | `show_playlist` | boolean | ❌ | `true` | 是否显示歌单卡片，`false` 则隐藏 |
+| `show_header_bg` | boolean | ❌ | `false` | 是否启用 Header 自定义背景图（读取 `top.png` / `top-mobile.png`） |
+| `show_body_bg` | boolean | ❌ | `false` | 是否启用正文自定义背景图（读取 `background.png` / `background-mobile.png`） |
 | `anonymail` | string | ❌ | - | dreamail.cn 匿名信链接，不填则不显示按钮 |
 | `social` | array | ❌ | `[]` | 社交链接数组，格式 `[{"label":"", "url":""}]` |
 | `created_at` | string | ❌ | - | 注册日期（ISO 8601），用于名录排序 |
@@ -157,7 +174,7 @@ suki-live/
 | `source` | string | ❌ | 来源平台（网易云 / B 站 / YouTube 等） |
 | `url` | string | ❌ | 播放链接，不填则不显示「播放」按钮 |
 | `cover` | string | ❌ | 歌曲封面图 URL，支持外链 |
-| `note` | string | ❌ | 歌曲备注，可以放sc价格等 |
+| `note` | string | ❌ | 歌曲备注，可以放 SC 价格等 |
 | `added_at` | string | ❌ | 添加日期，用于排序或展示「新歌」标识 |
 
 #### 第 5 步：（可选）编写 bio.md
@@ -382,6 +399,165 @@ suki-live/
 
 ---
 
+## 🔐 CMS 后台管理系统
+
+> 🎯 **无需懂 Git**，图形化界面管理你的歌单，每小时自动同步到主仓库！
+
+### 🌐 访问方式
+
+```
+https://cms.suki.live
+```
+
+### 🔑 登录认证
+
+| 项目 | 说明 |
+|------|------|
+| **账号** | 你的子域名 ID（即 `/u/{id}` 中的 `id`） |
+| **密码** | 联系管理员获取（一次性随机密码，首次登录建议修改） |
+| **会话** | 登录后 7 天内有效，支持「记住我」延长至 30 天 |
+
+> ⚠️ 密码为敏感信息，请勿在公开渠道泄露。如怀疑泄露，请立即联系管理员重置。
+
+---
+
+### 🎛️ 功能说明
+
+#### 📋 歌单管理
+- ✅ **可视化编辑**：表格形式添加/删除/修改歌曲，支持拖拽排序
+- ✅ **批量操作**：多选歌曲批量删除、批量修改权限/曲风/语言
+- ✅ **实时预览**：编辑时右侧同步预览页面效果
+- ✅ **导入导出**：支持从 Excel/CSV 导入歌单，或导出备份
+
+#### 🖼️ 背景图管理
+- ✅ **Header 背景**：上传 `top.png` / `top-mobile.png`，自动关联 `show_header_bg` 开关
+- ✅ **正文背景**：上传 `background.png` / `background-mobile.png`，自动关联 `show_body_bg` 开关
+- ✅ **格式支持**：PNG / JPG / WebP，自动压缩优化（最大 2MB）
+
+#### 📊 数据统计
+- ✅ **播放统计**：显示每首歌曲的点击/播放次数（需前端埋点配合）
+- ✅ **访问分析**：简单 PV/UV 统计（基于 Cloudflare Logs）
+
+#### ⚙️ 个人设置
+- ✅ **修改密码**：首次登录强制修改，支持密码强度检测
+- ✅ **绑定社交**：快速编辑 `info.json` 中的社交链接
+- ✅ **匿名信配置**：一键启用/禁用 dreamail 链接
+
+---
+
+### 🔄 自动同步机制
+
+```
+┌─────────────────┐
+│  用户编辑歌单   │
+└────────┬────────┘
+         │
+         ▼
+┌─────────────────┐
+│  本地缓存保存   │ ← 实时保存草稿，防止丢失
+└────────┬────────┘
+         │
+         ▼
+┌─────────────────┐
+│  每小时定时任务 │ ← Cloudflare Cron Trigger
+└────────┬────────┘
+         │
+         ▼
+┌─────────────────┐
+│  生成 playlist.json │
+│  创建 Git Commit   │
+│  Push 到 main 分支 │
+└────────┬────────┘
+         │
+         ▼
+┌─────────────────┐
+│  GitHub Pages 自动部署 │ ← 约 1-2 分钟生效
+└─────────────────┘
+```
+
+#### 🔹 同步策略
+| 场景 | 行为 |
+|------|------|
+| ✅ 正常编辑 | 每小时整点自动提交（如 14:00, 15:00） |
+| ⚡ 紧急更新 | 点击「立即同步」按钮，手动触发提交（限 3 次/小时） |
+| 🚫 冲突处理 | 如 main 分支有他人提交，自动 rebase 后重试，失败则邮件通知 |
+| 💾 草稿保护 | 所有修改实时保存至 Cloudflare KV，刷新/断网不丢失 |
+
+#### 🔹 提交记录查询
+在 CMS 后台「同步历史」页面可查看：
+```
+[2026-02-24 15:00] ✅ 自动同步 - 修改 3 首歌曲
+[2026-02-24 14:32] ⚡ 手动同步 - 新增歌曲「夜に駆ける」
+[2026-02-24 14:00] ✅ 自动同步 - 调整歌单顺序
+```
+
+---
+
+### 👨‍💻 管理员操作指南
+
+#### 🔐 生成用户密码
+管理员通过命令行工具生成随机密码：
+
+```bash
+# 1. 克隆仓库（需管理员权限）
+git clone https://github.com/suki-live/suki-live.git
+cd suki-live/cms/auth
+
+# 2. 安装依赖（首次）
+npm install
+
+# 3. 生成密码
+node password.js --user=your-id --length=12
+# 输出: 
+# 👤 用户: your-id
+# 🔑 密码: Kx9#mP2$vL8n
+# ⏰ 有效期: 24 小时（首次登录后失效）
+# 📧 请通过私密渠道发送给用户
+```
+
+#### 🔹 password.js 参数说明
+| 参数 | 说明 | 默认值 |
+|------|------|--------|
+| `--user` | 用户 ID（子域名） | ✅ 必填 |
+| `--length` | 密码长度 | `12` |
+| `--expiry` | 密码有效期（小时） | `24` |
+| `--output` | 输出格式：`text` / `json` | `text` |
+
+#### 🔹 管理员权限
+- ✅ 生成/重置任意用户密码
+- ✅ 查看全站同步日志
+- ✅ 紧急回滚某用户的 playlist.json
+- ✅ 标记用户为 `inactive` / `banned`（同步时跳过）
+
+> ⚠️ 管理员操作均记录审计日志，敏感操作需二次验证。
+
+---
+
+### ❓ CMS 常见问题
+
+#### Q：忘记密码怎么办？
+A：联系管理员重置，需提供：
+1. 你的子域名（如 `miku.suki.live`）
+2. 注册时填写的邮箱/社交账号（用于身份验证）
+3. 重置后密码将通过私密渠道发送
+
+#### Q：编辑后页面没更新？
+A：请检查：
+1. 是否已点击「保存」或等待自动同步（每小时整点）
+2. GitHub Pages 部署需要 1-2 分钟，可刷新缓存（Ctrl+F5）
+3. 查看「同步历史」确认是否提交成功
+
+#### Q：可以离线编辑吗？
+A：支持！CMS 使用 Service Worker 缓存，断网时仍可编辑，网络恢复后自动同步。
+
+#### Q：同步失败会丢数据吗？
+A：不会！所有修改先保存至 Cloudflare KV 草稿区，同步失败不影响本地缓存，可重试或导出备份。
+
+#### Q：支持多人协作编辑同一歌单吗？
+A：暂不支持。每个子域名仅限单账号管理，如需协作请自行协调编辑时间。
+
+---
+
 ## 🧪 验证你的主页
 
 合并后，按顺序测试：
@@ -397,6 +573,9 @@ suki-live/
 | ✅ 移动端适配 | 手机浏览器访问 | 布局自动适配，无横向滚动 |
 | ✅ 自定义模式 | `use_custom_page: true` + 自定义页面 | 页面完全替换为自定义内容 |
 | ✅ JS 执行（跳转模式） | 访问 `/main/` | 控制台输出自定义 JS 日志 |
+| ✅ CMS 登录 | `https://cms.suki.live` | 使用 ID+ 密码成功登录 |
+| ✅ 歌单编辑 | CMS 后台添加歌曲 | 1 小时内自动同步到主页 |
+| ✅ 背景图上传 | 上传 top.png 并启用开关 | Header 显示自定义背景 |
 
 ---
 
@@ -500,9 +679,10 @@ A：是的。注册即表示同意：
 [Register] add user: starchild
 [Fix] resolve avatar path in registry.html
 [Docs] update README with custom_page example
+[CMS] add playlist bulk edit feature
 
 # Type 可选值
-Register | Fix | Feature | Docs | Style | Refactor | Custom
+Register | Fix | Feature | Docs | Style | Refactor | Custom | CMS
 ```
 
 ---
@@ -514,6 +694,8 @@ Register | Fix | Feature | Docs | Style | Refactor | Custom
 - 🛡️ 用户输入经 `escapeHtml()` 转义，防 XSS 注入
 - 🌐 Cloudflare Proxy 提供基础 DDoS 防护
 - 📦 媒体资源建议外链（B 站/网易云等），避免仓库过大
+- 🔑 CMS 密码经 bcrypt 加密存储，传输全程 HTTPS
+- 🗂️ 用户歌单草稿隔离存储，跨用户不可见
 
 > 💡 匿名信通过 dreamail.cn 中转，suki.live 不存储任何信件内容
 
@@ -544,8 +726,9 @@ copies or substantial portions of the Software.
 ## 💙 致谢
 
 - [GitHub Pages](https://pages.github.com/) · 免费静态托管
-- [Cloudflare Workers](https://workers.cloudflare.com/) · 边缘路由 + SSL
+- [Cloudflare Workers](https://workers.cloudflare.com/) · 边缘路由 + SSL + Cron
 - [dreamail.cn](https://dreamail.cn/) · 匿名信服务支持
+- [marked.js](https://marked.js.org/) · Markdown 解析
 - 每一位驻留的主播 · 用歌声与故事，让 suki.live 有了温度
 
 ---
@@ -556,11 +739,9 @@ copies or substantial portions of the Software.
 > 如果你在这里找到了共鸣，欢迎留下你的故事～  
 > 如果暂时还没准备好，也没关系，我们一直在。
 
-✨ **suki.live · 用记忆为碑，以歌声为光**
-
-[🏠 返回首页](https://suki.live) · [📋 主播名录](https://suki.live/registry.html) · [✉️ 匿名信指引](https://dreamail.cn/)
+[🏠 返回首页](https://suki.live) · [📋 主播名录](https://suki.live/registry.html) · [🔐 CMS 后台](https://cms.suki.live) · [✉️ 匿名信指引](https://dreamail.cn/)
 
 ---
 
 > 📮 项目维护：[suki-live/suki-live](https://github.com/suki-live/suki-live)  
-> 🌸 最后更新：2026-02-24
+> 🌸 最后更新：2026-03-09
