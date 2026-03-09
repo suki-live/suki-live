@@ -68,10 +68,10 @@ suki-live/
     │   ├── bio.md          # 自我介绍（Markdown，可选）
     │   ├── favicon.ico     # 网站图标（可选，16x16px+）
     │   ├── avatar.png      # 头像（可选，200x200px+，用于名录页）
-    │   ├── top.png         # 🔹 Header 背景图（桌面端）
-    │   ├── top-mobile.png  # 🔹 Header 背景图（移动端，可选）
-    │   ├── background.png  # 🔹 正文背景图（桌面端）
-    │   ├── background-mobile.png # 🔹 正文背景图（移动端，可选）
+    │   ├── head_bg.png     # 🔹 Header 背景图（桌面端）
+    │   ├── head_bg_mobile.png  # 🔹 Header 背景图（移动端，可选）
+    │   ├── body_bg.png     # 🔹 正文背景图（桌面端）
+    │   ├── body_bg_mobile.png  # 🔹 正文背景图（移动端，可选）
     │   └── custom.html     # 🔵 完全自定义页面（启用开关时使用，可选）
     │
     ├── taoli/              # 其他主播目录...
@@ -135,8 +135,8 @@ suki-live/
 | `tagline` | string | ❌ | - | 个性签名，显示在头像下方 |
 | `bio` | boolean | ❌ | `false` | 是否加载 `bio.md` 作为自我介绍 |
 | `show_playlist` | boolean | ❌ | `true` | 是否显示歌单卡片，`false` 则隐藏 |
-| `show_header_bg` | boolean | ❌ | `false` | 是否启用 Header 自定义背景图（读取 `top.png` / `top-mobile.png`） |
-| `show_body_bg` | boolean | ❌ | `false` | 是否启用正文自定义背景图（读取 `background.png` / `background-mobile.png`） |
+| `show_header_bg` | boolean | ❌ | `false` | 是否启用 Header 自定义背景图（读取 `head_bg.png` / `head_bg_mobile.png`） |
+| `show_body_bg` | boolean | ❌ | `false` | 是否启用正文自定义背景图（读取 `body_bg.png` / `body_bg_mobile.png`） |
 | `anonymail` | string | ❌ | - | dreamail.cn 匿名信链接，不填则不显示按钮 |
 | `social` | array | ❌ | `[]` | 社交链接数组，格式 `[{"label":"", "url":""}]` |
 | `created_at` | string | ❌ | - | 注册日期（ISO 8601），用于名录排序 |
