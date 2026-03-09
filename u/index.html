@@ -73,6 +73,12 @@
     .tagline {
       color: var(--text-light);
       font-size: 0.95rem;
+      background: rgba(255, 255, 255, 0.7);
+      border-radius: 20px;
+      padding: 0.3rem 0.8rem;
+      display: inline-block;
+      margin-top: 0.3rem;
+      backdrop-filter: blur(4px);
     }
 
     .container {
@@ -571,24 +577,35 @@
       color: var(--text-light);
       text-decoration: none;
       font-size: 0.85rem;
-      padding: 0.3rem 0.6rem;
-      border: 1px solid var(--border);
-      border-radius: 6px;
+      padding: 0.3rem 0.7rem;
+      border: 1px solid rgba(226, 232, 240, 0.6);
+      border-radius: 20px;
+      /* ✅ 改为更圆的角 */
       transition: all 0.2s;
       white-space: nowrap;
+      /* ✅ 新增：半透明白色背景 */
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(4px);
+      /* ✅ 可选：毛玻璃效果 */
     }
 
     .social-links a:hover {
       border-color: var(--accent);
       color: var(--accent);
-      background: var(--accent-soft);
+      background: rgba(255, 255, 255, 0.9);
+      /* ✅ hover 时更不透明 */
     }
 
     .social-links a.anonymail {
-      background: var(--accent-soft);
+      background: rgba(240, 247, 255, 0.9);
+      /* ✅ 保持粉色系但半透明 */
       color: #c2185b;
       border-color: var(--accent);
       font-weight: 500;
+    }
+
+    .social-links a.anonymail:hover {
+      background: rgba(255, 255, 255, 0.95);
     }
 
     /* === 页脚 === */
