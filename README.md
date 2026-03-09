@@ -136,8 +136,12 @@ suki-live/
       "title": "夜に駆ける",
       "artist": "YOASOBI",
       "source": "网易云",
+      "language": "日文",
+      "genre": "二次元",
+      "access": "免费",
       "url": "https://music.163.com/#/song?id=123456789",
       "cover": "https://p2.music.126.net/example.jpg",
+      "note": "备注",
       "added_at": "2026-02-01"
     }
   ]
@@ -153,6 +157,7 @@ suki-live/
 | `source` | string | ❌ | 来源平台（网易云 / B 站 / YouTube 等） |
 | `url` | string | ❌ | 播放链接，不填则不显示「播放」按钮 |
 | `cover` | string | ❌ | 歌曲封面图 URL，支持外链 |
+| `note` | string | ❌ | 歌曲备注，可以放sc价格等 |
 | `added_at` | string | ❌ | 添加日期，用于排序或展示「新歌」标识 |
 
 #### 第 5 步：（可选）编写 bio.md
