@@ -1,0 +1,862 @@
+{
+  "title": "小墨黎喔 精选歌单合集",
+  "description": "中文·流行·古风·二次元·网络热歌·多元音乐合集",
+  "creator": "小墨黎喔",
+  "items": [
+    {
+      "title": "9420",
+      "artist": "麦小兜",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "note": "",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "蠢货",
+      "artist": "喻言",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "note": "",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "素颜",
+      "artist": "许嵩/何曼婷",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "note": "",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "房间",
+      "artist": "刘瑞琦",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "note": "",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "大眠",
+      "artist": "王心凌",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "note": "",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "小半",
+      "artist": "陈粒",
+      "language": "中文",
+      "genre": "民谣",
+      "access": "免费",
+      "note": "",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "借过",
+      "artist": "周笔畅",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "note": "",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "遇见",
+      "artist": "孙燕姿",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "note": "",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "繁花",
+      "artist": "董贞",
+      "language": "中文",
+      "genre": "古风",
+      "access": "免费",
+      "note": "",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "暖暖",
+      "artist": "梁静茹",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "note": "",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "青柠",
+      "artist": "徐秉龙/沈以诚",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "note": "",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "冬眠",
+      "artist": "司南",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "note": "",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "当你",
+      "artist": "林俊杰",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "note": "",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "沦陷",
+      "artist": "王靖雯",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "note": "",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "微微",
+      "artist": "傅如乔",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "note": "",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "爱你",
+      "artist": "王心凌",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "note": "",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "情歌",
+      "artist": "梁静茹",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "note": "",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "出山",
+      "artist": "花粥",
+      "language": "中文",
+      "genre": "民谣",
+      "access": "免费",
+      "note": "",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "年轮",
+      "artist": "张碧晨",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "note": "",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "童话",
+      "artist": "光良",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "note": "",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "好想你",
+      "artist": "朱主爱",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "note": "",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "锦鲤抄",
+      "artist": "银临/云之泣",
+      "language": "中文",
+      "genre": "古风",
+      "access": "免费",
+      "note": "",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "小酒窝",
+      "artist": "林俊杰/蔡卓妍",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "note": "",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "梦里花",
+      "artist": "张韶涵",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "note": "",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "海芋恋",
+      "artist": "萧敬腾",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "note": "",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "有点甜",
+      "artist": "汪苏泷/BY2",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "note": "",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "日不落",
+      "artist": "蔡依林",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "note": "",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "喜欢你",
+      "artist": "陈洁仪",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "note": "",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "樱花草",
+      "artist": "Sweety",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "note": "",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "下一秒",
+      "artist": "张碧晨",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "note": "",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "红玫瑰",
+      "artist": "陈奕迅",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "note": "",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "可能否",
+      "artist": "木小雅",
+      "language": "中文",
+      "genre": "民谣",
+      "access": "免费",
+      "note": "",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "白山茶",
+      "artist": "陈雪凝",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "note": "",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "小星星",
+      "artist": "汪苏泷",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "note": "",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "七月上",
+      "artist": "jam",
+      "language": "中文",
+      "genre": "古风",
+      "access": "免费",
+      "note": "",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "干物女",
+      "artist": "洛天依",
+      "language": "中文",
+      "genre": "二次元",
+      "access": "免费",
+      "note": "",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "桃花笑",
+      "artist": "洛天依/言和/乐正绫",
+      "language": "中文",
+      "genre": "二次元",
+      "access": "免费",
+      "note": "",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "盗将行",
+      "artist": "花粥",
+      "language": "中文",
+      "genre": "古风",
+      "access": "免费",
+      "note": "",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "坏女孩",
+      "artist": "徐良/小凌",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "note": "",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "心引力",
+      "artist": "王俊凯/蔡依林",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "note": "",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "她他它",
+      "artist": "徐佳莹",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "note": "",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "童话镇",
+      "artist": "陈一发儿",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "note": "",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "静悄悄",
+      "artist": "大泫",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "note": "",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "追光者",
+      "artist": "岑宁儿",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "note": "",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "浪人琵琶",
+      "artist": "胡66",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "note": "",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "爱丫爱丫",
+      "artist": "BY2",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "note": "",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "因为爱情",
+      "artist": "陈奕迅/王菲",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "note": "",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "荷塘月色",
+      "artist": "凤凰传奇",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "note": "",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "爱情买卖",
+      "artist": "慕容晓晓",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "note": "",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "那些花儿",
+      "artist": "朴树",
+      "language": "中文",
+      "genre": "民谣",
+      "access": "免费",
+      "note": "",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "万有引力",
+      "artist": "汪苏泷",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "note": "",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "蝴蝶泉边",
+      "artist": "黄雅莉",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "note": "",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "爱的供养",
+      "artist": "杨幂",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "note": "",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "霜雪千年",
+      "artist": "洛天依/乐正绫",
+      "language": "中文",
+      "genre": "古风",
+      "access": "免费",
+      "note": "",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "棠梨煎雪",
+      "artist": "银临",
+      "language": "中文",
+      "genre": "古风",
+      "access": "免费",
+      "note": "",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "一次就好",
+      "artist": "杨宗纬",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "note": "",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "麋鹿森林",
+      "artist": "鹿先森乐队",
+      "language": "中文",
+      "genre": "民谣",
+      "access": "免费",
+      "note": "",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "云烟成雨",
+      "artist": "房东的猫",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "note": "",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "一笑倾城",
+      "artist": "汪苏泷",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "note": "",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "三生三世",
+      "artist": "张杰",
+      "language": "中文",
+      "genre": "古风",
+      "access": "免费",
+      "note": "",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "告白气球",
+      "artist": "周杰伦",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "note": "",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "特别的人",
+      "artist": "方大同",
+      "language": "中文",
+      "genre": "R&B",
+      "access": "免费",
+      "note": "",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "时间煮雨",
+      "artist": "郁可唯",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "note": "",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "可不可以",
+      "artist": "张紫豪",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "note": "",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "长岛加冰",
+      "artist": "未知",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "note": "",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "岁月神偷",
+      "artist": "金玟岐",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "note": "",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "星月神话",
+      "artist": "金莎",
+      "language": "中文",
+      "genre": "古风",
+      "access": "免费",
+      "note": "",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "逆流成河",
+      "artist": "金南玲",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "note": "",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "那么骄傲",
+      "artist": "金海心",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "note": "",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "去年夏天",
+      "artist": "王大毛",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "note": "",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "夏天的风",
+      "artist": "温岚",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "note": "",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "123我爱你",
+      "artist": "吴一凡",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "note": "",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "姑娘别哭泣",
+      "artist": "柯柯柯啊",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "note": "",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "心愿便利贴",
+      "artist": "元若蓝/吴忠明",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "note": "",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "隐形的翅膀",
+      "artist": "张韶涵",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "note": "",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "愿得一人心",
+      "artist": "李行亮",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "note": "",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "我会好好的",
+      "artist": "王心凌",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "note": "",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "山楂树之恋",
+      "artist": "程佳佳",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "note": "",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "勇气大爆发",
+      "artist": "贝乐虎",
+      "language": "中文",
+      "genre": "儿童",
+      "access": "免费",
+      "note": "",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "最美的期待",
+      "artist": "周笔畅",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "note": "",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "你从未离去",
+      "artist": "白挺",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "note": "",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "我们的明天",
+      "artist": "鹿晗",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "note": "",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "a little love",
+      "artist": "冯曦妤",
+      "language": "英文",
+      "genre": "流行",
+      "access": "免费",
+      "note": "",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "热爱105°的你",
+      "artist": "阿肆",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "note": "",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "阿拉斯加海湾",
+      "artist": "蓝心羽",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "note": "",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "外婆的澎湖湾",
+      "artist": "潘安邦",
+      "language": "中文",
+      "genre": "经典",
+      "access": "免费",
+      "note": "",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "越来越不懂爱",
+      "artist": "蔡健雅",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "note": "",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "樱花粉的浪漫",
+      "artist": "周杰伦",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "note": "",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "永不失联的爱",
+      "artist": "周兴哲",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "note": "",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "不要忘记我爱你",
+      "artist": "张碧晨",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "note": "",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "我的宫廷我做主",
+      "artist": "未知",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "note": "",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "我的一个道姑朋友",
+      "artist": "洛天依",
+      "language": "中文",
+      "genre": "二次元",
+      "access": "免费",
+      "note": "",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "你的酒馆对我打了烊",
+      "artist": "陈雪凝",
+      "language": "中文",
+      "genre": "古风",
+      "access": "免费",
+      "note": "",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "一个像夏天 一个像秋天",
+      "artist": "范玮琪",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "note": "",
+      "added_at": "2026-03-02"
+    },
+    {
+      "title": "遇见你的时候所有星星都落到我头上",
+      "artist": "高姗",
+      "language": "中文",
+      "genre": "流行",
+      "access": "免费",
+      "note": "",
+      "added_at": "2026-03-02"
+    }
+  ]
+}
