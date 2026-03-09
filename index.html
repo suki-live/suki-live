@@ -249,6 +249,15 @@
       padding-top: 2rem;
     }
 
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
     /* === 移动端适配 === */
     @media (max-width: 640px) {
       h1 {
@@ -288,6 +297,19 @@
     .contact-dev a:hover {
       text-decoration: underline;
     }
+
+    /* 🔹 新增：CMS 入口样式 */
+    .cms-badge {
+      display: inline-block;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: #fff;
+      padding: 0.2rem 0.6rem;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      margin-left: 0.5rem;
+      vertical-align: middle;
+    }
   </style>
 </head>
 
@@ -299,6 +321,7 @@
       <div class="nav-links">
         <a href="/" class="nav-link active">首页</a>
         <a href="/registry.html" class="nav-link">主播名录</a>
+        <a href="https://cms.suki.live" class="nav-link" target="_blank">🔐 CMS 后台<span class="cms-badge">NEW</span></a>
       </div>
     </div>
   </nav>
@@ -340,6 +363,7 @@
         <li>在 <code>/u/</code> 下新建你的目录，如 <code>/u/miku/</code></li>
         <li>创建 <code>info.json</code> + <code>playlist.json</code>（参考下方模板）</li>
         <li>（可选）添加 <code>avatar.png</code> / <code>bio.md</code> / <code>favicon.ico</code></li>
+        <li>（可选）添加背景图：<code>head_bg.png</code> / <code>body_bg.png</code></li>
         <li>在 <code>/u/registry.json</code> 中添加你的信息</li>
         <li>提交 Pull Request，标题格式：<code>[Register] your-id</code></li>
         <li>等待管理员审核（通常 24-48 小时）</li>
@@ -378,9 +402,10 @@
         <li>🎲 随机选歌（弹窗确认 + 无链接提示）</li>
         <li>📝 Markdown 自我介绍（支持标题/加粗/链接/分割线）</li>
         <li>🖼️ 头像自动加载（放置 avatar.png 即可）</li>
+        <li>🎨 自定义背景（<code>head_bg.png</code> / <code>body_bg.png</code> + 移动端适配）</li>
         <li>✉️ 匿名信集成（dreamail.cn，保护隐私）</li>
         <li>📱 响应式设计（移动端自动适配）</li>
-        <li>🎨 清新淡色风格（CSS 变量统一管理）</li>
+        <li>⚙️ CMS 后台（图形化编辑歌单，每小时自动同步）</li>
       </ul>
     </div>
 
@@ -392,6 +417,8 @@
   "tagline": "一句温柔的签名 🌸",
   "bio": true,
   "show_playlist": true,
+  "show_header_bg": false,    // 🔹 启用 Header 背景图（读取 head_bg.png）
+  "show_body_bg": false,      // 🔹 启用正文背景图（读取 body_bg.png）
   "anonymail": "https://dreamail.cn/send?dm=xxx",
   "social": [
     { "label": "B 站", "url": "https://space.bilibili.com/xxx" },
@@ -404,10 +431,485 @@
       </p>
     </div>
 
+    <!-- 背景图配置说明 -->
+    <div class="card">
+      <h2>🖼️ 自定义背景图配置</h2>
+      <p style="margin-bottom:0.8rem;color:var(--text-light)">在 <code>/u/your-id/</code> 目录下放置以下图片：</p>
+      <pre style="background:#f8f9fa;padding:1rem;border-radius:8px;overflow-x:auto;font-size:0.8rem"><code>/u/your-id/
+├── info.json
+├── head_bg.png              # 🔹 Header 区域背景（桌面端）
+├── head_bg_mobile.png       # 🔹 Header 区域背景（移动端，可选）
+├── body_bg.png              # 🔹 正文区域背景（桌面端）
+├── body_bg_mobile.png       # 🔹 正文区域背景（移动端，可选）
+└── avatar.png               # 头像（用于名录页）</code></pre>
+      <p style="color:var(--text-light);font-size:0.85rem;margin-top:0.5rem">
+        💡 支持 PNG / JPG / WebP 格式，只需文件名匹配即可，浏览器会自动识别实际格式
+      </p>
+    </div>
+
     <footer>
       <p>💡 提示：注册即表示同意内容规范，禁止违规/商业推广内容</p>
-      <p>✉️ 想给主播写匿名信？<a href="https://dreamail.cn/" target="_blank" rel="noopener" style="color:var(--accent)">了解
-          dreamail</a></p>
+      <p>✉️ 想给主播写匿名信？<a href="https://dreamail.cn/" target="_blank" rel="noopener">了解 dreamail</a></p>
+      <p>💖 支持开发者？<a href="https://afdian.com/a/NatsukoYamamura" target="_blank" rel="noopener">爱发电 @半笺绘梦</a></p>
+      <p>© 2026 suki.live · 用记忆与歌声，连接每一个你</p>
+    </footer>
+  </div>
+</body>
+
+</html><!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>suki.live — 虚拟主播歌单主页</title>
+  <style>
+    :root {
+      --bg: #fafbfc;
+      --card: #ffffff;
+      --text: #4a5568;
+      --text-light: #718096;
+      --accent: #a7c7e7;
+      --accent-soft: #fce4ec;
+      --border: #e2e8f0;
+      --shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+      --nav-bg: #ffffff;
+      --nav-border: #e2e8f0;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      padding-top: 60px;
+    }
+
+    /* === 导航栏 === */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 60px;
+      background: var(--nav-bg);
+      border-bottom: 1px solid var(--nav-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+    }
+
+    .nav-content {
+      width: 100%;
+      max-width: 960px;
+      padding: 0 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #2d3748;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .nav-logo:hover {
+      color: var(--accent);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .nav-link {
+      padding: 0.5rem 1rem;
+      color: var(--text);
+      text-decoration: none;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: all 0.2s;
+    }
+
+    .nav-link:hover {
+      background: var(--accent-soft);
+      color: #c2185b;
+    }
+
+    .nav-link.active {
+      background: var(--accent);
+      color: #1a202c;
+    }
+
+    /* === 页面内容 === */
+    .container {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 2rem 1rem;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0 3rem;
+    }
+
+    h1 {
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: #2d3748;
+      margin-bottom: 0.5rem;
+    }
+
+    .subtitle {
+      color: var(--text-light);
+      font-size: 1rem;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      box-shadow: var(--shadow);
+    }
+
+    .card h2 {
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+      color: #2d3748;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .card h2::before {
+      content: "";
+      display: inline-block;
+      width: 4px;
+      height: 16px;
+      background: var(--accent);
+      border-radius: 2px;
+    }
+
+    .steps {
+      list-style: none;
+      counter-reset: step;
+    }
+
+    .steps li {
+      position: relative;
+      padding-left: 2rem;
+      margin-bottom: 0.8rem;
+      color: var(--text-light);
+    }
+
+    .steps li::before {
+      counter-increment: step;
+      content: counter(step);
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 24px;
+      height: 24px;
+      background: var(--accent-soft);
+      color: #c2185b;
+      border-radius: 50%;
+      font-size: 0.8rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .mode-card {
+      background: var(--accent-soft);
+      border-left: 4px solid var(--accent);
+      padding: 1rem;
+      border-radius: 0 8px 8px 0;
+      margin: 1rem 0;
+    }
+
+    .mode-card h3 {
+      font-size: 1rem;
+      color: #c2185b;
+      margin-bottom: 0.5rem;
+    }
+
+    .mode-card code {
+      background: #fff;
+      padding: 0.2rem 0.4rem;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+
+    .btn {
+      display: inline-block;
+      background: var(--accent);
+      color: #1a202c;
+      padding: 0.6rem 1.2rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: background 0.2s;
+    }
+
+    .btn:hover {
+      background: #8ab4d9;
+    }
+
+    .btn-secondary {
+      background: var(--accent-soft);
+      color: #c2185b;
+    }
+
+    .btn-secondary:hover {
+      background: #f8bbd0;
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+    }
+
+    .example-link {
+      display: block;
+      text-align: center;
+      margin-top: 1rem;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .example-link:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      text-align: center;
+      color: var(--text-light);
+      font-size: 0.9rem;
+      padding-top: 2rem;
+    }
+
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* === 移动端适配 === */
+    @media (max-width: 640px) {
+      h1 {
+        font-size: 1.5rem;
+      }
+
+      .card {
+        padding: 1.2rem;
+      }
+
+      .nav-link {
+        padding: 0.5rem 0.8rem;
+        font-size: 0.9rem;
+      }
+
+      .btn-group {
+        flex-direction: column;
+      }
+
+      .btn {
+        width: 100%;
+        text-align: center;
+      }
+    }
+
+    .contact-dev {
+      color: var(--text-light);
+      font-size: 0.9rem;
+      margin-top: 0.5rem;
+    }
+
+    .contact-dev a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .contact-dev a:hover {
+      text-decoration: underline;
+    }
+
+    /* 🔹 新增：CMS 入口样式 */
+    .cms-badge {
+      display: inline-block;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: #fff;
+      padding: 0.2rem 0.6rem;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      margin-left: 0.5rem;
+      vertical-align: middle;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 导航栏 -->
+  <nav class="navbar">
+    <div class="nav-content">
+      <a href="/" class="nav-logo">🎤 suki.live</a>
+      <div class="nav-links">
+        <a href="/" class="nav-link active">首页</a>
+        <a href="/registry.html" class="nav-link">主播名录</a>
+        <a href="https://cms.suki.live" class="nav-link" target="_blank">CMS 后台<span class="cms-badge">NEW</span></a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- 页面内容 -->
+  <div class="container">
+    <header>
+      <h1>🎤 suki.live</h1>
+      <p class="subtitle">为虚拟主播打造的轻量歌单主页 · 自由注册 · 永久托管</p>
+      <p class="contact-dev">
+        💬 联系开发者：
+        <a href="https://space.bilibili.com/491378910" target="_blank" rel="noopener">B站 @半笺绘梦</a>
+        免费制作及售后~<br>
+        💖 支持开发者？<a href="https://afdian.com/a/NatsukoYamamura" target="_blank" rel="noopener">爱发电 @半笺绘梦</a>
+      </p>
+    </header>
+
+    <!-- 注册模式说明 -->
+    <div class="card">
+      <h2>🚀 如何拥有你的主页？</h2>
+
+      <div class="mode-card">
+        <h3>✨ 模式 A：统一模板（推荐，99% 主播）</h3>
+        <p style="margin-bottom:0.5rem">只需配置数据文件，自动套用清新模板，支持歌单/视图切换/随机选歌等功能。</p>
+        <code>无需复制 index.html，系统自动加载统一模板</code>
+      </div>
+
+      <div class="mode-card" style="background:#f0f7ff;border-left-color:#667eea">
+        <h3>🎨 模式 B：完全自定义（高级，1% 主播）</h3>
+        <p style="margin-bottom:0.5rem">启用开关 + 编写 custom.html，完全自由设计页面，零模板限制。</p>
+        <code>info.json 中添加 "use_custom_page": true</code>
+      </div>
+    </div>
+
+    <!-- 模式 A 步骤 -->
+    <div class="card">
+      <h2>📋 模式 A：统一模板注册步骤</h2>
+      <ol class="steps">
+        <li>Fork 本仓库 → <code>suki-live/suki-live</code></li>
+        <li>在 <code>/u/</code> 下新建你的目录，如 <code>/u/miku/</code></li>
+        <li>创建 <code>info.json</code> + <code>playlist.json</code>（参考下方模板）</li>
+        <li>（可选）添加 <code>avatar.png</code> / <code>bio.md</code> / <code>favicon.ico</code></li>
+        <li>（可选）添加背景图：<code>head_bg.png</code> / <code>body_bg.png</code></li>
+        <li>在 <code>/u/registry.json</code> 中添加你的信息</li>
+        <li>提交 Pull Request，标题格式：<code>[Register] your-id</code></li>
+        <li>等待管理员审核（通常 24-48 小时）</li>
+        <li>合并后访问 <code>https://miku.suki.live</code> ✨</li>
+      </ol>
+
+      <div style="margin-top:1.2rem">
+        <a href="https://github.com/suki-live/suki-live/fork" class="btn" target="_blank">🍴 Fork 仓库</a>
+        <a href="/registry.html" class="btn btn-secondary">📋 查看主播名录</a>
+      </div>
+      <a href="https://example.suki.live" class="example-link">👉 先看看示例：example.suki.live</a>
+    </div>
+
+    <!-- 模式 B 简要说明 -->
+    <div class="card">
+      <h2>🎨 模式 B：完全自定义（简要）</h2>
+      <ol class="steps">
+        <li>同上创建 <code>/u/your-id/</code> 目录</li>
+        <li>创建 <code>info.json</code>，添加 <code>"use_custom_page": true</code></li>
+        <li>编写 <code>custom.html</code>（完全自定义页面）</li>
+        <li>（可选）添加 <code>custom.js</code> 实现交互</li>
+        <li>提交 PR，合并后访问 <code>https://your-id.suki.live</code></li>
+      </ol>
+      <p style="color:var(--text-light);font-size:0.9rem;margin-top:0.8rem">
+        💡 详细文档见 <a href="https://github.com/suki-live/suki-live/blob/main/README.md"
+          style="color:var(--accent)">README.md</a>
+      </p>
+    </div>
+
+    <!-- 功能特性 -->
+    <div class="card">
+      <h2>✨ 页面支持</h2>
+      <ul style="padding-left:1.2rem;color:var(--text-light)">
+        <li>🎵 歌单展示（支持网易云 / B 站 / YouTube 链接）</li>
+        <li>🔄 视图切换（列表/卡片模式 + 偏好记忆）</li>
+        <li>🎲 随机选歌（弹窗确认 + 无链接提示）</li>
+        <li>📝 Markdown 自我介绍（支持标题/加粗/链接/分割线）</li>
+        <li>🖼️ 头像自动加载（放置 avatar.png 即可）</li>
+        <li>🎨 自定义背景（<code>head_bg.png</code> / <code>body_bg.png</code> + 移动端适配）</li>
+        <li>✉️ 匿名信集成（dreamail.cn，保护隐私）</li>
+        <li>📱 响应式设计（移动端自动适配）</li>
+        <li>⚙️ CMS 后台（图形化编辑歌单，每小时自动同步）</li>
+      </ul>
+    </div>
+
+    <!-- info.json 模板 -->
+    <div class="card">
+      <h2>📄 info.json 模板</h2>
+      <pre style="background:#f8f9fa;padding:1rem;border-radius:8px;overflow-x:auto;font-size:0.85rem"><code>{
+  "name": "你的昵称",
+  "tagline": "一句温柔的签名 🌸",
+  "bio": true,
+  "show_playlist": true,
+  "show_header_bg": false,    // 🔹 启用 Header 背景图（读取 head_bg.png）
+  "show_body_bg": false,      // 🔹 启用正文背景图（读取 body_bg.png）
+  "anonymail": "https://dreamail.cn/send?dm=xxx",
+  "social": [
+    { "label": "B 站", "url": "https://space.bilibili.com/xxx" },
+    { "label": "Twitter", "url": "https://twitter.com/xxx" }
+  ]
+}</code></pre>
+      <p style="color:var(--text-light);font-size:0.85rem;margin-top:0.5rem">
+        🔹 完整字段说明见 <a href="https://github.com/suki-live/suki-live/blob/main/README.md#-字段说明"
+          style="color:var(--accent)">README</a>
+      </p>
+    </div>
+
+    <!-- 背景图配置说明 -->
+    <div class="card">
+      <h2>🖼️ 自定义背景图配置</h2>
+      <p style="margin-bottom:0.8rem;color:var(--text-light)">在 <code>/u/your-id/</code> 目录下放置以下图片：</p>
+      <pre style="background:#f8f9fa;padding:1rem;border-radius:8px;overflow-x:auto;font-size:0.8rem"><code>/u/your-id/
+├── info.json
+├── head_bg.png              # 🔹 Header 区域背景（桌面端）
+├── head_bg_mobile.png       # 🔹 Header 区域背景（移动端，可选）
+├── body_bg.png              # 🔹 正文区域背景（桌面端）
+├── body_bg_mobile.png       # 🔹 正文区域背景（移动端，可选）
+└── avatar.png               # 头像（用于名录页）</code></pre>
+      <p style="color:var(--text-light);font-size:0.85rem;margin-top:0.5rem">
+        💡 支持 PNG / JPG / WebP 格式，只需文件名匹配即可，浏览器会自动识别实际格式
+      </p>
+    </div>
+
+    <footer>
+      <p>💡 提示：注册即表示同意内容规范，禁止违规/商业推广内容</p>
+      <p>✉️ 想给主播写匿名信？<a href="https://dreamail.cn/" target="_blank" rel="noopener">了解 dreamail</a></p>
+      <p>💖 支持开发者？<a href="https://afdian.com/a/NatsukoYamamura" target="_blank" rel="noopener">爱发电 @半笺绘梦</a></p>
       <p>© 2026 suki.live · 用记忆与歌声，连接每一个你</p>
     </footer>
   </div>
