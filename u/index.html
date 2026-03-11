@@ -1126,7 +1126,7 @@
         .then(info => {
           // ✅ 自定义模式：完全独立加载，不合并脚本
           if (info.use_custom_page === true) {
-            const customUrl = `${base}/custom.html?t=${Date.now()}`;
+            const customUrl = `${base}/custom.html`;
 
             // 🔹 直接跳转或替换整个文档，避免作用域冲突
             window.location.href = customUrl;
