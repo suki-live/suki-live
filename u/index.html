@@ -1000,6 +1000,223 @@
         font-size: 0.7rem;
       }
     }
+
+    /* === 🔹 目录功能样式 🔹 === */
+    /* 电脑端：左侧悬浮目录 */
+    .toc-sidebar {
+      position: fixed;
+      left: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      max-height: 80vh;
+      overflow-y: auto;
+      padding: 1rem 0.8rem;
+      background: rgba(255, 255, 255, 0.95);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      box-shadow: var(--shadow);
+      z-index: 90;
+      display: none;
+      min-width: 160px;
+      backdrop-filter: blur(4px);
+    }
+
+    .toc-sidebar.visible {
+      display: block;
+    }
+
+    .toc-title {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 0.6rem;
+      padding-bottom: 0.4rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .toc-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      font-size: 0.8rem;
+    }
+
+    .toc-item {
+      margin: 0.3rem 0;
+    }
+
+    .toc-link {
+      color: var(--text-light);
+      text-decoration: none;
+      display: block;
+      padding: 0.2rem 0.4rem;
+      border-radius: 4px;
+      transition: all 0.2s;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .toc-link:hover,
+    .toc-link.active {
+      color: var(--accent);
+      background: var(--accent-soft);
+    }
+
+    .toc-link.level-2 {
+      padding-left: 0;
+      font-weight: 500;
+    }
+
+    .toc-link.level-3 {
+      padding-left: 0.8rem;
+    }
+
+    .toc-link.level-4 {
+      padding-left: 1.4rem;
+      font-size: 0.75rem;
+    }
+
+    /* 手机端：左下角目录按钮 + 弹窗 */
+    .toc-toggle-btn {
+      position: fixed;
+      left: 16px;
+      bottom: 20px;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: #1a202c;
+      border: none;
+      box-shadow: var(--shadow);
+      cursor: pointer;
+      z-index: 100;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      transition: all 0.2s;
+    }
+
+    .toc-toggle-btn:hover {
+      transform: scale(1.05);
+      background: var(--accent-hover, #8ab4d9);
+    }
+
+    .toc-toggle-btn.visible {
+      display: flex;
+    }
+
+    /* 手机端目录弹窗 */
+    .toc-modal {
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      max-height: 60vh;
+      background: var(--card);
+      border-radius: 16px 16px 0 0;
+      padding: 1.2rem 1rem;
+      box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.15);
+      z-index: 101;
+      display: none;
+      animation: slideUp 0.3s ease;
+    }
+
+    .toc-modal.visible {
+      display: block;
+    }
+
+    @keyframes slideUp {
+      from {
+        transform: translateY(100%);
+      }
+
+      to {
+        transform: translateY(0);
+      }
+    }
+
+    .toc-modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.8rem;
+      padding-bottom: 0.6rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .toc-modal-header h4 {
+      font-size: 1rem;
+      color: var(--text);
+      margin: 0;
+    }
+
+    .toc-modal-close {
+      background: none;
+      border: none;
+      font-size: 1.4rem;
+      color: var(--text-light);
+      cursor: pointer;
+      padding: 0.2rem;
+      border-radius: 50%;
+      transition: background 0.2s;
+    }
+
+    .toc-modal-close:hover {
+      background: var(--accent-soft);
+      color: var(--accent);
+    }
+
+    .toc-modal .toc-list {
+      max-height: 40vh;
+      overflow-y: auto;
+    }
+
+    .toc-modal .toc-link {
+      padding: 0.4rem 0.6rem;
+    }
+
+    /* 目录遮罩层（手机端） */
+    .toc-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.4);
+      z-index: 100;
+      display: none;
+    }
+
+    .toc-overlay.visible {
+      display: block;
+    }
+
+    /* 响应式：手机端隐藏电脑端目录，显示按钮 */
+    @media (max-width: 768px) {
+      .toc-sidebar {
+        display: none !important;
+      }
+
+      .toc-toggle-btn {
+        display: none;
+        /* JS控制显示 */
+      }
+    }
+
+    @media (min-width: 769px) {
+
+      .toc-toggle-btn,
+      .toc-modal,
+      .toc-overlay {
+        display: none !important;
+      }
+    }
+
+    /* 简介内容添加目录锚点偏移 */
+    #section-bio .bio-content h2,
+    #section-bio .bio-content h3,
+    #section-bio .bio-content h4 {
+      scroll-margin-top: 100px;
+    }
   </style>
 </head>
 
@@ -1374,10 +1591,18 @@ ${renderPlaylist(playlist.items, 'grid')}
               }
               return match;
             });
+
+            // ✅ 渲染内容
             document.getElementById('bio-content').innerHTML = `<div class="bio-content">${safeHtml}</div>`;
+
+            // ✅ 新增：初始化目录功能（放在这里！）
+            if (info.toc?.enabled) {
+              setTimeout(() => initToc(info, safeHtml), 100);
+            }
           })
           .catch(() => {
-            const bioCard = document.querySelector('.card h2:nth-child(1)')?.closest('.card');
+            // ❌ 加载失败时移除 bio 卡片
+            const bioCard = document.querySelector('#section-bio')?.closest('.card');
             if (bioCard) bioCard.remove();
           });
       }
@@ -1985,6 +2210,182 @@ ${renderPlaylist(playlist.items, 'grid')}
       if (info?.social && document.getElementById('bili-stats')) {
         setTimeout(() => initBiliStatsFromInfo(info), 500);
       }
+    }
+
+    // ========================================
+    // ✅ 目录功能核心模块
+    // ========================================
+
+    // 生成唯一ID（用于锚点）
+    function generateSlug(text) {
+      return text
+        .toLowerCase()
+        .replace(/[^\w\u4e00-\u9fa5\s-]/g, '')  // 保留中文、英文、数字、空格、横杠
+        .trim()
+        .replace(/\s+/g, '-')
+        .replace(/-+/g, '-');
+    }
+
+    // 解析bio内容，生成目录数据
+    function parseTocFromBio(bioContent, config) {
+      const { min_level = 2, max_level = 4 } = config;
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(bioContent, 'text/html');
+      const headings = doc.querySelectorAll(`h${min_level}, h${min_level + 1}, h${max_level}`);
+
+      const toc = [];
+      headings.forEach(h => {
+        const level = parseInt(h.tagName[1]);
+        if (level < min_level || level > max_level) return;
+
+        const text = h.textContent.trim();
+        if (!text) return;
+
+        const id = h.id || generateSlug(text);
+        if (!h.id) h.id = id;  // 自动添加id
+
+        toc.push({ id, text, level });
+      });
+      return toc;
+    }
+
+    // 渲染目录列表（共用）
+    function renderTocList(items, isModal = false) {
+      if (!items.length) return '<p style="color:var(--text-light);font-size:0.85rem">暂无目录</p>';
+
+      return `<ul class="toc-list">
+    ${items.map(item => `
+      <li class="toc-item">
+        <a href="#${item.id}" 
+           class="toc-link level-${item.level}" 
+           data-level="${item.level}"
+           onclick="scrollToSection('${item.id}'); ${isModal ? 'closeTocModal();' : ''} return false;">
+          ${escapeHtml(item.text)}
+        </a>
+      </li>
+    `).join('')}
+  </ul>`;
+    }
+
+    // 初始化目录功能
+    function initToc(info, bioHtml) {
+      const tocConfig = info.toc;
+      if (!tocConfig?.enabled || !bioHtml) return;
+
+      // 解析目录
+      const tocItems = parseTocFromBio(bioHtml, tocConfig);
+      if (!tocItems.length) return;
+
+      const isMobile = window.innerWidth <= 768;
+
+      // 注入目录容器到页面
+      injectTocContainers(tocItems, isMobile);
+
+      // 绑定滚动高亮
+      initTocScrollSpy(tocItems);
+
+      // 绑定窗口缩放监听
+      window.addEventListener('resize', () => {
+        const newIsMobile = window.innerWidth <= 768;
+        if (newIsMobile !== isMobile) {
+          location.reload(); // 简单处理：切换设备时刷新
+        }
+      });
+    }
+
+    // 注入目录HTML结构
+    function injectTocContainers(items, isMobile) {
+      if (isMobile) {
+        // 手机端：按钮 + 弹窗 + 遮罩
+        document.body.insertAdjacentHTML('beforeend', `
+      <button class="toc-toggle-btn" id="toc-toggle" aria-label="目录" onclick="toggleTocModal()">
+        ☰
+      </button>
+      <div class="toc-overlay" id="toc-overlay" onclick="closeTocModal()"></div>
+      <div class="toc-modal" id="toc-modal">
+        <div class="toc-modal-header">
+          <h4>目录</h4>
+          <button class="toc-modal-close" onclick="closeTocModal()">✕</button>
+        </div>
+        ${renderTocList(items, true)}
+      </div>
+    `);
+      } else {
+        // 电脑端：左侧悬浮
+        const container = document.createElement('nav');
+        container.className = 'toc-sidebar visible';
+        container.innerHTML = `
+      <div class="toc-title">📑 目录</div>
+      ${renderTocList(items, false)}
+    `;
+        document.body.appendChild(container);
+      }
+
+      // 显示对应元素
+      if (isMobile) {
+        document.getElementById('toc-toggle')?.classList.add('visible');
+      }
+    }
+
+    // 手机端：切换目录弹窗
+    function toggleTocModal() {
+      const modal = document.getElementById('toc-modal');
+      const overlay = document.getElementById('toc-overlay');
+      const btn = document.getElementById('toc-toggle');
+
+      if (modal.classList.contains('visible')) {
+        closeTocModal();
+      } else {
+        modal.classList.add('visible');
+        overlay.classList.add('visible');
+        btn?.classList.add('active');
+        document.body.style.overflow = 'hidden'; // 禁止背景滚动
+      }
+    }
+
+    // 关闭目录弹窗
+    function closeTocModal() {
+      document.getElementById('toc-modal')?.classList.remove('visible');
+      document.getElementById('toc-overlay')?.classList.remove('visible');
+      document.getElementById('toc-toggle')?.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    // 平滑滚动到章节
+    function scrollToSection(id) {
+      const el = document.getElementById(id);
+      if (!el) return;
+
+      const headerOffset = 80; // 导航栏高度
+      const elementPosition = el.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+
+    // 滚动监听：高亮当前目录项
+    function initTocScrollSpy(items) {
+      const links = document.querySelectorAll('.toc-link');
+      if (!links.length) return;
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const id = entry.target.id;
+            links.forEach(link => {
+              link.classList.toggle('active', link.getAttribute('href') === `#${id}`);
+            });
+          }
+        });
+      }, { rootMargin: '-50% 0px -45% 0px', threshold: 0 });
+
+      items.forEach(item => {
+        const el = document.getElementById(item.id);
+        if (el) observer.observe(el);
+      });
     }
   </script>
 </body>
