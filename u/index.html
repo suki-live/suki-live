@@ -1002,10 +1002,13 @@
     }
 
     /* === 🔹 目录功能样式 🔹 === */
-    /* 电脑端：左侧悬浮目录 */
+    /* 电脑端：右侧悬浮目录 */
     .toc-sidebar {
       position: fixed;
-      left: 20px;
+      right: 20px;
+      /* 🔹 改为右侧 */
+      left: auto;
+      /* 🔹 清除左侧定位 */
       top: 50%;
       transform: translateY(-50%);
       max-height: 80vh;
@@ -1032,6 +1035,8 @@
       margin-bottom: 0.6rem;
       padding-bottom: 0.4rem;
       border-bottom: 1px solid var(--border);
+      /* 右侧布局时，标题文字靠右对齐更美观，可选 */
+      text-align: right;
     }
 
     .toc-list {
@@ -1055,6 +1060,8 @@
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
+      /* 右侧布局时，文字靠右对齐 */
+      text-align: right;
     }
 
     .toc-link:hover,
@@ -1216,6 +1223,93 @@
     #section-bio .bio-content h3,
     #section-bio .bio-content h4 {
       scroll-margin-top: 100px;
+    }
+
+    /* === 🔹 电脑端目录折叠功能 🔹 === */
+    /* 折叠按钮样式 */
+    .toc-sidebar .toc-toggle-btn {
+      position: absolute;
+      left: 8px;
+      /* 🔹 改为左侧（靠内容区一侧） */
+      right: auto;
+      /* 🔹 清除右侧 */
+      top: 8px;
+      background: none;
+      border: none;
+      color: var(--text-light);
+      cursor: pointer;
+      font-size: 0.9rem;
+      padding: 0.2rem 0.4rem;
+      border-radius: 4px;
+      transition: all 0.2s;
+      line-height: 1;
+    }
+
+    .toc-sidebar .toc-toggle-btn:hover {
+      color: var(--accent);
+      background: var(--accent-soft);
+    }
+
+    /* 折叠状态：收缩为小图标栏 */
+    .toc-sidebar.collapsed {
+      min-width: 44px !important;
+      padding: 0.8rem 0.4rem !important;
+      cursor: pointer;
+    }
+
+    .toc-sidebar.collapsed .toc-title {
+      display: none;
+    }
+
+    .toc-sidebar.collapsed .toc-list {
+      display: none;
+    }
+
+    .toc-sidebar.collapsed .toc-toggle-btn {
+      position: static;
+      transform: none;
+      font-size: 1.1rem;
+      padding: 0.3rem;
+    }
+
+    /* 折叠按钮图标 */
+    .toc-sidebar .toc-toggle-btn::after {
+      content: "▶";
+      /* 🔹 默认指向右侧（表示折叠到右边） */
+      display: inline-block;
+      transition: transform 0.2s;
+    }
+
+    .toc-sidebar.collapsed .toc-toggle-btn::after {
+      content: "◀";
+      /* 🔹 折叠后指向左侧（表示展开到左边） */
+      transform: rotate(0deg);
+      /* 不需要旋转 */
+    }
+
+    /* 折叠时显示提示文字（悬停） */
+    .toc-sidebar.collapsed:hover::before {
+      content: "目录";
+      position: absolute;
+      right: 100%;
+      /* 🔹 改为出现在左侧 */
+      left: auto;
+      /* 🔹 清除左侧 */
+      top: 50%;
+      transform: translateY(-50%);
+      margin-right: 8px;
+      /* 🔹 改为右边距 */
+      margin-left: 0;
+      padding: 0.3rem 0.6rem;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      font-size: 0.8rem;
+      color: var(--text);
+      white-space: nowrap;
+      box-shadow: var(--shadow);
+      z-index: 95;
+      pointer-events: none;
     }
   </style>
 </head>
@@ -2293,10 +2387,10 @@ ${renderPlaylist(playlist.items, 'grid')}
       });
     }
 
-    // 注入目录HTML结构
+    // 注入目录HTML结构（支持折叠）
     function injectTocContainers(items, isMobile) {
       if (isMobile) {
-        // 手机端：按钮 + 弹窗 + 遮罩
+        // 手机端：按钮 + 弹窗 + 遮罩（保持不变）
         document.body.insertAdjacentHTML('beforeend', `
       <button class="toc-toggle-btn" id="toc-toggle" aria-label="目录" onclick="toggleTocModal()">
         ☰
@@ -2304,27 +2398,55 @@ ${renderPlaylist(playlist.items, 'grid')}
       <div class="toc-overlay" id="toc-overlay" onclick="closeTocModal()"></div>
       <div class="toc-modal" id="toc-modal">
         <div class="toc-modal-header">
-          <h4>目录</h4>
+          <h4>📑 目录</h4>
           <button class="toc-modal-close" onclick="closeTocModal()">✕</button>
         </div>
         ${renderTocList(items, true)}
       </div>
     `);
+        document.getElementById('toc-toggle')?.classList.add('visible');
       } else {
-        // 电脑端：左侧悬浮
+        // 🔹 电脑端：左侧悬浮 + 折叠功能
         const container = document.createElement('nav');
         container.className = 'toc-sidebar visible';
+        container.id = 'toc-sidebar';
         container.innerHTML = `
-      <div class="toc-title">📑 目录</div>
+      <div class="toc-title">
+        📑 目录
+        <button class="toc-toggle-btn" onclick="toggleTocCollapse(event)" aria-label="折叠目录" title="折叠/展开"></button>
+      </div>
       ${renderTocList(items, false)}
     `;
-        document.body.appendChild(container);
-      }
 
-      // 显示对应元素
-      if (isMobile) {
-        document.getElementById('toc-toggle')?.classList.add('visible');
+        // 🔹 点击整个折叠后的侧边栏也可展开
+        container.onclick = (e) => {
+          if (container.classList.contains('collapsed') && !e.target.closest('.toc-toggle-btn')) {
+            toggleTocCollapse(e);
+          }
+        };
+
+        document.body.appendChild(container);
+
+        // 🔹 恢复之前保存的折叠状态
+        const wasCollapsed = localStorage.getItem('toc_collapsed') === 'true';
+        if (wasCollapsed) {
+          container.classList.add('collapsed');
+        }
       }
+    }
+
+    // 🔹 切换电脑端目录折叠状态
+    function toggleTocCollapse(e) {
+      if (e) e.stopPropagation(); // 防止冒泡
+
+      const sidebar = document.getElementById('toc-sidebar');
+      if (!sidebar) return;
+
+      sidebar.classList.toggle('collapsed');
+
+      // 保存偏好到 localStorage
+      const isCollapsed = sidebar.classList.contains('collapsed');
+      localStorage.setItem('toc_collapsed', isCollapsed);
     }
 
     // 手机端：切换目录弹窗
@@ -2351,19 +2473,25 @@ ${renderPlaylist(playlist.items, 'grid')}
       document.body.style.overflow = '';
     }
 
-    // 平滑滚动到章节
+    // 平滑滚动到章节（修复版）
     function scrollToSection(id) {
       const el = document.getElementById(id);
       if (!el) return;
 
-      const headerOffset = 80; // 导航栏高度
-      const elementPosition = el.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+      // 🔹 关键修复：计算绝对滚动位置
+      const headerOffset = 80; // 导航栏高度 + 安全余量
+      const elementPosition = el.getBoundingClientRect().top + window.scrollY;
+      const offsetPosition = elementPosition - headerOffset;
 
       window.scrollTo({
         top: offsetPosition,
         behavior: 'smooth'
       });
+
+      // 🔹 手机端点击后自动关闭弹窗
+      if (window.innerWidth <= 768) {
+        closeTocModal();
+      }
     }
 
     // 滚动监听：高亮当前目录项
