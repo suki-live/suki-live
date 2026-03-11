@@ -3,6 +3,7 @@
   "tagline": "浮生暂寄笔墨间，半笺素纸写流年。不问红尘多少事，只凭心意绘梦圆。",
   "bio": true,
   "show_playlist": false,
+  "use_custom_page": true,
   "toc": {
     "enabled": true,
     "min_level": 2,

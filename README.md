@@ -116,11 +116,6 @@ suki-live/
   "show_playlist": true,
   "show_header_bg": false,
   "show_body_bg": false,
-  "toc": {
-    "enabled": true,  // 🔹 是否启用目录功能
-    "min_level": 2,   // 🔹 最小标题级别（默认2，即##开始）
-    "max_level": 4    // 🔹 最大标题级别（默认4）
-  },
   "anonymail": "https://dreamail.cn/send?dm=xxx",
   "social": [
     { "label": "B 站", "url": "https://space.bilibili.com/xxx" },
