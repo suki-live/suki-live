@@ -4763,6 +4763,42 @@
       "access": "免费",
       "note": "",
       "added_at": "2026-03-15"
-    }
+    },
+    {
+    "title": "告死鸟",
+    "artist": "洛天依",
+    "language": "中文",
+    "genre": "流行",
+    "access": "免费",
+    "note": "",
+    "added_at": "2026-05-02"
+  },
+  {
+    "title": "那天下雨了",
+    "artist": "周杰伦",
+    "language": "中文",
+    "genre": "流行",
+    "access": "免费",
+    "note": "",
+    "added_at": "2026-05-02"
+  },
+  {
+    "title": "爱琴海",
+    "artist": "周杰伦",
+    "language": "中文",
+    "genre": "流行",
+    "access": "免费",
+    "note": "",
+    "added_at": "2026-05-02"
+  },
+  {
+    "title": "着眼",
+    "artist": "双笙",
+    "language": "中文",
+    "genre": "流行",
+    "access": "免费",
+    "note": "",
+    "added_at": "2026-05-02"
+  }
   ]
 }
