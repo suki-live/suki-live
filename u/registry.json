@@ -1,6 +1,13 @@
 {
-  "updated_at": "2026-07-12",
+  "updated_at": "2026-09-08",
   "vtubers": [
+    {
+  "id": "aoi-yui",
+  "name": "苍井结衣_",
+  "tagline": "苍井结衣_的点歌单 ♪",
+  "registered_at": "2026-09-08",
+  "status": "active"
+    },
     {
       "id": "riko",
       "name": "梨子卷Riko",
